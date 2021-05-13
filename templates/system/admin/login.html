@@ -17,6 +17,7 @@ if (document.all){
       <td><table width="100%" class="hide">
         <tr>
           <td width="35%" align="right" valign="middle">用户名：</td>
+          <!-- <td width="35%" align="right" valign="middle">{?$url_login?}</td> -->
           <td width="65%">{?if $jieqi_username == ''?}<input type="text" class="text" size="20" style="width:120px" name="username" id="username" onKeyPress="javascript: if (event.keyCode==32) return false;">{?else?}{?$jieqi_username?}{?/if?}</td>
         </tr>
         <tr>

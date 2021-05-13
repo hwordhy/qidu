@@ -215,7 +215,7 @@ class PHPExcel_Worksheet_Protection
      */
     public function getObjects()
     {
-        var_dump("vhjxh");die();
+        // var_dump("vhjxh");die();
         return $this->objects;
     }
 

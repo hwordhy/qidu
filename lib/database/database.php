@@ -257,7 +257,7 @@ class JieqiQueryHandler extends JieqiObject
 			return $this->sqlres;
 		}
 		else if (!empty($criteria)) {
-			var_dump($this->db->query($criteria, 0, 0, $nobuffer));die();
+			// var_dump($this->db->query($criteria, 0, 0, $nobuffer));die();
 			$this->sqlres = $this->db->query($criteria, 0, 0, $nobuffer);
 			return $this->sqlres;
 		}

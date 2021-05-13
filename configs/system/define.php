@@ -1,5 +1,5 @@
 <?php
-@define('JIEQI_URL','//xiaoshuo.39ta.com');
+@define('JIEQI_URL','http://www.xs.com');
 @define('JIEQI_SITE_NAME','书荒文学');
 @define('JIEQI_CONTACT_EMAIL','');
 @define('JIEQI_MAIN_SERVER','');

@@ -266,7 +266,7 @@ function jieqi_loginprocess($jieqiUsers, $usecookie = 0)
 		$tmpvar = (0 < strlen($jieqiUsers->getVar("name", "q")) ? $jieqiUsers->getVar("name", "q") : $jieqiUsers->getVar("uname", "q"));
 		$sql = "UPDATE " . jieqi_dbprefix("system_online") . " SET uid=" . $jieqiUsers->getVar("uid", "q") . ", sid='" . jieqi_dbslashes(session_id()) . "', uname='" . $jieqiUsers->getVar("uname", "q") . "', name='" . $tmpvar . "', pass='" . $jieqiUsers->getVar("pass", "q") . "',email='" . $jieqiUsers->getVar("email", "q") . "', groupid=" . $jieqiUsers->getVar("groupid", "q") . ", updatetime=" . JIEQI_NOW_TIME . ", ip='" . jieqi_dbslashes($ip) . "' WHERE uid=" . $jieqiUsers->getVar("uid", "q") . " OR sid='" . jieqi_dbslashes(session_id()) . "'";
 		
-		var_dump($online_handler->execute($sql));die();
+		// var_dump($online_handler->execute($sql));die();
 		$online_handler->execute($sql);
 	
 	}

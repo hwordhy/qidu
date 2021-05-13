@@ -110,16 +110,20 @@ class JieqiMySQLDatabase extends JieqiObject
 			}
 		}
 		else if ($master) {
-			$this->conn_m = @mysqli_connect($this->hosts[$hid]["dbhost"], $this->hosts[$hid]["dbuser"], $this->hosts[$hid]["dbpass"], true);
+			$this->conn_m = mysqli_connect($this->hosts[$hid]["dbhost"], $this->hosts[$hid]["dbuser"], $this->hosts[$hid]["dbpass"], $this->hosts[$hid]["dbname"]);
 			$this->conn = &$this->conn_m;
 		}
 		else {
+			// var_dump($this->hosts[$hid]["dbname"]);die();
 			$this->conn_s = mysqli_connect($this->hosts[$hid]["dbhost"], $this->hosts[$hid]["dbuser"], $this->hosts[$hid]["dbpass"], $this->hosts[$hid]["dbname"]);
 			$this->conn = &$this->conn_s;
+			// var_dump($master);die();
 		}
+		// var_dump(!$this->conn);die();
 		//echo $this->hosts[$hid]["dbhost"], $this->hosts[$hid]["dbuser"], $this->hosts[$hid]["dbpass"];
-		//var_dump($this->conn);exit;
+		// var_dump($this->conn);exit;
 		if (!$this->conn) {
+			echo "vjxkzj";die();
 			jieqi_printfail("Can not connect to database!<br /><br />error: " . mysqli_error($this->conn));
 		}
 
@@ -284,7 +288,7 @@ class JieqiMySQLDatabase extends JieqiObject
 		}
 	
 		if ($nobuffer) {
-			$result = mysqli_unbuffered_query($sql, $this->conn);
+			$result = mysqli_query($this->conn, $sql);
 		}
 		else {
 			$result = mysqli_query($this->conn, $sql);
@@ -295,7 +299,6 @@ class JieqiMySQLDatabase extends JieqiObject
 			// var_dump($result);die();
 			return $result;
 		}
-		
 		else {
 			
 			$errno = mysqli_errno($this->conn);
@@ -324,3 +327,4 @@ class JieqiMySQLDatabase extends JieqiObject
 }
 
 
+?>
