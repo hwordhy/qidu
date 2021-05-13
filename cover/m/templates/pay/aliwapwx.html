@@ -1,0 +1,25 @@
+{?set $jieqi_pagetitle = "支付宝充值-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "支付宝充值"?}
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/clipboard.min.js" charset="UTF-8"></script>
+<div class="block">
+	<div class="blocktitle">提示</div>
+	<div class="blockcontent">
+		<div class="hot mb">请复制以下地址到浏览器打开：</div>
+		<div id="pay_query">{?$pay_query?}</div>
+		<div class="tc mt mb"><button type="button" name="btncopy" class="button b_hot" data-clipboard-target="#pay_query">点击复制到剪切板</button></div>
+		<div class="tc mt mb">支付成功后，请检查您的账户是否到账！</div>
+		<div class="tc mb"><a class="btnlink" href="{?$jieqi_url?}/userdetail.php">查看我的账户</a></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var clipboard = new ClipboardJS('.button');
+	clipboard.on('success', function(e) {
+		alert('复制成功！');
+	});
+
+	clipboard.on('error', function(e) {
+		alert('复制失败，请在网址上长按选择复制！');
+	});
+</script>
+

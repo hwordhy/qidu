@@ -1,0 +1,85 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "我的书评主题-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<link rel="stylesheet" href="/sink/css/book.css" media="all" />
+<div class="container wrap1200">
+    <!--left mod -->
+    <div class="i-left">
+<!--关注中心 mod -->
+<p class="title"><span></span>关注中心</p>
+<ul>
+    <li><a href="/modules/article/bookcase.php" data-namecard="false"><span></span>我的书架</a></li>
+    <li><a href="/ssss.php" data-namecard="false"><span class="readed"></span>最近阅读</a></li>
+    <li><a href="/modules/article/myreviews.php" data-namecard="false"><span class="bookreview"></span>我的评论</a></li>
+    <li><a href="/modules/article/applywriter.php" data-namecard="false"><span class="readed"></span>申请作者</a></li>
+
+    </ul>
+<!--资产中心 mod -->
+<p class="title"><span class="zc"></span>资产中心</p>
+<ul>
+    <li><a href="/modules/pay/paylog.php" data-namecard="false"><span class="money"></span>充值记录</a></li>
+    <li><a href="/modules/article/myactlog.php?act=tip" data-namecard="false"><span class="package"></span>打赏记录</a></li>
+    <li><a href="/modules/obook/buylist.php" data-namecard="false"><span class="ticket"></span>我的订阅</a></li>
+    <li><a href="/modules/pay/buyegold.php" data-namecard="false"><span class="ticket"></span>充值</a></li>
+</ul>
+<!--设置 mod -->
+<p class="title"><span class="setting"></span>设置</p>
+<ul>
+    <li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>个人信息</a></li>
+    <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>修改信息</a></li>
+    <li><a href="/personedit.php" data-namecard="false"><span class="pictureInfo"></span>联系方式</a></li>
+    <li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>修改密码</a></li>
+    </ul>
+    <p class="title"><span class="setting"></span>站内消息</p>
+    <ul>
+            <li><a href="/modules/article/myreviews.php" data-namecard="false"><span class="bookreview"></span>我的评论</a></li>
+        <li><a href="/message.php?box=inbox" data-namecard="false"><span class="basicInfo"></span>我的消息</a></li>
+        <li><a href="/message.php?box=outbox" data-namecard="false"><span class="pictureInfo"></span>我发送的</a></li>
+        <li><a href="/newmessage.php" data-namecard="false"><span class="basicInfo"></span>写消息</a></li>
+        <li><a href="/newmessage.php?tosys=1" data-namecard="false"><span class="basicInfo"></span>意见反馈</a></li>
+        </ul>
+</div>
+
+<div class="i-right">
+    <input value="1" id="reviewType" type="hidden">
+    <div class="moneyMod">
+        <div class="i-title">
+            <ul class="ulHd" style="padding-left:30px;">
+                <li data-type="1" class="on">我的评论<span></span></li>
+            </ul>
+            <!--筛选条件 mod -->
+        </div>
+        <div class="moneyBd">
+            <!--磨铁币table mod -->
+            <div class="rechangeList hide" style="display: block;">
+                <!--有磨铁币的情况 -->
+                <!--head-->
+                <table>
+                    <tbody><tr class="head">
+                        <td class="t1">评论标题</td>
+                        <td>书名</td>
+                        <td>回复</td>
+                        <td class="t4">查看</td>
+                        <td class="t5">发布时间</td>
+                    </tr>
+                </tbody></table>
+                <table>
+                    <tbody>
+                        {?section name=i loop=$ptopicrows?}
+                <tr>
+                    <td class="t16" style="width: 230px;"><a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?tid={?$ptopicrows[i].topicid?}" target="_blank"{?if $ptopicrows[i].display_n == 1?} class="note"{?/if?}>{?$ptopicrows[i].title|truncate:'54':'..'?}</a></td>
+                    <td style="width: 230px;"><a href="{?function jieqi_geturl:'article':'article':$ptopicrows[i].ownerid:'info'?}" target="_blank">{?$ptopicrows[i].articlename?}</a></td>
+                    <td class="t17" style="width: 200px;">{?$ptopicrows[i].replies?}</td>
+                    <td class="t18" style="width: 180px;">{?$ptopicrows[i].views?}</td>
+                    <td class="t18" style="width: 120px;">{?$ptopicrows[i].posttime|date:"Y-m-d H:i:s"?}</td>
+                </tr>      
+                {?/section?}
+              </tbody></table>
+              {?$url_jumppage?}
+
+              </div>
+        
+        </div>
+    </div>
+</div>
+</div>

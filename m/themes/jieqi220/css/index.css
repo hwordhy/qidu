@@ -1,0 +1,741 @@
+﻿/*添加*/
+.zjtop li{
+    width: 30.3%;
+    height: 100%;
+    display: inline-block;
+}
+.count{
+    border: 1px solid #ff9344;
+    border-radius: 30px;
+    margin-right: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+/*下载提示*/
+.notice_down{ 
+    text-align: center;
+    color: #585858;
+    font-size: 1.066rem;
+    padding-bottom: 10px;
+    position: relative; 
+}
+.notice_down .container p{
+    background: #ddeffc;  
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+.notice_down a{
+    color: #5cb0e6;
+    margin:  0 0.6rem;
+}
+/**/
+.owl-carousel{
+    padding:20px 0 8px; 
+}
+.owl-carousel .left,.channel .left{
+    width: 25%;
+    padding-top: 3px;
+    max-height: 220px;
+}
+.owl-carousel .left img,.channel .left img{
+    max-height: 220px;
+    min-height: 100px;
+}
+.owl-carousel .right,.channel .right{
+    width: 70%;
+    margin-left: 5%;
+    font-size: 1.15rem; 
+    color: #3a3a3a;  
+} 
+.owl-carousel .right h3,.owl-carousel .right h5,
+.channel .right h3,.channel.right h5{
+   font-size: 1.42rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #434343;  
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;  
+}
+.owl-carousel .right h5,.channel .right h5{
+   font-size: 1.15rem;
+    padding: 1.3rem 0;
+    color: #8a8a8a;
+    font-weight: normal;
+}
+.owl-carousel .right div,.channel .right div{
+    max-height:70px ;
+    overflow: hidden;
+    line-height: 1.8rem;
+    max-height: 40px;  
+}
+
+/*公告*/
+.notice{
+    padding: 15px 0;
+    overflow: hidden;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #ebebeb;
+}
+.notice #snotice a{
+    display:block;
+    height: 1.86rem;
+    line-height: 1.86rem;
+    background: url(../images/notice.png) no-repeat left center;
+    background-size: contain;
+    padding-left: 3rem;
+    font-size: 1.25rem;
+    color: #676767;
+     overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    width: 90%;
+}
+@media(max-width:320px){ 
+    .notice #snotice a{ 
+        width: 94%;
+    }
+}
+.notice #snotice li{ 
+     overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap; 
+}
+/*限时免费*/
+.freetime{
+    margin: 10px auto;
+    background: #fff; 
+    padding: 5px 0 10px;
+}
+.freetime .fl{
+    width: 30.333%; 
+    text-align: center; 
+    margin: 0 1.5%;
+} 
+.freetime .freecon{
+   margin-left: -1.8%;
+    margin-right: -2.2%;
+    overflow: hidden;
+} 
+.freetime .freecon em{
+   position: relative;  
+    display: block; 
+}
+.freetime .freecon i{
+   position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 2.58rem;
+    height:2.58rem;
+}
+.freetime .freecon .new_dz{
+    background: url(../images/new_dz.png) no-repeat center center;
+    background-size: contain;
+}
+.freetime .freecon .new_xj{
+    background: url(../images/new_xj.png) no-repeat center center;
+    background-size: contain;
+}
+.freetime .freecon .new_xm{
+    background: url(../images/new_xm.png) no-repeat center center;
+    background-size: contain;
+} 
+.freetime h2{
+    color: #fe9932;
+    font-size: 1.33rem;
+    height: 1.2rem;
+    line-height:  2.2rem;
+    background: url(../images/freetime.png) no-repeat left top; 
+    background-size: auto 80%;
+    margin: 0.5rem 0 1.5rem;  
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #f4f4f4;
+    padding-left: 3rem;
+}
+.freetime b{
+    display: block;
+    font-size: 1.15rem;
+    color: #676767;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 10px 0 5px;
+    font-weight: normal;
+} 
+.freetime h2 span a{ 
+    color: #ff9524; 
+     font-size: 1.2rem;
+    background: url(../images/new_rights.png) no-repeat right center;
+    background-size: auto 80%;
+    padding-right: 1.5rem;
+}
+.freetime h2  em{
+    font-style: normal; 
+    color: #ff3838;
+    padding: 0 1px;
+}
+/*广告*/
+.wapad{
+    margin: 10px auto;
+    max-width: 750px;
+}
+/*频道*/
+.channel{
+    background: #fff;
+    padding-top:10px;
+    margin: 10px auto;
+}
+.channel h2,.topsell h2{
+    font-size:1.06rem ; 
+    text-align: right; 
+    padding: 3px 0;
+    margin-bottom: 10px; 
+} 
+.channel h2 a{ 
+    color: #888; 
+    padding-bottom: 12px; 
+    margin-left: 10px;
+}
+.chl_con{
+    border-top: 1px solid #f4f4f4;
+    padding: 20px 0 0;
+    overflow: hidden;
+    display: none;
+}
+.short h2{
+    background: url(../images/short.png) no-repeat left center;
+    background-size: contain;
+}
+.short h2 .active{  
+    border-bottom: 2px solid #f37275; 
+    color: #f37275;
+}
+.public h2{
+    background: url(../images/public.png) no-repeat left center;
+    background-size: contain;
+}
+.public h2 .active{  
+    border-bottom: 2px solid #f37275; 
+    color: #f37275;
+} 
+.girl h2{
+    background: url(../images/girl.png) no-repeat left center;
+    background-size: contain;
+}
+.girl h2 .active{  
+    border-bottom: 2px solid #f37275; 
+    color: #f37275;
+}
+.boy h2{
+    background: url(../images/boy.png) no-repeat left center;
+    background-size: contain;
+}
+.boy h2 .active{  
+    border-bottom: 2px solid #bd3d20; 
+    color: #bd3d20;
+}
+.chl_con_first .left {
+    position: relative;
+    max-height: 135px;
+}
+.chl_con_first .left img{ 
+    max-height: 135px;
+}
+.chl_con_first .left em{
+    display: inline-block;
+    background: url(../images/hots.png) no-repeat center center;
+    background-size: contain;
+    height: 3rem;
+    width: 1.77rem;
+    position: absolute;
+    top: 2px;
+    left: -1px;
+    color: #fff;
+    z-index: 1;
+    font-size: 0.7rem;
+    text-align: center;
+    font-style: normal;
+    padding-top: 0.2rem;
+}
+.chl_con_two{
+    margin-top:20px; 
+}
+.chl_con_two li{
+    padding: 15px 0; 
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    margin-top:-1px;
+}
+.chl_con_two li:last-child{ 
+    border-bottom: none; 
+}
+.chl_con_two p:last-child{ 
+    border-bottom: none; 
+}
+.chl_con_two a{
+    color:#f37275 ;
+    font-size:1.06rem ;
+}
+.goodpush a{
+    color:#fe9932 ; 
+}
+.boy .chl_con_two a{
+    color:#bd3d20 ; 
+}
+.girl .chl_con_two .a2,.boy .chl_con_two .a2,.short .chl_con_two .a2,.public .chl_con_two .a2{
+    color:#3d3d3d ;   
+    font-size: 1.24rem;
+    border-left: 1px solid #ddd;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+.boy .chl_con_two .a2{
+    color:#3d3d3d ;  
+    
+}
+/*畅销,点击，推荐榜*/
+.topsell{
+    background: #fff;
+    padding: 10px 0 0;
+}
+.topul{
+    display: none;
+}
+.topsell h2{ 
+    text-align: center; 
+    height: 2.2rem; 
+    line-height: 2.2rem;  
+    font-weight: normal;
+    font-size:1.06rem ;  
+    padding: 3px 0 7px;
+    margin-bottom: 10px; 
+}
+.topsell h2 span{ 
+    display: inline-block;
+    width: 33.33%;
+    float: left;
+}
+.topall h2 span{ 
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+.topsell h2 a{ 
+    color: #888; 
+    display: block;
+    width: 100%;
+    padding-bottom:7px;
+}
+.topsell h2 .active{ 
+    color: #ff9344;
+    border-bottom: 2px solid #ff9344; 
+}
+.topsell ul{
+    margin: 10px 0;
+}
+.topsell ul li{
+    margin: 10px 0;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis; 
+    font-size: 1.066rem;
+    font-weight:600;
+}
+.topsell ul li:last-child{
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+}
+.topsell ul li:last-child a{ 
+    padding: 0.5rem 0 ;
+}
+.topsell ul li a{ 
+    display: block;
+    height: 100%;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis; 
+    font-size: 1.15rem;
+    color: #3d3d3d;
+    font-weight: normal;
+    padding: 0.5rem 0 1rem;
+}
+.topsell ul li b{
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #dfdfdf;
+    color: #fff;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-right: 0.8rem;
+    position: relative;
+    top: -2px;
+    margin-left: 0.4rem;
+    font-weight: normal;
+    padding: 0.1rem 0 0;
+}
+.topsell .one b,
+.topsell .two b,
+.topsell .three b{
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.1rem; 
+    margin-left: 0;
+    margin-right: 0.3rem; 
+}
+.topsell .one a{
+    color: #f4503f;
+}
+.topsell .two a{
+    color: #ff6c44;
+}
+.topsell .three a{
+    color: #ff9344;
+}
+.topsell .one b{
+    background: url(../images/topsell01.png) no-repeat center center;
+    background-size: auto 94%; 
+}
+.topsell .two b{
+    background: url(../images/topsell02.png) no-repeat center center;
+    background-size: auto 94%;
+}
+.topsell .three b{
+    background: url(../images/topsell03.png) no-repeat center center;
+    background-size: auto 94%;
+}
+/*排行榜*/
+.topall h1{
+    font-size: 1.42rem;
+    background: url(../images/topall.png) no-repeat left center;
+    background-size: auto 50%; 
+    padding: 15px 0 10px 35px;
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #21a7ee;
+}
+.topall h2,.topall h2 a{
+    padding-bottom: 10px;
+    color: #989898;
+}
+.topall h2 .active{
+    border-bottom: 2px solid #21a7ee;
+    color: #21a7ee;
+}
+.topall  .girltop,.topall  .boytop {
+    color: #bd3d20;
+    font-size: 1.15rem;
+    padding-bottom: 15px;
+}
+.topall .one a,
+.topall .two a,
+.topall .three a{
+    color: #3d3d3d;
+}
+.topall .container{
+    width: 100%; 
+    margin: 0 auto;
+    padding: 0 ; 
+}
+.topall .girlsell,
+.topall .clicktop,
+.topall .girlpush,
+.topall .girlshang,
+.boytops .boysell,
+.boytops .boyclicktop,
+.boytops .boypush,
+.boytops .boyshang
+{
+    background: #fff;
+    margin: 15px 0;
+    padding: 5px 2% 0.01rem;
+}
+.topall  .tops{
+    padding: 0 2%;
+}
+.topall .girlsell,.boytops .boysell{
+    margin:  0;
+    margin-top: -10px;
+}
+ /*主编力荐*/
+.goodpush{
+    margin: 0 auto;
+    padding: 5px 0 0;
+}
+.goodpush h2{
+    background: url(../images/goodpush.png) no-repeat left top; 
+    background-size: auto 80%;
+}
+.goodpush .chl_con_two{
+    margin-top: 15px!important;
+}
+ .indexzt{
+    background: #fff;
+    padding: 10px 0;
+     margin: 15px auto;
+     max-width: 750px;
+}
+.indexzt h2{
+    background: url(../images/indexztic.png) no-repeat left top;
+    background-size: auto 80%;
+    padding-left: 2.5rem; 
+     border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 5px;
+    font-size: 1.33rem; 
+}
+.indexzt h2 i{ 
+    color: #ff9023 ;
+    line-height: 2.2rem; 
+    font-style: normal;
+}
+.indexzt h2 .fr{
+    color: #ff9023;
+    background:url(../images/indexztr.png) no-repeat right center;
+    background-size: 10%;
+    padding-right:20px;
+    position: relative;
+    top: 3px;
+}
+.indexzt  .clearfix{
+    margin-left:-3.5%;
+    margin-right:-2%;
+    overflow: hidden;
+    margin-top:12px;
+}
+.indexzt .wads{
+    display: inline-block;
+    width: 44%; 
+    margin:  10px 0 0 4%; 
+} 
+
+/*盟主*/
+.mengzhu{ 
+    margin: 10px  auto;
+    position: relative;
+    max-width: 750px;
+}
+.mengzhu .mzfont{ 
+    position: absolute;
+    top:23%;
+    left: 10%;
+    right: 10%;
+    font-size: 1rem;
+    color: #ffe178;
+    text-align: center;
+    width: 75%;
+    text-shadow: 2px 2px 5px #f4511b; 
+}
+.mengzhu .mzfont a{
+    color: #ffe178;
+}
+.mengzhu .muse{
+    width: 10%;
+    position: relative;
+}
+.mengzhu .mfont{
+    width: 90%; 
+    margin-top: 1%;
+    text-align: center;
+}
+.mengzhu .mfont h3{ 
+    display: block;
+}
+.mengzhu .h3{ 
+    position: relative;
+}
+.mengzhu .mfont b,.mengzhu .mfont em{
+    color: #fff;
+    font-style: normal;
+    display: inline-block;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    top: 3px;
+} 
+.mengzhu .mfont b{
+    max-width: 55%;
+}
+.mengzhu .mfont em{ 
+    max-width: 35%;
+}
+.mengzhu  .mztop{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -0.85rem;
+    width: 1.7rem;
+    height: 1.1rem;
+    background: url(../images/mztop.png) no-repeat center;
+    background-size: contain;
+    z-index: 10; 
+/*
+    -webkit-animation: twinkling 600ms infinite alternate; 
+    animation: twinkling  600ms infinite alternate;    
+    opacity: 0.5;
+*/
+}
+.mengzhu .mfont .mzstar{
+    position: absolute;
+    top:0;
+    right: -10px;
+    width: 1rem;
+    height: 1.3rem;
+    background: url(../images/mzstar.png) no-repeat center;
+    background-size: contain;
+    -webkit-animation: twinkling 600ms infinite alternate; 
+    animation: twinkling  600ms infinite alternate;    
+    opacity: 0.5;
+}
+.cartoon{
+    padding: 10px 0 ;
+}
+.cartoon .clearfix{
+    margin: 0;
+    padding: 0;
+}
+.cartoon .wads{
+    width: 29.33%;
+    margin:   2%;
+    padding: 0;
+    float: left; 
+}
+.cartoon .wads span{
+    position: relative;
+}
+.cartoon .wads em{
+    position: absolute;
+    bottom: 10px;
+    width: 70%;
+    left: 0;
+    background: -webkit-linear-gradient(#ffcf01,#ff9717);
+    background: linear-gradient(#ffcf01,#ff9717);
+    padding: 5px 0;
+    text-align: center;
+    font-style: normal;
+    color: #fff;
+    font-size: 1.16rem;
+    -webkit-border-radius:  0 30px 30px 0;
+    border-radius:  0 30px 30px 0;
+}
+.cartoon .wads p{ 
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 10px;
+    text-align: center;
+}
+.mengzhu .muse img{
+    width: 2rem;
+    height: 2rem;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    position: relative;
+    top: 0.8rem;
+}
+@media(max-width:375px){
+    .mengzhu .mzfont{  
+    font-size: 0.8rem; 
+    }
+}
+/*文字闪烁*/
+ @-webkit-keyframes twinkling{     
+    0%{
+       opacity:0.3;  
+     }
+    100%{
+       opacity:1;  
+      -webkit-transform: scale(1.2);
+    }
+  }/*文字闪烁*/
+ @keyframes twinkling{     
+    0%{
+       opacity:0.3;  
+     }
+    100%{
+       opacity:1;  
+      transform: scale(1.2);
+    }
+  }
+/*作者专访*/
+.ausays h2{
+    background: url(../images/ausays.png) no-repeat left top;
+    background-size: auto 80%;
+}
+.ausays .wads{
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 1rem;
+    font-size: 1.24rem;
+}
+.ausays .wads:last-child{
+    border: none;
+    margin: 0 0 -8px; 
+}
+.indexzt .clearfix{
+    margin: 0 2%;
+}
+/*男生女生*/
+.boygirls{
+    background: #fff; 
+    padding: 10px 0;
+    margin: 10px auto 0;
+    max-width: 750px;
+}
+.boygirls a{
+    float: left;
+    width: 50%;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #292929;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 2.6rem;
+}
+.boygirls b{
+    display: inline-block;
+    width: 3.73rem;
+    height: 2.4rem;
+    position:relative;
+    top: 8px;
+    right: 5px;
+}
+.boygirls .boys b{
+    background: url(../images/cats_boy.png) no-repeat center;
+    background-size: contain;
+}
+.boygirls .girls b{
+    background: url(../images/cats_girl.png) no-repeat center;
+    background-size: contain;
+}
+.boygirls .boys{
+    border-right: 1px solid #e6e6e6;
+}
+
+
+
+
+
+
+
+
+
+
+
+

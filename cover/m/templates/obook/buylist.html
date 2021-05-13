@@ -1,0 +1,189 @@
+{?set $jieqi_pagetitle = "我的订阅-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "我的订阅"?}
+<html>
+<head>
+	<title>{?$jieqi_pagetitle?}</title>
+	<style>
+		.wx_cont{padding:0;overflow:hidden;}
+		.recent_hd{width:100%;height:41px;text-align:center;font-size:16px;display:-moz-box;display:-webkit-box;display:box;}
+		.recent_hd li{background:#fff;height:38px;line-height:38px;-moz-box-flex:1.0;-webkit-box-flex:1.0;box-flex:1.0;border-bottom:solid 3px #fff;border-right:solid 1px #eee;}
+		.recent_hd li.on{background:#fff;border-bottom:solid 3px #fd6974;}
+		.recent_hd li.on a{color:#666;font-weight:bold;}
+		.recent_bd{background:#fff;padding:10px 10px 0;overflow:hidden;}
+		.recent_bd dl{position:relative;border-bottom:solid 1px #eee;margin-bottom:10px;width:100%;font-size:14px;display:-moz-box;display:-webkit-box;display:box;overflow:hidden;}
+		.recent_bd dl:last-child{border-bottom:none;}
+		.recent_bd dl dt{padding-right:15px;height:112px;border-bottom:solid 1px #fff;margin-bottom:10px;}
+		.recent_bd dl dt img{width:80px;height:112px;border:none;}
+		.recent_bd dl dd{-moz-box-flex:1.0;-webkit-box-flex:1.0;box-flex:1.0;height:107px;font-size:12px;padding-top:5px;line-height:20px;}
+		.recent_bd dl dd a{display:block;}
+		.recent_bd dl dd .title{font-size:16px;}
+		.recent_bd dl dd .title a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:40px;color:#333;}
+		.recent_bd dl dd .reader{color:#999;display:block;line-height:28px;font-size:14px;}
+		.recent_bd dl dd .text{font-size:12px;height:60px;overflow:hidden;word-wrap: break-word;}
+		.recent_bd dl dd .text a{color:#333;}
+		.recent_bd dl .add{position:absolute;right:0px;top:4px;width:16px;height:22px;background:url({?$jieqi_url?}/style/m/images/sex_radio.png) no-repeat -24px 5px;}
+		#search_more{text-align:center;padding:20px 0;}
+		.recent_bd dl span.on{background-position:0 5px}
+
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/css20170419.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/layer.js"></script>
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                // 设计稿的宽度
+                ddesignWidth = 750,
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / ddesignWidth) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(document, window);
+	</script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobilescript.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head><body>
+<div class="wrapper">
+	<style>
+		.wx_nav_box1{background:#fff!important;position:relative;height:44px}
+		.wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+		.wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+		.wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+		.wx_home1 img{width:9px;margin-top:14px;float:left;}
+		.wx_home1 em{
+			float:left;
+			margin-left:10px;
+			color:#666;
+			font-size:16px;
+		}
+		.wx_nav_box1 a{color:#010101}
+		.wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+		.wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+		.wx_header1{overflow:hidden}
+		.commontitle{
+			position: relative;
+		}
+		.commontitle1{
+			position: fixed;
+			z-index:111;
+		}
+	</style>
+	<!-- header start -->
+	<div id="hd" class="wx_header commontitle">
+		<div class="wx_nav_box1">
+			<div class="wx_home1">
+				<a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+					<img src="{?$jieqi_url?}/style/m/images/14882778674532908_18_33.png" /><em>返回</em>
+				</a>
+			</div>
+			<a href="javascript:void(0);" class="logo text"></a>
+			<div class="wx_list" id="wx_list"></div>
+		</div>
+	</div>
+	<!--end header-->
+	<script>
+        //二级导航
+        $(window).on('scroll', function () {
+            var offsetTo = $(document).scrollTop();
+            if (offsetTo > 0) {
+                $('.wx_header').addClass('commontitle1');
+                //$('.sgoback').css({'top':'0'});
+            } else {
+                $('.wx_header').removeClass('commontitle1');
+                // $('.sgoback').css({'top':'44px'});
+            }
+        });
+	</script><!-- hd结束 -->
+	<div class="wx_cont">
+		<div style="text-align:center; margin:10px; auto;">
+		</div>
+		<div class="recent_bd">
+			{?section name=i loop=$obuyrows?}
+			<dl>
+				<span class="add{?if $obuyrows[i].autobuy > 0?} on{?/if?}" bookId="{?$obuyrows[i].obuyid?}" onclick="updateSub(this);" ><input type="hidden" name="obuyid" value="{?$obuyrows[i].obuyid?}"><input type="hidden" name="act" id="act" value="{?if $obuyrows[i].autobuy > 0?}unsetautobuy{?else?}setautobuy{?/if?}"></span>
+				<dt><a href="{?function jieqi_geturl:'article':'article':$obuyrows[i].articleid:'info'?}"><img src="{?$obuyrows[i].url_image?}" alt="{?$obuyrows[i].obookname?}" title="{?$obuyrows[i].obookname?}"></a></dt>
+				<dd>
+					<p class="title"><a href="{?function jieqi_geturl:'article':'article':$obuyrows[i].articleid:'info'?}">《{?$obuyrows[i].obookname?}》</a></p>
+					<p class="reader">作者：{?$obuyrows[i].author?}</p>
+					<p class="text">{?$obuyrows[i].intro?}</p>
+				</dd>
+			</dl>
+			{?/section?}
+			<div id="search_more"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $('.wx_header .logo').text('订阅记录');
+    //自动订阅
+    function updateSub(t){
+        var _update = $(t);
+        var obuyid = $(t).find('input[name="obuyid"]').val();
+        var act = $(t).find('#act').val();
+        var alertUrl = "{?$obook_dynamic_url?}/buylist.php";
+        $.ajax({
+            type : 'post',
+            url : alertUrl,
+            data :  {"obuyid" : obuyid,"page" : "{?$jieqi_page_nowpage?}","act" : act, "jieqi_token" : "{?$jieqi_token?}","ajax_gets" : 1},
+            dataType : 'json',
+            beforeSend : function() {
+                _update.attr('disabled', true);
+            },
+            complete : function() {
+                _update.attr('disabled', false);
+            },
+            success:function(result){
+                if(result.success == true){
+                    var newact = (act == 'unsetautobuy') ? 'setautobuy' : 'unsetautobuy';
+                    $(t).find('#act').val(newact);
+                    layer.open({
+                        content: result.message
+                        ,skin: 'msg'
+                        ,time: 3 //2秒后自动关闭
+                    });
+                    if (act == 'setautobuy'){
+                        _update.addClass('on');
+					}
+					else {
+                        _update.removeClass('on');
+					}
+                }else{
+                    layer.open({
+                        content: '处理失败，请重试！'
+                        ,skin: 'msg'
+                        ,time: 3 //2秒后自动关闭
+                    });
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

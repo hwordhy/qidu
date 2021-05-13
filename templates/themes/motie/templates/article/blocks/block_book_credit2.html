@@ -1,0 +1,22 @@
+{?section name=i loop=$creditrows?}
+{?if $i.order == 1?}
+<li class="clearfixer first">
+  <span class="number fl ui_bgcolor">{?$i.order?}</span>
+  <div class="fl">
+    <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$creditrows[i].uid?}" class="name"
+       target="_blank">{?$creditrows[i].uname?}</a>
+    <span class="level">粉丝级别:{?$creditrows[i].rank?}</span>
+  </div>
+  <a href="javascript:;" class="avatar fr" target="_blank">
+    <img src="{?function jieqi_geturl:'system':'avatar':$creditrows[i].uid:'l':$creditrows[i].avatar?}" alt="" >
+  </a>
+</li>
+{?else?}
+<li  class="clearfixer{?if $i.order == 2?} second{?else?} third{?/if?}">
+  <span class="number ui_bgcolor fl ">{?$i.order?}</span>
+  <a href="javascript:;" class="name fl"
+     target="_blank">{?$creditrows[i].uname?}</a>
+  <span class="level fr">{?$creditrows[i].rank?}</span>
+</li>
+{?/if?}
+{?/section?}

@@ -1,0 +1,1 @@
+document.write('怪兽痴汉一名……特摄爱好者，怪兽娘爱好者……<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;没错原型就是超星神某反派洛基亚……<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3610/55.gif\" border=\"0\" class=\"imagecontent\"></div>');

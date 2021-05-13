@@ -1,0 +1,86 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_page_template = "templates/book/masterpage.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set jieqi_page_rows = "20"?}
+{?include file="themes/zuopin/user_header.html"?}
+<div class="person clr">
+  <div class="wd1100 clr">
+    {?include file="themes/zuopin/author_top.html"?}
+
+    <div class="person_cot clr">
+      <div class="person_cot_lt clr fl">
+        <ul>
+          <li class="li1"><a href="{?$article_dynamic_url?}/myarticle.php"><i></i>作者中心</a></li>
+          <li class="li7"><a href="{?$article_static_url?}/newarticle.php"><i></i>发表作品</a></li><li class="li3"><a href="{?$article_static_url?}/newebook.php"><i></i>上传作品</a></li>
+          <li class="li9"><a href="{?$article_dynamic_url?}/masterpage.php"><i></i>作品管理</a></li>
+          <li class="li6"><a href="{?$article_dynamic_url?}/newdraft.php"><i></i>新建草稿</a></li>
+          <li class="li5"><a href="{?$article_dynamic_url?}/draft.php"><i></i>管理草稿</a></li>
+          <li class="li10 on"><a href="{?$jieqi_modules['obook']['url']?}/mreport.php"><i></i>结算中心</a></li>
+          <li class="li8"><a href="{?$jieqi_url?}/persondetail.php"><i></i>作者信息</a></li>
+        </ul>
+      </div>
+      <div class="person_cot_rt clr fr">
+        <div class="person_cot_rt_top clr"
+             style="border-bottom:none; margin-bottom:0;">
+          <a href="{?$jieqi_modules['obook']['url']?}/masterpage.php" class="person_cot_rt_top_span on fl"><span>我的收入</span></a>
+          <a href="{?$jieqi_modules['obook']['url']?}/mreport.php" class="person_cot_rt_top_span fl"><span>销售月报表</span></a>
+        </div>
+        <div class="xian"></div>
+        <div class="showloading" style="display:none;"></div>
+        <div id="contentshow">
+
+          <div class="person_cot_rt_table clr" style="margin-top:30px;">
+            <div class="child_rt_table_hang clr">
+              <ul class="first">
+                <li class="wd125">作品名称</li>
+                <li class="wd140">更新时间</li>
+                <li class="wd100">总收入</li>
+                <li class="wd140">待结算（{?$egoldname?}）</li>
+                <li class="wd140">已结算（{?$egoldname?}）</li>
+                <li align="center" style="width: 230px;">操作</li>
+              </ul>
+            </div>
+
+            {?section name=i loop=$obookrows?}
+            {?if $i['count'] == 0?}
+            <div class="child_rt_table_hang clr">
+              <ul>
+                <li class="wd800">您暂时没有结算信息</li>
+                <li class="wd115">&nbsp;</li>
+              </ul>
+            </div>
+            {?else?}
+            <div class="child_rt_table_hang clr">
+              <ul>
+                <li class="wd125"><a href="{?function jieqi_geturl:'article':'article':$obookrows[i].articleid:'info'?}" target="_blank">{?$obookrows[i].obookname?}</a></li>
+                <li class="wd140">{?$obookrows[i].lastupdate|date:'Y-m-d H:i:s'?}</li>
+                <li class="wd100">{?$obookrows[i].sumemoney?}</li>
+                <li class="wd140">{?$obookrows[i].remainemoney?}</li>
+                <li class="wd140">{?$obookrows[i].paidemoney?}</li>
+                <li align="center" style="width: 230px;"><a href="{?$jieqi_modules['article']['url']?}/articleactlog.php?id={?$obookrows[i].articleid?}&act=tip" target="_blank">打赏记录</a> <a href="{?$obook_dynamic_url?}/chapterstat.php?oid={?$obookrows[i].obookid?}" target="_blank">销售明细</a> <a href="{?$obook_dynamic_url?}/paidlog.php?oid={?$obookrows[i].obookid?}" target="_blank"><span>结算记录</span></a></li>
+              </ul>
+            </div>
+            {?/if?}
+            {?/section?}
+
+            <div class="page">
+              {?$url_jumppage?}
+            </div>
+            <div class="page_bot_shuoming clr">
+              说明： <br>1、每月1日开始结算上月收入，一般截止到10日发放完毕（节假日顺延）；
+              <br>2、作品捧场及订阅等才会产生收入。
+              <br><span style="color:red">3、本页显示的数据为未分成的实际收入。</span>
+              <br>4、对收入明细或福利如有疑问，请联系客服。
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{?include file="themes/zuopin/footer.html"?}
+

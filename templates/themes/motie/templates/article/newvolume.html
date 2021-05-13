@@ -1,0 +1,140 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/newvolume.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "新建分卷-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+<div class="container-fluid container-box worksmanage_wrapper">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header"><span class="f22">作品管理<img style="margin:0 15px;" src="{?$jieqi_url?}/style/author/images/arrow_1.png" /></span><span class="book_name_box">{?$articlename?}</span>
+      </h1>
+      <div class="manage-bar">
+        <a href="{?$article_static_url?}/articlemanage.php?id={?$articleid?}" id="manage-bar-1">作品管理</a>
+        <a href="{?$article_static_url?}/newchapter.php?aid={?$articleid?}" id="manage-bar-2">新建章节</a>
+        <a href="{?$article_static_url?}/newvolume.php?aid={?$articleid?}" id="manage-bar-3">新建分卷</a>
+        <a href="{?$article_static_url?}/articleedit.php?id={?$articleid?}" id="manage-bar-4">作品信息</a>
+      </div>
+
+      <script type="text/javascript">
+          //处理左侧菜单的样式
+          $(document).ready(function() {
+              $(".n02 a").addClass('active');
+
+
+          });
+
+      </script><div class="container-wrap chapter-txt">
+      <form id="iform" name="iform" action="{?$jieqi_modules['article']['url']?}/newvolume.php?do=submit" method="post">
+        <div class="txtbox">
+          <span class="wtitle">现有分卷:</span>
+          <div class="rbox">
+            <div id="parent" class="parent parentsel">
+              <select id="volumeId">
+                {?section name=i loop=$volumerows?}
+                <option>{?$volumerows[i].chaptername?}</option>
+                {?/section?}
+              </select>
+              <i></i>
+            </div>
+          </div>
+        </div>
+        <div class="txtbox">
+          <span class="wtitle">新增分卷:</span>
+          <div class="rbox">
+            <input id="chapterName" name="chaptername" placeholder="" type="text"
+                   value="{?$chaptername?}" class="textbox" maxlength="50">
+          </div>
+          <em class="warning chapter-nameMsg"></em>
+
+        </div>
+
+        <div class="submitbtn">
+          <input type="hidden" name="ajax_gets" value="1" />
+          <input type="hidden" name="act" value="newvolume" />{?$jieqi_token_input?}
+          <input type="hidden" name="aid" value="{?$articleid?}" />
+          <input type="button" class="btn-submit" value="立即发布" title="立即发布" name="save" id="btsave">
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+{?include file="templates/system/author_footer.html"?}
+
+<script type="text/javascript">
+    $(function () {
+
+
+        var save = function (data) {
+            var url = "{?$jieqi_modules['article']['url']?}/newvolume.php?do=submit";
+            popUp.openLoading('正在提交..');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                cache: false,
+                data: data,
+                processData: false,
+                contentType: false
+            }).done(function(result) {
+                var result = eval(result);
+                if(result.success==true){
+                    popUp.close();
+                    popUp.openTips("分卷添加成功！");
+                    setTimeout(function(){
+                        window.location.href=result.backUrl;
+                    }, 3000);
+                }
+                else{
+                    popUp.close();
+                    popUp.openTips(result.message);
+                }
+            })
+        };
+
+
+        $('#btsave').click(function () {
+            if (preSave() == false) {
+                return;
+            }
+            var data = new FormData($('#iform')[0]);
+            disabledButton(true);
+            save(data);
+        });
+
+        var disabledButton = function (flag) {
+            if (flag == true) {
+                $("#btsave").attr("disabled", true);
+            } else {
+                $("#btsave").attr("disabled", false);
+            }
+
+        }
+
+        var preSave = function () {
+
+            $(".warning").empty();
+            var inputName = $.trim($("input[name='chaptername']").val()).length;
+            if (inputName == 0) {
+                $(".chapter-nameMsg").append('请填写分卷名称！');
+                return false;
+            } else {
+                $(".chapter-nameMsg").append('<img src="{?$jieqi_url?}/style/author/images/rgtdot.png" />');
+            }
+            return true;
+
+        };
+
+    });
+
+    $(document).ready(function () {
+        $(".n02 a").addClass('active');
+        $("#manage-bar-3").addClass('m-currunt');
+    });
+</script>
+

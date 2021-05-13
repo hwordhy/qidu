@@ -1,0 +1,201 @@
+{?set $jieqi_pagetitle = "小说书库-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "10"?}
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+  <input type="hidden" value="{?$_request['sortid']?}" id="sortId">
+  <input type="hidden" value="{?$_request['size']?}" id="Size">
+  <input type="hidden" value="{?$_request['isvip']?}" id="Isvip">
+  <input type="hidden" value="{?$_request['isfull']?}" id="Isfull">
+  <input type="hidden" value="{?$_request['update']?}" id="Update" />
+  <input type="hidden" value="{?$_request['order']?}" id="Order" />
+  <input type="hidden" value="{?$_request['keywords']?}" id="Keywords" />
+  <div class="leftbar fl">
+    <div class="select selected">
+      <span class="tname">已选</span>
+      <p class="textlist">
+
+        <a href="javascript:;" data-size="" class="all on">
+          <em>全部</em>
+        </a>
+        <a href="javascript:;" data-size="catestyle" class="seled1" style="display: none">
+          <em>分类</em><b style="display:none;"></b><i class="selclose"></i>
+        </a>
+        <a href="javascript:;" data-size="sizenum" class="seled2" style="display: none">
+          <em>字数</em><i class="selclose"></i>
+        </a>
+        <a href="javascript:;" data-size="selattribute" class="seled3" style="display: none">
+          <em>属性</em><i class="selclose"></i>
+        </a>
+        <a href="javascript:;" data-size="selstatus" class="seled4" style="display: none">
+          <em>状态</em><i class="selclose"></i>
+        </a>
+        <a href="javascript:;" data-size="updatetime" class="seled5" style="display: none">
+          <em>更新时间</em><i class="selclose"></i>
+        </a>
+      </p>
+    </div>
+    <div class="selectlist">
+      <div class="select selstyle" data-size="catestyle">
+        <span class="tname">分类</span>
+        <ul class="textlist">
+          {?section name=i loop=$sortidrows?}
+          <li{?if $sortidrows[i]['selected'] > 0?} class="togle on"{?/if?}><a href="javascript:;" data-type="{?$i.key?}">{?$sortidrows[i]['name']?}</a></li>
+          {?/section?}
+        </ul>
+        <div class="second-type selsubsel" style="display: none" data-size="subcatestyle">
+          <div class="taglist"></div>
+          <i class="arrow"></i>
+        </div>
+      </div>
+      <div class="select selnum"  data-size="sizenum">
+        <span class="tname">字数</span>
+        <ul class="textlist">
+          {?section name=i loop=$sizerows?}
+          <li{?if $sizerows[i]['selected'] > 0?} class="togle on"{?/if?}><a href="javascript:;" data-type="{?$i.key?}">{?$sizerows[i]['name']?}</a></li>
+          {?/section?}
+        </ul>
+      </div>
+      <div class="select selattribute"  data-size="free">
+        <span class="tname">属性</span>
+        <ul class="textlist">
+          {?section name=i loop=$isviprows?}
+          <li{?if $isviprows[i]['selected'] > 0?} class="togle on"{?/if?}><a href="javascript:;" data-type="{?$i.key?}">{?$isviprows[i]['name']?}</a></li>
+          {?/section?}
+        </ul>
+      </div>
+      <div class="select selstatus"  data-size="finish">
+        <span class="tname">状态</span>
+        <ul class="textlist">
+          {?section name=i loop=$isfullrows?}
+          <li{?if $isfullrows[i]['selected'] > 0?} class="togle on"{?/if?}><a href="javascript:;" data-type="{?$i.key?}">{?$isfullrows[i]['name']?}</a></li>
+          {?/section?}
+        </ul>
+      </div>
+      <div class="select seltime"  data-size="updatetime">
+        <span class="tname">更新时间</span>
+        <ul class="textlist">
+          {?section name=i loop=$updaterows?}
+          <li{?if $updaterows[i]['selected'] > 0?} class="togle on"{?/if?}><a href="javascript:;" data-type="{?$i.key?}">{?$updaterows[i]['name']?}</a></li>
+          {?/section?}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="right-cont-box fr rankdata">
+    <div class="comment-r-menu">
+      <ul class="fl comment-status">
+        <li class="human"  data-ordetype="lastupdate">
+          <a href="javascript:;" class="firstname downj" id="human">排序</a>
+          <div class="tipshover" style="display: none;">
+            {?section name=i loop=$orderrows?}
+        <a href="javascript:;" data-type="{?$orderrows[i]['id']?}">{?$orderrows[i]['name']?}</a>
+        {?/section?}
+          </div>
+        </li>
+      </ul>
+      <div class="tag-search">
+        <div class="inner">
+          <div class="input-wrap fl">
+            <div class="input-bd">
+              <input type="text" default-value="" id="bookgototag" class="text" name="tag" value=""/>
+            </div>
+          </div>
+          <input type="button" class="fr btn-submit btn-search " value="标签直达" title="搜索" />
+        </div>
+        <p class="sresult">共<i class="totalcount"></i>本相关作品</p>
+      </div>
+
+    </div><div class="rankdatacont">
+    <div class="tabsbox1">
+      <div class="rankday">
+        <ul class="clrbtn clrbtna">
+          <li class="clrbtn1 on"><a href="javascript:;"></a></li>
+          <li class="clrbtn2"><a href="javascript:;"></a></li>
+        </ul>
+        <div class="tabsday-cont">
+          <div class="tab-cont-1 secd-rank-list">
+            <div class="listboxw">
+
+            </div>
+          </div>
+          <div class="tab-cont-1 tablist" style="display: none">
+            <ul>
+              <li class="tab-title">
+                <a href="javascript:;" class="tr1">分类</a>
+                <a href="javascript:;" class="tr2">书名</a>
+                <a href="javascript:;" class="tr3">最新章节</a>
+                <a href="javascript:;" class="tr4">作者</a>
+                <a href="javascript:;" class="tr5">更新时间</a>
+              </li>
+            </ul>
+            <ul class="listboxw textlistbox">
+
+            </ul>
+          </div>
+          <div class="loading" style="display: none"><img src="{?$jieqi_url?}/style/images/loading.gif" /></div>
+          <p class="errorshow" style="display: none"><img src="{?$jieqi_url?}/style/images/error.png"/></p>
+        </div>
+      </div>
+    </div>
+    <div class="pages_bottom">
+      <ul>
+      </ul>
+      <div class="pageform" id="pageForm">
+        <span>飞到</span>
+        <input type="text" name="page" id="pageNum" class="pageNum" value="1">
+        <span>页</span>
+        <span class="gobtn" id="gobtn">go</span>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div style="height: 20px;"></div>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" charset="{?$jieqi_charset?}" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script type="text/javascript" charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/book.js"></script>
+<script charset="{?$jieqi_charset?}" src="{?$jieqi_url?}/style/js/page.js"></script>
+<script type="text/javascript">
+    var doPage  = function (pageNum) {
+        var parmpage = getDelbox();
+        parmpage.page = pageNum;
+        dataListpic(parmpage);
+    };
+    $(".nav_book").addClass("curr");
+</script>

@@ -1,0 +1,124 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "我的书架-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<script type="text/javascript">
+    function check_confirm(){
+        var checkform = document.getElementById('checkform');
+        var checknum = 0;
+        for (var i=0; i < checkform.elements.length; i++){
+         if (checkform.elements[i].name == 'checkid[]' && checkform.elements[i].checked == true) checknum++; 
+        }
+        if(checknum == 0){
+            alert('请先选择要操作的书目！');
+            return false;
+        }
+        var newclassid = document.getElementById('newclassid');
+        if(newclassid.value == -1){
+            if(confirm('确实要将选中书目移出书架么？')) return true;
+            else return false;
+        }else{
+            return true;
+        }
+    }
+    //删除
+    function act_delete(url){
+        var o = getTarget();
+        var param = {
+            method: 'POST', 
+            onReturn: function(){
+                $_(o.parentNode.parentNode).remove();
+            }
+        }
+        if(confirm('确实要将本书移出书架么？')) Ajax.Tip(url, param);
+        return false;
+    }
+    </script>
+<div class="container wrap1200">
+    <!--left mod -->
+	<div class="i-left">
+		<!--关注中心 mod -->
+		<p class="title"><span></span>关注中心</p>
+		<ul>
+			<li><a href="/modules/article/bookcase.php" data-namecard="false"><span></span>我的书架</a></li>
+            <li><a href="/ssss.php" data-namecard="false"><span class="readed"></span>最近阅读</a></li>
+            <li><a href="/modules/article/myreviews.php" data-namecard="false"><span class="bookreview"></span>我的评论</a></li>
+            <li><a href="/modules/article/applywriter.php" data-namecard="false"><span class="readed"></span>申请作者</a></li>
+			</ul>
+		<!--资产中心 mod -->
+		<p class="title"><span class="zc"></span>资产中心</p>
+		<ul>
+			<li><a href="/modules/pay/paylog.php" data-namecard="false"><span class="money"></span>充值记录</a></li>
+			<li><a href="/modules/article/myactlog.php?act=tip" data-namecard="false"><span class="package"></span>打赏记录</a></li>
+			<li><a href="/modules/obook/buylist.php" data-namecard="false"><span class="ticket"></span>我的订阅</a></li>
+			<li><a href="/modules/pay/buyegold.php" data-namecard="false"><span class="ticket"></span>充值</a></li>
+		</ul>
+
+		<!--设置 mod -->
+		<p class="title"><span class="setting"></span>设置</p>
+		<ul>
+			<li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>个人信息</a></li>
+            <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>修改信息</a></li>
+            <li><a href="/personedit.php" data-namecard="false"><span class="pictureInfo"></span>联系方式</a></li>
+			<li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>修改密码</a></li>
+			</ul>
+			<p class="title"><span class="setting"></span>站内消息</p>
+			<ul>
+				<li><a href="/message.php?box=inbox" data-namecard="false"><span class="basicInfo"></span>我的消息</a></li>
+				<li><a href="/message.php?box=outbox" data-namecard="false"><span class="pictureInfo"></span>我发送的</a></li>
+				<li><a href="/newmessage.php" data-namecard="false"><span class="basicInfo"></span>写消息</a></li>
+				<li><a href="/newmessage.php?tosys=1" data-namecard="false"><span class="basicInfo"></span>意见反馈</a></li>
+				</ul>
+	</div>
+<script>
+    $('.i-left ul a').each(function(){
+        var self = $(this),link = self.attr('href');
+        if(location.pathname == link){
+            self.parent().addClass('on');
+        }
+    })
+</script>
+<!--right mod -->
+    <div class="i-right">
+        <!--我的书架 mod -->
+        <div class="i-title" style="padding-left:30px;">
+            <ul class="ulHd j-title">
+                <li class="on" datatype="0">我的书架<span></span></li>
+            </ul>
+        </div>
+        <div class="bookshelfMod">
+            <table>
+                <tbody><tr class="head">
+                    <td width="30%">书名</td>
+                    <td width="20%">最新章节</td>
+                    <td width="20%">作者</td>
+                    <td width="20%">更新时间</td>
+                    <td width="10%">操作</td>
+				</tr>
+	{?section name=i loop=$bookcaserows?}				
+    <tr>
+            <td class="t2">
+                    <a href="{?$bookcaserows[i].url_index?}" target="_blank">{?$bookcaserows[i].articlename?}</a>
+                </td>
+        <td class="t3">
+            <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].lastchapterid?}    " target="_blank">{?$bookcaserows[i].lastchapter?}</a>
+        </td>
+        <td class="t4"><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$bookcaserows[i].author?}</a></td>
+            <td class="t5">{?$bookcaserows[i].lastupdate|date:"m-d"?}更新
+            </td>
+
+
+        <td class="t7">
+            <a href="{?$bookcaserows[i].url_index?}" class="goon" target="_blank">立即阅读</a>
+            <i>
+                <b class="del" id="act_delete_{?$bookcaserows[i].caseid?}" href="javascript:;" onclick="act_delete('{?$jieqi_modules['article']['url']?}/bookcase.php?bid={?$bookcaserows[i].caseid?}&act=delete{?$jieqi_token_url?}');">删除本书</b>
+    
+            </i>
+        </td>
+    </tr>
+	{?/section?}
+    
+            </tbody></table>
+
+        </div>
+    </div>
+</div>

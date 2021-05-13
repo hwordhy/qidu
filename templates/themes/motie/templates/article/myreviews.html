@@ -1,0 +1,98 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/myreviews.html"?}
+{?set $jieqi_pagetitle = "我的书评-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+
+<div class="i-right">
+  <!--我的书评 mod -->
+  <input type="hidden" value="1" id="reviewType" />
+  <div class="myReview">
+    <div class="i-title">
+      <ul class="ulHd">
+        <li class="on" data-type="1">我的评论<span></span></li>
+        <li data-type="2">我的回复<span></span></li>
+      </ul>
+    </div>
+    <div class="divBd">
+      <!--我的书评 mod -->
+      <div id="reviewList">
+        <!--没有书评的情况 -->
+        <p class="bookNone hide">
+          <span></span>
+          您还没有发表过书评，去<a href="/" target="_blank">首页</a>找一本喜欢的书看看吧!
+        </p>
+
+        <!--有书评的情况 -->
+        <ul class="reviewList">
+
+        </ul>
+        <div class="loading"><img src="{?$jieqi_url?}/style/images/loading.gif" /></div>
+        <!--翻页-->
+        <link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+        <div class="pages_bottom">
+          <ul>
+          </ul>
+          <div class="pageform" id="pageForm">
+            <span>飞到</span>
+            <input type="text" name="page" id="pageNum" class="pageNum" value="1">
+            <span>页</span>
+            <span class="gobtn" id="gobtn">go</span>
+          </div>
+        </div></div>
+      <!--我的回复 mod -->
+      <div id="replyList" class="hide">
+        <!--没有回复的情况 -->
+        <p class="bookNone hide">
+          <span></span>
+          您还没有收到过回复，去和书友们互动吧!
+        </p>
+        <!--有回复的情况 -->
+        <ul class="replyList">
+        </ul>
+        <div class="loading"><img src="{?$jieqi_url?}/style/images/loading.gif" /></div>
+        <!--翻页-->
+        <link rel="stylesheet" href="css/page.css" type="text/css">
+        <div class="pages_bottom">
+          <ul>
+          </ul>
+          <div class="pageform" id="pageForm">
+            <span>飞到</span>
+            <input type="text" name="page" id="pageNum" class="pageNum" value="1">
+            <span>页</span>
+            <span class="gobtn" id="gobtn">go</span>
+          </div>
+        </div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script id="review-template" type="text/x-handlebars-template">
+  {{#each items}}
+  <li>
+    <a href="{{ url_articleinfo }}" target="_blank" class="bookCover" data-namecard="false"><img src="{{ url_image }}"></a>
+    <p class="reviewDetail">
+      <a class="bookName"  href="{{ url_review }}" target="_blank" data-namecard="false">{{ title }}</a>
+      <span class="bookAuthor"><a href="{{ url_articleinfo }}" target="_blank" data-namecard="false">作品：{{ articlename }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={{authorid}}" target="_blank" data-namecard="false">作者：{{ author }}</a></span>
+      <span class="reviewCont">{{{ title }}}</span>
+      <span class="time">{{posttime}}<i>浏览（{{ views }}人）&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ url_review }}" target="_blank">回复({{ replies }})</a></i></span>
+    </p>
+  </li>
+  {{/each}}
+</script>
+<script id="reply-template" type="text/x-handlebars-template">
+  {{#each items}}
+  <li>
+    <p class="person">我回复@<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={{replierid}}" target="_blank" data-namecard="false">{{ replier }}：</a></p>
+    <p class="text">
+      {{{ posttext }}}
+    </p>
+    <span>{{ posttime }}</span>
+  </li>
+  {{/each}}
+</script>
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script src="{?$jieqi_url?}/style/js/ireview.js"></script>
+</body>
+</html>

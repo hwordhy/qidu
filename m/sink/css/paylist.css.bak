@@ -1,0 +1,73 @@
+/*目录*/
+.paylist{
+    padding: 10px 0  ;
+}
+.paylist h2{ 
+    font-size: 1.25rem;
+    border-bottom: 1px solid #f4f4f4;
+}
+.paylist h2 a{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: #989898;
+    padding: 15px 0;
+}
+.paylist h2 .active{
+    color: #f35ab0;
+    border-bottom: 2px solid #f35ab0;
+}
+.paylist ul li{
+    margin: 5px 0 10x;
+    border-bottom:1px solid #f4f4f4;
+    padding: 15px 0;
+    color: #434343; 
+    font-size: 1.15rem;
+    overflow: hidden;
+}
+.paylist ul li b{  
+    margin-right:3px; 
+}
+.paylist ul li span{
+    display: inline-block;
+    max-width: 57%;
+    color: #434343;
+    line-height: 1.8rem
+/*
+    position: relative;
+    top: 4px;
+*/
+}
+@media(max-width:320px){
+    .paylist ul li span{ 
+    max-width: 51%;  
+}
+}
+ .paylist ul li:last-child{ 
+     padding: 15px 0 5px;
+    border-bottom:none; 
+     width: 90%;
+     margin: 0 auto;
+}
+ .paylist ul li:last-child a{ 
+    color: #8d8d8d;
+}
+/*
+ .paylist ul li:last-child,.book_stack .list li:last-child{ 
+    padding: 20px 30px 5px;
+    border-bottom:none; 
+}
+.paylist ul li:last-child a{ 
+    color: #434343;
+}
+
+.paylist ul li:last-child b,.book_stack .list li:last-child b{  
+    color: #c3c3c3;
+}
+*/
+.paylist  li em{
+    font-style: normal;
+    color: #989898;
+    font-size: 1.066rem;
+}

@@ -1,0 +1,40 @@
+{?set jieqi_blocks_module = "news"?}
+{?set jieqi_page_rows = "5"?}
+<div class="wd1100 clr">
+	<div class="zuozhe_success clr">
+		<div class="zuozhe_success_lt fl clr">
+			<div class="zuozhe_success_title">
+				<div class="zuozhe_success_title_span">{?$jieqi_sitename?}新闻中心</div>
+			</div>
+			<div class="wen_da clr" style="padding:10px;margin-bottom:10px">
+				{?section name=i loop=$newsrows?}
+				<div class="top_new cl">
+					<h2><a class="link" href="{?function jieqi_geturl:'news':'info':$newsrows[i].topicid?}" target="_blank">{?$newsrows[i].title?}</a></h2>
+					<div class="cl">
+						<div class="new_body">{?$newsrows[i].summary|truncate:190:'...'?}
+							<div class="new_info">
+								<span class="new_time">{?$newsrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{?/section?}
+				<div class="page clr">
+					{?$url_jumppage?}
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="zuozhe_success_rt fr clr">
+			<!--<uL class="zuozhe_success_rt_ul funcli clr">
+				<li><a class="cur" href="javascript:;">帮助中心</a></li>
+					<ul class="funcshow clr" style="display:none;">
+						<li><a href="javascript:;">申请作者</a></li>
+					</ul></li>
+			</uL>-->
+			{?block bid="109" blockname="联系方式" module="system" filename="" classname="BlockSystemCustom" side="-1" title="热推" vars="" template="" contenttype="1" custom="1" publish="3" hasvars="0"?}
+		</div>
+	</div>
+</div>

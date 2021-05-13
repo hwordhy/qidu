@@ -1,0 +1,18 @@
+{?set $jieqi_pagetitle = "注册统计-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "注册统计"?}
+
+{?block bid="0" blockname="推广分成" module="system" filename="" classname="BlockSystemCustom" side="-1" title="" vars="" template="block_channelnav_tab.html" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<div class="blockb">
+<div class="blockcontent" id="jieqi_page_contents">
+	<ul class="ulrow">
+	{?section name=i loop=$growthrows?}
+	<li>
+	<div><em>{?$growthrows[i].datevalue?}</em>注册{?$growthrows[i].growthnum?}人</div>
+	</li>
+	{?/section?}
+	</ul>
+</div>
+</div>
+
+
+

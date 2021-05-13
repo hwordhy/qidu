@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+<ul>
+{?section name=i loop=$articlerows?}
+<li{?if $i.order == 1?} style="margin-left:0;"{?/if?}>
+    <a href="{?$articlerows[i].url_articleinfo?}"><img alt="{?$articlerows[i].articlename?}" src="{?$articlerows[i].url_image?}"/></a>
+    <h3>{?$articlerows[i].articlename?}</h3>
+    <span>{?$articlerows[i].author?}</span>
+</li>
+{?/section?}
+</ul>

@@ -1,0 +1,330 @@
+<!doctype html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+	<meta content="zh-cn" http-equiv="Content-Language">
+	<meta name="keywords"  content="{?$meta_keywords?}">
+	<meta name="description"  content="{?$meta_description?}">
+	<title>{?$jieqi_pagetitle?}</title>
+	{?if $jieqi_thisurl == '/'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/index.css" type="text/css" />
+<body style="background:#fafafa !important;">
+	{?elseif $jieqi_thisfile|basename == 'articlefilter.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/book.css" type="text/css" />
+	<style type="text/css">.pages_bottom{margin-top:-20px;}</style>
+<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'toplist.php' || $jieqi_thisfile|basename == 'articlelist.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/rank.css" type="text/css" />
+	<body>
+	{?elseif $jieqi_thisfile|basename == 'search.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/search.css" type="text/css" />
+	<body id="searchbox">
+	{?elseif $jieqi_thisfile|basename == 'articleinfo.php'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/work_detail.css" type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css" type="text/css"/>
+
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'reviews.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/comment_list.css"
+		  type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css" type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/yy.css" type="text/css"/>
+
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'reviewshow.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/comment_detail.css"
+		  type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css"
+		  type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/yy.css" type="text/css"/>
+
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisurl == '/modules/forum/' || $jieqi_thisfile|basename == 'topiclist.php'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/forum.css" type="text/css"/>
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'showtopic.php'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/i.css" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/iyy.css" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/postdetail.css" type="text/css"/>
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'creditlist.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/comment_list.css"
+		  type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css"
+		  type="text/css"/>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/yy.css" type="text/css"/>
+
+	<body class="yy_site_body">
+	{?elseif $jieqi_thisfile|basename == 'newpost.php' || $jieqi_thisfile|basename == 'postedit.php'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/postadd.css" type="text/css" />
+	<body>
+	{?elseif $jieqi_thisfile|basename == 'buyegold.php'?}
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/pay.css" type="text/css" />
+	<style>.popup .pay-btn a.otherbtn:hover{color:#666 !important;}</style>
+	<body>
+	{?elseif $jieqi_thisfile|basename == 'page.php'?}
+	<link href="{?$jieqi_url?}/style/css/core.packed.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/jquery-ui-1.8.16.custom.min.css" rel="stylesheet" type="text/css" />
+	<link href="{?$jieqi_url?}/style/css/model.packed.css" rel="stylesheet" type="text/css" />
+	<body>
+	{?/if?}
+<!--start header -->
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/index_header.css" type="text/css" class="mmyqwhref"/>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/motie.css" type="text/css"/>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+
+<script type="text/javascript">var uid = "{?$jieqi_userid?}"; var checkcodelogin = "{?$jieqi_checkcodelogin?}"; var jieqi_token = '{?$jieqi_token?}';var jumpurl = window.location.href;</script>
+<div class="index-header" id="topback">
+	<!--零导航 start-->
+	<div class="subnav">
+		<div class="subnavbar" style="background:#f2f2f2;">
+			<div class="subnavbar-content" style="background:transparent;">
+				<div class="con_left  fl">
+					<a href="javascript:;" onclick="AddFavorite('{?$jieqi_url?}', '{?$jieqi_sitename?}');">收藏本站</a>
+				</div>
+				<!-- nologin start-->
+				<div class="right-login fr">
+					{?if $jieqi_userid == 0?}
+					<a href="javascript:void(0)" class="login-user" onclick="doMyLogin()">登录</a>
+					<a href="{?$jieqi_url?}/register.php" class="register">注册</a>
+					{?else?}
+					<a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="motie-login">{?$jieqi_username?}</a>
+					<a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}">退出</a>
+					<a href="{?$jieqi_url?}/message.php?box=inbox">消息(<span class="red bubbleNum">{?$jieqi_newmessage?}</span>)</a>
+					{?/if?}
+					<span class="indexmobile">
+                                手机版
+						<div class="pho-tabs" style="display: none">
+							<em class="dot-top"></em>
+							<ul>
+								<li>
+									<span class="scode fl"><a href="{?$jieqi_wap_url?}" target="_blank"><img src="{?$jieqi_url?}/style/images/wap.png"/></a></span>
+									<p class="fr" style="margin-top: 10px;">
+										<span class="f14">{?$jieqi_sitename?}</span>
+										<span>让阅读更精彩</span>
+									</p>
+								</li>
+								<li>
+									<span class="scode fl"><img
+											src="{?$jieqi_url?}/style/images/weixin.jpg"/></span>
+									<p class="fr" style="margin-top: 17px;">
+										<span class="f14">关注{?$jieqi_sitename?}</span>
+										<span>微信扫一扫关注</span>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--零导航 end-->
+	<div class="header-bg">
+		<div class="logozone" style="background:#fff ;">
+
+			<!--搜索部分 start-->
+			<div class="wrap1200 logo">
+				<a href="/" class="fl">
+					<img src="{?$jieqi_url?}/style/images/logo.png" class="logoImage"/>
+				</a>
+				<div id="mod-search1">
+					<div class="searchbox">
+						<div class="searchbox-inner">
+							<input type="text" autocomplete="off" placeholder="找书、找人" class="searchinput" value="">
+							<i class="search-icon"></i>
+							<input type="button" value="" class="searchbtn" style="background-color:#333333"/>
+							<span class="loadIcon"></span>
+						</div>
+						<ul class="search-list">
+						</ul>
+					</div>
+				</div>
+				<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" class="mybookshelf fr"><i style="background-color:#333333"
+																	  id="icon-zuitang"></i>我的书架</a>
+			</div>
+			<!--搜索部分 end-->
+			<!--导航 start-->
+		</div>
+	</div>
+	<div class="firstnav" style="background-color:#333333">
+		<ul  >
+			<li class="nav_index" ><a  target="_blank"  href="/" >首页</a></li>
+			<li class="nav_book" ><a  target="_blank"  href="{?function jieqi_geturl:article:articlefilter:1:?}" >书库</a></li>
+			<li class="nav_rank" ><a  target="_blank"  href="{?function jieqi_geturl:article:toplist:1:toplist?}" >排行</a></li>
+			<li class="nav_list" ><a  target="_blank"  href="{?function jieqi_geturl:'article':'articlelist':1::1?}">全本</a></li>
+			<!--<li class="nav_bbs" ><a  target="_blank"  href="{?$jieqi_modules['forum']['url']?}/" target="_blank">论坛</a></li>-->
+			<li  ><a  target="_blank"  href="{?$jieqi_modules['article']['url']?}/applywriter.php" >作家专区</a></li>
+			<li class="nav_reward" ><a  target="_blank"  href="/fuli" >福利</a></li>
+			<li class="nav_pay" ><a  target="_blank"  href="{?$jieqi_modules['pay']['url']?}/buyegold.php" >充值</a></li>
+		</ul>
+	</div>
+	<!--导航 end-->
+</div>
+<script type="application/javascript">
+    function  doMyLogin() {
+        if(typeof(pop_login)=='undefined'){
+            window.location.href="{?$jieqi_url?}/login.php"
+        }else{
+            pop_login();
+        }
+
+    }
+
+
+
+
+</script>
+<!-- end header -->
+
+	{?if $jieqi_sideblocks|empty == false?}{?/if?}
+		{?if $jieqi_top_bar != ""?}{?$jieqi_top_bar?}{?/if?}
+
+		{?if $jieqi_sideblocks|empty == false?}
+		{?if $jieqi_sideblocks['7']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['7']?}
+				{?if $jieqi_sideblocks['7'][i].title != ""?}
+
+	{?$jieqi_sideblocks['7'][i].title?}
+				{?$jieqi_sideblocks['7'][i].content?}
+
+				{?else?}
+				{?$jieqi_sideblocks['7'][i].content?}
+				{?/if?}
+				{?/section?}
+
+		{?/if?}
+
+		{?if $jieqi_sideblocks['2']|empty == false || $jieqi_sideblocks['3']|empty == false?}
+
+				{?section name=i loop=$jieqi_sideblocks['2']?}
+				{?if $jieqi_sideblocks['2'][i].title != ""?}
+				{?$jieqi_sideblocks['2'][i].title?}
+	{?$jieqi_sideblocks['2'][i].content?}
+				{?else?}
+				{?$jieqi_sideblocks['2'][i].content?}
+				{?/if?}
+				{?/section?}
+
+				{?section name=i loop=$jieqi_sideblocks['3']?}
+				{?if $jieqi_sideblocks['3'][i].title != ""?}
+				{?$jieqi_sideblocks['3'][i].title?}
+					{?$jieqi_sideblocks['3'][i].content?}
+				{?else?}
+				{?$jieqi_sideblocks['3'][i].content?}
+				{?/if?}
+				{?/section?}
+		{?/if?}
+
+			{?if $jieqi_sideblocks['9']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['9']?}
+				{?if $jieqi_sideblocks['9'][i].title != ""?}
+				{?$jieqi_sideblocks['9'][i].title?}
+					{?$jieqi_sideblocks['9'][i].content?}
+				{?else?}
+				{?$jieqi_sideblocks['9'][i].content?}
+				{?/if?}
+				{?/section?}
+			{?if $jieqi_sideblocks['1']|empty == false?}{?else?}{?/if?}
+			{?elseif $jieqi_sideblocks['0']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['0']?}
+				{?if $jieqi_sideblocks['0'][i].title != ""?}
+				{?$jieqi_sideblocks['0'][i].title?}
+					{?$jieqi_sideblocks['0'][i].content?}
+				{?else?}
+				{?$jieqi_sideblocks['0'][i].content?}
+				{?/if?}
+				{?/section?}
+
+			{?if $jieqi_sideblocks['1']|empty == false?}{?/if?}
+				{?else?}
+				{?if $jieqi_sideblocks['1']|empty == false?}{?/if?}
+					{?/if?}
+					{?if $jieqi_sideblocks['4']|empty == false?}
+					{?section name=i loop=$jieqi_sideblocks['4']?}
+					{?if $jieqi_sideblocks['4'][i].title != ""?}
+					{?$jieqi_sideblocks['4'][i].title?}
+						{?$jieqi_sideblocks['4'][i].content?}
+
+					{?else?}
+					{?$jieqi_sideblocks['4'][i].content?}
+					{?/if?}
+					{?/section?}
+					{?/if?}
+					{?if $jieqi_sideblocks['5']|empty == false?}
+					{?section name=i loop=$jieqi_sideblocks['5']?}
+					{?if $jieqi_sideblocks['5'][i].title != ""?}
+					{?$jieqi_sideblocks['5'][i].title?}
+						{?$jieqi_sideblocks['5'][i].content?}
+					{?else?}
+					{?$jieqi_sideblocks['5'][i].content?}
+					{?/if?}
+					{?/section?}
+					{?/if?}
+
+					{?if $jieqi_contents != ""?}{?$jieqi_contents?}{?/if?}
+
+					{?if $jieqi_sideblocks['6']|empty == false?}
+					{?section name=i loop=$jieqi_sideblocks['6']?}
+					{?if $jieqi_sideblocks['6'][i].title != ""?}
+					{?$jieqi_sideblocks['6'][i].title?}
+						{?$jieqi_sideblocks['6'][i].content?}
+					{?else?}
+					{?$jieqi_sideblocks['6'][i].content?}
+					{?/if?}
+					{?/section?}
+					{?/if?}
+
+
+					{?if $jieqi_sideblocks['1']|empty == false?}
+
+						{?section name=i loop=$jieqi_sideblocks['1']?}
+						{?if $jieqi_sideblocks['1'][i].title != ""?}
+						{?$jieqi_sideblocks['1'][i].title?}
+							{?$jieqi_sideblocks['1'][i].content?}
+						{?else?}
+						{?$jieqi_sideblocks['1'][i].content?}
+						{?/if?}
+						{?/section?}
+					{?/if?}
+
+				{?if $jieqi_sideblocks['8']|empty == false?}
+
+						{?section name=i loop=$jieqi_sideblocks['8']?}
+						{?if $jieqi_sideblocks['8'][i].title != ""?}
+						{?$jieqi_sideblocks['8'][i].title?}
+							{?$jieqi_sideblocks['8'][i].content?}
+						{?else?}
+						{?$jieqi_sideblocks['8'][i].content?}
+						{?/if?}
+						{?/section?}
+				{?/if?}
+
+				{?else?}
+				{?$jieqi_contents?}
+				{?/if?}
+
+				{?if $jieqi_bottom_bar != ""?}{?$jieqi_bottom_bar?}{?/if?}
+				{?if $jieqi_sideblocks|empty == false?}{?/if?}
+	{?include file = "templates/system/footer.html"?}
+</body>
+</html>

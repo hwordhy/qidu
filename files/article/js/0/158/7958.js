@@ -1,0 +1,1 @@
+document.write('幻想引导机与灵魂式攻击机<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/158/7958/239.gif\" border=\"0\" class=\"imagecontent\"></div><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/158/7958/240.gif\" border=\"0\" class=\"imagecontent\"></div>');

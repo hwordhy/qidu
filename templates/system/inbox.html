@@ -1,0 +1,88 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "templates/system/inbox.html"?}
+{?set jieqi_page_rows = "30"?}
+{?set $jieqi_pagetitle = "收件箱-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+    <div class="moneyMod">
+        <form action="" method="post" name="checkform" id="checkform">
+        <div class="i-title">
+            <div class="i-title" style="padding-left:30px;">收件箱</div>
+            <!--筛选条件 mod -->
+            <div class="screenMod">
+                <span class="setup" onclick="dels()">删除选中</span>
+                <input type="hidden" name="ajax_gets" value="1">
+                <input type="hidden" name="act" value="delete">
+                {?$jieqi_token_input?}
+            </div>
+        </div>
+        <div class="moneyBd">
+            <!--磨铁币table mod -->
+            <div class="rechangeList">
+                <!--有磨铁币的情况 -->
+                <!--head-->
+                <table>
+                    <tr class="head">
+                        <td style="width: 5px; padding-left:10px;"><input type="checkbox" name="checkall" value="checkall" onclick="for(var i=0;i<this.form.elements.length;i++){ if(this.form.elements[i].name != 'checkkall') this.form.elements[i].checked = this.form.checkall.checked; }"></td>
+                        <td class="t1">{?$usertitle?}</td>
+                        <td class="t1">标题</td>
+                        <td class="t1">日期</td>
+                        <td class="t4">状态</td>
+                    </tr>
+                </table>
+                <table id="rechangeTab">
+                    {?section name=i loop=$messagerows?}
+                    <tr>
+                        <td style="width: 5px; padding-left:10px;"><input type="checkbox" name="id[]" value="{?$messagerows[i].messageid?}"></td>
+                        <td class="t1">{?if $messagerows[i].fromid > 0?}<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$messagerows[i].fromid?}" target="_blank">{?$messagerows[i].fromname?}</a>{?else?}<span style="color: #FF0000;">网站管理员</span>{?/if?}</td>
+                        <td class="t1"><a href="{?$jieqi_url?}/messagedetail.php?id={?$messagerows[i].messageid?}">{?$messagerows[i].title?}</a></td>
+                        <td class="t1">{?$messagerows[i].postdate|date:"Y-m-d H:i:s"?}</td>
+                        <td class="t4"><b>{?if $messagerows[i].isread == 0?}<span style="color: #FF0000;">未读</span>{?else?}已读{?/if?}</b></td>
+                    </tr>
+                    {?/section?}
+                </table>
+                <!--翻页-->
+                <link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+                <div class="pages_bottom">
+                    <ul>
+                    </ul>
+                    {?$url_jumppage?}
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{?include file = "templates/system/footer.html"?}
+
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script type="text/javascript">
+
+    function dels() {
+        if(confirm('确实要删除选中记录么？？'));
+        $.ajax({
+            url: "{?$url_action?}",
+            data: $("form").serialize(),
+            type: "POST",
+            success: function(t) {
+                t = eval(t);
+                if (t.success === true) {
+                    layer.msg(t.message, {icon: 1,shade: .3});
+                    location.reload();
+                }
+                else{
+                    layer.msg(t.message, {icon: 2,shade: .3});
+                }
+            },
+            error: function(e) {}
+        });
+    }
+
+</script>
+</body>
+</html>
+
+

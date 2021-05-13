@@ -1,0 +1,173 @@
+{?set jieqi_blocks_module = "forum"?}
+{?set jieqi_blocks_config = "forumblocks"?}
+{?set jieqi_page_rows = "30"?}
+<input type="hidden" value="{?$forumid?}" id="fid">
+<input type="hidden" value="0" id="topicType">
+<input type="hidden" value="" id="isBest">
+<div class="block10"></div>
+<div class="wrap1200">
+    <div class="w950 fl">
+        <div class="index_top">
+            <dl class="fl">
+                <dt class="fl"><img src="{?$jieqi_url?}/style/images/bbs.jpg"/></dt>
+                <dd class="fl">
+                    <span class="f24">{?$forumname?}</span>
+                    <span class="f14 mtop10">版主：{?section name=i loop=$masters?}<a target="_blank" href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$masters[i].uid?}"
+                                                   class="f14 red ui_color">{?$masters[i].uname?}&nbsp;&nbsp;&nbsp;&nbsp;</a>{?/section?}</span>
+                </dd>
+            </dl>
+            <div class="fl b_textlist">
+                <div class="clearfixer">
+                    <i class="dot ui_bgcolor fl"></i>
+                    <span class="texttop fl" title="{?$forumdesc?}">{?$forumdesc?}</span>
+                </div>
+            </div>
+        </div>
+        <div class="block10"></div>
+        <div class="bbs_index_list" id="tabsbox">
+            <div class="index_tab_menu">
+                <ul id="tabsmenu">
+                    <li class="on" data-type="0" data-bind="zuixin">最新话题<em class="linebot"></em></li>
+                    <!--<li data-type="0" data-best="true" data-bind="jinghua">精华<em class="linebot"></em></li>-->
+                    <!--<li data-type="4" data-bind="gonggao">公告<em class="linebot"></em></li>-->
+                    <!--<li data-type="2" data-bind="shuping">书评<em class="linebot"></em></li>-->
+                    <!--<li data-type="3" data-bind="shudan">HOT书单<em class="linebot"></em></li>-->
+                </ul>
+                <a href="{?$jieqi_modules['forum']['url']?}/newpost.php?fid={?$forumid?}" target="_blank" class="addpostbtn ui_bg_bdcolor">+我要发帖</a>
+            </div>
+            <div id="tabscont">
+                <div class="index_tab_cont" id="zuixin">
+                    <ul class="index_post_list top-list">
+                        <li class="index_post_list_tit bglistcolor">
+                            <span class="w530 toptit">版内置顶
+                                <em class="red ui_color">主贴数：<em class="red topic_count ui_color">0</em></em>
+                                <!--<em class="red ui_color">回贴数：<em class="red reply_count ui_color">0</em></em>-->
+                            </span>
+                            <span class="w105 authortit">作者</span>
+                            <span class="w50  replytit">回复</span>
+                            <span class="w110 lastreplaytit">最后回复</span>
+                        </li>
+                        <ul class="top">
+                        </ul>
+                    </ul>
+
+                    <ul class="index_post_list common-list" style="display: none;">
+                        <li class="index_post_list_tit bglistcolor">
+                            <span class="w530 toptit j-title-num">帖子标题
+                                <em class="red ui_color">主贴数：<em class="red topic_count ui_color">0</em></em>
+                                <em class="red ui_color">回贴数：<em class="red reply_count ui_color">0</em></em>
+                            </span>
+                            <span class="w530 toptit j-title">帖子标题 </span>
+                            <span class="w105 authortit">作者</span>
+                            <span class="w50  replytit">回复</span>
+                            <span class="w110 lastreplaytit">最后回复</span>
+                        </li>
+                        <ul class="common">
+                        </ul>
+
+                    </ul>
+                    <p class="errortips" style="display: none"></p>
+                </div>
+            </div>
+            <div class="page-box">
+                <div class="pages"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index_post_r fr">
+        <div class="boxcont">
+            <span class="titmenu">{?$jieqi_pageblocks['bid1']['title']?}</span>
+            <ul class="boxlist">
+                {?$jieqi_pageblocks['bid1']['content']?}
+            </ul>
+        </div>
+        <div class="block10"></div>
+    </div>
+
+</div>
+<div class="block20"></div>
+<a href="{?$jieqi_modules['forum']['url']?}/newpost.php?fid={?$forumid?}" target="_blank" class="postadd">发帖</a>
+<script id="topic-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <li class="index_post_list_cont">
+        <span class="w530 index_post_tags" >
+            {{#if istop}}
+                <img src="{?$jieqi_url?}/style/images/topicon.png"/>
+            {{else}}
+                <img src="{?$jieqi_url?}/style/images/msgicon.png"/>
+            {{/if}}
+            <!--{{#if sortid}}-->
+                <!--<em class="p_tags red">「{{ sortid }}」</em>-->
+            <!--{{/if}}-->
+            <a href={{ url }} target="_blank">{{ title }}</a>
+            {{#if istop}}
+                <em class="top">顶</em>
+            {{/if}}
+            {{#if isgood}}
+                <em class="per">精</em>
+            {{/if}}
+        </span>
+        <span class="author_text w105">
+              <a href="javascript:;" target="_blank">
+                  {{ poster }}
+              </a>
+            <em>{{substr posttime 0 16}}</em>
+        </span>
+        <span class="reply_text w50">{{ replies }}</span>
+        <span class="lastreply_text w110">
+            {{#if islock}}
+            <a href="javascript:;" target="_blank">
+                {{ replier }}
+            </a>
+            <em>{{substr replytime 0 16}}</em>
+            {{else}}
+                已设置禁止回复
+            {{/if}}
+        </span>
+    </li>
+    {{/each}}
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/data.js"></script>
+
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/forum.js"></script>
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script>
+    $(".nav_bbs").addClass("curr");
+</script>

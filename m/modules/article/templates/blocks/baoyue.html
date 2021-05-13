@@ -1,0 +1,10 @@
+﻿{?section name=i loop=$articlerows?}
+<li style="width:100%"><span class="fl lleft">
+        <a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><img src="{?$articlerows[i].url_image?}" alt="" /></a>
+        </span>
+        <span class="fl lright"> 
+        
+<h1><a href="{?$articlerows[i].url_articleinfo?}" class="lefts wordhide"><img style="width:12px;height:10px;margin-right:8px;" src="http://www.novelrd.cn/sink/image/icon-chapter-vip.png" alt="vip">{?$articlerows[i].articlename?}</a></h1><h2><a href="{?$articlerows[i].url_articleinfo?}">���ߣ�{?$articlerows[i].author?} </a></h2><h2><a class="cat" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].sort?}</a> ���£�{?$articlerows[i].lastchapter?}</h2>
+        </span>
+    </li>
+{?/section?}

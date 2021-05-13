@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/sink/css/comment_list.css">
+<link rel="stylesheet" rev="stylesheet" href="/sink/css/base.css" type="text/css" media="all" />
+<script src="/sink/css/s_common.js"></script>
+{?set jieqi_page_rows = "10"?}
+{?if $newpost > 0?}
+
+
+<div class="textbox hot" id="postresult">{?$postresult?}</div>
+<script type="text/javascript">
+setTimeout(function(){$_('postresult').hide()}, 3000);
+</script>
+{?/if?}
+
+<div class="comment-box clearfixer">
+		
+				<div class="fl authorbox">
+					<a href="{?$url_articleinfo?}" class="authorimg" target="_blank"><img src="{?function jieqi_geturl:'article':'cover':$articleid:'s':$imgflag?}"></a>
+					<a href="{?$url_articleinfo?}" class="a-book-tit" target="_blank">{?$articlename?}</a>
+					<a href="{?$url_articleinfo?}" class="a-name" target="_blank">返回书籍页面</a>
+				</div>
+				<div class="reader_comments fr" id="comment-tab">
+					<div class="comment_tit clearfixer">
+						<span class="text fl">{?$articlename?}的评论</span>
+						<div class="comment-tab fl j-comment-tab">
+							<span class="on" id="lastest"><a >内容: {?$title?} 评论回复</a></span>
+						</div>
+						<span class="sendcomment">发表评论</span>
+					</div>
+			
+					<div class="comment_con j-comment-main">
+						<div class="comment_con_newes">
+		
+								{?section name=i loop=$replyrows?}  	  
+							<div class="comment_item clearfixer j_comment_item">
+									<div class="left fl">
+										<a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="avatar" target="_blank">
+											<img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}">
+										</a>
+										<div class="nickname">
+											<a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="" target="_blank"> {?$replyrows[i].username?}</a>
+										</div>
+									</div>
+									<div class="right fl">
+										<p class="item_title">
+												{?if $reviewrows[i].istop == 1?}<span class="totop">[置顶]</span>
+												{?/if?}{?if $reviewrows[i].isgood == 1?}<span class="totop">[精华]</span>
+												<a href="/review/detail/1646987" target="_blank"> 
+													<span class="">{?/if?}{?$replyrows[i].subject?}</span></a>
+										</p>
+										<div class="right">
+										<pre class="comment-text">{?$replyrows[i].posttext?}</pre>
+										<p class="clearfixer behavior">
+											<span class="fl time">{?$replyrows[i].posttime|date:"Y-m-d H:i:s"?}</span>
+											<span class="fr reply"><em class="reply_num">{?$replyrows[i].order?}楼</em></span>
+											{?if $jieqi_userid == $replyrows[i].posterid || $jieqi_userstatus == 2?}  
+											<a class="fr like" href="{?$jieqi_modules['article']['url']?}/reviewedit.php?yid={?$replyrows[i].postid?}">编辑</a>
+											{?/if?}
+											{?if $ismaster == 1?} {?if $replyrows[i].istopic == 1?}
+											<a class="fr like" id="act_delt_{?$topicid?}" href="javascript:;" onclick="if(confirm('确实要删除该书评么？')) Ajax.Tip('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$topicid?}&act=del{?$jieqi_token_url?}', {method: 'POST'});">删除</a>
+											{?else?}
+											<a class="fr like" id="act_delp_{?$replyrows[i].postid?}" href="javascript:;" onclick="if(confirm('确实要删除该回复么？')) Ajax.Tip('{?$jieqi_modules['article']['url']?}/reviewshow.php?aid={?$articleid?}&rid={?$topicid?}&did={?$replyrows[i].postid?}&act=del{?$jieqi_token_url?}', {method: 'POST'});">删除</a>
+											{?/if?}{?/if?}
+										</p>
+									</div>
+								</div>
+								</div>
+								{?/section?}
+			
+							</div>
+			
+					</div>
+		
+			<div class="pages_bottom">
+					<div class="pages">{?$url_jumppage?}</div>
+					<div class="c-left">
+							<div id="write"><div class="mod mod-base comment-form book-comment-form">
+						 <div class="bd">
+						 {?if $jieqi_userid > 0?}
+						 <div class="column-2">
+							<div style="float:left;"><p style="margin-left:20px;"> <img src="{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'s'?}" alt="评论" width="50" height="50" class="hy-is-placeholder"> </p> <span style="margin-left:20px;" class="name">{?$jieqi_username?}</span>
+						 </div> 
+						 <div> 
+						 <div style="float:right;margin-right:30px;"">
+								<form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$article_dynamic_url?}/reviewshow.php?tid={?$topicid?}&aid={?$articleid?}" onsubmit="return frmpost_validate();" enctype="multipart/form-data" target="_blank"> 
+						 <div class="item"> 
+						 <input type="text" class="text-name" name="ptitle" placeholder="标题" maxlength="100"> 
+						 </div> 
+						 <div class="item"> 
+						 <textarea name="pcontent" class="text-cont" placeholder="内容" style="overflow: hidden;"></textarea> 
+						 <div style="position: absolute; display: none; word-wrap: break-word; font-weight: 400; width: 584px; font-family: Simsun; line-height: normal; font-size: 14px; padding: 10px;">&nbsp;</div>
+						 </div> 
+		
+						 {?if $postcheckcode > 0?}
+						 <div class="buttons">
+						 <span class="codeimg"><img src="{?$jieqi_url?}/checkcode.php" style="cursor:pointer;" onclick="this.src='{?$jieqi_url?}/checkcode.php?rand='+Math.random();"></span>
+						 <input type="text" class="text-submit" name="checkcode" id="checkcode" size="8" maxlength="8" value="" /> 
+						 </div>
+						 {?/if?}
+						 <div class="buttons"> 
+						 <input type="hidden" name="act" id="act" value="newpost" />{?$jieqi_token_input?}
+						 <input type="button" value="提交" class="bun-submit" style="cursor:pointer;" onclick="Ajax.Request('frmreview',{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));Form.reset('frmreview');}});">
+						 </div>
+						 </form> 
+						</div>
+						 </div>
+						 </div>
+						 {?else?}
+						 <div class="alert alert-error">您只有<a href="{?$jieqi_user_url?}/login.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank" style="color:#09c">登陆</a>后才可以发表书评</div>
+						 {?/if?}
+						 </div></div></div>
+						 </div>
+		
+			</div>
+				</div>
+			</div>
+
+						<script type="text/javascript">
+function frmpost_validate(){
+  if(document.frmpost.pcontent.value == ""){
+    alert("请输入内容");
+    document.frmpost.pcontent.focus();
+    return false;
+  }
+}
+</script>

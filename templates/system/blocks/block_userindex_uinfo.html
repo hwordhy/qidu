@@ -1,0 +1,11 @@
+{?if $ownerid > 0?}
+<div class="iHomeBanner">
+  <input type="hidden" value=""  id="attendType"/>
+  <p class="personMod"><img src="{?function jieqi_geturl:'system':'avatar':$uid:'s':$avatar?}" /><span>{?$group?}</span></p>
+  <p class="name">
+    {?$name?}</p>
+  <p>
+    {?$sign?}{?if $jieqi_userid == $uid?}<a href="/useredit.php"><cite></cite></a>{?/if?}</p>
+  <div class="attendMod"  data-attend="1" onclick="addAttend(this,{?$uid?})">+加好友</div>
+</div>
+{?/if?}

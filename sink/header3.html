@@ -1,0 +1,94 @@
+{?if $jieqi_thisfile|basename == 'top.php'||$jieqi_thisfile|basename == 'toplist.php'||$jieqi_thisfile|basename == 'articlelist.php'?}<body class="top10">{?else if $jieqi_thisfile|basename == 'articlefilter.php'?}<body class="book-all">{?else if $jieqi_thisfile|basename == 'buychapter.php'?}<body class="chapter-detail">{?else?}<body class="cover">{?/if?}
+		<link rel="stylesheet" href="/sink/css/index.css" type="text/css"/>
+		<link rel="stylesheet" href="/sink/css/index_header.css" type="text/css" class="mmyqwhref"/>
+		<link rel="stylesheet" href="/sink/css/motie.css" type="text/css"/>
+		<script type="text/javascript">var uid = "";  </script>
+		<div class="index-header" id="topback">
+				<!--�㵼�� start-->
+				<div class="subnav">
+					<a href="http://www.motie.com/huodong/lieguandong" target="_blank" class="subnav-ad">
+							<img src="/sink/picture/15059595913186658_1920_90.jpg" alt="">
+							<span class="close-btn"></span>
+						</a>
+					<div class="subnavbar" style="background:#f2f2f2;">
+						<div class="subnavbar-content" style="background:transparent;">
+								
+								<!-- nologin start-->
+								<div class="right-login fr">
+										{?if $jieqi_userid == 0?}
+										<a href="/login.php" class="login-user">��¼</a>
+											<a href="/register.php" class="register">ע��</a>
+											{?else?}
+											<a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="motie-login">{?$jieqi_username?}</a>
+											<a href="{?$jieqi_user_url?}/logout.php">�˳�</a>
+											<a href="/message.php?box=inbox">��Ϣ</a>
+											{?/if?}
+									<span class="indexmobile">
+											�ֻ���
+											<div class="pho-tabs" style="display: none">
+												<em class="dot-top"></em>
+												<ul>
+													<li>
+														<span class="scode fl"><a href="/app" target="_blank"><img src="/sink/picture/android-s-pc.jpg"/></a></span>
+														<p class="fr" style="margin-top: 10px;">
+															<span class="f14">�����ö�</span>
+															<span>���Ķ�������</span>
+															<span><img src="/sink/picture/ios-icon.png"/>
+															<img src="/sink/picture/android-icon.png"/>
+														</span>
+														</p>
+													</li>
+													<li>
+														<span class="scode fl"><img
+																src="/sink/picture/m-weixin.jpg"/></span>
+														<p class="fr" style="margin-top: 17px;">
+															<span class="f14">��ע΢��</span>
+															<span>΢��ɨһɨ��ע</span>
+														</p>
+													</li>
+												</ul>
+											</div>
+											</span>
+									</div>
+							</div>
+						</div>
+					</div>
+					<!--�㵼�� end-->
+					<div class="header-bg">
+						<div class="logozone" style="background:#fff ;">
+			
+						<!--�������� start-->
+						<div class="wrap1200 logo">
+							<a href="/" class="fl">
+								<img src="/sink/picture/motie_logo.png" class="logoImage"/>
+								</a>
+								<div class="searchbox">
+										<div class="searchbox-inner">
+												<form name="t_frmsearch" method="post" action="{?$jieqi_modules['article']['url']?}/search.php">
+													<input type="text" autocomplete="off" name="searchkey" placeholder="���顢����" class="searchinput" value="">
+													<i class="search-icon"></i>
+													<input type="button" value="" class="searchbtn" style="background-color:#333333"/>
+													<span class="loadIcon"></span>
+												</form>
+												</div>
+			</div>
+			<a href="/modules/article/bookcase.php" class="mybookshelf fr"><i style="background-color:#333333" id="icon-zuitang"></i>�ҵ����</a>
+						</div>
+						<!--�������� end-->
+						<!--���� start-->
+					</div>
+					</div>
+					<div class="firstnav" style="background-color:#333333">
+					<ul  >
+							<li><a href="/" >��ҳ</a></li>
+							<li class="nav_book" ><a href="{?$jieqi_modules['article']['url']?}/articlefilter.php" >���</a></li>
+							<li class="nav_rank" ><a href="{?$jieqi_modules['article']['url']?}/top.php" >����</a></li>
+							<li class="nav_jingpin" ><a href="/modules/pay/buyegold.php" >��ֵ</a></li>
+							<li  ><a  href="/modules/article/myarticle.php" >����ר��</a></li>
+							<li class="nav_bbs" ><a href="/" target="_blank">�ֻ���</a></li>
+							<li class="nav_reward" ><a href="/" >����</a></li>
+						</ul>
+				</div>
+			<!--���� end-->
+				</div>
+			<!-- end header -->

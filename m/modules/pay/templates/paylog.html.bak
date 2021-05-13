@@ -1,0 +1,28 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "财务-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/paylist.css" type="text/css"/>
+
+<section class="paylist clearfix">
+<div class="container">
+<p class="here"><a href="http://m.9wus.com/User/index" title="">用户中心 </a><b>&gt;</b><a href="##" title="">充值消费   </a></p>
+<h2><a href="/modules/obook/buylist.php" >订阅记录</a><a href="/modules/pay/paylog.php" class="active">充值记录</a></h2>
+
+	<ul><!--不参与循环-->
+		<li class="upnextss">
+		<em>时间</em><em>点数</em><em>状态</em>
+		</li>
+		<!--不参与循环 end-->
+	
+  {?section name=i loop=$paylogrows?}
+
+		<li class="upnextss">
+		<em>{?$paylogrows[i].buytime|date:'Y-m-d H:i:s'?}</em>
+		<em>{?$paylogrows[i].egold?}</em>
+		<em>{?$paylogrows[i].payflag?}</em>
+		</li>
+  {?/section?}
+	</ul>
+
+</div>
+</section>

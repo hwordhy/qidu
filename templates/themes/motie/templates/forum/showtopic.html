@@ -1,0 +1,206 @@
+{?set jieqi_blocks_module = "forum"?}
+{?set jieqi_blocks_config = "forumblocks"?}
+<div class="body-con clearfixer wrapper">
+	<div class="body-con-left fl">
+		{?section name=i loop=$postrows?}
+		{?if $i.order == 1?}
+		<div class="post-all">
+			<div class="post-title">
+				<span class="text">{?$postrows[i].subject?}</span>
+			</div>
+			<div class="post-info">
+				<div class="creator clearfixer">
+					<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$postrows[i].userid?}" target="_blank" class="avatar fl">
+						<img src="{?function jieqi_geturl:'system':'avatar':$postrows[i].userid:'l':$postrows[i].avatar?}" alt="{?$postrows[i].username?}" class=" ">
+					</a>
+					<span class="name fl"><a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$postrows[i].userid?}" target="_blank">{?$postrows[i].username?}</a></span>
+
+				</div>
+				<div class="info clearfixer">
+					<span class="create-time fl">{?$postrows[i].posttime|date:"Y-m-d H:i:s"?} 创建</span>
+					<span class="read-number fl">浏览数：{?$postrows[i].views?}</span>
+					<span class="reply-number fl">回复数：{?$postrows[i].replies?}</span>
+				</div>
+
+				<div class="opetator clearfixer j-operator">
+					<a href="{?$jieqi_modules['forum']['url']?}/postedit.php?fid={?$forumid?}&tid={?$topicid?}&pid={?$postrows[i].postid?}" class="edit fr ui_hoverbgbd">编辑</a>
+					<span class="del fr ui_hoverbgbd">删除</span>
+					<input type="hidden" id="pid" name="pid" value="{?$postrows[i].postid?}">
+				</div>
+			</div>
+			<div class="post-content">
+                <pre class="post-content-info">{?$postrows[i].posttext?}</pre>
+			</div>
+			<div class="post-bottom clearfixer ">
+				<a class="like j-like ui_border ui_hoverbgbd">
+					<span class="heart"></span>
+					<span class="heart-number ui_color">({?$postrows[i].replies?})</span>
+				</a>
+				<a href="#reply-box" class="reply j-reply ui_border ui_hoverbgbd hover">
+					<span class="ui_color">回复</span>
+				</a>
+			</div>
+		</div>
+		{?/if?}
+		{?/section?}
+		<div class="reply-content">
+
+		</div>
+		<div class="reply-box  " id="reply-box" data-tid="{?$topicid?}" data-fid="{?$forumid?}">
+			<span class="reply-box-title">回复</span>
+			<span class="replyer">回复@{?$postrows[i].username?}：</span>
+			<textarea maxlength="200"></textarea>
+			<div class="btns clearfixer">
+				{?if $postcheckcode > 0?}
+				<span class="fl">验证码：<input name="checkcode" id="checkcode" type="text" value="" class="textbox " maxlength="8" style="width: 80px;height: 25px;border: 1px solid #e6e6e6;font-size: 12px;"></span>
+				<span class="fl" style="margin: auto 10px auto 10px;"><img id="p_imgccode" src="{?$jieqi_url?}/checkcode.php" onclick="this.src='{?$jieqi_url?}/checkcode.php?rand='+Math.random();" style="height: 25px;font-size: 12px;"></span>
+				{?/if?}
+				<span class="face fl"></span>
+				<span class="replying ui_bgcolor fl">回复</span>
+			</div>
+			<span class="err-tips">不能少于5个字</span>
+		</div>
+	</div>
+	<div class="body-con-right fr">
+		<div class="boxcont">
+			<span class="titmenu">{?$jieqi_pageblocks['bid1']['title']?}</span>
+			<ul class="boxlist topiclist">
+				{?$jieqi_pageblocks['bid1']['content']?}
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="floatbox">
+	<div class="popup w800 bookshelfbox"></div>
+	<div class="mask"></div>
+	<div class="popup w800 j_pop_comment pop_comment"></div>
+	<div class="popup w800 j_addbookpop pop_comment"></div>
+</div>
+<script>
+    var page_config = {
+        username: "{?$jieqi_username?}",
+        userLevel: "{?$jieqi_group?}",
+        userIcon: "{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'l':$jieqi_avatar?}",
+        toTop: "{?if $istop > 0?}true{?else?}false{?/if?}",
+        admin: "{?if $ismaster > 0?}true{?else?}false{?/if?}",
+        topicId: "{?$topicid?}",
+        fid: "{?$forumid?}",
+        allReplyNum:"{?$postrows[i].replies?}"
+    }
+</script>
+<script id="reply-template" type="text/x-handlebar-template">
+	{{#items}}
+	<div class="item" data-pid="{{postid}}" data-isme="{{userid}}">
+		<div class="item-main">
+			<p class="item-title clearfixer">
+				<a href="{{user_url}}" target="_blank" class="avatar fl"><img src="{{user_avatar}}"
+																						  alt=""></a>
+				<span class="author-name j-authorname fl">{{username}}</span>
+				<span class="floor">
+                    {{addOne @index ../currentPage}}楼
+                 </span>
+			</p>
+			<p class="reply-text">{{{posttext}}}</p>
+			<div class="tail">
+				<span class="time ">{{posttime}}</span>
+				<div class="operator clearfixer">
+					{{#if ../isAdmin}}
+					<span class="del j-del fr">删除</span>
+					{{/if}}
+
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/items}}
+	{{#compare items.length 0}}
+	<div class="page-box clearfixer">
+		<span class="page-box-reply fl">共0条回复</span>
+		<div class="pages fr"></div>
+	</div>
+	{{/compare}}
+</script>
+
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+
+
+
+<script src="{?$jieqi_url?}/style/js/postdetail.js"></script>
+
+<div class="del_Layer_div">
+	<div class="del_Layer clear">
+		<div class="del_Layer_close"></div>
+		<p class="remove_yes_no">确认删除吗</p>
+		<div class="del_Layer_yes">确认</div>
+		<div class="del_Layer_no">取消</div>
+	</div>
+	<div class="del_Prompt">
+
+	</div>
+</div>
+<div class="poupout">
+	<div class="popup w800">
+		<div class="popmenu">
+			删除理由
+			<em class="warning">请选择或填写删除理由</em>
+			<span class="popclose">关闭</span>
+		</div>
+		<div class="popbox">
+			<p class="delreason">
+				<span class="">含有广告或垃圾信息</span>
+				<span class="">含有色情、淫秽或低俗内容</span>
+				<span class="">含有激进时政或意识形态话题</span>
+				<span class="">含有人身攻击或者恶意言论</span>
+				<span class="">违反发言规则</span>
+				<span class="">与主题无关</span>
+			</p>
+			<p class="delarea">
+				<textarea placeholder="自定义填写，5-20个字" name="introduce" id="intro" class="deltext" maxlength="20"></textarea>
+			</p>
+			<p class="delbtn">
+				<a  class="dconfirmbtn">确定</a><a  class="dcancelbtn">取消</a>
+			</p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/data.js"></script>
+
+<script>
+    $(".nav_bbs").addClass("curr");
+</script>
+

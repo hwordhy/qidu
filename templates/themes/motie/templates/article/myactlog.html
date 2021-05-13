@@ -1,0 +1,53 @@
+{?set jieqi_page_template = "templates/article/myactlog.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "{$actname}记录-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+  <!--我的{?$actname?} mod -->
+  <div class="i-title" style="padding-left:30px;">我的{?$actname?}</div>
+  <div class="motieTicketBg recomTicketBg">
+    <span class="t1">剩余推荐票</span>
+    <span class="t2">{?$jieqi_votes?}</span>
+    <span class="t3">推荐票</span>
+    <!--<a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" target="_blank" class="t4">立即充值</a>-->
+  </div>
+
+  <div class="moneyMod">
+    <div class="i-title" style="padding-left:30px;">
+      {?$actname?}记录
+    </div>
+    <div class="moneyBd">
+      <!--可用阅读券table mod -->
+      <div class="rewardList" id="rewardList">
+        <!--有阅读券的情况-->
+        <table id="tab_vote">
+          <tr class="head">
+            <td class="t1">{?$actname?}时间</td>
+            <td>{?$actname?}数量</td>
+            <td class="t3">使用说明</td>
+            <td class="t4">名称</td>
+          </tr>
+          {?section name=i loop=$actlogrows?}
+          <tr>
+            <td class="t1">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</td>
+            <td>{?$actlogrows[i].actnum?}</td>
+            <td class="t3">给《{?$actlogrows[i].articlename?}》{?$actname?}</td>
+            <td class="t4">{?$actlogrows[i].actname?}</td>
+          </tr>
+          {?/section?}
+        </table>
+        <!--没有阅读券的情况-->
+        <!--翻页-->
+        <link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+          <div class="pages_bottom" id="pageForm">
+            {?$url_jumppage?}
+          </div>
+        </div></div>
+    </div>
+  </div>
+</div>
+</div>
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+</body>
+</html>

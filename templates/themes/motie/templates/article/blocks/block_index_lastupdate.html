@@ -1,0 +1,38 @@
+{?section name=i loop=$articlerows?}
+<tr>
+    <td>
+        <div>
+            <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" class="cat-name"
+                target="_blank">{?$articlerows[i].sort?}</a>
+        </div>
+    </td>
+    <td>
+        <div>
+            <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="book-name"
+               data-namecard="false"><b>{?$articlerows[i].articlename?}</b></a>
+        </div>
+    </td>
+    <td>
+        <div>
+            {?if $articlerows[i].isvip_n > 0 && $articlerows[i].vipchapterid > 0?}
+            <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_vipchapter?}"
+               class="chapter-name" target="_blank">{?$articlerows[i].vipchapter?}</a>
+            {?else?}
+            <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_lastchapter?}"
+               class="chapter-name" target="_blank">{?$articlerows[i].lastchapter?}</a>
+            {?/if?}
+        </div>
+    </td>
+    <td>
+        <div>
+            <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="javascript:;" target="_blank"
+               class="author">{?$articlerows[i].author?}</a>
+        </div>
+    </td>
+    <td class="col4">
+        <div>
+            {?$articlerows[i].lastupdate|date:'m-d H:i'?}</div>
+    </td>
+</tr>
+{?/section?}
+

@@ -1,0 +1,147 @@
+{?set $jieqi_pagetitle = "充值记录-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "充值记录"?}
+
+<?xml version="1.0" encoding="{?$jieqi_charset?}"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>{?$jieqi_pagetitle?}</title>
+	<style type="text/css">
+		.bd{padding:0 10px;overflow:hidden;}
+		.record_ul{overflow:hidden;}.record_ul li span{display:block;}
+		.record_ul li{width:100%;display:-moz-box;display:-webkit-box;display:box;border-bottom:solid 1px #ccc;padding:10px 0;color:#333;font-size:16px;overflow:hidden;}
+		.record_ul li span.l{font-size:14px;-moz-box-flex:1.0;-webkit-box-flex:1.0;box-flex:1.0;border-right:solid 1px #ccc;}
+		.record_ul li span.l a{color:#333;}
+		.record_ul li span.r{padding:0 10px 0 0px;font-size:16px;line-height:42px;width:60px;text-align:right;}
+		.record_ul li span.l b{color:#999;font-size:12px;font-weight:normal;display:block;padding-top:2px;}
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/css20170419.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                // 设计稿的宽度
+                ddesignWidth = 750,
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / ddesignWidth) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(document, window);
+	</script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobilescript.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head><body>
+<div class="wrapper">
+	<style>
+		.wx_nav_box1{background:#fff!important;position:relative;height:44px}
+		.wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+		.wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+		.wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+		.wx_home1 img{width:9px;margin-top:14px;float:left;}
+		.wx_home1 em{
+			float:left;
+			margin-left:10px;
+			color:#666;
+			font-size:16px;
+		}
+		.wx_nav_box1 a{color:#010101}
+		.wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+		.wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+		.wx_header1{overflow:hidden}
+		.commontitle{
+			position: relative;
+		}
+		.commontitle1{
+			position: fixed;
+			z-index:111;
+		}
+	</style>
+	<!-- header start -->
+	<div id="hd" class="wx_header commontitle">
+		<div class="wx_nav_box1">
+			<div class="wx_home1">
+				<a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+					<img src="{?$jieqi_url?}/style/m/images/14882778674532908_18_33.png" /><em>返回</em>
+				</a>
+			</div>
+			<a href="javascript:void(0);" class="logo text"></a>
+			<div class="wx_list" id="wx_list"></div>
+		</div>
+	</div>
+	<!--end header-->
+	<script>
+        //二级导航
+        $(window).on('scroll', function () {
+            var offsetTo = $(document).scrollTop();
+            if (offsetTo > 0) {
+                $('.wx_header').addClass('commontitle1');
+                //$('.sgoback').css({'top':'0'});
+            } else {
+                $('.wx_header').removeClass('commontitle1');
+                // $('.sgoback').css({'top':'44px'});
+            }
+        });
+	</script><div class="bd">
+    {?if $paylogrows|count > 0?}
+	<ul class="record_ul">
+		{?section name=i loop=$paylogrows?}
+		<li>
+						<span class="l">
+							  {?$paylogrows[i].paytype?}&nbsp;<b>{?$paylogrows[i].buytime|date:'m-d H:i'?}</b>
+						</span>
+			<span class="r">{?$paylogrows[i].egold?}</span>
+			<span class="r" style="width: 90px;color: {?if $paylogrows[i].payflag_n > 0?}#0000ff{?else?}#ff0000{?/if?};">{?$paylogrows[i].payflag?}</span>
+		</li>
+		{?/section?}
+	</ul>
+	<div class="donate-d-page" style="margin-top: 10px;">
+		{?$url_jumppage?}
+	</div>
+    {?else?}
+    <div style="text-align:center; margin:10px; auto;">
+        <span>您还没有充值记录</span></div>
+    {?/if?}
+</div>
+	<!-- end content-->
+
+</div>
+<script>
+    $(function(){
+        var type = 1;
+        if(type == 1){
+            $('.wx_header .logo').text('充值记录');
+        }else{
+            $('.wx_header .logo').text('消费记录')
+        }
+        $('.record_ul a').click(function(){
+            return false;
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+

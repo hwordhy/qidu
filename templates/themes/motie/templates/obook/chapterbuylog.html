@@ -1,0 +1,57 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_page_template = "templates/book/chapterbuylog.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "章节销售记录-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="m-left">
+        <div class="m-title">
+          <a href="{?$jieqi_modules['obook']['url']?}/mreport.php">结算中心&nbsp; > &nbsp;</a>章节销售记录
+        </div>
+
+        <!--稿费详情 mod-->
+        <table class="gfTable" cellspacing="0" cellpadding="0">
+          <tr class="head">
+            <td style="width: 500px;">作品名称</td>
+            <td>章节名称</td>
+            <td>价格</td>
+            <td>购买人</td>
+            <td>购买日期</td>
+          </tr>
+          <tr>
+            {?section name=i loop=$osalerows?}
+            <td style="text-align: left;width: 300px;padding-left: 10px;"><a href="{?$jieqi_modules['article']['url']?}/articleinfo.php?id={?$osalerows[i].articleid?}" target="_blank">{?$osalerows[i].obookname?}</a></td>
+            <td style="text-align: left;width: 500px;padding-left: 10px;"><a href="{?$obook_static_url?}/reader.php?oid={?$osalerows[i].obookid?}&cid={?$osalerows[i].ochapterid?}" target="_blank">{?$osalerows[i].chaptername?}</a></td>
+            <td>{?$osalerows[i].saleprice?}</td>
+            <td>{?$osalerows[i].account?}</td>
+            <td style="width: 300px;">{?$osalerows[i].buytime|date:'Y-m-d H:i:s'?}</td>
+          </tr>
+          {?/section?}
+        </table>
+        <div class="pages_bottom" style="display: block;">
+          {?$url_jumppage?}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".n04 a").addClass('active');
+        $("#myallwords").html('/');
+
+
+    });
+</script>
+
+{?include file="templates/system/author_footer.html"?}
+

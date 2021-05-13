@@ -1,0 +1,78 @@
+﻿
+
+#dialog, .dialog {
+	position: absolute;
+	visibility: hidden;
+	border: 1px solid #cccccc;
+	background: #fff;
+	_position: fixed;
+	border-radius: 10px;
+}
+
+caption{
+	font-size: 18px;
+}
+.tdl{
+	padding: 10px;
+	font-size: 15px;
+}
+.tdr{
+	padding: 10px;
+	font-size: 15px;
+}
+.tdr a{
+	font-size: 15px;
+}
+.tdr input{
+	background-color: #eee;
+	width: 180px;
+	height: 30px;
+	border-radius: 10px;
+}
+#count{
+	border-radius: 5px;
+}
+#rdesc{
+	border-radius: 5px;
+}
+.button{
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+}
+.dialog_t {
+	color: #fff;
+	height: 46px;
+	line-height: 46px;
+	overflow: hidden;
+	padding-left: 160px;
+	background: #ec5a3e;
+	border-bottom: 1px solid #ec5a3e;
+	border-radius: 10px;
+}
+
+.dialog_t a {
+	text-decoration: none;
+	display: inline-block;
+	float: right;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	font-family: Arial;
+	color: #FFF;
+	border: 1px solid #fff;
+	margin: 10px;
+}
+
+.dialog_t a:hover {
+	color: #f60;
+	margin: 11px 9px 9px 11px;
+}
+
+.dialog_c {
+	padding: 0.6em;
+}

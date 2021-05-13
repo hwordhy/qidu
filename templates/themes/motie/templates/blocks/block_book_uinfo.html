@@ -1,0 +1,13 @@
+{?if $ownerid > 0?}
+<div class="clearfixer">
+  <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$uid?}" class="avatar fl" target="_blank">
+    <img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}" alt="">
+  </a>
+  <div class="name fl">
+    <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$uid?}" class="text" target="_blank">{?$name?}</a>
+    <span href="#" class="sign ui_bgcolor">
+                                            {?$group?}
+                                        </span>
+  </div>
+</div>
+{?/if?}

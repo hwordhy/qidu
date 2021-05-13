@@ -1,0 +1,60 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/articleactlog.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "打赏记录-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="m-left">
+        <div class="m-title">
+          <a href="{?$jieqi_modules['obook']['url']?}/mreport.php">结算中心&nbsp; > &nbsp;</a>《{?$articlename?}》{?if $actname != ''?}{?$actname?}{?else?}互动{?/if?}记录
+        </div>
+
+        <!--稿费详情 mod-->
+        <div class="mod-m">
+          <span style="font-size: 16px;">合计次数：<span class="r16">{?$actlogsum['count']?}</span> 合计{?$egoldname?}：<span class="r16">{?$actlogsum['egold']?}</span> 合计金额：<span class="r16">{?$actlogsum['egold']|fen2yuan?}</span>元</span>
+          </div>
+        <table class="gfTable" cellspacing="0" cellpadding="0">
+          <tr class="head">
+            <td>会员名称</td>
+            <td>时间</td>
+            <td>动作名称</td>
+            <td>消费{?$egoldname?}</td>
+            <td>消费金额（元）</td>
+          </tr>
+          <tr>
+            {?section name=i loop=$actlogrows?}
+            <td class="center" rowspan="1">{?$actlogrows[i].uname?}</td>
+            <td>{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</td>
+            <td>{?$actlogrows[i].actname?}</td>
+            <td>{?$actlogrows[i].egold?}</td>
+            <td>{?$actlogrows[i].egold|fen2yuan?}</td>
+          </tr>
+          {?/section?}
+        </table>
+        <div class="pages_bottom" style="display: block;">
+          {?$url_jumppage?}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".n04 a").addClass('active');
+        $("#myallwords").html('/');
+
+
+    });
+</script>
+
+{?include file="templates/system/author_footer.html"?}
+

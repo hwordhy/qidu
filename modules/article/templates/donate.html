@@ -1,0 +1,84 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "{$articlename}小说互动记录"?}
+{?set jieqi_page_rows = "10"?}
+<link rel="stylesheet" href="/sink/css/comment_list.css">
+
+<div class="comment-box clearfixer">
+		<div class="path ">
+			<span>
+				<a href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info'?}" target="_blank">{?$articlename?}</a>
+			</span>
+			<span>&gt;</span>
+			<span>打赏记录</span>
+		</div>
+		<div class="fl authorbox">
+			<a href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info'?}" class="a-book-tit" target="_blank">{?$articlename?}</a>
+
+			<p class="a-btn">
+				<a href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info'?}" target="_blank" class="a-free-btn btn ui_bg_bdcolor">返回书籍</a>
+				</p>
+		</div>
+		<div class="reader_comments fr" id="comment-tab">
+			<div class="comment_tit clearfixer">
+				<span class="text fl">粉丝排行榜</span>
+			</div>
+			<div class="comment_con j-comment-main clear">
+				<div class="fans_content">
+						{?section name=i loop=$actlogrows?}
+				
+		<ul class="fans_table">
+
+
+
+			{?if $actlogrows[i].actname == 'redrose'||$actlogrows[i].actname == 'yellowrose'||$actlogrows[i].actname == 'greenrose'||$actlogrows[i].actname == 'bluerose'||$actlogrows[i].actname == 'whiterose'||$actlogrows[i].actname == 'blackrose'?}
+
+					{?if $actlogrows[i].actname == 'redrose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个红包</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?elseif $actlogrows[i].actname == 'yellowrose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个宝石</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?elseif $actlogrows[i].actname == 'greenrose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个府邸</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?elseif $actlogrows[i].actname == 'bluerose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个马车</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?elseif $actlogrows[i].actname == 'whiterose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个丫鬟</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?elseif $actlogrows[i].actname == 'blackrose'?}
+					<li style="width:20px;padding: 2px;"></li>
+					<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'l':$actlogrows[i].avatar?}"></a></li>
+					<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid?}" target="_blank">{?$actlogrows[i].uname?}</a></li>
+					<li class="fans_level">{?$actlogrows[i].uname?}打赏{?$actlogrows[i].actnum?}个金印</li>
+					<li class="fans_tip">打赏时间:<span class="ui_color">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span></li>
+					{?/if?}
+				{?/if?}
+
+
+
+		</ul>
+		{?/section?}
+	</div>
+			</div>
+			<div class="pages">{?$url_jumppage?}</div>
+		</div>
+	</div>
+

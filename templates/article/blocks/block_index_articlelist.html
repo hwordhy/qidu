@@ -1,0 +1,8 @@
+{?section name=i loop=$articlerows?}
+  <li>
+    <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" target="_blank" href="{?$articlerows[i].url_articleinfo?}">
+      <span class="tags">「{?$articlerows[i].sort?}」</span>
+      {?$articlerows[i].articlename?}</a>
+  </li>
+{?/section?}
+{?if $url_more != ''?}<a href="{?$url_more?}" target="_blank" class="more">查看更多>></a>{?/if?}

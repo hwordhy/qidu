@@ -1,0 +1,16 @@
+ {?section name=i loop=$articlerows?}
+ {?if $i['order'] == 1?}
+<li class="index-{?$i['order']?} column-2">
+													<em>{?$i['order']?}</em>
+													<div class="left">
+														<a data-collect-index="1" boxid="ruoxiaHomeRankBody1" href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}" width="50" height="70" alt=""></a>
+													</div>
+													<div class="right">
+														<h5><a data-collect-index="1" target="_blank" href="{?$articlerows[i].url_articleinfo?}" class="name">{?$articlerows[i].articlename?}</a></h5>
+														<p>×÷Õß£º<a href="{?function jieqi_geturl:'system':'user':$articlerows[i].authorid?}" class="author">{?$articlerows[i].author?}</a></p>
+													</div>
+												</li>
+												{?else?}
+											<li class="index-{?$i['order']?}"><em {?if $i['order'] <= 3?}class="t"{?/if?}>{?$i['order']?}</em><a data-collect-index="2" target="_blank" href="{?$articlerows[i].url_articleinfo?}" class="name">{?$articlerows[i].articlename?}</a></li>
+											{?/if?}
+{?/section?}

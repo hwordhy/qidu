@@ -1,0 +1,1 @@
+document.write('今天沉迷于一个新游戏，导致没有更新，吧这个游戏介绍给大家，大家去玩吧<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;magnet:?xt=urn:btih:8d8b688f8cdfcf1fc698adfdfc91990824f14914<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;名字叫《瑞思和夏恩》 这个游戏是一个动作游戏打起来还是蛮有意思的。');

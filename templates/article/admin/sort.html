@@ -1,0 +1,60 @@
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  function sortmenu(id){
+    var list = document.getElementsByName(id);
+    for(var i = 0, l = list.length; i < l; i++) {
+      var smenu = list[i];
+      if (smenu.style.display == 'none'){
+        smenu.style.display = '';
+      }else{
+        smenu.style.display = 'none';
+      }
+    }
+  }
+</script>
+<table class="grid" width="100%" align="center">
+  <caption>分类管理</caption>
+  <tr align="center">
+    <th width="10"><img src="{?$jieqi_url?}/images/toggle.png" style="height: 15px;" /></th>
+    <th width="50">分类序号</th>
+    <th width="150">分类名称</th>
+    <th width="150">分类简称</th>
+    <th width="140">分类拼音</th>
+    <th width="140">分类描述</th>
+	<th width="140">所属频道</th>
+    <th width="100">操作</th>
+  </tr>
+  {?section name=i loop=$sortrows?}
+  <tr onClick="sortmenu('sort_{?$sortrows[i].sid?}')">
+    <td align="center" style="background-color:#EDEDED;"><img id="img_{?$sortrows[i].sid?}" src="{?$jieqi_url?}/images/toggle_h.png" style="height: 15px;" /></td>
+    <td align="center" style="background-color:#EDEDED;">{?$sortrows[i].sid?}</td>
+    <td align="center" style="background-color:#EDEDED;">{?$sortrows[i].caption?}</td>
+    <td align="center" style="background-color:#EDEDED;">{?$sortrows[i].shortname?}</td>
+    <td align="left" style="background-color:#EDEDED;">{?$sortrows[i].code?}</td>
+    <td align="left" style="background-color:#EDEDED;">{?$sortrows[i].description?}</td>
+	<td align="center" style="background-color:#EDEDED;">{?$sortrows[i].rgroup?}</td>
+    <td align="center" style="background-color:#EDEDED;"><a href="{?$article_static_url?}/admin/sort.php?sid={?$sortrows[i].sid?}&act=newtypes">新增子分类</a> <a href="{?$article_static_url?}/admin/sort.php?sid={?$sortrows[i].sid?}&act=edit">编辑</a> <a id="act_delete_{?$sortrows[i].sid?}" href="javascript:;" onclick="if(confirm('确实要删除本分类及所有对应子分类么？')) Ajax.Tip('{?$article_static_url?}/admin/sort.php?sid={?$sortrows[i].sid?}&act=delete{?$jieqi_token_url?}', {method: 'POST'});">删除</a></td>
+  </tr>
+  {?section name=j loop=$sortrows[i].types?}
+  <tr name="sort_{?$sortrows[i].sid?}" style="display: none;">
+    <td align="center">└</td>
+    <td align="center">{?$j.key?}</td>
+    <td align="center">{?$sortrows[i]['types'][j]?}</td>
+    <td align="center">——</td>
+    <td align="center">——</td>
+    <td align="center">——</td>
+    <td align="center">——</td>
+    <td align="center"><a href="{?$article_static_url?}/admin/sort.php?sid={?$sortrows[i].sid?}&tid={?$j.key?}&act=edittypes">编辑</a> <a id="act_delete_{?$sortrows[i].sid?}" href="javascript:;" onclick="if(confirm('确实要删除本分类及所有对应子分类么？')) Ajax.Tip('{?$article_static_url?}/admin/sort.php?sid={?$sortrows[i].sid?}&tid={?$j.key?}&act=deletetypes{?$jieqi_token_url?}', {method: 'POST'});">删除</a></td>
+    </tr>
+  {?/section?}
+  {?/section?}
+  <tr>
+    <td colspan="8" class="foot">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">{?$form_addsort?}</td>
+  </tr>
+</table>

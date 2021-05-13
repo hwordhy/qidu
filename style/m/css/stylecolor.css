@@ -1,0 +1,14 @@
+/*2017-02-10*/
+.reply-input-r,
+.recent_note .manage-btn{
+    background: #fd6974!important;
+}
+.recent_hd li.on {
+    border-bottom: solid 3px #fd6974;
+}
+.detail_table{
+	border:none;
+}
+.detail_table dd h1, .detail_table dd p span {
+    color: #fff;
+}

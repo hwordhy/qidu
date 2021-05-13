@@ -1,0 +1,600 @@
+$(function() {
+    var t = page_config.topicId,
+        e = function(t) {
+            t && ($(".reply-box .replyer").text("回复@" + t + " : "), $(".reply-box textarea").val(""))
+        },
+        i = function(t) {
+            $(".reply-box").attr("data-fid", t)
+        },
+        o = 1;
+    ({
+        reply: page_config.reply,
+        toTop: page_config.toTop,
+        essence: page_config.essence,
+        like: !1,
+        $postInfoOperator: $(".post-info .j-operator"),
+        init: function() {
+            this.addEVent()
+        },
+        addEVent: function() {
+            var o = this;
+            this.$postInfoOperator.find(".essence").on("click", function() {
+                if (!page_config.username) return pop_login(), !1;
+                o.essence ? $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/best",
+                    data: {},
+                    type: "DELETE",
+                    success: function(t) {
+                        t.success ? (o.essence = !1, o.$postInfoOperator.find(".essence").text("精华")) : layerPop.openEmptyTips(t.msg)
+                    },
+                    error: function(t) {}
+                }) : $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/best",
+                    data: {},
+                    type: "PUT",
+                    success: function(t) {
+                        t.success ? (o.$postInfoOperator.find(".essence").text("取消精华"), o.essence = !0) : layerPop.openEmptyTips(t.msg)
+                    },
+                    error: function(t) {}
+                })
+            }), this.$postInfoOperator.find(".to-top").on("click", function() {
+                if (!page_config.username) return pop_login(), !1;
+                o.toTop ? $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/top",
+                    data: {},
+                    type: "DELETE",
+                    success: function(t) {
+                        t.success ? (o.toTop = !1, o.$postInfoOperator.find(".to-top").text("置顶")) : layerPop.openEmptyTips(t.msg)
+                    },
+                    error: function(t) {}
+                }) : $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/top",
+                    data: {},
+                    type: "PUT",
+                    success: function(t) {
+                        t.success ? (o.$postInfoOperator.find(".to-top").text("取消置顶"), o.toTop = !0) : layerPop.openEmptyTips(t.msg)
+                    },
+                    error: function(t) {}
+                })
+            }), this.$postInfoOperator.find(".forbid").on("click", function() {
+                if (!page_config.username) return pop_login(), !1;
+                o.reply ? $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/allowreply",
+                    data: {},
+                    type: "DELETE",
+                    success: function(t) {
+                        location.reload()
+                    },
+                    error: function(t) {}
+                }) : $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/allowreply ",
+                    data: {},
+                    type: "PUT",
+                    success: function(t) {
+                        t.success && location.reload()
+                    },
+                    error: function(t) {}
+                })
+            }), this.$postInfoOperator.find(".del ").on("click", function() {
+                function e(e) {
+                    var p = $("#pid").val();
+                    e = e || "", $.ajax({
+                        url: "/modules/forum/delpost.php",
+                        data: {fid:page_config.fid,tid:page_config.topicId,pid:p,ajax_gets:1},
+                        type: "POST",
+                        success: function(t) {
+                            t = eval(t);
+                            if (true === t.success) {
+                                $(".del_Layer_div").hide(), layerPop.openTips(t.message), setTimeout(function() {
+                                    location.href = "/modules/forum/topiclist.php?fid=" + page_config.fid
+                                }, 2e3)
+                            }
+                            else{
+                                $(".del_Layer_div").hide();
+                                layer.msg(t.message, {icon: 2,shade: .3});
+                            }
+                        },
+                        error: function(t) {}
+                    })
+                }
+                if (!page_config.username) return pop_login(), !1;
+                var i = null;
+                1 == page_config.admin && 0 == page_config.me ? ($(".poupout").show(), $(".delreason>span").removeClass("delreasonOn"), $(".delreason  .delarea").val(""), $(".dcancelbtn,.popclose").off().on("click", function() {
+                    $(".poupout").hide()
+                }), $(".delreason>span").off().on("click", function() {
+                    $(this).addClass("delreasonOn").siblings().removeClass("delreasonOn").parents(".delreason").siblings(".delarea").children().removeClass("delreasonOn").val(""), i = $(this).text(), $(".poupout .warning").removeClass("showOn")
+                }), $(".deltext").off().on("click", function() {
+                    $(this).addClass("delreasonOn").parents(".delarea").siblings(".delreason").children().removeClass("delreasonOn")
+                }), $(".deltext").blur(function() {
+                    i = $(this).val()
+                }), $(".dconfirmbtn").off().on("click", function() {
+                    return "" == i || null == i ? ($(".poupout .warning").addClass("showOn").text("请选择或填写删除理由"), !1) : i.length < 5 || i.length > 20 ? ($(".poupout .warning").addClass("showOn").text("请填写5-20个字"), !1) : ($(".poupout").hide(), void e("?reason=" + i))
+                })) : (1 == page_config.me && page_config.admin, $("body,.del_Layer_div").fadeIn(300).height($(window).height()).addClass("addOn"), $(".del_Layer_close,.del_Layer_no").off().on("click", function() {
+                    $(".del_Layer_div").fadeOut(300), $("body").removeClass("addOn")
+                }), $(".del_Layer_yes").off().on("click", function() {
+                    e()
+                }))
+            }), $(".post-bottom .j-like").on("click", function() {
+                if (!page_config.username) return pop_login(), !1;
+                var e = this;
+                $.ajax({
+                    url: "/ajax/favorite/" + t + "/19/set",
+                    data: {},
+                    type: "POST",
+                    success: function(t) {
+                        $(e).find(".heart-number").text("(" + t.favor + ")")
+                    },
+                    error: function(t) {}
+                })
+            }), $(".post-bottom .j-reply").on("click", function() {
+                if (!page_config.username) return pop_login(), !1;
+                var t = $(".post-info .creator .name").text();
+                e(t), i()
+            })
+        }
+    }).init();
+    var s = {
+        hasAddEvent: !1,
+        $reply: $(".reply-content"),
+        init: function() {
+            this.getReply(1, t)
+        },
+        createReply: function(t, e) {
+            var i = this;
+            $.extend(t, {
+                reply: page_config.reply,
+                isAdmin: page_config.admin
+            });
+            var s = Handlebars.compile($("#reply-template").html());
+            $(".reply-content").html(s(t)), this.addEvent(), t.pageCount > 1 && $(".page-box .pages").pagination({
+                hoverCls: "ui_hoverbgbd",
+                activeCls: "ui_bg_bdcolor",
+                pageAll: t.pageCount,
+                current: t.currentPage,
+                callback: function(t) {
+                    var s = t.getCurrent();
+                    i.getReply(s, e), o = s
+                }
+            }, function(t) {})
+        },
+        getReply: function(t, e) {
+            var i = this;
+            $.ajax({
+                url: "/modules/forum/showtopic.php",
+                data: {
+                    tid: e,
+                    page: t,
+                    ajax_gets: 1
+                },
+                type: "GET",
+                success: function(t) {
+                    t.items.length > 0 ? i.$reply.show() : i.$reply.hide(), i.createReply(t, e), i.updatePageReply(i.getAllReply())
+                },
+                error: function(t) {}
+            })
+        },
+        addEvent: function() {
+            if (this.hasAddEvent) return !1;
+            this.hasAddEvent = !0, this.$reply.on("click", ".del", function() {
+                var p = $(this).parents(".item").data("pid"),
+                    f = page_config.fid;
+                function e(e) {
+                    e = e || "", $.ajax({
+                        url: "/modules/forum/delpost.php",
+                        data: {
+                            fid: f,
+                            tid: t,
+                            pid: p,
+                            ajax_gets: 1
+
+                        },
+                        type: "get",
+                        success: function(e) {
+                            e = eval(e);
+                            if (e.success === true) {
+                                layer.msg(e.message, {icon: 1,shade: .3}), page_config.allReplyNum = page_config.allReplyNum - n, s.getReply(o, t), $(".del_Layer_div").hide()
+                            }
+                            else{
+                                layer.msg(e.message, {icon: 2,shade: .3});
+                            }
+                        },
+                        error: function(t) {}
+                    })
+                }
+                if (!page_config.username) return pop_login(), !1;
+                if ($(this).parents(".item-reply-next").length > 0) var i = $(this).parents(".item-reply-next").data("replyreply"),
+                    n = 1,
+                    a = "true" == $(this).parents(".item-reply-next").attr("data-isme");
+                else var i = $(this).parents(".item").data("pid"),
+                    n = $(this).parents(".item").find(".item-reply-next").length + 1,
+                    a = "true" == $(this).parents(".item").attr("data-isme");
+                if (a) $("body,.del_Layer_div").fadeIn(300), $(".del_Layer_close,.del_Layer_no").off().on("click", function() {
+                    $(".del_Layer_div").fadeOut(300), $("body").removeClass("addOn")
+                }), $(".del_Layer_yes").off().on("click", function() {
+                    e()
+                });
+                else {
+                    $(".poupout").show(), $(".delreason>span").removeClass("delreasonOn"), $(".delreason  .delarea").val(""), $(".dcancelbtn,.popclose").off().on("click", function() {
+                        $(".poupout").hide()
+                    });
+                    var l = null;
+                    $(".delreason>span").off().on("click", function() {
+                        $(this).addClass("delreasonOn").siblings().removeClass("delreasonOn").parents(".delreason").siblings(".delarea").children().removeClass("delreasonOn").val(""), l = $(this).text(), $(".poupout .warning").removeClass("showOn")
+                    }), $(".deltext").off().on("click", function() {
+                        $(this).addClass("delreasonOn").parents(".delarea").siblings(".delreason").children().removeClass("delreasonOn")
+                    }), $(".deltext").blur(function() {
+                        l = $(this).val()
+                    }), $(".dconfirmbtn").off().click(function() {
+                        return l ? l.length < 5 || l.length > 20 ? ($(".poupout .warning").addClass("showOn").text("请填写5-20个字"), !1) : ($(".poupout").hide(), void e("?reason=" + l)) : ($(".poupout .warning").addClass("showOn").text("请选择或填写删除理由"), !1)
+                    })
+                }
+            }), this.$reply.on("click", ".j-checkmore", function() {
+                var t = $(this).parent().siblings(".reply-next");
+                if ("no" == $(this).data("open")) {
+                    t.find(".item-reply-next-hidden").show(), $(this).text("点击收起");
+                    var e = t.find(".item-reply-next").length;
+                    $(this).siblings(".checkmore-number").text("共" + e + "条回复"), $(this).data("open", "yes")
+                } else {
+                    t.find(".item-reply-next-hidden").hide(), $(this).text("点击查看");
+                    var e = t.find(".item-reply-next-hidden").length;
+                    $(this).siblings(".checkmore-number").text("剩余" + e + "条回复"), $(this).data("open", "no")
+                }
+            }), this.$reply.on("click", ".j-reply", function() {
+                if (!page_config.username) return pop_login(), !1;
+                var t = "",
+                    o = "";
+                t = $(this).parents(".item-main").length > 0 ? $(this).parents(".item-main").find(".j-authorname").text() : $(this).parents(".item-reply-next").attr("data-replyname"), o = $(this).parents(".item").data("pid"), e(t), i(o)
+            })
+        },
+        updatePageReply: function(t) {
+            $(".post-info .reply-number").text("回复数：" + t), $(".page-box .page-box-reply").text("共" + t + "条回复")
+        },
+        getAllReply: function(t) {
+            return page_config.allReplyNum
+        }
+    };
+    s.init(), $(".reply-box").replyMod({
+        replyCb: function() {
+            page_config.allReplyNum++, s.getReply(o, t), s.updatePageReply(page_config.allReplyNum)
+        }
+    });
+    var n = {
+            show: function() {
+                $("#floatbox .mask").fadeIn(200)
+            },
+            hide: function() {
+                $("#floatbox .mask").fadeOut(1)
+            }
+        },
+        a = {
+            isAddEvent: !1,
+            currentPage: 1,
+            pageCount: null,
+            init: function(t) {
+                this.getBookShelf(t), this.currentPage = t, this.addEvent(), this.windowResize()
+            },
+            addEvent: function() {
+                if (!this.isAddEvent) {
+                    this.isAddEvent = !0;
+                    var e = this,
+                        i = this,
+                        o = $("#floatbox .bookshelfbox"),
+                        s = function(t) {
+                            t.addClass("checked")
+                        },
+                        n = function(t) {
+                            t.removeClass("checked")
+                        },
+                        r = function(t) {
+                            t.addClass("disabled")
+                        },
+                        c = function() {
+                            var t = !0;
+                            return o.find(".popbox .select").each(function() {
+                                $(this).hasClass("checked") || (t = !1)
+                            }), t
+                        };
+                    o.on("click", ".popbox .select", function() {
+                        $(this).hasClass("disabled") || ($(this).hasClass("checked") ? n($(this)) : s($(this)), c() ? s(o.find(".pbotw .select")) : n(o.find(".pbotw .select")))
+                    }), o.on("click", ".pbotw .select", function() {
+                        $(this).hasClass("disabled") || ($(this).hasClass("checked") ? (n(o.find(".popbox .select")), n($(this))) : (o.find(".popbox .select").each(function() {
+                            $(this).hasClass("disabled") || s($(this))
+                        }), s($(this))))
+                    });
+                    var m = function(e, i) {
+                        $.ajax({
+                            url: "/ajax/bbs/topics/" + t + "/books",
+                            data: {
+                                bookIds: e
+                            },
+                            type: "POST",
+                            success: function(t) {
+                                i && i(t)
+                            },
+                            error: function(t) {}
+                        })
+                    };
+                    o.on("click", ".j-single-add", function() {
+                        if ($(this).hasClass("disabled")) return !1;
+                        var t = this,
+                            e = $(this).parents(".popbooklist").attr("data-bookid");
+                        $(t).text();
+                        "true" != $(this).attr("data-inreading") && m(e, function(e) {
+                            $(t).css("cursor", "text"), layerPop.openTips("已加入书单"), $(t).text("已在书单"), $(t).attr("data-inreading", "true"), n($(t).parents(".popbooklist").find(".select")), r($(t).parents(".popbooklist").find(".select")), n(o.find(".popbot .select")), i.setSelectAllDisable()
+                        })
+                    });
+                    var f = !1;
+                    o.on("click", ".j-batch-add", function() {
+                        if (!f) {
+                            f = !0;
+                            var t = [],
+                                i = [];
+                            if (o.find(".popbooklist").each(function(e, o) {
+                                    $(this).find(".checked").length > 0 && (t.push($(this).data("bookid")), i.push($(this)))
+                                }), t.length <= 0) return o.find(".pop_tips").addClass("show"), void(f = !1);
+                            o.find(".pop_tips").removeClass("show");
+                            var s = t.toString();
+                            m(s, function(t) {
+                                layerPop.openTips("已加入书单"), n(o.find(".popbox .select")), n(o.find(".popbot .select")), setTimeout(function() {
+                                    f = !1
+                                }, 3e3), $.each(i, function(t, e) {
+                                    $(e).find(".j-single-add").text("已在书单"), r($(e).find(".select"))
+                                }), e.setSelectAllDisable()
+                            })
+                        }
+                    }), o.on("click", ".page_next", function() {
+                        e.currentPage < e.pageCount && a.init(e.currentPage + 1)
+                    }), o.on("click", ".page_prev", function() {
+                        e.currentPage > 1 && a.init(e.currentPage - 1)
+                    }), o.on("click", ".popclose", function() {
+                        l.init()
+                    })
+                }
+            },
+            getBookShelf: function(e) {
+                var i = this;
+                $.ajax({
+                    url: "/ajax/bbs/topics/" + t + "/bookshelf",
+                    type: "GET",
+                    data: {
+                        pageNo: e
+                    },
+                    success: function(t) {
+                        i.createBookShelf(t), i.pageCount = t.pageCount, i.currentPage = t.currentPage, i.setSelectAllDisable()
+                    },
+                    error: function(t) {}
+                })
+            },
+            createBookShelf: function(t) {
+                var e = Handlebars.compile($("#bookshelflist-template").html());
+                $("#floatbox .bookshelfbox").html(e(t)), this.adjustPos(), $("#floatbox .bookshelfbox").fadeIn(200), n.show()
+            },
+            adjustPos: function() {
+                $(".popbox").height($(window).height() / 2);
+                var t = $("#floatbox .bookshelfbox").height();
+                $("#floatbox .bookshelfbox").css({
+                    marginTop: -t / 2,
+                    top: "50%"
+                })
+            },
+            setSelectAllDisable: function() {
+                var t = $("#floatbox .bookshelfbox"),
+                    e = !0;
+                t.find(".popbox .select").each(function() {
+                    $(this).hasClass("disabled") || (e = !1)
+                }), e ? t.find(".pbotw .select").addClass("disabled") : t.find(".pbotw .select").removeClass("disabled")
+            },
+            windowResize: function() {
+                var t = this;
+                $(window).on("resize", function() {
+                    t.adjustPos()
+                })
+            }
+        };
+    ({
+        init: function() {
+            this.addEvent()
+        },
+        addEvent: function() {
+            $("#floatbox").on("click", ".popclose", function() {
+                $(this).parents(".popup").hide(), n.hide()
+            })
+        }
+    }).init();
+    var l = {
+        isAddEvent: !1,
+        bookListData: {},
+        init: function() {
+            this.getBookList(t), this.addBookEvent()
+        },
+        getBookList: function(t) {
+            var e = this;
+            $.ajax({
+                url: "/ajax/bbs/topics/" + t + "/books",
+                data: {
+                    topicid: t
+                },
+                type: "GET",
+                success: function(t) {
+                    e.createBookList(t), e.bookListData = t
+                }
+            })
+        },
+        createBookList: function(t) {
+            t = $.extend({}, t, {
+                me: page_config.me
+            });
+            var e = Handlebars.compile($("#booklist-template").html());
+            $(".post-booklist").html(e(t))
+        },
+        addBookEvent: function() {
+            if (!this.isAddEvent) {
+                this.isAddEvent = !0;
+                var e = this;
+                $(".post-booklist").on("click", ".j-addbook-btn", function() {
+                    a.init(1)
+                }), $(".post-booklist").on("click", ".addshelf", function() {
+                    if (!page_config.username) return pop_login(), !1;
+                    var t = $(this).parents(".item").data("bookid"),
+                        e = this;
+                    if ("已在书架" == $(this).text()) return !1;
+                    $.ajax({
+                        url: "/ajax/book/" + t + "/bookshelf/add",
+                        data: {},
+                        type: "GET",
+                        success: function(t) {
+                            t.success ? (layerPop.openTips("已加入书架"), $(e).text("已在书架"), $(e).removeClass("ui_hoverbgbgwhite"), $(e).css("cursor", "text")) : ($(e).removeClass("ui_hoverbgbgwhite"), $(e).css("cursor", "text"), layerPop.openTips("已在书架"), $(e).text("已在书架"))
+                        },
+                        error: function(t) {}
+                    })
+                }), $(".post-booklist").on("click", ".edit", function() {
+                    var t = $(this).parents(".item").index(".item"),
+                        i = e.bookListData.items[t],
+                        o = Handlebars.compile($("#editbook-template").html());
+                    $(".j_pop_comment").html(o(i)), $("#floatbox .j_pop_comment").fadeIn(200), n.show()
+                }), $(".post-booklist").on("click", ".del", function() {
+                    var e = $(this).parents(".item").attr("data-bookid");
+                    $(".del_Layer_div").fadeIn(300), layerPop.close(), $(".del_Layer_close,.del_Layer_no").click(function() {
+                        $(".del_Layer_div").fadeOut(300), $("body").removeClass("addOn")
+                    }), $(".del_Layer_yes").off().on("click", function() {
+                        $.ajax({
+                            url: "/ajax/bbs/topics/" + t + "/books/" + e,
+                            data: {},
+                            type: "DELETE",
+                            success: function(t) {
+                                l.init(), $(".del_Layer_div").hide(), layerPop.openTips("删除成功")
+                            },
+                            error: function(t) {}
+                        })
+                    })
+                }), $("#floatbox .j_pop_comment").on("click", ".dconfirmbtn", function() {
+                    var e = $(this).parents(".popbox").attr("data-bookid"),
+                        i = $(this).parents(".popbox").find("textarea").val();
+                    $.ajax({
+                        url: "/ajax/bbs/topics/" + t + "/books/" + e,
+                        type: "PUT",
+                        data: JSON.stringify({
+                            remark: i
+                        }),
+                        contentType: "application/json",
+                        success: function(t) {
+                            $(".j_pop_comment").hide(), n.hide(), l.init()
+                        },
+                        error: function(t) {}
+                    })
+                }), $("#floatbox .j_pop_comment").on("click", ".dcancelbtn", function() {
+                    $(".j_pop_comment").hide(), n.hide()
+                }), $("#floatbox .j_pop_comment").on("input propertychange", ".commont_txt", function() {
+                    var t = $(this).val(),
+                        e = t.length;
+                    e > 50 && ($(this).val(t.substr(0, 50)), e = 50), $(this).siblings(".num").text(e + "/50字")
+                })
+            }
+        }
+    };
+    3 == page_config.type && l.init()
+}), function(t, e, i, o) {
+    var s = (t(e), null);
+    t.fn.replyMod = function(i) {
+        var o = this,
+            n = (page_config.topciId, this.find("textarea")),
+            a = i.replyCb,
+            l = {
+                phizTemplate: "<div class='phiz_layerN'>                         <div class='layerBoxTop'>                             <div style='left:6px;' class='layerArrow'></div>                             <div class='topCon'>                                 <a class='close' title='关闭' id='closeEmotion' onclick='return false;' href='#'></a>                                 <div class='clearit'></div>                             </div>                         </div>                         <div class='faceItemPicbg'>                             <ul id='emotionList'>                                 <li title=\"DD猫:亲亲\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/亲亲.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:偷笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/偷笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:傻笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/傻笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:吐舌头\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/吐舌头.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:吓\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/吓.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:啊呀呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/啊呀呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:喊\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/喊.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:嗨\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/嗨.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:大哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/大哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:委屈\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/委屈.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:害羞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/害羞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:尴尬\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/尴尬.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:快哭了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/快哭了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:怒\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/怒.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:惊恐\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/惊恐.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:想哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/想哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:打你\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/打你.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:拥抱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/拥抱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:撇嘴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/撇嘴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:敲门\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/敲门.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:无聊\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/无聊.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:流口水\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/流口水.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:流泪\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/流泪.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:色\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/色.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:花痴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/花痴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:跳舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/跳舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"DD猫:鄙视\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/DD猫/鄙视.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:你呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/你呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:倒霉\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/倒霉.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:共舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/共舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:冒个泡\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/冒个泡.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:刷屏\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/刷屏.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:叨米\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/叨米.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:吃饭啦\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/吃饭啦.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:呀呀呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/呀呀呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:喷嚏\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/喷嚏.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:嘲笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/嘲笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:噢哦喔\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/噢哦喔.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:四筒\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/四筒.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:囧\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/囧.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:好害怕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/好害怕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:好日子\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/好日子.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:委屈\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/委屈.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:孤芳自赏\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/孤芳自赏.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:宅男\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/宅男.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:害怕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/害怕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:就是你了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/就是你了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:幺鸡哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/幺鸡哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:开心\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/开心.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:开笼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/开笼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:往这打\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/往这打.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:打我呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/打我呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:抓抓铜\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/抓抓铜.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:抓狂\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/抓狂.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:捂脸\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/捂脸.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:接吻\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/接吻.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:搓洗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/搓洗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:撒娇\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/撒娇.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:撒花\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/撒花.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:救命\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/救命.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:教训\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/教训.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:晒钱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/晒钱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:晕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/晕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:枣上好\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/枣上好.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:求饶\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/求饶.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:沐猴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/沐猴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:泪奔\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/泪奔.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:流鼻血\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/流鼻血.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:游泳\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/游泳.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:激动\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/激动.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:炫舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/炫舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:炸弹\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/炸弹.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:牛牛舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/牛牛舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:狂踩\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/狂踩.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:狠开心\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/狠开心.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:玉足\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/玉足.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:玩摇滚\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/玩摇滚.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:电锯\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/电锯.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:疯了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/疯了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:皮鞭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/皮鞭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:盛装扭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/盛装扭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:示爱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/示爱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:肚皮舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/肚皮舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:背出血\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/背出血.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:舞闪亮\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/舞闪亮.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:花痴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/花痴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:诱惑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/诱惑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:跳舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/跳舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:郁闷\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/郁闷.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:钢管舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/钢管舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:铁头功\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/铁头功.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:静静哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/静静哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:魔怔\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/魔怔.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:鸭子舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/鸭子舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"小幺鸡:麦霸\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/小幺鸡/麦霸.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:上吊\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/上吊.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:下去\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/下去.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:不开森\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/不开森.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:乖\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/乖.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:发呆\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/发呆.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:吹口哨\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/吹口哨.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:哼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/哼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:大哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/大哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:奔跑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/奔跑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:害羞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/害羞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:心烦\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/心烦.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:恐怖\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/恐怖.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:惊讶\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/惊讶.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:打这里\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/打这里.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:抓狂\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/抓狂.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:拍\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/拍.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:挡嘴巴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/挡嘴巴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:无聊\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/无聊.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:期待\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/期待.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:欢迎\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/欢迎.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:没呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/没呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:热\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/热.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:爬\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/爬.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:生气\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/生气.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:疑问\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/疑问.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:看啥看\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/看啥看.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:累死了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/累死了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:翻墙\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/翻墙.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:脸操\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/脸操.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:色眯眯\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/色眯眯.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:警告\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/警告.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:走开\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/走开.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:路过\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/路过.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:跳绳\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/跳绳.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:跳舞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/跳舞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:郁闷\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/郁闷.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:陶醉\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/陶醉.gif\" height=\"20\" width=\"20\"></a></li><li title=\"潘斯特:震了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/潘斯特/震了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:下雨天\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/下雨天.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:不懂爱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/不懂爱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:受死吧\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/受死吧.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:哎呀哎\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/哎呀哎.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:好可怕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/好可怕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:害羞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/害羞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:我的泪\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/我的泪.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:插花\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/插花.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:收了你\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/收了你.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:日\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/日.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:淹了你\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/淹了你.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:看妖怪\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/看妖怪.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:碧莲\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/碧莲.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:老中医\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/老中医.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:老秃驴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/老秃驴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:耳边说\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/耳边说.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:药不停\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/药不停.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:蛇精病\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/蛇精病.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:诅咒你\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/诅咒你.gif\" height=\"20\" width=\"20\"></a></li><li title=\"白娘子:赏点吧\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/白娘子/赏点吧.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:NO\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/NO.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:OK\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/OK.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:亲亲\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/亲亲.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:便便\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/便便.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:偷笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/偷笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:傲慢\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/傲慢.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:再见\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/再见.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:冷汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/冷汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:凋谢\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/凋谢.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:刀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/刀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:勾引\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/勾引.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:发怒\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/发怒.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:可怜\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/可怜.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:可爱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/可爱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:右哼哼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/右哼哼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:吐\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/吐.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:吓\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/吓.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:呲牙\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/呲牙.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:咖啡\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/咖啡.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:哈欠\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/哈欠.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:嘘\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/嘘.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:困\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/困.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:坏笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/坏笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:大兵\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/大兵.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:大哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/大哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:太阳\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/太阳.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:奋斗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/奋斗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:委屈\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/委屈.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:害羞\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/害羞.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:尴尬\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/尴尬.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:左哼哼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/左哼哼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:差劲\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/差劲.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:弱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/弱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:强\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/强.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:得意\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/得意.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:微笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/微笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:心碎\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/心碎.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:快哭了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/快哭了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:惊呆\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/惊呆.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:惊恐\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/惊恐.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:憨笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/憨笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:抓狂\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/抓狂.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:抠鼻\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/抠鼻.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:抱抱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/抱抱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:抱拳\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/抱拳.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:拳头\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/拳头.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:握手\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/握手.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:撇嘴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/撇嘴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:敲打\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/敲打.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:晕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/晕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:月亮\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/月亮.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:炸弹\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/炸弹.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:爱你\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/爱你.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:爱心\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/爱心.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:猪头\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/猪头.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:玫瑰\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/玫瑰.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:瓢虫\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/瓢虫.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:疑问\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/疑问.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:白眼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/白眼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:睡觉\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/睡觉.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:示爱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/示爱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:礼物\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/礼物.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:糗大了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/糗大了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:色\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/色.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:菜刀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/菜刀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:蛋糕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/蛋糕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:衰\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/衰.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:调皮\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/调皮.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:鄙视\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/鄙视.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:酷\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/酷.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:闪电\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/闪电.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:闭嘴\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/闭嘴.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:阴险\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/阴险.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:难过\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/难过.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:饥饿\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/饥饿.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:饭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/饭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:骷髅\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/骷髅.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:鼓掌\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/鼓掌.gif\" height=\"20\" width=\"20\"></a></li><li title=\"经典:鼻涕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/经典/鼻涕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:亲亲\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/亲亲.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:偷笑\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/偷笑.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:冷汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/冷汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:压力\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/压力.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:可爱\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/可爱.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:咬我呀\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/咬我呀.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:哪里走\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/哪里走.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:哭\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/哭.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:哭泣\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/哭泣.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:喷水\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/喷水.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:囧\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/囧.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:奋进\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/奋进.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:害怕\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/害怕.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:尴尬\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/尴尬.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:开窍\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/开窍.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:怒\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/怒.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:思考\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/思考.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:惊吓\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/惊吓.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:想想\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/想想.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:感冒\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/感冒.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:打鼓\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/打鼓.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:掐一掐\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/掐一掐.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:撒娇\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/撒娇.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:擦汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/擦汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:敲打\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/敲打.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:无聊\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/无聊.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:有了\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/有了.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:杯具\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/杯具.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:汗\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/汗.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:玫瑰\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/玫瑰.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:疼\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/疼.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:看看\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/看看.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:舔\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/舔.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:调皮\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/调皮.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:路过\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/路过.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:转\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/转.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:闪\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/闪.gif\" height=\"20\" width=\"20\"></a></li><li title=\"非常龟:骷髅\"><a href=\"#\" onclick=\"return!1\"><img src=\"/images/emot/非常龟/骷髅.gif\" height=\"20\" width=\"20\"></a></li>                             </ul>                             <div class='clearit'></div>                         </div>                     </div>",
+                initphiz: function(e) {
+                    var i = this;
+                    null == s ? (s = t(this.phizTemplate), t("body").append(s), s.show(), s.find("li").on("click", function() {
+                        var i = e.val(),
+                            o = "[" + t(this).attr("title") + "]";
+                        e.val(i + o)
+                    }), s.find(".close").on("click", function() {
+                        i.hideFaceBox()
+                    })) : i.showFaceBox()
+                },
+                hideFaceBox: function() {
+                    s && s.hide(), this.unRegisterWindowEvent()
+                },
+                showFaceBox: function() {
+                    s && s.show()
+                },
+                setFaceBoxPos: function(t) {
+                    var e = t.offset().left,
+                        i = t.offset().top;
+                    s.css({
+                        left: e - 2,
+                        top: i + 28
+                    })
+                },
+                registerWindowEvent: function() {
+                    var i = this;
+                    t(e).on("resize scroll", function() {
+                        i.setFaceBoxPos(o.find(".face"))
+                    }).on("click", function(e) {
+                        0 != t(e.target).parents(".phiz_layerN").length || t(e.target).hasClass("face") || i.hideFaceBox()
+                    })
+                },
+                unRegisterWindowEvent: function() {
+                    t(e).off("resize scroll click")
+                }
+            };
+        return this.find(".face").on("click", function() {
+            l.initphiz(n), l.setFaceBoxPos(t(this)), l.registerWindowEvent()
+        }), this.find(".replying").on("click", function() {
+            if (!page_config.username) return pop_login(), !1;
+            var e = n.val();
+            if (e.replace(/\s/g, "").length < 5) return o.find(".err-tips").addClass("show"), !1;
+            o.find(".err-tips").removeClass("show");
+            var i = o.attr("data-tid"),
+                c = o.find("#checkcode").val(),
+                s = o.attr("data-fid");
+            if ("" == s) t.ajax({
+                url: "/modules/forum/newpost.php",
+                data: {
+                    do: "submit",
+                    posttext: e,
+                    fid: s,
+                    tid: i,
+                    act: "newpost",
+                    checkcode: c,
+                    jieqi_token: jieqi_token,
+                    ajax_gets: 1
+                },
+                type: "POST",
+                success: function(t) {
+                    t = eval(t);
+                    o.find("#p_imgccode").click(),o.find("#checkcode").val("");
+                    false === t.success ? o.find(".err-tips").text(t.message).addClass("show") : layerPop.openTips(t.message), n.val(""), "function" == typeof a && a();
+                },
+                error: function(t) {}
+            });
+            else {
+                var l = o.find(".replyer").text() + e;
+                t.ajax({
+                    url: "/modules/forum/newpost.php",
+                    data: {
+                        do: "submit",
+                        posttext: e,
+                        fid: s,
+                        tid: i,
+                        act: "newpost",
+                        checkcode: c,
+                        jieqi_token: jieqi_token,
+                        ajax_gets: 1
+                    },
+                    type: "POST",
+                    success: function(t) {
+                        t = eval(t);
+                        o.find("#p_imgccode").click(),o.find("#checkcode").val("");
+                        false === t.success ? o.find(".err-tips").text(t.message).addClass("show") : layerPop.openTips(t.message), n.val(""), "function" == typeof a && a();
+                    },
+                    error: function(t) {}
+                })
+            }
+        }), this.find("textarea").on("focus", function() {
+            var e = o.find(".replyer").width() + 10;
+            t(this).css("textIndent", e)
+        }).on("blur", function() {
+            n.val().replace(/\s/g, "").length < 5 ? o.find(".err-tips").addClass("show") : o.find(".err-tips").removeClass("show")
+        }), this
+    }
+}(jQuery, window, document);

@@ -1,0 +1,117 @@
+.m-left, .m-left .selectMod, .m-left table {
+  overflow: hidden; }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+body, html {
+  font-family: 'PingFang SC', 'Myriad Pro', 'Hiragino Sans GB', 'microsoft yahei' !important;
+  -webkit-font-smoothing: antialiased;
+  background: #fafafa !important; }
+
+.m-left {
+  padding: 0 40px 50px;
+  width: 1030px;
+  float: left;
+  background: #fff; }
+
+.m-left .m-title {
+  margin: 20px 0 30px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 22px;
+  color: #323232;
+  border-bottom: solid 1px #e6e6e6; }
+
+.m-left .selectMod input, .m-left .selectMod select {
+  display: inline-block;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  outline: 0; }
+
+.m-left .m-title a {
+  color: #999; }
+
+.m-left .selectMod select {
+  margin-right: 20px;
+  color: #666;
+  background: #f3f3f3;
+  border: none;
+  width: 180px;
+  border-radius: 4px; }
+
+.m-left .selectMod input {
+  border: none;
+  width: 120px;
+  text-align: center;
+  color: #fff;
+  background: #21ade5;
+  border-radius: 4px; }
+
+.m-left .h3 {
+  margin: 30px 0 20px;
+  color: #323232;
+  font-size: 18px;
+  font-weight: 700; }
+
+.m-left table {
+  display: block;
+  width: 950px;
+  font-size: 14px;
+  color: #666;
+  border-left: solid 1px #ccc;
+  border-bottom: solid 1px #ccc; }
+
+.m-left table tr.head {
+  font-size: 16px;
+  height: 50px;
+  line-height: 50px;
+  background: #eef7fa;
+  text-align: center; }
+
+.m-left table td {
+  height: 36px;
+  line-height: 36px;
+  border-top: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+  overflow: hidden;
+  width: 190px;
+  text-align: center; }
+
+.m-left table.gfTable td {
+  width: 190px; }
+
+.m-left table.gfTable td.remarks {
+  text-align: left;
+  padding: 0 10px 0 20px;
+  width: 380px; }
+
+.m-left table.qqTable td {
+  width: 100px; }
+
+.m-left table.qqTable td.time {
+  width: 180px; }
+
+.m-left table.qqTable td.chapter {
+  padding: 0 10px 0 20px;
+  width: 280px;
+  text-align: left; }
+
+.m-left table.qqTable td.num {
+  width: 175px; }
+
+.m-left table.qqTable td.money {
+  width: 120px; }
+
+.m-left table.qqTable td.total {
+  text-align: left;
+  padding-left: 75px; }
+
+.mod-m p {
+  float: left; }
+

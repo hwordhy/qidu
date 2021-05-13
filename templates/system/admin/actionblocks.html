@@ -1,0 +1,54 @@
+<form action="{?$jieqi_url?}/admin/actionfiles.php?module={?$module|urlencode?}&filename={?$filename|urlencode?}" method="post">
+<table class="grid" width="95%" align="center">
+  <caption>
+  “{?$blockfile['caption']?}”动作配置管理  &nbsp; [<a href="{?$jieqi_url?}/admin/actionfiles.php?act=files">返回区块配置文件列表</a>]
+  </caption>
+  <tr>
+    <td align="center">动作名称</td>
+	<td align="center">所属模块</td>
+	<td align="center">动作序号</td>
+	<td align="center">最低积分执行</td>
+	<td align="center">是否记日志</td>
+	<td align="center">是否发书评</td>
+    <td align="center">是否VIP动作</td>
+	<td align="center">是否有消费</td>
+	<td align="center">消费名称</td>
+	<td align="center">消费基数值</td>
+	<td align="center">最小消费值</td>
+	<td align="center">最大消费值</td>
+    <td align="center">获得积分</td>
+	<td align="center">获得贡献</td>
+	<td align="center">注册最小值</td>
+	<td align="center">注册最大值</td>
+    <td align="center">操作</td>
+  </tr>
+{?section name=i loop=$action?}
+  <tr>
+    <td align="center">{?$action[i].acttitle?}</td>
+	<td align="center">{?$modname?}</td>
+	<td align="center">{?$i.key?}<input type="hidden" name="key[{?$i.key?}]" id="key[{?$i.key?}]" value="{?$i.key?}" /></td>
+	<td align="center"><input class="text" type="text" name="minscore[{?$i.key?}]" id="minscore[{?$i.key?}]" value="{?$action[i].minscore?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="islog[{?$i.key?}]" id="islog[{?$i.key?}]" value="{?$action[i].islog?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="isreview[{?$i.key?}]" id="isreview[{?$i.key?}]" value="{?$action[i].isreview?}" size="4" maxlength="8" {?if $module == "system"?}readonly{?/if?}></td>
+	<td align="center"><input class="text" type="text" name="isvip[{?$i.key?}]" id="isvip[{?$i.key?}]" value="{?$action[i].isvip?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="ispay[{?$i.key?}]" id="ispay[{?$i.key?}]" value="{?$action[i].ispay?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="paytitle[{?$i.key?}]" id="paytitle[{?$i.key?}]" value="{?$action[i].paytitle?}"></td>
+	<td align="center"><input class="text" type="text" name="paybase[{?$i.key?}]" id="paybase[{?$i.key?}]" value="{?$action[i].paybase?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="paymin[{?$i.key?}]" id="paymin[{?$i.key?}]" value="{?$action[i].paymin?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="paymax[{?$i.key?}]" id="paymax[{?$i.key?}]" value="{?$action[i].paymax?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="earnscore[{?$i.key?}]" id="earnscore[{?$i.key?}]" value="{?$action[i].earnscore?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="earncredit[{?$i.key?}]" id="earncredit[{?$i.key?}]" value="{?$action[i].earncredit?}" size="4" maxlength="8"></td>
+	<td align="center"><input class="text" type="text" name="lenmin[{?$i.key?}]" id="lenmin[{?$i.key?}]" value="{?$action[i].lenmin?}" size="4" maxlength="8" {?if $i.key != "register"?}readonly{?/if?}></td>
+	<td align="center"><input class="text" type="text" name="lenmax[{?$i.key?}]" id="lenmax[{?$i.key?}]" value="{?$action[i].lenmax?}" size="4" maxlength="8" {?if $i.key != "register"?}readonly{?/if?}></td>
+    <td align="center"> <a href="{?$jieqi_url?}/admin/actionfiles.php?act=edit&module={?$module|urlencode?}&filename={?$filename|urlencode?}&key={?$i.key|urlencode?}">修改参数</a></td>
+  </tr>
+{?/section?}
+ <tr>
+    <td colspan="17" align="center">
+	  <input type="hidden" name="act" value="updatelist" />{?$jieqi_token_input?}
+      <input class="button" type="submit" name="Submit" value="批量更新参数设置">
+	  <p>说明：参数设置：0表示否，1表示是。</p>
+    </td>
+  </tr>
+</table>
+</form>

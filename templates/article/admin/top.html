@@ -1,0 +1,38 @@
+<table class="grid" width="100%" align="center">
+  <caption>排行榜管理(不懂SQL语句的，请谨慎操作)</caption>
+  <tr align="center">
+    <th>标识</th>
+    <th>标题</th>
+    <th>描述</th>
+	<th>WHERE条件</th>
+	<th>SQL字段</th>
+    <th>排序</th>
+    <th>类型</th>
+    <th>默认</th>
+    <th>状态</th>
+    <th>操作</th>
+  </tr>
+  {?section name=i loop=$top?}
+  <tr>
+    <td align="center">{?$i['key']?}</td>
+    <td align="center">{?$top[i].caption?}</td>
+    <td align="center">{?$top[i].description?}</td>
+	<td align="center">{?$top[i].where?}</td>
+    <td align="center">{?$top[i].sort?}</td>
+    <td align="center">{?if $top[i].order == 'DESC'?}降序{?else?}升序{?/if?}</td>
+    <td align="center">{?if $top[i].isvip > 0?}VIP榜单{?else?}免费榜单{?/if?}</td>
+    <td align="center">{?$top[i].default?}</td>
+	<td align="center">{?if $top[i].publish > 0?}显示{?else?}隐藏{?/if?}</td>
+	<td align="center"><a href="{?$article_static_url?}/admin/top.php?act=edit&tid={?$i['key']?}">编辑</a> <a id="act_delete_{?$i['key']?}" href="javascript:;" onclick="if(confirm('您确实要删除该排行榜么？')) Ajax.Tip('{?$article_static_url?}/admin/top.php?tid={?$i['key']?}&act=delete{?$jieqi_token_url?}', {method: 'POST'});">删除</a></td>
+  </tr>
+  {?/section?}
+  <tr>
+    <td colspan="10" class="foot">提示：WHERE条件 写法：<{$SQL字段}>，比如：allvisit => <{$allvisit}></td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">{?$form_addtop?}</td>
+  </tr>
+</table>

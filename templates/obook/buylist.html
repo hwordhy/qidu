@@ -1,0 +1,71 @@
+{?set jieqi_page_template = "templates/article/myactlog.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "我的足迹-{$jieqi_sitename}"?}
+{?include file="themes/zuopin/user_header.html"?}
+<div class="person clr">
+	<div class="wd1100 clr">
+
+
+		{?include file="themes/zuopin/user_top.html"?}
+
+		<div class="person_cot clr">
+			<div class="person_cot_lt clr fl">
+				<ul>
+					<li class="li2"><a href="{?$jieqi_url?}/userdetail.php"><i></i>我的账户</a></li>
+					<li class="li3"><a href="{?$jieqi_url?}/useredit.php"><i></i>个人资料</a></li>
+					<li class="li1"><a href="{?$jieqi_modules['article']['url']?}/bookcase.php"><i></i>我的书架</a></li>
+					<li class="li4"><a href="{?$jieqi_url?}/message.php?box=inbox"><i></i>消息通知</a></li>
+					<li class="li5 on"><a href="{?$jieqi_modules['article']['url']?}/myactlog.php"><i></i>我的足迹</a></li>
+					<li class="li6"><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php"><i></i>在线充值</a></li>
+					<li class="li7"><a href="{?$jieqi_modules['pay']['url']?}/paylog.php"><i></i>充值记录</a></li>
+					<li class="li8"><a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}"><i></i>退出登录</a></li>
+				</ul>
+			</div>
+
+			<div class="person_cot_rt clr fr">
+				<div class="person_cot_rt_top clr">
+					<a href="{?$jieqi_modules['article']['url']?}/myactlog.php" class="person_cot_rt_top_span fl"><span>所有记录</span></a>
+					<a href="{?$jieqi_modules['article']['url']?}/myactlog.php?act=vipvote" class="person_cot_rt_top_span fl"><span>投月票记录</span></a>
+					<a href="{?$jieqi_modules['article']['url']?}/myactlog.php?act=poll" class="person_cot_rt_top_span fl"><span>投推荐票记录</span></a>
+					<a href="{?$jieqi_modules['article']['url']?}/myactlog.php?act=tip" class="person_cot_rt_top_span fl"><span>捧场记录</span></a>
+					<a href="{?$jieqi_modules['obook']['url']?}/buylog.php" class="person_cot_rt_top_span fl on"><span>订阅记录</span></a>
+				</div>
+
+				<div class="person_cot_rt_table clr">
+					<div class="child_rt_table_hang clr">
+						<ul class="first">
+							<li class="wd780">订阅记录</li>
+							<li class="wd135 rgt">时间</li>
+						</ul>
+					</div>
+					<div class="showloading" style="display: none;"></div>
+					<div id="contentshow">
+
+						{?section name=i loop=$actlogrows?}
+						<div class="child_rt_table_hang clr">
+							<ul>
+								<li class="wd780">在 <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$actlogrows[i].tid?}" target="_blank">{?$actlogrows[i].tname?}</a>的《
+									<a href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info'?}" target="_blank">{?$actlogrows[i].articlename?}</a>》 {?if $actlogrows[i].actname_n == rate || $actlogrows[i].actname_n == poll || $actlogrows[i].actname_n == vipvote?}投了  <span>{?$actlogrows[i].actnum?}</span> 张{?$actlogrows[i].actname?}{?else if $actlogrows[i].actname_n == tip?}：送了 <span>{?$actlogrows[i].egold?}</span> {?$egoldname?}{?else if $actlogrows[i].actname_n == buychapter?}订阅了 <span>{?$actlogrows[i].actnum?}</span> 章节{?/if?}
+								</li>
+								<li class="wd135 rgt">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</li>
+							</ul>
+						</div>
+						{?/section?}
+						<div class="pages clr">
+							<div class="fr">
+								{?$url_jumppage?}
+							</div>
+						</div></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+<script src="{?$jieqi_url?}/style/js/core.min.js" type="text/javascript"></script>
+{?include file="themes/zuopin/footer.html"?}

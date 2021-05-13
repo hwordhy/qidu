@@ -1,0 +1,20 @@
+{?section name=i loop=$articlerows?}
+<li class="zp_01">
+    <ul>
+        <li class="fl"><a href="{?$articlerows[i].url_articleinfo?}"><img src="{?$articlerows[i].url_image?}" width="113" height="151"></a></li>
+        <li class="fr w_160">
+            <ul>
+                <li class="h_30"><a href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a></li>
+                <li class="h_28">{?$articlerows[i].sort?}</li>
+                <li class="h_24">
+                    <ul>
+                        <li class="fl yan">{?$articlerows[i].allvisit?}</li>
+                        <li class="fl xing">{?$articlerows[i].goodnum?}</li>
+                    </ul>
+                </li>
+                <li class="sm">&nbsp;{?$articlerows[i].intro|truncate:65:……?}</li>
+            </ul>
+        </li>
+    </ul>
+</li>
+{?/section?}

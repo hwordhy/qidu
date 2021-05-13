@@ -1,0 +1,1 @@
+document.write('&lt;div&gt;');

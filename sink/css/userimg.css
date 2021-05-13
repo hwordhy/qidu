@@ -1,0 +1,19 @@
+.divbox{
+    width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+}
+.button{
+    width: 130px;
+    height: 40px;
+    background-color: #ff4c2f;
+    color: #fff;
+}
+.c_title{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.c_head{
+    font-size: 16px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,268 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/draftedit.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "编辑草稿-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+<div class="container-fluid container-box worksmanage_wrapper">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			{?include file="templates/system/author_left.html"?}
+
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h1 class="page-header"><span class="f22">作品管理<img style="margin:0 15px;" src="{?$jieqi_url?}/style/author/images/arrow_1.png" /></span><span class="book_name_box">编辑草稿</span>
+			</h1>
+
+			<script type="text/javascript">
+                var customprice = '{?$customprice?}';
+                //处理左侧菜单的样式
+                $(document).ready(function() {
+                    $(".n03 a").addClass('active');
+
+
+                });
+			</script>
+			<div class="container-wrap chapter-txt">
+				<form id="iform" name="iform" action="{?$jieqi_modules['article']['url']?}/draftedit.php?do=submit" method="post">
+
+					<div class="txtbox">
+						<span class="wtitle">作品名称:</span>
+						<div class="rbox">
+							<div id="parent" class="parent parentsel">
+								{?if $isvip == 0?}
+								<select name="articleid" id="articleid">
+									{?section name=i loop=$articlerows?}
+									<option value="{?$articlerows[i].articleid?}" {?if $articlerows[i].checked > 0?} selected{?/if?}>{?$articlerows[i].articlename?}</option>
+									{?/section?}
+								</select>
+								{?else?}
+								<select name="obookid" id="obookid">
+									{?section name=j loop=$articlerows?}
+									{?section name=i loop=$obookrows?}
+									{?if $$articlerows[j].articleid == $obookrows[i].articleid && $articlerows[j].issign_n > 0 && $articlerows[j].isvip_n > 0 ?}
+									<option value="{?$obookrows[i].obookid?}" {?if $obookrows[i].checked > 0?} selected{?/if?}>{?$obookrows[i].obookname?}</option>
+									{?/if?}
+									{?/section?}
+									{?/section?}
+								</select>
+								{?/if?}
+								<i></i>
+							</div>
+							<em class="warning classMsg"></em>
+						</div>
+					</div>
+					<div class="txtbox">
+						<span class="wtitle">章节名称:</span>
+						<div class="rbox">
+							<input id="chapterName" name="chaptername" placeholder="第一章 XXX..." type="text"
+								   value="{?$chaptername?}" class="textbox" maxlength="50">
+						</div>
+						<em class="warning chapter-nameMsg"></em>
+
+					</div>
+					<div style="position: relative;">
+						<div class="txtbox txtboxinfo">
+							<span class="wtitle"></span>
+							<div class="rbox" style="width: 760px;">
+                                <textarea name="chaptercontent" id="content" maxlength="100000"
+										  class="textarea textarea-single Words-calculation" nospace="ture">{?$chaptercontent?}</textarea>
+								<span class="contnumber"><em id="content-status"></em>/100000</span>
+
+							</div>
+							<p class="diffmark" style="display: none;width:760px;">
+								<span class="tipstit"></span>
+							</p>
+
+							<em class="warning introMsg"></em>
+						</div>
+						<div class="setcontbtn" style="display: none"><input type="button" name="" id="autoCompose"
+																			 value="自动排版"></div>
+					</div>
+					{?if $isvip > 0 && $customprice > 0?}
+					<div id="price" class="txtbox" style="display: none;">
+						<span class="wtitle">本章价格:</span>
+						<div class="rbox">
+							<input name="saleprice" placeholder="" type="text" value="{?$saleprice?}" class="textbox" maxlength="2" style="width: 100px;">&nbsp;&nbsp;枚{?$egoldname?}
+							<em class="tips" style="color: #ff0000;">留空则自动按字数计价。</em>
+						</div>
+					</div>
+					{?/if?}
+					{?if $authtypeset > 0?}
+					<div class="txtbox">
+						<span class="wtitle">小说排版:</span>
+						<div class="rbox">
+							<div class="radiobox">
+								<label class="radio-l checked">
+									<input type="radio" name="typeset" id="isvip" value="1" checked>
+								</label>
+								自动排版
+							</div>
+							<div class="radiobox">
+								<label class="radio-l">
+									<input type="radio" name="typeset" id="isvip" value="0">
+								</label>
+								无需排版
+							</div>
+						</div>
+					</div>
+					{?/if?}
+					<div class="txtbox" style="overflow: visible;margin-top: 10px;">
+						<span class="wtitle">发表方式:</span>
+						<div class="rbox">
+							<div class="radiobox" onclick="$('#pubtime').hide()">
+								<label class="radio-l{?if $pubdate == 0?} checked{?/if?}">
+									<input type="radio" name="uptiming" value="0"{?if $pubdate == 0?} checked="checked"{?/if?}>
+								</label>
+								存为草稿
+							</div>
+							<div class="radiobox" onclick="$('#pubtime').show()">
+								<label class="radio-l {?if $pubdate > 0?} checked{?/if?}">
+									<input type="radio" name="uptiming" id="check-timing" value="1" {?if $pubdate > 0?} checked="checked"{?/if?}>
+								</label>
+								定时草稿 <input type="text" id="pubtime" name="pubtime" style="width: 160px!important;height:30px;{?if $pubdate == 0?}display: none;{?/if?}" class="text datepicker" value="{?$pubtime|date:'Y-m-d H:i:s'?}"/>
+							</div>
+						</div>
+					</div>
+					<div class="submitbtn">
+						<input type="hidden" name="ajax_gets" value="1" />
+						<input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+						<input type="hidden" name="id" value="{?$id?}" />
+						<input type="hidden" name="isvip" value="{?$isvip?}" />
+						<input type="button" class="btn-submit" value="立即发布" title="立即发布" name="save" id="btsave">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{?include file="templates/system/author_footer.html"?}
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/laydate/laydate.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/author/js/motie.editor.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".btTip").click(function (){
+            layer.msg('完本作品不能操作', {
+                time: 2000, //s后自动关闭
+            });
+
+        })
+
+        //时间选择器
+        laydate.render({
+            elem: '#pubtime'
+            ,type: 'datetime'
+        });
+
+        var save = function (data) {
+            var url = "{?$jieqi_modules['article']['url']?}/draftedit.php?do=submit";
+            popUp.openLoading('正在提交..');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                cache: false,
+                data: data,
+                processData: false,
+                contentType: false
+            }).done(function(result) {
+                var result = eval(result);
+                if(result.success==true){
+                    popUp.close();
+                    popUp.openTips("草稿编辑成功！");
+                    setTimeout(function(){
+                        window.location.href=result.backUrl;
+                    }, 3000);
+                }
+                else{
+                    popUp.close();
+                    popUp.openTips(result.message);
+                }
+            })
+        };
+
+
+        $('#btsave').click(function () {
+            if (preSave() == false) {
+                return;
+            }
+            var data = new FormData($('#iform')[0]);
+            save(data);
+        });
+
+
+        //给所有的单选按钮点击添加处理
+        $(".radiobox").click(function () {
+            var checkedEle = $('.radiobox .checked');
+
+            if (checkedEle) {
+                //'freeType-vip'==
+
+                $(this).children('.radio-l').addClass("checked");
+                //$(this).addClass("radiotime");
+                //$(this).siblings().removeClass("radiotime");
+                var ele = $(this).children('.radio-l').children('input[name="typeset"]');
+                if (ele) {
+                    $(ele).attr("checked", true);
+                }
+                ele = $(this).children('.radio-l').children('input[name="uptiming"]');
+                if (ele) {
+                    $(ele).attr("checked", true);
+                }
+
+                $(this).siblings().children('.radio-l').removeClass("checked");
+                ele = $(this).siblings().children('.radio-l').children('input[name="freeType"]');
+                if (ele) {
+                    $(ele).attr("checked", false);
+                }
+                /* ele = $(this).siblings().children('.radio-l').children('input[name="submitType"]');
+                 if(ele){
+                 $(ele).attr("checked",false);
+                 }*/
+
+            } else {
+                $(this).children('.radio-l').removeClass("checked");
+                //$(this).removeClass("radiobox-time");
+                $(this).siblings().children('.radio-l').addClass("checked");
+
+            }
+
+
+        });
+
+        var preSave = function () {
+
+            $(".warning").empty();
+            var inputName = $.trim($("input[name='chaptername']").val()).length;
+            if (inputName == 0) {
+                $(".chapter-nameMsg").append('请填写章节名称！');
+                return false;
+            } else {
+                $(".chapter-nameMsg").append('<img src="{?$jieqi_url?}/style/author/images/rgtdot.png" />');
+            }
+            return true;
+
+        };
+
+        //编辑器
+        Motie.editor.article({
+            imgCount: 0
+            , content: '#content'
+            , imgAppendTo: '#imageLabel ul'
+            , wordStatus: '#content-status'
+            , uploadImgUrl: '/ajax/image/temp/add'
+            , delImgUrl: '/ajax/image/del'
+            , uploadImgHandle: '#add_image_link'
+            , autoComposeHandle: '#autoCompose'
+            , articleId: ( 0)
+            , type: 4
+        });
+
+        $('#content').blur(function () {
+            $('#autoCompose').click();
+        })
+
+    });
+
+</script>
+

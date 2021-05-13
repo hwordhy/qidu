@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="{?$jieqi_charset?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="keywords" content=" {?$meta_keywords?}">
+	<meta content="zh-cn" http-equiv="Content-Language">
+	<title>{?$article_title?}-{?$jieqi_title?}-{?$sortname?}-{?$jieqi_sitename?}</title>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/reader.css" type="text/css">
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css" type="text/css"/>
+	<script type="text/javascript">var uid = "{?$jieqi_userid?}"; var checkcodelogin = "{?$jieqi_checkcodelogin?}"; var jieqi_token = '{?$jieqi_token?}';var jumpurl = window.location.href;</script>
+</head>
+<body ondragstart="return false;" oncopy="return false;" oncut="return false;" oncontextmenu="return false;" class="whitetheme">
+
+<div class="reader_header">
+</div>
+<div class="path">
+	<a href="/" target="_blank">首页</a>
+	<span>></span>
+	<a target="_blank" href="{?function jieqi_geturl:article:articlelist:1:$sortid?}">{?$sort?}</a>
+	<span>></span>
+	<a href="{?$url_articleinfo?}" target="_blank">{?$articlename?}</a>
+	
+	
+	
+	
+	
+</div>
+
+
+
+
+<div id="windowthemebg"></div>
+<div class="read">
+	
+	
+	    	         	<div id="peocessing3" style="width:100%; display:none; position:fixed; top:0px; text-align:center;height:100%; background:#fff; padding-top:20%;filter:alpha(opacity=80); -moz-opacity:0.8; z-index:99999999;  -khtml-opacity: 0.8;  opacity: 0.8;  ">
+初始化中..稍等片刻
+	</div>
+    
+	
+	<div style="width:70%; left:15%; position:fixed; margin:0 auto; bottom:0px; ">
+<script type="text/javascript" src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/js/lib/jquery-1-cc52697ab1.10.2.js"></script>
+<div id="xxxx"></div>
+<script type="text/javascript">
+	function getarticle(a,b){
+	//	console.log(per);
+		$.ajax({
+        type: "GET",
+        url : "http://www.novelrd.cn/r.php?a="+a+"&b="+b+"",
+		data: {
+			per:window.localStorage.getItem("per"),
+		},
+		beforeSend:function () {
+		document.getElementById("peocessing3").style.display="block";
+		},
+		success: function(ok){
+		if(ok){
+			console.log(ok);	
+			document.getElementById("xxxx").innerHTML=ok;
+		}
+		},
+		complete:function(){
+		document.getElementById("peocessing3").style.display="none";
+		}
+		});
+	}
+//默认加载的时候，先读取系统的是不是有这个值，有的话就加载，没有的话就设定0
+var sp=window.localStorage.getItem("per");
+ if(sp){
+ getarticle(sp);
+//console.log(sp); 
+ }else{
+ getarticle(0);	 
+ }
+</script>
+ 
+ 
+<script>
+// function rbf(i){
+ // var audio = document.getElementById('music'+i); 
+ // audio.currentTime = 0;
+// }
+function re(per){
+	//localstorage设定
+	//alert(per);
+	var music_btn = document.getElementById('music_btn01');
+	if(per==1){
+		alert("设定男音成功，请点击播放聆听。");
+	} 
+	if(per==0){
+		alert("设定女音成功，请点击播放聆听。");
+	} 
+	if(per==3){
+		alert("设定逍遥音成功，请点击播放聆听。");
+	} 
+	if(per==4){
+		alert("设定丫丫音成功，请点击播放聆听。");
+	} 
+	window.localStorage.setItem("per",per);
+	music_btn.src = 'http://www.novelrd.cn/play.png';
+	getarticle(window.localStorage.getItem("a"),window.localStorage.getItem("b"));
+}
+function bf(i){
+ var audio = document.getElementById('music'+i); 
+ var music_btn = document.getElementById('music_btn01');
+ if(audio!==null){             
+    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+    // alert(audio.paused);
+  if(audio.paused){                 
+      audio.play();//audio.play();// 这个就是播放  
+	  music_btn.src = 'http://www.novelrd.cn/pause.png';
+        audio.onended = function() {
+		//alert("结束了");
+		document.getElementById('xxxxx').innerHTML='<span id="bf" onclick="bf('+i+'+1);">播放/暂停</span>';
+		bf(i+1);
+		}
+  }else{
+   audio.pause();// 这个就是暂停
+   music_btn.src = 'http://www.novelrd.cn/play.png';
+  }
+ } 
+}
+</script>
+</div>
+	
+	
+	
+	<div class="read-box">
+		<div class="blank-div"></div>
+	</div>
+
+
+                
+
+
+
+
+</div>
+<div class="addscorllbar"></div>
+<div id="floatbox">
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/index_header.css" type="text/css"
+		  class="mmyqwhref"/>
+	<div class="secondnav" id="back-to-top" style="display: none;">
+		<div class="wrap1200">
+			<div class="secondnav-l fl">
+				<ul>
+					<li><a href="/" class="sitename">{?$jieqi_sitename?}</a></li>
+					<li><a href="{?function jieqi_geturl:article:articlefilter:1:?}" target="_blank" class="site-tag">书库</a></li>
+					<li><a href="{?function jieqi_geturl:article:toplist:1:toplist?}" target="_blank" class="site-tag">排行</a></li>
+					<li><a href="{?function jieqi_geturl:'article':'articlelist':1::1?}" target="_blank" class="site-tag">全本</a></li>
+					<!--<li><a href="{?$jieqi_modules['forum']['url']?}/" target="_blank" class="site-tag">论坛</a></li>-->
+					<li><a href="{?$jieqi_modules['article']['url']?}/applywriter.php" target="_blank" class="site-tag">作家专区</a></li>
+					<li class="morefl "><a href="#" target="_blank" class="moreh ">更多</a>
+						<div class="morestyle">
+							{?section name=i loop=$sortrows?}
+							<a href="{?function jieqi_geturl:article:articlelist:1:$i.key?}" target="_blank">{?$sortrows[i].caption?}</a>
+							{?/section?}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="secondnav-r fr">
+				{?if $jieqi_userid == 0?}
+				<div class="nav-login">
+					<a href="javascript:void(0)" class="login-user" onclick="doMyLogin()">登录</a>
+					<a href="{?$jieqi_url?}/register.php" class="register">注册</a>
+				</div>
+				{?else?}
+				<div class="secondnav-user fl">
+					<a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="firstname"><span>{?$jieqi_username?}</span><i></i></a>
+					<ul>
+						<li><a href="{?$jieqi_modules['article']['url']?}/bookcase.php" target="_blank">我的书架</a></li>
+						<li><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" target="_blank">充值</a></li>
+						<li><a href="{?$jieqi_url?}/userdetail.php" target="_blank">个人中心</a></li>
+						<li><a href="{?$jieqi_url?}/message.php?box=inbox" target="_blank">消息(<em class="red bubbleNum">{?$jieqi_newmessage?}</em>)</a></li>
+						<li><a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank">退出</a></li>
+					</ul>
+				</div>
+				{?/if?}
+				<div class="fr lateread">
+					<a href="javascript:void(0);"  class="lateread_text">最近阅读</a>
+					<div class="lastread_box">
+						<span class="icon-read"></span>
+						<div class="lastread_con">
+							<p class="unlogin"><a href="javascript:void(0)" class="login" onclick="pop_login()">登录</a></p>
+							<p class="loading">loading...</p>
+						</div>
+					</div>
+				</div>
+				<div id="mod-search2">
+					<div class="searchbox">
+						<div class="searchbox-inner">
+							<input type="text" autocomplete="off" placeholder="找书、找人" class="searchinput" value="">
+							<i class="search-icon"></i>
+							<input type="button" value="" class="searchbtn" style="background-color:#f5546f"/>
+							<span class="loadIcon"></span>
+						</div>
+						<ul class="search-list">
+						</ul>
+					</div></div>
+			</div>
+		</div>
+	</div>
+	<ul class="leftbar">
+
+		
+		<li class="catalog">目录</li>
+		<li class="settings"><i></i></li>
+		<li style="margin-top: 0px;border:1px solid #ccc;width: 58px;height: 58px; position: relative;cursor: pointer;"  > 
+		
+		  <div   id="xxxxx">
+ <img  src="http://www.novelrd.cn/play.png" width="30" height="30" style="margin-top:15px; margin-left:15px;"  id="music_btn01"   onclick="bf(1);" border="0">
+  </div>
+		
+		
+		</li>
+		<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" target="_blank"><li class="addshelf"><i></i></li></a>
+		<li class="cellphone"><i></i></li>
+		<li class="guide" style="bottom:50px;">指南</li>
+	</ul>
+	<ul class="rightbar">
+ 
+ 	
+		<li class="donate"> 打赏</li>
+		
+		<li class="vote">投票</li>
+		<li class="prevpage"><i></i></li>
+		<li class="nextpage"><i></i></li>
+	</ul>
+	<ul class="guide_tips_left">
+		<li>查看目录</li>
+		<li class="setting">修改设置</li>
+		<li>加入书架</li>
+		<li>手机阅读</li>
+	</ul>
+	<ul class="guide_tips_right">
+		<li>打赏</li>
+		<li>投票</li>
+		<li class="prev">查看上一页</li>
+		<li class="next">查看下一页</li>
+	</ul>
+	<div class="guide-pop">
+		<div class="guide-title">指南</div>
+		<a href="javascript:;" class="close"></a>
+		<div class="content clearfixer">
+			<div class="con-right">
+				<div class="clearfixer">
+					<span class="t"></span>
+					<span class="b"></span>
+				</div>
+				<p>上下翻页</p>
+			</div>
+		</div>
+		<p class="guide-btn">我知道了</p>
+
+	</div>
+	<div class="settings_con">
+		<span class="set_title">设置</span>
+		<span class="close"><i></i></span>
+		<ul class="set_bg clearfixer">
+			<li class="set_bg_text">主题模式</li>
+			<li class="set_bg_white set_bg_com on" data-bodytheme="whitetheme"></li>
+			<li class="set_bg_black set_bg_com" data-bodytheme="blacktheme"></li>
+			<li class="set_bg_qing set_bg_com" data-bodytheme="qingsetheme"></li>
+			<li class="set_bg_dirt set_bg_com" data-bodytheme="tuhuangtheme"></li>
+			<li class="set_bg_pink set_bg_com" data-bodytheme="pinktheme"></li>
+			<li class="set_bg_green set_bg_com" data-bodytheme="zuitangtheme"></li>
+		</ul>
+		<ul class="set_font clearfixer">
+			<li class="set_font_text">字体大小</li>
+			<li class="set_font_small">
+				<span></span>
+			</li>
+			<li class="set_font_cur">18</li>
+			<li class="set_font_big">
+				<span></span>
+			</li>
+		</ul>
+		<ul class="set_style clearfixer">
+			<li class="set_style_text">字体样式</li>
+			<li class="set_style_yh set_style_com on" data-family="familymicro">
+				<span></span>雅黑
+			</li>
+			<li class="set_style_st set_style_com" data-family="familysimsun">
+				<span></span>宋体
+			</li>
+			<li class="set_font_ks set_style_com" data-family="familykaiti">
+				<span></span>楷书
+			</li>
+		</ul>
+		<ul>
+			
+			<ul class="set_style clearfixer">	
+				<li class="set_style_text">设定语音</li>
+<li onclick="re('1')" style="width:15%;"  class=" set_style_com" data-family=""><span></span>男声</li>
+<li onclick="re('0')" style="width:15%;"    class=" set_style_com" data-family=""><span></span>女声</li>
+<li onclick="re('3')" style="width:15%;"    class=" set_style_com" data-family=""><span></span>逍遥</li>
+<li onclick="re('4')" style="width:15%;"    class=" set_style_com" data-family=""><span></span>丫丫</li>
+ 
+			
+		</ul>
+		
+		
+	<!--	<span class="set_default">恢复默认</span>-->
+	</div>
+	<div id="windowbg"></div>
+	<div class="erweima_app">
+		<span class="erweima_app_close"><i></i></span>
+		<img src="{?$jieqi_url?}/style/images/wap.png" data-src="" alt="">
+	</div>
+	<div class="loading">
+		<img src="{?$jieqi_url?}/style/images/loading_style.gif" alt="">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<script>
+ 
+
+    var page_config = {
+        bookId: "{?$articleid?}", // false
+        chapterId: "{?$chapterid?}",
+        username: "{?$jieqi_username?}",
+        voteNumber: "{?$allvote?}",
+        isInShelf:false,  // true  表示已在书架
+        nextisvip: "{?$next_isvip?}",  // 下一章节是否收费
+        isvip: "{?$chapterisvip?}",
+        authorName: "{?$author?}",
+        userId: "{?$jieqi_userid?}",
+        userMoneyBalance: "{?$jieqi_egold?}",
+        nextChapterId: "{?$next_chapterid?}",
+        votes: "{?$jieqi_votes?}",
+        toTop_page:false,
+        curChapterId:"{?$chapterid?}"
+
+    }
+</script>
+
+
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="application/javascript">
+    function  doMyLogin() {
+        if(typeof(pop_login)=='undefined'){
+            window.location.href="{?$jieqi_url?}/login.php"
+        }else{
+            pop_login();
+        }
+
+    }
+
+
+
+
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+
+<script src="{?$jieqi_url?}/style/js/common_chapter.js"></script>
+<script src="{?$jieqi_url?}/style/js/reader.js?v=1"></script>
+</html>

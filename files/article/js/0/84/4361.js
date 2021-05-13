@@ -1,0 +1,1 @@
+document.write('由于有些犹豫接下来要不要写外界，一直下不定决定，所以就问问大家。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;投票，请用数字，务必别重复。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;对了，这次投票还是蛮重要的，不仅是外界的长短，还有新人增（初音，乐正绫等）不增加的问题，所以请不要随意投票。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;也请别随意在楼外回答。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;就是这样，祝大家元旦快乐。');

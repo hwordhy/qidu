@@ -1,0 +1,327 @@
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+<!--我要捧场弹窗-->
+    <div class="boxblock_show pengchang clr">
+        <div class="pengchang_cur">
+            <span class="cur">我要捧场</span>
+            <span>投推荐票</span>
+            <span>投月票</span>
+            <!--<span>送礼物</span>
+            <span>我要评价</span>
+            <span>章节赠送</span>-->
+        </div>
+        <div class="pengchang_cot clr">
+            <div class="pengchang_cot_cur">觉得这本书写的不错？来给作者捧个场吧！用实际行动支持作者创作作品!</div>
+            <div class="pengchang_form clr">
+                <div class="pengchang_form_p clr">
+                    <span class="fl">您的账户余额为：<a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" style="color:#ff0000;" target="_blank">
+                    {?$jieqi_egold?}</a> 枚{?$egoldname?}{?if $vipvoteegold > 0?}，本月每消费 <span style="color:#ff0000;">{?$vipvoteegold?}
+                    </span> 枚{?$egoldname?}，次月将获得 <span style="color:#ff0000;">1</span> 张月票，累计叠加，次月月底清除{?/if?}  </span>
+                    <span class="fr"><span class="creditsyu" style="display: none;"><span style="color:#ff0000;">您的账户余额不足</span>，如要捧场！请 </span>
+                    <a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" style="color:#ff0000;" target="_blank">充值{?$egoldname?}</a></span>
+                </div>
+                
+                <div class="pengchang_form_radio clr">
+                    <span><label><input type="radio" name="rate" value="100" class="radio rate" checked/>100{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="500" class="radio rate"/>500{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="1000" class="radio rate"/>1000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="5000" class="radio rate"/>5000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="10000" class="radio rate"/>10000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="50000" class="radio rate"/>50000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="100000" class="radio rate"/>100000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="500000" class="radio rate"/>500000{?$egoldname?}</label></span>
+                    <span><label><input type="radio" name="rate" value="1000000" class="radio rate"/>1000000{?$egoldname?}</label></span>
+                </div>
+                
+                <div class="pengchang_form_tianxie clr">
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <span>标题：</span>
+                        <input type="text" id="ratetitle" name="ratetitle" class="txt" 
+                            value="{?$jieqi_username?}给《{?$articlename?}》捧场了100{?$egoldname?}！">
+                    </div>
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <span>内容：</span>
+                        <textarea class="txt2" id="ratemsg" style="height:165px; margin-bottom:0;"
+                        >这本书写的太好啦，作者大大辛苦啦，犒劳一下！希望你继续加油！</textarea>
+                    </div>
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <div class="fr clr">
+                            <input type="button" value="确认" class="sub ratebutton"/>
+                            <input type="button" value="取消" class="resetbt"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="pengchang_cot clr" style="display:none;">
+            <div class="pengchang_cot_cur">您可以给《{?$articlename?}》投推荐票，表达您对作品《{?$articlename?}》的支持</div>
+            <div class="pengchang_form clr">
+                <div class="pengchang_form_p clr">
+                    <span class="fl">您还有 <span style="color:#ff0000;">{?$jieqi_votes?}
+                    </span> 张推荐票  </span>
+
+                </div>
+                <div class="toupiao clr">
+                    <div class="tou_tuijian clr">
+                        <span>投推荐票：</span>
+                        <span><label><input type="radio" class="radio vote" value="1" 
+                            checked name="vote">1票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="2" 
+                             name="vote">2票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="3" 
+                             name="vote">3票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="4" 
+                             name="vote">4票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="5" 
+                             name="vote">5票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="6" 
+                             name="vote">6票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="7" 
+                             name="vote">7票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="8" 
+                             name="vote">8票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="9" 
+                             name="vote">9票</label></span>
+                        <span><label><input type="radio" class="radio vote" value="10" 
+                             name="vote">10票</label></span>
+                    </div>
+                </div>
+                
+                <div class="pengchang_form_tianxie clr">
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <div class="tishi clr"> 温馨提示：
+                        <br>投推荐票代表支持、称赞等态度。
+                        <br>每投一张推荐票，您可以获得一定积分
+                        <br><a href="{?$jieqi_modules['article']['url']?}/myactlog.php?act=poll">查看我的投票记录&gt;&gt;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pengchang_form_tianxie_hang clr">
+                        
+                        <div class="fr clr">
+                            <input type="button" value="确认" class="sub votebutton"/>
+                            <input type="button" value="取消" class="resetbt"/>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="pengchang_cot clr" style="display:none;">
+            <div class="pengchang_cot_cur">《{?$articlename?}》写的太捧了！投张月票，让作品更加精彩！</div>
+            <div class="pengchang_form clr">
+                <div class="pengchang_form_p clr">
+                    <span class="fl">您还有 <span style="color:#ff0000;">{?if $jieqi_setting['gift']['vipvote'] == ''?}0{?else?}{?$jieqi_setting['gift']['vipvote']?}{?/if?}
+                    </span> 张月票  </span>
+                    <span class="fr"><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" style="color:#45516a;" target="_blank">获取更多月票&gt;&gt;</a></span>
+                </div>
+                <div class="toupiao clr" style="padding:10px 0;">
+                    <div class="tou_tuijian metro_form_radio clr" style="padding-left:20px;">
+                        <span>我要投月票：</span>
+                        <span><label><input type="radio" class="radio metro" value="1" 
+                            checked name="metro">1票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="2" 
+                             name="metro">2票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="3" 
+                             name="metro">3票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="4" 
+                             name="metro">4票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="5" 
+                             name="metro">5票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="6" 
+                             name="metro">6票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="7" 
+                             name="metro">7票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="8" 
+                             name="metro">8票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="9" 
+                             name="metro">9票</label></span>
+                        <span><label><input type="radio" class="radio metro" value="10" 
+                             name="metro">10票</label></span>
+                    </div>
+                </div>
+                
+                <div class="pengchang_form_tianxie clr">
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <span>标题：</span>
+                        <input type="text" id="metrotitle" class="txt" value="{?$jieqi_username?}给《{?$articlename?}》投了1张月票！">
+                    </div>
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <span>内容：</span>
+                        <textarea class="txt2" id="metromsg" style="height:98px; margin-bottom:0;"
+                        >这本书写的太好啦，作者大大辛苦啦，犒劳一下！希望你继续加油！</textarea>
+                    </div>
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <span>&nbsp;</span>
+                        <div class="wenxintishi clr">
+							温馨提示：<br>
+							1.成为会员后，每月会得到一张月票，当月有效，月底清除。<br>
+							2.捧场获得月票在获取后即自动对当前作品使用。<br>
+                            {?if $vipvoteegold > 0?}3.本月每消费 {?$vipvoteegold?} {?$egoldname?}，次月将获得一张月票，累计叠加，次月月底清除。{?/if?}
+                        </div>
+                    </div>
+                    <div class="pengchang_form_tianxie_hang clr">
+                        <div class="fr clr">
+                            <input type="button" value="确认" class="sub metrobutton"/>
+                            <input type="button" value="取消" class="resetbt"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+function creditsyu(isshow) {
+	if (isshow) $('.creditsyu').show();
+	else $('.creditsyu').hide();
+}
+function ratemore() {
+	var ccount = $('.rate:checked').val();
+	if (ccount < 100) {
+		common.dialog("捧场的{?$egoldname?}数额不应少于100枚", "warn");
+		return false;
+	}//end if
+	var rtitle = $('#ratetitle').val();
+    if (rtitle.length < 5 || rtitle.length > 60) {
+        common.dialog("您未正确填写标题，请保持在5到60字之间", "warn");
+        return false;
+    }//end if
+	var rmsg = $('#ratemsg').text();
+    if (rmsg.length < 5 || rmsg.length > 600) {
+        common.dialog("您未正确填写内容，请保持在5到600字之间", "warn");
+        return false;
+    }//end if
+    common.post(".showloading",
+            site +"modules/article/tip.php",
+        {"payegold":ccount,"act":"post","id":bookid,
+        "jieqi_token":"{?$jieqi_token?}","ajax_gets":1, "title":rtitle, "content": rmsg},
+        function(data){
+            a = eval(data);
+            if (a.success) {
+                common.dialog(a.message, "ok");
+                common.add(".vt3mark", 1);
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+            else {
+                common.dialog(a.message, "warn");
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+        }
+    );
+}
+function votemore() {
+    var ccount = $('.vote:checked').val();
+    if (ccount < 1) {
+        common.dialog("推荐票数额不应少于1张", "warn");
+        return false;
+    }//end if
+    common.post(".showloading",
+            site +"modules/article/uservote.php",
+        {"id":bookid,"num":ccount,"ajax_gets":1},
+        function(data){
+            a = eval(data);
+            if (a.success) {
+                common.dialog(a.message, "ok");
+                common.add(".monthvote", ccount);
+                common.add(".allvote", ccount);
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+            else {
+                common.dialog(a.message, "warn");
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+        }
+    );
+}
+function metromore() {
+    var ccount = $('.metro:checked').val();
+    if (ccount < 1) {
+        common.dialog("月票票数额不应少于1张", "warn");
+        return false;
+    }//end if
+    var rtitle = $('#metrotitle').val();
+    if (rtitle.length < 5 || rtitle.length > 60) {
+        common.dialog("您未正确填写标题，请保持在5到60字之间", "warn");
+        return false;
+    }//end if
+    var rmsg = $('#ratemsg').text();
+    if (rmsg.length < 5 || rmsg.length > 600) {
+        common.dialog("您未正确填写内容，请保持在5到600字之间", "warn");
+        return false;
+    }//end if
+    common.post(".showloading",
+            site +"modules/article/vipvote.php",
+        {"id":bookid,"num":ccount,"action":"post","title":rtitle,
+        "content":rmsg,"ajax_gets":1},
+        function(data){
+            a = eval(data);
+            if (a.success) {
+                common.dialog(a.message, "ok");
+                common.add(".monthvipvote", ccount);
+                $(".vt3yuepiao").html(Number(a.setting.monthvipvote) + Number(ccount));
+                $(".remainmetro").html(a.setting.vipvotenums);
+                $(".wei").html(a.setting.ranking);
+                if(a.setting.ranking == 1){
+                    $(".deatil_content_yuepiao").addClass("huangguan");
+                }
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+            else {
+                common.dialog(a.message, "no");
+                $(".boxblock").hide();
+                $(".boxblock_show").hide();
+            }
+        }
+    );
+}
+$(function(){
+	var credits1 = {?$jieqi_egold?};
+	var credits2 = 0;
+	var credits3 = 1;
+	$(".pengchang").show();
+	$(".boxblock").show();
+	$(".show_loader").show();
+
+	$(".pengchang_cur span").click(function(){
+	    var index=$(this).index(".pengchang_cur span");
+	    $(this).addClass("cur").siblings().removeClass("cur");
+	    $(".pengchang_cot").eq(index).show().siblings(".pengchang_cot").hide();
+	});
+	$(".pengchang_form_radio .radio").change(function(){
+	    var val = $(this).val();
+	    var valstr = "味道给《{?$articlename?}》捧场了"+val+"{?$egoldname?}！";
+       /*  if (val == 1000) valstr += "投了1张月票，这本书太棒啦！";
+	    else if (val == 5000) valstr += "投了5张月票，这本书太棒啦！";
+	    else if (val == 10000) valstr += "投了10张月票，这本书太棒啦！";
+	    else if (val == 50000) valstr += "投了50张月票，这本书太棒啦！";
+	    else if (val == 100000) valstr += "投了100张月票，这本书太棒啦！";
+	    else if (val == 500000) valstr += "投了500张月票，这本书太棒啦！";
+	    else if (val == 1000000) valstr += "投了1000张月票，这本书太棒啦！";*/
+	    $("#ratetitle").val(valstr);
+	    creditsyu(credits1 < val);
+	});
+    $(".metro_form_radio .radio").change(function(){
+        var val = $(this).val();
+        var valstr = "{?$jieqi_username?}给《{?$articlename?}》投了"+val+"张月票！";
+        $("#metrotitle").val(valstr);
+    });
+	$(".resetbt").click(function(){
+	    $(".boxblock").click();
+	    return false;
+	});
+	$('.ratebutton').click(ratemore);
+	$('.votebutton').click(votemore);
+	$('.metrobutton').click(metromore);
+    creditsyu(credits1 < 10000);
+    $(".pengchang_cur .cur").click();
+});
+</script>

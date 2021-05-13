@@ -1,0 +1,1 @@
+document.write('很萌但生命很坎坷的孩子，这真是巴拉贡哦，p站大神的，古装不错啊<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3626/66.gif\" border=\"0\" class=\"imagecontent\"></div>');

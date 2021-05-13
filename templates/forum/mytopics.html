@@ -1,0 +1,241 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "modules/forum/templates/mytopics.html"?}
+{?set $jieqi_pagetitle = "我的论坛主题-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/user_forum.css" type="text/css"/>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/template-web.js"></script>
+<div class="forum_content"></div>
+<div class="i-right">
+  <!--我的书评 mod -->
+  <div class="myReview">
+    <div class="i-title">
+      <ul class="ulHd j-title">
+        <li class="on" data-type="1">我的帖子<span></span></li>
+        <li data-type="2">我的回复<span></span></li>
+      </ul>
+    </div>
+    <div class="divBd j-content">
+      <!--我的帖子 mod -->
+      <div class="my_Post">
+        <div class="my_Post_nobook">
+          <div class="my_Post_nobook_text"><span class="my_Post_nobook_text_L">您还没有发过帖子！</span></div>
+        </div>
+        <div class="my_Post_content_out j-content_out"> </div>
+        <!--翻页-->
+        <div class="pages_content"></div>
+      </div>
+
+      <!--我的回复 mod -->
+      <div class="my_BookReview">
+        <div class="my_Post_nobook">
+          <div class="my_Post_nobook_text"><span class="my_Post_nobook_text_L">您还没有回复过帖子！</span></div>
+        </div>
+        <div class="my_Post_content_out  j-content_out"></div>
+        <!--翻页-->
+        <div class="pages_content"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script id="content_template" type="text/x-handlebar-template">
+  {{#each items}}
+  <div class="my_Post_content" id="{{topicid}}">
+    <p class="my_Post_content_title">
+      <a href="{{title_url}}" target="_blank">
+        <!--{{#if tagName}}<span>[{{tagName}}]</span>{{/if}}-->
+        {{title}}
+      </a>
+    </p>
+    <div class="my_Post_content_operation clear">
+      <div class="my_Post_content_data"><span>{{posttime}}</span> 创建</div>
+      <div class="my_Post_content_num">浏览数：<span>{{views}}</span></div>
+      <div class="my_Post_content_zan">回复：<span>{{replies}}</span></div>
+      <a href="{{title_url}}" class="my_Post_content_look" target="_blank">查看</a>
+      <!--<a href="/bbs/topics/add?topicid={{id}}" class="my_Post_content_edit">编辑</a>-->
+      <!--<div class="my_Post_content_stop" reply="{{reply}}"></div>-->
+    </div>
+    <pre class="my_Post_content_introduce">{{{posttext}}}</pre>
+  </div>
+  {{/each}}
+</script>
+<script>
+    //默认样式
+
+    $('a').attr('data-namecard', false);
+    $('.my_forum').addClass('imgStyle');
+    $('.my_forum').parents('li').addClass('on');
+
+    //ajax详情数据
+    var ajaxObj = null;
+    function ajax_content(num, pageNo) {
+        var url = !num ? '/modules/forum/mytopics.php' : '/modules/forum/myposts.php';
+        ajaxObj = $.ajax({
+            type: 'GET',
+            url: url,
+            async: true,
+            data: {
+                page: pageNo,
+                ajax_gets: 1
+            },
+            success: function (data) {
+                if (data.items.length <= 0) {
+                    $('.my_Post_nobook').show();
+                    $('.pages_content').hide();
+                } else {
+                    $('.my_Post_nobook').hide();
+                    $('.pages_content').show();
+                    Handlebars_Fn(data);//遍历函数
+                    //翻页
+                    if(data.totalCount > data.pageSize){
+                        $('.pages_content').pagination({
+                            hoverCls: 'ui_hoverbgbd',
+                            activeCls: 'ui_bg_bdcolor',
+                            pageAll: data.pageCount,
+                            current: pageNo,
+                            callback: function (page) {
+                                var pageCur = page.getCurrent();//当前页码
+                                //console.log(pageCur);
+                                ajax_content(num, pageCur)
+                            }
+                        }, function (page) {
+
+                        })
+                    }else{
+                        $('.pages_content').empty();
+                    }
+                }
+            },
+            error: function () {
+//                alert('请求失败')
+            }
+        });
+    }
+    ajax_content(0, 1);//默认数据
+    //选项卡
+    var num = 0;
+    $('.j-title>li').click(function () {
+        $('.my_Post_nobook').hide();
+        num = parseInt($(this).index());
+        console.log(num);
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.j-content>div').eq(num).show().siblings().hide();
+        if(ajaxObj){
+            ajaxObj.abort();
+            ajaxObj = null;
+        }
+        ajax_content(num,1);
+    });
+    // 定义模块 -遍历
+    var _this = null;//定义删除对象的指向
+    function Handlebars_Fn(data) {
+        var ncontent_template = Handlebars.compile($("#content_template").html());
+        $(".j-content_out").eq(num).empty().append(ncontent_template(data));
+        //隐藏我的书单的作品
+        if (num == 2) $('.my_Post_content_works').show();
+        //删除帖子
+        $('.j-del').click(function () {
+            _this = $(this).parents('.my_Post_content');
+            layerPop.close();
+            $('body,.del_Layer_div').fadeIn(300).height($(window).height()).addClass('addOn');//遮罩层显示,滚动条消失
+            //关闭和取消
+            $('.del_Layer_close,.del_Layer_no').click(function () {
+                $('.del_Layer_div').fadeOut(300);
+                $('body').removeClass('addOn');
+            })
+        });
+        //精华帖子
+        if ($('.title_jinghua').attr('best') == 'true') {
+            $('.title_jinghua').show();
+        } else {
+            $('.title_jinghua').hide();
+        }
+        //回复的提示内容
+        var replyNum = document.querySelectorAll('.my_Post_content_stop');
+        for (var i = 0; i < replyNum.length; i++) {
+            if (replyNum[i].getAttribute('reply') == 'true') {
+                replyNum[i].innerText = '禁止回复';
+            } else {
+                replyNum[i].innerText = '允许回复';
+            }
+        }
+    }
+//     //    设置禁止、允许回复
+//     var off = true;
+//     $('.j-content_out').on("click", ".my_Post_content_stop", function () {
+//         if (off) {
+//             off = false;
+//             _this = $(this).parents('.my_Post_content');
+//             var this_val = $(this).text()
+//             var _seft = $(this);
+// //            console.log(_this.attr('id'))
+//             if (this_val == '禁止回复') {
+//                 $.ajax({
+//                     type: 'DELETE',
+//                     url: '/ajax/bbs/topics/' + _this.attr('id') + '/allowreply ',
+//                     async: true,
+//                     data: {
+//                         topicid: _this.attr('id')
+//                     },
+//                     success: function (data) {
+//                         console.log(data)
+//                         layerPop.openTips(data.msg, 2000);
+//                         setTimeout(function () {
+//                             _seft.text('允许回复');
+//                             off = true;
+//                         }, 2000)
+//
+//                     }
+//                 })
+//             } else {
+//                 $.ajax({
+//                     type: 'PUT',
+//                     url: '/ajax/bbs/topics/' + _this.attr('id') + '/allowreply ',
+//                     async: true,
+//                     data: {
+//                         topicid: _this.attr('id')
+//                     },
+//                     success: function (data) {
+// //                        console.log(data)
+//                         layerPop.openTips(data.msg, 2000);
+//                         setTimeout(function () {
+//                             _seft.text('禁止回复');
+//                             off = true;
+//                         }, 2000)
+//                     }
+//                 })
+//             }
+//         }
+//
+//     })
+
+
+//     //确定删除
+//     $('.del_Layer_yes').on("click", function () {
+//         $.ajax({
+//             type: 'DELETE',
+//             url: '/ajax/bbs/topics/' + _this.attr('id'),
+//             async: true,
+//             data: {
+//                 id: _this.attr('id')
+//             },
+//             success: function (data) {
+// //              console.log(data)
+//                 $('.del_Layer_div').hide();//遮罩层消失
+//                 $('body').removeClass('addOn');//滚动条还原
+//                 _this.remove();//删除结构
+//                 layerPop.openTips('成功删除');//弹层
+//                 console.log($('.my_Post_content').length);
+// //                如果全部删除了
+//                 if($('.my_Post_content').length<=0){
+//                     ajax_content(num,1);
+//                 }
+//
+//             }
+//         })
+//     })
+</script>
+</body>
+</html>

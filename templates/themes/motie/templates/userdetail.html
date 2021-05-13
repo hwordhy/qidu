@@ -1,0 +1,115 @@
+{?set jieqi_page_template = "templates/userdetail.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+{?set $jieqi_pagetitle = "用户资料-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+    <!--top mod -->
+    <div class="i-top">
+        <!--个人状态 mod -->
+        <div class="iDetail">
+            <dl style="padding-top:45px;" >
+                <dt><a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$jieqi_userid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}" /></a></dt>
+                <dd>
+                    <p><a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$jieqi_userid?}" target="_blank">{?$uname?}</a><a href="javascript:;" target="_blank">
+                    </a></p>
+                </dd>
+            </dl>
+            <p class="medal">
+            </p>
+        </div>
+        <!--关注及粉丝 mod -->
+        <div class="iAttend">
+            <a href="javascript:;" target="_blank">
+                等级
+                <em></em>
+                <b>{?$group?}</b>
+            </a>
+            <a href="javascript:;" target="_blank">
+                头衔
+                <em></em>
+                <b>{?$honor?}</b>
+            </a>
+        </div>
+        <!--书架&阅读 mod -->
+        <div class="iBookshelf">
+            <a href="{?$jieqi_modules['article']['url']?}/bookcase.php" target="_blank"><em>书架</em>{?$nowbookcase?}</a>
+            <a href="{?$jieqi_modules['article']['url']?}/bookshelf.php" class="readed" target="_blank"><em>阅读</em>{?$historynums?}</a>
+        </div>
+        <!--磨铁币及阅读券 mod -->
+        <div class="iAttend iTicket">
+            <a href="javascript:;" target="_blank">
+                {?$egoldname?}<em></em>
+                <b class="red">{?$egold?}</b>
+            </a>
+            <a href="javascript:;" target="_blank">
+                积分
+                <em></em>
+                <b class="red">{?$score?}</b>
+            </a>
+            <a href="javascript:;" target="_blank">
+                推荐票
+                <em></em>
+                <b class="red">{?$jieqi_votes?}</b>
+            </a>
+        </div>
+    </div>
+    <!--bot mod -->
+    <div class="i-bot">
+        <!--left mod -->
+        <div class="l-botMod">
+            <!--我的书架 mod -->
+            <div class="myMod"  id="myMod">
+                <div class="i-title">我的书架<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" class="clickMore" target="_blank">查看更多>></a></div>
+                <!--有书的情况 mod -->
+                <ul class="bookUl">
+                    {?$jieqi_pageblocks['bid1']['content']?}
+
+                </ul>
+            </div>
+            <!--热读作品 mod -->
+            <div class="myMod hotMod">
+                <div class="i-title">
+                    热读作品
+                    <ul class="tabHd">
+                        <li class="on"></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!--有书的情况 mod -->
+                <div class="tabBd">
+                    <ul class="hotBookBd  ">
+                        {?$jieqi_pageblocks['bid2']['content']?}
+                    </ul>
+                    <ul class="hotBookBd hide ">
+                        {?$jieqi_pageblocks['bid3']['content']?}
+                    </ul>
+                    <ul class="hotBookBd hide ">
+                        {?$jieqi_pageblocks['bid4']['content']?}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--right mod -->
+        <div class="r-botMod">
+            <!--我的作品 mod -->
+            <!--猜你喜欢 mod -->
+            <div class="myWorks myLike">
+                <div class="i-title">{?$jieqi_pageblocks['bid5']['title']?}</div>
+                <ul>
+                    {?$jieqi_pageblocks['bid5']['content']?}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script>
+    $('a').attr('data-namecard',false);
+    jQuery(".hotMod").slide({titCell:".tabHd li",mainCell:".tabBd",autoPlay:"auto",interTime: 2000});
+</script>
+</body>
+</html>

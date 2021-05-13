@@ -1,0 +1,163 @@
+ /*ç®€ä»‹è¯„è®º*/
+ .wapcomment{
+    padding: 15px 0;
+    margin-top: 0;
+}
+.wapcomment h2{
+    font-size: 1.15rem;
+    color: #656565;
+    margin:15px 0;
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 10px;
+}
+.wapcomment h2 a{ 
+    color: #21a7ee;
+}
+.wapcomment h2 b{ 
+    color: #888;
+    margin-right: 10px;
+}
+.wapcomment h2 .active{ 
+    color: #6cc568; 
+    border-bottom: 2px solid #6cc568;
+    padding-bottom: 8px;
+}
+.wapcomment ul li{ 
+    padding: 15px 0 5px;
+    border-bottom: 1px solid #f4f4f4;
+}
+.wapcomment  li .states{ 
+    width: 1.5rem;
+    height:1.5rem;
+    margin-right:10px;
+    position: relative;
+    top: -4px;
+}
+.wapcomment .com_left {
+    font-size: 1rem;
+    position: relative;
+    top: 1px;
+}
+.wapcomment .com_left img{
+    width:3rem ;
+    height: 3rem; 
+}
+.wapcomment .com_right{
+    margin-left: 1rem;
+}
+ 
+.wapcomment .com_right a,.wapcomment .com_right b{
+    display: block;
+    font-size: 1rem;
+    padding: 0.2rem 0;
+}
+.wapcomment .com_right b{
+    font-size: 0.8rem;
+    color: #ccc;
+}
+.wapcomment  li h3{
+    position: relative;
+}
+.wapcomment   img{
+    width: auto;
+    max-width: 1.9rem;
+    max-height: 1.9rem; 
+}
+.wapcomment  h3 .fr{
+    display: inline-block; 
+    width: 4.4rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.wapcomment  h3 .dp{
+    display: inline-block;
+    background: url(../images/dianping.png) no-repeat center center;
+    background-size: contain; 
+}
+.wapcomment  h3 .ds{
+    display: inline-block;
+    background: url(../images/dashang.png) no-repeat center center;
+    background-size: contain; 
+}
+.wapcomment  li .con_content{
+    margin: 15px 0;
+    font-size: 1.16rem;
+    padding-left: 5px;
+    line-height: 2.4rem; 
+    word-break: break-all;
+    white-space:inherit;
+    overflow: hidden; 
+}
+.wapcomment  li h4{
+    text-align: right;
+    padding: 10px 0;
+}
+.wapcomment  li h4 a{
+    display: inline-block;
+    margin-left:10px;
+    font-size: 1rem;
+    color: #ccc;
+}
+/*ç‚¹èµžå‰*/
+.wapcomment  li .fav{
+    background: url(../images/icon_fav.png) no-repeat left center;
+    background-size: contain;
+    padding-left: 18px;
+}
+/*ç‚¹èµžåŽ*/
+.wapcomment  li .favok{
+    background: url(../images/icon_favok.png) no-repeat left center;
+    background-size: contain;
+    padding-left: 18px;
+}
+/*è¯„è®º*/
+.wapcomment  li .comto{
+   background: url(../images/icon_pl.png) no-repeat left center;
+   background-size:contain;
+    padding-left: 22px;
+}
+.details  li .comto{
+   color: #21a7ee;
+}
+.wapcomment .com_reply{
+    border-top: 1px solid #f4f4f4;
+/*    padding: 15px  1.5rem 0 0;*/
+    padding: 15px  1.5rem 0 0;
+    overflow: hidden;
+    font-size: 1rem;
+    color: #7d7d7d;
+}
+.wapcomment .com_reply a{
+    display: block;
+    margin-top: 10px;
+    float: right;
+    color: #21a7ee; 
+    margin-right: -1.5rem
+}
+.wapcomment .com_reply .wordhide{
+    width: 80%;
+    text-align: right;
+    margin-left: 19%;
+}
+.com_total,.comxq{
+    padding: 15px 0 0px;
+    color: #656565;
+    font-size: 1.15rem;
+    overflow: hidden; 
+}
+.comxq{ 
+    width: 90%;
+    margin: 0 auto;
+}
+.com_total a,.comxq a{ 
+     color: #656565;
+}
+.wapcomment .page a{ 
+    margin-left: 20px;
+}
+.com_total a:visited{
+   color: #8d8d8d;
+}
+

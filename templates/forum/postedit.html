@@ -1,0 +1,170 @@
+{?set $jieqi_pagetitle = "编辑帖子-{$jieqi_sitename}"?}
+<div class="block10"></div>
+<div class="wrap1200 post">
+    <span class="titmenu">发帖</span>
+    <form name="frmpost" id="frmpost" action="/modules/forum/newpost.php?do=submit" method="post" onsubmit="return jieqiFormValidate_frmpost();" enctype="multipart/form-data">
+        <div class="postbox">
+            <div class="txtbox j-title-input">
+                <span class="wtitle">标题</span>
+                <div class="rbox">
+                    <input name="topictitle" id="topictitle" type="text" value="{?$topictitle?}" class="textbox " maxlength="30">
+                </div>
+                <em class="warning nameMsg">标题不能为空</em>
+            </div>
+            <!--<div class="txtbox j-classis">-->
+            <!--<label class="wtitle">类型</label>-->
+            <!--<div class="rbox">-->
+            <!--<div class="radiobox checked" data-type="1">-->
+            <!--<label class="radio-l ui_bgcolor" >-->
+            <!--</label>-->
+            <!--帖子-->
+            <!--</div>-->
+            <!--<div class="radiobox" data-type="2">-->
+            <!--<label class="radio-l" >-->
+            <!--</label>-->
+            <!--书评-->
+            <!--</div>-->
+            <!--<div class="radiobox" data-type="3">-->
+            <!--<label class="radio-l" >-->
+            <!--</label>-->
+            <!--书单-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="txtbox j-tags">-->
+            <!--<span class="wtitle">标签</span>-->
+            <!--<div class="rbox tagsw">-->
+            <!--<label class="p_tags " data-type="1">求助</label>-->
+            <!--<label class="p_tags" data-type="2">分享</label>-->
+            <!--<label class="p_tags" data-type="3">闲聊</label>-->
+            <!--<label class="p_tags" data-type="4">写作交流</label>-->
+            <!--<label class="p_tags" data-type="5">直播</label>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="txtbox j-setting">-->
+            <!--<span class="wtitle">设置</span>-->
+            <!--<div class="rbox settags">-->
+            <!--<label class="p_tags j-forbid tagscur ui_bg_bdcolor" data-type="1">允许回复</label>-->
+            <!--<label class="p_tags j-unforbid" data-type="2">禁止回复</label>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div style="position: relative;">
+                <div class="txtbox txtboxinfo j-textarea-content textarea-content">
+                    <span class="wtitle">内容</span>
+                    <div class="rbox">
+                        <textarea name="posttext" id="posttext"   class="textarea   Words-calculation" maxlength="10000" >{?$posttext?}</textarea>
+                        <span class="fb" id="intro-status"><b class="num">0/10000</b>字</span>
+                    </div>
+                    <p class="diffmark" style="display: none;width:760px;">
+                        <span class="tipstit"></span>
+                    </p>
+                    <em class="warning">内容不能为空</em>
+                </div>
+            </div>
+            <!--<div class="txtbox j-upload upload">-->
+
+            <!--<span class="wtitle">图片</span>-->
+            <!--<div class="rbox clearfixer">-->
+            <!--<div class="picaddbox fl">-->
+            <!--<p  class="picadd show ui_hoverbgbgwhite">+添加图片</p>-->
+            <!--<a href="javascript:void(0);" class="picloading ui_bg_bdcolor">图片正在上传中...</a>-->
+            <!--<span class="pictips">最多上传5张图片</span>-->
+            <!--<img id="tempimg" dynsrc="" src="" style="display:none" />-->
+            <!--</div>-->
+            <!--<div class="picaddshow fl">-->
+            <!--<em class="warning uploadmsg ">仅支持JPEGJPGGIFPNG文件，且图片尺寸不超过5M。</em>-->
+            <!--</div>-->
+
+            <!--</div>-->
+            <!--</div>-->
+            {?if $postcheckcode > 0?}
+            <div class="txtbox j-title-input">
+                <span class="wtitle"><img src="{?$jieqi_url?}/style/images/yan.png" /> </span>
+                <div class="rbox">
+                    <input name="checkcode" id="checkcode" type="text" value="" class="textbox" style="width: 100px;">
+                </div>
+                <img id="p_imgccode" src="{?$jieqi_url?}/checkcode.php" onclick="this.src='{?$jieqi_url?}/checkcode.php?rand='+Math.random();" style="height:38px;padding-left:10px;font-size:12px">
+            </div>
+            {?/if?}
+            <div class="txtbox j-post  sendpost">
+                <input type="hidden" name="fid" id="fid" value="{?$forumid?}" />
+                <input type="hidden" name="act" id="act" value="newpost" />
+                <a  class="submita ui_bgcolor">发布</a>
+                <em class="warning postmsg "></em>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="block20"></div>
+<script>
+    var page_config = {
+        userLevel: "{?$jieqi_group?}",
+        userIcon: "{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'l':$jieqi_avatar?}",
+        type: "",
+        admin: "false",
+        topicId: "{?$topicid?}",
+        pid: "{?$pid?}"
+    }
+</script>
+
+
+</body>
+
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/template-web.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<!--<script src="{?$jieqi_url?}/style/js/ajaxupload.js"></script>-->
+<!--<script id="new_img_template" type="text/x-handlebar-template">-->
+<!--<div class="areabox clearfixer">-->
+<!--<dl>-->
+<!--<dt class="fl"><img src="picture/031ad3d8cfe046a992f61b8a2ef2e278.gif"/></dt>-->
+<!--<dd class="fl">-->
+<!--<textarea name="imgdesc" placeholder="图片说明" class="picdesc">{{content}}</textarea>-->
+<!--<span class="fb" id=""><b class="num">0/30</b>字</span>-->
+<!--</dd>-->
+<!--</dl>-->
+<!--<a href="###" class="delbtn ui_hoverbgbgwhite">×</a>-->
+<!--</div>-->
+<!--</script>-->
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/postadd.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/data.js"></script>
+
+<script>
+    $(".nav_bbs").addClass("curr");
+</script>

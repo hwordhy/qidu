@@ -1,0 +1,36 @@
+
+{?if $reviewrows|count > 0?}
+{?section name=i loop=$reviewrows?}	 
+<div class="comment_item clearfixer j_comment_item" data-commentid="1661476">
+    <div class="left fl">
+        <a href="{?function jieqi_geturl:'system':'user':$reviewrows[i].posterid?}" class="avatar" target="_blank">
+            <img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}" alt="头像">
+        </a>
+        <div class="nickname">
+            <span class="level v0"></span>
+            <a href="{?$reviewrows[i].poster?}" target="_blank" class="nickname_text">
+                {?$reviewrows[i].poster?}</a>
+        </div>
+    </div>
+    <div class="right fl">
+        <p class="item_title">
+                {?if $reviewrows[i].istop == 1?}
+            <span class="totop">[置顶]</span>
+            {?/if?}{?if $reviewrows[i].isgood == 1?}<span class="essence">[精华]</span>
+            {?/if?}
+            <a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" target="_blank">
+                {?$reviewrows[i].title|str_replace:"<br />":" "|truncate:80:'..'?}</a>
+            </p>
+        <p class="comment-text">
+                {?$reviewrows[i].posttext|truncate:160:"......"?} </p>
+        <p class="clearfixer behavior">
+    <span class="fl time">{?$reviewrows[i].posttime|date:Y-m-d H:i:s?}</span>
+    <a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="reply"> <span class="fr reply">回复(<em class="reply_num">{?$reviewrows[i].replies?}</em>)</span>
+        </a>        </p>
+    </div>
+</div>
+
+{?/section?}
+{?else?}
+
+{?/if?}

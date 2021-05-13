@@ -1,0 +1,903 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>uxiconfont</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;list-style: none;}
+        /*
+KISSY CSS Reset
+鐞嗗康锛?. reset 镄勭洰镄勪笉鏄竻闄ゆ祻瑙埚櫒镄勯粯璁ゆ牱寮忥紝杩欎粎鏄儴鍒嗗伐浣溿€傛竻闄ゅ拰閲岖疆鏄揣瀵嗕笉鍙垎镄勩€?     2. reset 镄勭洰镄勪笉鏄榛樿镙峰纺鍦ㄦ墍链夋祻瑙埚櫒涓嬩竴镊达紝钥屾槸鍑忓皯榛樿镙峰纺链夊彲鑳藉甫鏉ョ殑闂銆?     3. reset 链熸湜鎻愪緵涓€濂楁櫘阃傞€氱敤镄勫熀纭€镙峰纺銆备絾娌℃湁阈跺脊锛屾帹钻愭抵鎹叿浣挞渶姹傦紝瑁佸壀鍜屼慨鏀瑰悗鍐崭娇鐢ㄣ€?鐗硅壊锛?. 阃傚簲涓枃锛?. 鍩轰簬链€鏂颁富娴佹祻瑙埚櫒銆?缁存姢锛氱帀浼?lifesinger@gmail.com>, 姝ｆ烦<ragecarrier@gmail.com>
+*/
+
+/** 娓呴櫎鍐呭杈硅窛 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 缁撴瀯鍏幂礌 */
+dl, dt, dd, ul, ol, li, /* list elements 鍒楄〃鍏幂礌 */
+pre, /* text formatting elements 鏂囨湰镙煎纺鍏幂礌 */
+form, fieldset, legend, button, input, textarea, /* form elements 琛ㄥ崟鍏幂礌 */
+th, td /* table elements 琛ㄦ牸鍏幂礌 */ {
+    margin: 0;
+    padding: 0;
+}
+
+/** 璁剧疆榛樿瀛椾綋 **/
+body,
+button, input, select, textarea /* for ie */ {
+    font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; } /* 灏嗘枩浣撴埙姝?*/
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 缁熶竴绛夊瀛椾綋 */
+small { font-size: 12px; } /* 灏忎簬 12px 镄勪腑鏂囧緢闅鹃槄璇伙紝璁?small 姝ｅ父鍖?*/
+
+/** 閲岖疆鍒楄〃鍏幂礌 **/
+ul, ol { list-style: none; }
+
+/** 閲岖疆鏂囨湰镙煎纺鍏幂礌 **/
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+/** 閲岖疆琛ㄥ崟鍏幂礌 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 鎼溅锛氲阈炬帴閲岀殑 img 镞犺竟妗?*/
+button, input, select, textarea { font-size: 100%; } /* 浣垮缑琛ㄥ崟鍏幂礌鍦?ie 涓嬭兘缁ф圹瀛椾綋澶у皬 */
+/* 娉细optgroup 镞犳硶镓舵 */
+
+/** 閲岖疆琛ㄦ牸鍏幂礌 **/
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* 娓呴櫎娴姩 */
+.ks-clear:after, .clear:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+}
+.ks-clear, .clear {
+  *zoom: 1;
+}
+
+.main {padding: 30px 100px;}
+.main h1{font-size:36px; color:#333; text-align:left;margin-bottom:30px; border-bottom: 1px solid #eee;}
+
+.helps{margin-top:40px;}
+.helps pre{
+    padding:20px;
+    margin:10px 0;
+    border:solid 1px #e7e1cd;
+    background-color: #fffdef;
+    overflow: auto;
+}
+
+.icon_lists li{
+    float:left;
+    width: 100px;
+    height:150px;
+    text-align: center;
+}
+.icon_lists .iconfont{
+    font-size: 42px;
+    line-height: 100px;
+    margin: 10px 0;
+    color:#333;
+    -webkit-transition: font-size 0.25s ease-out 0s;
+-moz-transition: font-size 0.25s ease-out 0s;
+transition: font-size 0.25s ease-out 0s;
+
+}
+.icon_lists .iconfont:hover{
+    font-size: 100px;
+}
+
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9*/
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff') format('woff'), /* chrome銆乫irefox */
+    url('iconfont.ttf') format('truetype'), /* chrome銆乫irefox銆乷pera銆丼afari, Android, iOS 4.2+*/
+    url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont{font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>涓€娣楿X锲炬爣</h1>
+        <ul class="icon_lists clear">
+            
+                <li>
+                    <i class="iconfont">&#xf0021;</i>
+                    <div class="name">鏂?/div>
+                    <div class="code">&amp;#xf0021;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0025;</i>
+                    <div class="name">鍒楄〃</div>
+                    <div class="code">&amp;#xf0025;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0026;</i>
+                    <div class="name">鍙戦€?/div>
+                    <div class="code">&amp;#xf0026;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0029;</i>
+                    <div class="name">鍏呭€?/div>
+                    <div class="code">&amp;#xf0029;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0032;</i>
+                    <div class="name">浠樻鏂瑰纺</div>
+                    <div class="code">&amp;#xf0032;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0037;</i>
+                    <div class="name">鐢靛瓙涔?/div>
+                    <div class="code">&amp;#xf0037;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0038;</i>
+                    <div class="name">鐞呜储</div>
+                    <div class="code">&amp;#xf0038;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0042;</i>
+                    <div class="name">鏂囩珷</div>
+                    <div class="code">&amp;#xf0042;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0044;</i>
+                    <div class="name">锲剧墖</div>
+                    <div class="code">&amp;#xf0044;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0060;</i>
+                    <div class="name">镙囩</div>
+                    <div class="code">&amp;#xf0060;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0063;</i>
+                    <div class="name">镞ュ巻</div>
+                    <div class="code">&amp;#xf0063;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0066;</i>
+                    <div class="name">瀵硅瘽妗?/div>
+                    <div class="code">&amp;#xf0066;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf006e;</i>
+                    <div class="name">阍辫</div>
+                    <div class="code">&amp;#xf006e;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf008d;</i>
+                    <div class="name">绀肩墿</div>
+                    <div class="code">&amp;#xf008d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0091;</i>
+                    <div class="name">鏄剧ず鍣?/div>
+                    <div class="code">&amp;#xf0091;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0092;</i>
+                    <div class="name">镦х浉链?/div>
+                    <div class="code">&amp;#xf0092;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00a2;</i>
+                    <div class="name">镓嬫満</div>
+                    <div class="code">&amp;#xf00a2;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00a7;</i>
+                    <div class="name">绗旇链?/div>
+                    <div class="code">&amp;#xf00a7;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00a8;</i>
+                    <div class="name">镓揿嵃链?/div>
+                    <div class="code">&amp;#xf00a8;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00aa;</i>
+                    <div class="name">娓告垙</div>
+                    <div class="code">&amp;#xf00aa;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00af;</i>
+                    <div class="name">鎺ㄨ崘</div>
+                    <div class="code">&amp;#xf00af;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b0;</i>
+                    <div class="name">璁よ瘉鐢ㄦ埛</div>
+                    <div class="code">&amp;#xf00b0;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b1;</i>
+                    <div class="name">褰╁甫</div>
+                    <div class="code">&amp;#xf00b1;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b2;</i>
+                    <div class="name">姝ｇ‘</div>
+                    <div class="code">&amp;#xf00b2;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b3;</i>
+                    <div class="name">阌栾</div>
+                    <div class="code">&amp;#xf00b3;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b4;</i>
+                    <div class="name">绂佹</div>
+                    <div class="code">&amp;#xf00b4;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b5;</i>
+                    <div class="name">鎻愰啋</div>
+                    <div class="code">&amp;#xf00b5;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b6;</i>
+                    <div class="name">鎻愮ず</div>
+                    <div class="code">&amp;#xf00b6;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b7;</i>
+                    <div class="name">璀﹀憡</div>
+                    <div class="code">&amp;#xf00b7;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00b9;</i>
+                    <div class="name">缃戠粶</div>
+                    <div class="code">&amp;#xf00b9;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00ba;</i>
+                    <div class="name">鍒涙剰</div>
+                    <div class="code">&amp;#xf00ba;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00bb;</i>
+                    <div class="name">璐︽埛</div>
+                    <div class="code">&amp;#xf00bb;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00bd;</i>
+                    <div class="name">鏂囦欢</div>
+                    <div class="code">&amp;#xf00bd;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00be;</i>
+                    <div class="name">缂栬緫鏂囦欢</div>
+                    <div class="code">&amp;#xf00be;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00c2;</i>
+                    <div class="name">澶嶅埗鏂囦欢</div>
+                    <div class="code">&amp;#xf00c2;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00c4;</i>
+                    <div class="name">绛夊緟</div>
+                    <div class="code">&amp;#xf00c4;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00c5;</i>
+                    <div class="name">鏂囦欢澶?/div>
+                    <div class="code">&amp;#xf00c5;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00c9;</i>
+                    <div class="name">阌佸畾</div>
+                    <div class="code">&amp;#xf00c9;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00ca;</i>
+                    <div class="name">璧勬枡搴?/div>
+                    <div class="code">&amp;#xf00ca;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00cc;</i>
+                    <div class="name">缃戠珯涓?/div>
+                    <div class="code">&amp;#xf00cc;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00ce;</i>
+                    <div class="name">绔栫姸锲?/div>
+                    <div class="code">&amp;#xf00ce;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00d5;</i>
+                    <div class="name">璁捐甯?/div>
+                    <div class="code">&amp;#xf00d5;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00df;</i>
+                    <div class="name">璁″垝</div>
+                    <div class="code">&amp;#xf00df;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00e1;</i>
+                    <div class="name">鐩綍</div>
+                    <div class="code">&amp;#xf00e1;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00e4;</i>
+                    <div class="name">鍟嗗缇?/div>
+                    <div class="code">&amp;#xf00e4;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00e9;</i>
+                    <div class="name">鍙</div>
+                    <div class="code">&amp;#xf00e9;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00eb;</i>
+                    <div class="name">椋椤崌姒?/div>
+                    <div class="code">&amp;#xf00eb;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00ec;</i>
+                    <div class="name">绠＄悊锻?/div>
+                    <div class="code">&amp;#xf00ec;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf00f5;</i>
+                    <div class="name">鐢ㄧ爷</div>
+                    <div class="code">&amp;#xf00f5;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0102;</i>
+                    <div class="name">瀵嗗宠</div>
+                    <div class="code">&amp;#xf0102;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0104;</i>
+                    <div class="name">镊侄鎺ㄥ箍</div>
+                    <div class="code">&amp;#xf0104;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0105;</i>
+                    <div class="name">绠＄悊</div>
+                    <div class="code">&amp;#xf0105;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf012b;</i>
+                    <div class="name">棣栭〉</div>
+                    <div class="code">&amp;#xf012b;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf012c;</i>
+                    <div class="name">鎼灭储</div>
+                    <div class="code">&amp;#xf012c;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf012d;</i>
+                    <div class="name">鐢ㄦ埛</div>
+                    <div class="code">&amp;#xf012d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0132;</i>
+                    <div class="name">瀵硅瘽</div>
+                    <div class="code">&amp;#xf0132;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0134;</i>
+                    <div class="name">鐗╂祦</div>
+                    <div class="code">&amp;#xf0134;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0136;</i>
+                    <div class="name">鍚岖墖</div>
+                    <div class="code">&amp;#xf0136;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0138;</i>
+                    <div class="name">闾欢</div>
+                    <div class="code">&amp;#xf0138;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf013c;</i>
+                    <div class="name">璧炴壃</div>
+                    <div class="code">&amp;#xf013c;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf013d;</i>
+                    <div class="name">镓硅瘎</div>
+                    <div class="code">&amp;#xf013d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf013e;</i>
+                    <div class="name">璁剧疆</div>
+                    <div class="code">&amp;#xf013e;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf013f;</i>
+                    <div class="name">鍒犻櫎</div>
+                    <div class="code">&amp;#xf013f;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0142;</i>
+                    <div class="name">淇℃伅</div>
+                    <div class="code">&amp;#xf0142;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0143;</i>
+                    <div class="name">甯侄</div>
+                    <div class="code">&amp;#xf0143;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0144;</i>
+                    <div class="name">鏀惰棌</div>
+                    <div class="code">&amp;#xf0144;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0145;</i>
+                    <div class="name">鍠灭埍</div>
+                    <div class="code">&amp;#xf0145;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0148;</i>
+                    <div class="name">璐墿杞?/div>
+                    <div class="code">&amp;#xf0148;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf014a;</i>
+                    <div class="name">浣岖疆</div>
+                    <div class="code">&amp;#xf014a;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf014b;</i>
+                    <div class="name">濂藉弸</div>
+                    <div class="code">&amp;#xf014b;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf014f;</i>
+                    <div class="name">缂栬緫</div>
+                    <div class="code">&amp;#xf014f;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0150;</i>
+                    <div class="name">浜烘皯甯?/div>
+                    <div class="code">&amp;#xf0150;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf015b;</i>
+                    <div class="name">闄勪欢</div>
+                    <div class="code">&amp;#xf015b;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf015e;</i>
+                    <div class="name">澶у垪琛?/div>
+                    <div class="code">&amp;#xf015e;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf015f;</i>
+                    <div class="name">澶х缉鐣ュ浘鍒楄〃</div>
+                    <div class="code">&amp;#xf015f;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0160;</i>
+                    <div class="name">鐎戝竷娴?/div>
+                    <div class="code">&amp;#xf0160;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0161;</i>
+                    <div class="name">鍒楄〃</div>
+                    <div class="code">&amp;#xf0161;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0163;</i>
+                    <div class="name">涓嬭浇</div>
+                    <div class="code">&amp;#xf0163;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0165;</i>
+                    <div class="name">鍙戦€侀偖浠?/div>
+                    <div class="code">&amp;#xf0165;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0166;</i>
+                    <div class="name">鎻愰啋璁剧疆</div>
+                    <div class="code">&amp;#xf0166;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0168;</i>
+                    <div class="name">缂栬緫妯℃澘</div>
+                    <div class="code">&amp;#xf0168;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0171;</i>
+                    <div class="name">娣桦疂</div>
+                    <div class="code">&amp;#xf0171;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0178;</i>
+                    <div class="name">璐墿杞︽弧</div>
+                    <div class="code">&amp;#xf0178;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0179;</i>
+                    <div class="name">璐墿杞︾┖</div>
+                    <div class="code">&amp;#xf0179;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf017a;</i>
+                    <div class="name">搴旗敤涓绩</div>
+                    <div class="code">&amp;#xf017a;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf017c;</i>
+                    <div class="name">阃€鍑?/div>
+                    <div class="code">&amp;#xf017c;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf017d;</i>
+                    <div class="name">镄囧啝</div>
+                    <div class="code">&amp;#xf017d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf018d;</i>
+                    <div class="name">璁剧疆</div>
+                    <div class="code">&amp;#xf018d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf018e;</i>
+                    <div class="name">褰曢煶</div>
+                    <div class="code">&amp;#xf018e;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0194;</i>
+                    <div class="name">镓揿紑淇℃伅</div>
+                    <div class="code">&amp;#xf0194;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0195;</i>
+                    <div class="name">瑙ｉ挛</div>
+                    <div class="code">&amp;#xf0195;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0199;</i>
+                    <div class="name">鏂囨湰杈揿叆</div>
+                    <div class="code">&amp;#xf0199;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a2;</i>
+                    <div class="name">宸︿笂</div>
+                    <div class="code">&amp;#xf01a2;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a3;</i>
+                    <div class="name">鍚戜笂</div>
+                    <div class="code">&amp;#xf01a3;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a4;</i>
+                    <div class="name">鍙充笂</div>
+                    <div class="code">&amp;#xf01a4;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a5;</i>
+                    <div class="name">宸︿笅</div>
+                    <div class="code">&amp;#xf01a5;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a6;</i>
+                    <div class="name">鍚戜笅</div>
+                    <div class="code">&amp;#xf01a6;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a7;</i>
+                    <div class="name">鍙充笅</div>
+                    <div class="code">&amp;#xf01a7;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a8;</i>
+                    <div class="name">鍚戝乏</div>
+                    <div class="code">&amp;#xf01a8;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01a9;</i>
+                    <div class="name">鍚戝彸</div>
+                    <div class="code">&amp;#xf01a9;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01af;</i>
+                    <div class="name">鏂版氮寰崥</div>
+                    <div class="code">&amp;#xf01af;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01b0;</i>
+                    <div class="name">鑵捐寰崥</div>
+                    <div class="code">&amp;#xf01b0;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01b1;</i>
+                    <div class="name">鐜?/div>
+                    <div class="code">&amp;#xf01b1;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01bc;</i>
+                    <div class="name">璁㈤槄</div>
+                    <div class="code">&amp;#xf01bc;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01be;</i>
+                    <div class="name">璁㈠崟</div>
+                    <div class="code">&amp;#xf01be;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01c7;</i>
+                    <div class="name">qq</div>
+                    <div class="code">&amp;#xf01c7;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01c8;</i>
+                    <div class="name">璞嗙摚</div>
+                    <div class="code">&amp;#xf01c8;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01c9;</i>
+                    <div class="name">瀹夊崜</div>
+                    <div class="code">&amp;#xf01c9;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01cd;</i>
+                    <div class="name">瀹㈠巺</div>
+                    <div class="code">&amp;#xf01cd;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01ce;</i>
+                    <div class="name">鍗у</div>
+                    <div class="code">&amp;#xf01ce;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01ea;</i>
+                    <div class="name">鍦板浘</div>
+                    <div class="code">&amp;#xf01ea;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01eb;</i>
+                    <div class="name">瀵硅瘽</div>
+                    <div class="code">&amp;#xf01eb;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01ee;</i>
+                    <div class="name">html5</div>
+                    <div class="code">&amp;#xf01ee;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01ef;</i>
+                    <div class="name">鐢佃瘽</div>
+                    <div class="code">&amp;#xf01ef;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01f4;</i>
+                    <div class="name">镄囧啝</div>
+                    <div class="code">&amp;#xf01f4;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01f8;</i>
+                    <div class="name">閲戝竵</div>
+                    <div class="code">&amp;#xf01f8;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf01fe;</i>
+                    <div class="name">阍荤煶</div>
+                    <div class="code">&amp;#xf01fe;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0279;</i>
+                    <div class="name">浼樿川</div>
+                    <div class="code">&amp;#xf0279;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf027b;</i>
+                    <div class="name">娼滃姏</div>
+                    <div class="code">&amp;#xf027b;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf027d;</i>
+                    <div class="name">绾㈠寘</div>
+                    <div class="code">&amp;#xf027d;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf027f;</i>
+                    <div class="name">鑴氩嵃</div>
+                    <div class="code">&amp;#xf027f;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0280;</i>
+                    <div class="name">閲戦</div>
+                    <div class="code">&amp;#xf0280;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf028b;</i>
+                    <div class="name">娓呴櫎</div>
+                    <div class="code">&amp;#xf028b;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf0290;</i>
+                    <div class="name">鏀惰棌</div>
+                    <div class="code">&amp;#xf0290;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#x3442;</i>
+                    <div class="name">浼氩憳鍗?/div>
+                    <div class="code">&amp;#x3442;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#x3434;</i>
+                    <div class="name">vip</div>
+                    <div class="code">&amp;#x3434;</div>
+                </li>
+            
+                <li>
+                    <i class="iconfont">&#xf02b2;</i>
+                    <div class="name">鐑?/div>
+                    <div class="code">&amp;#xf02b2;</div>
+                </li>
+            
+        </ul>
+
+
+        <div class="helps">
+            <!-- <pre>涓€瀹氲娣诲姞iconfont: "x", asiicode: 120 ,涓岖劧鍦╳indow xp涓嬬敤safari浼氩嚭鐜拌掴灞忋€?/pre> <br > <br> -->
+            绗竴姝ワ细浣跨敤font-face澹版槑瀛椾綋
+            <pre>
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9*/
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff') format('woff'), /* chrome銆乫irefox */
+    url('iconfont.ttf') format('truetype'), /* chrome銆乫irefox銆乷pera銆丼afari, Android, iOS 4.2+*/
+    url('iconfont.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+</pre>
+绗簩姝ワ细瀹氢箟浣跨敤iconfont镄勬牱寮?            <pre>
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+</pre>
+绗笁姝ワ细鎸戦€夌浉搴斿浘镙囧苟銮峰彇瀛椾綋缂栫爜锛屽簲鐢ㄤ簬椤甸溃
+<pre>
+&lt;i class="iconfont"&gt;&amp;#x33&lt;/i&gt;
+</pre>
+        </div>
+
+    </div>
+</body>
+</html>

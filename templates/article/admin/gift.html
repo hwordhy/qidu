@@ -1,0 +1,30 @@
+<table class="grid" width="100%" align="center">
+  <caption>礼物管理</caption>
+  <tr align="center">
+    <th width="50">礼物标识</th>
+    <th width="150">礼物名称</th>
+    <th width="140">礼物单价</th>
+	<th width="140">礼物描述</th>
+	<th width="140">是否显示</th>
+    <th width="100">操作</th>
+  </tr>
+  {?section name=i loop=$gift?}
+  <tr>
+    <td align="center">{?$i['key']?}</td>
+    <td align="center">{?$gift[i].caption?}</td>
+    <td align="left">{?$gift[i].price?}</td>
+	<td align="left">{?$gift[i].describe?}</td>
+	<td align="left">{?if $gift[i].display > 0?}显示{?else?}隐藏{?/if?}</td>
+	<td align="left"><a href="{?$article_static_url?}/admin/gift.php?act=edit&gid={?$i['key']?}">编辑</a> <a id="act_delete_{?$i['key']?}" href="javascript:;" onclick="if(confirm('您确实要删除该礼物么？删除后将会清空作品礼物相关数据！')) Ajax.Tip('{?$article_static_url?}/admin/gift.php?gid={?$i['key']?}&act=delete{?$jieqi_token_url?}', {method: 'POST'});">删除</a></td>
+  </tr>
+  {?/section?}
+  <tr>
+    <td colspan="6" class="foot">提示：礼物标识 是数据库字段名称，请不要与现有的礼物标识一样。</td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">{?$form_addgift?}</td>
+  </tr>
+</table>

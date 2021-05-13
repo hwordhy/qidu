@@ -1,0 +1,68 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_page_template = "templates/obook/masterpage.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "收入管理-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">收入管理</h1>
+      <div class="container-wrap">
+        <div class="bd">
+          <div class="cashtable">
+            <span class="fb18">合计：</span> <span class="r16" style="margin-left: 25px;">{?$obookstat['sumegold']?}</span> <span class="h16">{?$egoldname?}</span><span style="font-size: 16px;float: right;"> 总打赏：<span class="r16">{?$obookstat['sumtip']?}</span> 总礼物：<span class="r16">{?$obookstat['sumgift']|intval?} </span>总收入：<span class="r16">{?$obookstat['sumemoney']|intval?}</span></span>
+          </div>
+          <table class="cash_table">
+            <tbody>
+            <tr class="tit">
+              <td class="bg">书名</td>
+              <td class="bg">订阅收入</td>
+              <td class="bg">打赏收入</td>
+              <td class="bg">总收入</td>
+              <td class="bg" style="width: 200px;">操作</td>
+            </tr>
+            {?section name=i loop=$obookrows?}
+            <tr>
+              <td><a href="{?function jieqi_geturl:'article':'article':$obookrows[i].articleid:'info'?}" target="_blank">{?$obookrows[i].obookname?}</a></td>
+              <td align="center">{?$obookrows[i].sumegold?}</td>
+              <td align="center">{?$obookrows[i].sumtip?}</td>
+              <td align="center">{?$obookrows[i].sumemoney?}</td>
+              <td align="center"><a href="{?$jieqi_modules['article']['url']?}/articleactlog.php?id={?$obookrows[i].articleid?}&act=tip">打赏记录</a> <a href="{?$obook_dynamic_url?}/chapterstat.php?oid={?$obookrows[i].obookid?}">销售明细</a> <a href="{?$obook_dynamic_url?}/mreport.php?obookid={?$obookrows[i].obookid?}">销售月报</a></td>
+            </tr>
+            {?/section?}
+            </tbody>
+          </table>
+          <div class="pages_bottom" style="display: block;">
+            {?$url_jumppage?}
+          </div>
+          <div class="exp">
+            <ul>
+              <li class="exp_txt">温馨提示：</li>
+              <li>1. 每月1日开始结算上月收入，一般截止到10日发放完毕（节假日顺延）；</li>
+              <li>2. 作品捧场及订阅等才会产生收入；</li>
+              <li>3. <span style="color:#ff0000;">本页显示的数据为：未计算分成前的数据，分成比例请查看-><a href="{?$jieqi_url?}/persondetail.php" style="color: blue;text-decoration: underline;" target="_blank">基本信息</a>；</span></li>
+              <li>4. 对收入明细或福利如有疑问，请联系客服。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".n04 a").addClass('active');
+
+    });
+    function showLoading() {
+        popUp.openLoading('正在查询');
+    }
+
+
+</script>
+

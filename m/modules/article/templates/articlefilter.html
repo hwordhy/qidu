@@ -1,0 +1,131 @@
+<link type="text/css" rel="stylesheet" href="/themes/jieqi220/css/book.css" />
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "guideblocks"?}
+{?set $jieqi_pagetitle = "小说书库-{$jieqi_sitename}"?}{?set jieqi_page_rows = "30"?}{?set jieqi_page_links = "5"?}
+<link rel="stylesheet" href="/themes/jieqi220/css/shuku.css">
+<style>
+.page em{
+   text-align: center; 
+}
+#pagestats{
+	position: relative;
+	 left: 50px;
+	 font-size: 14px;
+	 font-style:normal;
+}
+.prev{
+	font-size: 15px;
+    float: left;
+}
+.next{
+	font-size: 15px;
+    float: right;
+}
+</style>
+
+
+
+		 <section class="book_stack">
+		  <section class="container">
+		   <div class="cats">
+			<div class=" clearfix">
+			 <b class="left fl">全站:</b>
+			 <span class="right fr">
+					{?section name=i loop=$sortidrows?}
+					{?if $sortidrows[i]['selected'] > 0?}
+				 <a href="{?$sortidrows[i]['url']?}" class="active">{?$sortidrows[i]['name']?}</a>
+				 {?else?}
+				 <a href="{?$sortidrows[i]['url']?}">{?$sortidrows[i]['name']?}</a>
+				 {?/if?}
+				 {?/section?}
+				</span>
+			</div>
+			<div class=" clearfix">
+			 <b class="left fl">状态:</b>
+			 <span class="right fr">
+					{?section name=i loop=$isfullrows?}
+					{?if $isfullrows[i]['selected'] > 0?}
+				 <a href="{?$isfullrows[i]['url']?}" class="active">{?$isfullrows[i]['name']?}</a>
+				 {?else?}
+				 <a href="{?$isfullrows[i]['url']?}">{?$isfullrows[i]['name']?}</a>
+				 {?/if?}
+				 {?/section?}
+				</span>
+			</div>
+		   </div>
+		   <div class="cats_ot">
+			<div class=" clearfix">
+			 <b class="left fl">更新:</b>
+			 <span class="right fr">
+					{?section name=i loop=$updaterows?}
+					{?if $updaterows[i]['selected'] > 0?}
+				 <a href="{?$updaterows[i]['url']?}" class="active">{?$updaterows[i]['name']?}</a>
+				 {?else?}
+				 <a href="{?$updaterows[i]['url']?}">{?$updaterows[i]['name']?}</a>
+				 {?/if?}
+				 {?/section?}
+				</span>
+			</div>
+			<div class=" clearfix">
+			 <b class="left fl">收费:</b>
+			 <span class="right fr">
+					{?section name=i loop=$isviprows?}
+					{?if $isviprows[i]['selected'] > 0?}
+				<a href="{?$isviprows[i]['url']?}" class="active">{?$isviprows[i]['name']?}</a>
+				{?else?}
+				<a href="{?$isviprows[i]['url']?}">{?$isviprows[i]['name']?}</a>
+				{?/if?}
+				{?/section?}
+			</span>
+			</div>
+			<div class="clearfix">
+			 <b class="left fl">字数:</b>
+			 <span class="right fr">
+					{?section name=i loop=$sizerows?}
+					{?if $sizerows[i]['selected'] > 0?}
+				 <a href="{?$sizerows[i]['url']?}" class="active">{?$sizerows[i]['name']?}</a>
+				 {?else?}
+				 <a href="{?$sizerows[i]['url']?}">{?$sizerows[i]['name']?}</a>
+				 {?/if?}
+				 {?/section?}
+				</span>
+			</div>
+		   </div>
+		  
+		   <!--列表 end-->
+		  </section>
+		 </section>
+<div class="container" style="width: 96%;">
+	<div class="mod block book-all-list">
+		<div class="bd">
+				<section class="book_stack">
+						<section class="container" style="width: 96%;">
+								<ul class="list">{?section name=i loop=$articlerows?}
+										<li style="width:100%"><span class="fl lleft">
+												<a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><img src="{?$articlerows[i].url_image?}" alt="" /></a>
+												</span>
+												<span class="fl lright">										  	         <h1><a href="{?$articlerows[i].url_articleinfo?}" class="lefts wordhide">{?if $articlerows[i].isvip_n > 0?}
+													<img src="/sink/image/icon-chapter-vip.png" style="height:10px;width:10px;" alt="vip">
+													{?/if?}{?$articlerows[i].articlename?}</a></h1><h2><a href="{?$articlerows[i].url_articleinfo?}">作者：{?$articlerows[i].author?} </a></h2><p><a href="{?$articlerows[i].url_articleinfo?}"> 
+
+													{?$articlerows[i].intro|truncate:80:...?}</a></p>
+													
+
+
+
+
+               										{?if $articlerows[i].vipchapterid > 0?}													<h2><a class="cat" href="{?$articlerows[i].url_vipchapter?}">{?$articlerows[i].sort?}</a> 更新：{?$articlerows[i].vipchapter?}</h2>{?else?}													<h2><a class="cat" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].sort?}</a> 更新：{?$articlerows[i].lastchapter?}</h2>{?/if?}
+
+
+
+												</span>
+											</li>{?/section?}
+								</ul>
+								<hr>
+								{?$url_jumppage?}
+						 <!--列表 end-->
+						</section>
+					   </section>
+		</div>
+	</div>
+</div>

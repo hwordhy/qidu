@@ -1,0 +1,27 @@
+{?section name=i loop=$bookcaserows?}
+  <li>
+    <a href="{?$bookcaserows[i].url_articleinfo?}" target="_blank" alt="{?$bookcaserows[i].articlename?}" title="{?$bookcaserows[i].articlename?}"><img src="{?$bookcaserows[i].url_image?}" /></a>
+    <p>
+      <a href="{?$bookcaserows[i].url_articleinfo?}" target="_blank"><span class="bookName">{?$bookcaserows[i].articlename?}</span></a>
+      <span class="bookStatus">
+                                            <b class="authorSt">
+                                                <em>
+
+                                                            {?$bookcaserows[i].fullflag?}
+
+                                                    |
+
+                                                            {?$bookcaserows[i].isvip?}
+                                                        </em>
+                                                <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$bookcaserows[i].authorid?}" target="_blank"><em class="none">{?$bookcaserows[i].author?}</em></a>
+                                            </b>
+                                            <b class="authorSt chapterSt">
+                                                <a href="{?$bookcaserows[i].url_lastchapter?}" target="_blank"><em class="ct">最新章节：{?$bookcaserows[i].lastchapter?}</em></a>
+                                                <em class="time">{?$bookcaserows[i].lastupdate|date:"Y-m-d H:i:s"?}更新</em>
+                                            </b>
+                                        </span>
+      <a href="{?$jieqi_modules['article']['url']?}/articleread.php?id={?$bookcaserows[i].articleid?}" target="_blank"><i class="goon">免费试读</i></a>
+    </p>
+
+  </li>
+{?/section?}

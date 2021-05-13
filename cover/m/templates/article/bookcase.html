@@ -1,0 +1,234 @@
+
+{?set jieqi_blocks_module = "artice"?}
+{?set $jieqi_pagetitle = "我的书架-{$jieqi_sitename}"?}
+
+<html>
+<head>
+
+	<title>{?$jieqi_pagetitle?}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/css20170419.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/layer.js"></script>
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                // 设计稿的宽度
+                ddesignWidth = 750,
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / ddesignWidth) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(document, window);
+	</script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobilescript.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head>
+<body>
+
+<div class="wrapper " id="page_collection">
+
+	<div class="weixin_title">
+		<div></div>
+	</div>
+	<ul class="main_title">
+		<li class="on my_shelf">
+			<a href="{?$jieqi_modules['article']['url']?}/bookcase.php">我的书架 </a>
+			<span class="bottom_line"></span>
+		</li>
+		<li class="recent_read">
+			<a href="{?$jieqi_modules['article']['url']?}/bookshelf.php">最近阅读</a>
+		</li>
+	</ul>
+	<!-- hd结束 -->
+	<div class="wx_cont">
+		<div class="recent_note">
+			收藏书籍&nbsp;<span id="j_booknumber">{?$nowbookcase?}</span>&nbsp;本
+			<span class="manage-btn" id="j-manage-btn" data-peopleid="">管理</span>
+		</div>
+		<div class="recent_bd">
+			{?if $bookcaserows|count > 0?}
+			{?section name=i loop=$bookcaserows?}
+			<dl>
+				<span class="delete j_delete" data-bookid="{?$bookcaserows[i].caseid?}"></span>
+				<dt>
+					<a href="{?$bookcaserows[i].url_articleinfo?}">
+						<img src="{?$bookcaserows[i].url_image?}" alt="{?$bookcaserows[i].articlename?}"
+							 title="{?$bookcaserows[i].articlename?}">
+					</a>
+				</dt>
+				<dd>
+					<a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].chapterid?}">
+						<p class="name">{?$bookcaserows[i].articlename?}</p>
+						<p class="already">已读章节：&nbsp;{?$bookcaserows[i].articlemark?}</p>
+						<p class="latest"><span>最新章节：</span>{?if $bookcaserows[i].viptime > $bookcaserows[i].freetime?}{?$bookcaserows[i].vipchapter?}{?else?}{?$bookcaserows[i].lastchapter?}{?/if?}</p>
+					</a>
+				</dd>
+			</dl>
+			{?/section?}
+			{?else?}
+			<div style="text-align:center; margin:10px; auto;">
+				<span>您还没有收藏书</span></div>
+			{?/if?}
+			<div id="search_more" class="search_more" data-currentPage="1" data-sitepath="" data-totalPage="1"><img src="{?$jieqi_url?}/style/m/images/loading.gif">
+			</div>
+			<div class="fixedbottom">已经到底了</div>
+		</div>
+	</div>
+	<span class="toTop" id="j_toTop"></span>
+	<div id="loading" class="loading">
+		<img src="{?$jieqi_url?}/style/m/images/loading.gif">
+	</div>
+	<style>
+
+
+		body{
+			position: relative;
+		}
+		.static-nav-mod {
+			position: fixed;
+			background: #fafafa;
+			bottom: 0rem;
+			z-index: 9999;
+			width: 100%;
+			height:5.0rem;
+			font-size:1.4rem;
+		}
+		.static-nav-mod ul {
+			display: -webkit-box;
+			display: -moz-box;
+			display: box;
+			overflow: hidden;
+		}
+		.static-nav-mod ul li {
+			-webkit-box-flex: 1.0;
+			-moz-box-flex: 1.0;
+			box-flex: 1.0;
+			text-align: center;
+			background:#fafafa;
+		}
+		.static-nav-mod ul li.on{
+			background:#fff;
+			height:5.0rem;
+		}
+		.static-nav-mod ul li p{
+			margin-top:.5rem;
+		}
+		.static-nav-mod ul li a {
+			display:block;
+			height:5.0rem;
+			color: #999;
+		}
+		.static-nav-mod ul li a img {
+			width:2.8rem;
+		}
+		.static-nav-mod ul li.on a {
+			display:block;
+			height:100%;
+			color: #fd6974;
+			font-weight:bold;
+		}
+		.mm_mod ul li.on a{
+			color: #00b9ef;
+		}
+		.jw_mod ul li.on a{
+			color: #0fb295;
+		}
+		.static-nav-mod ul li em{
+			display: inline-block;
+			margin: 1.5rem auto auto auto;
+			height: 1.7rem;
+		}
+		.static-nav-mod .m1 .bot1{
+			background: url({?$jieqi_url?}/style/m/images/14875915593686341_41_41.png) no-repeat left top;
+			background-size: 1.7rem 1.7rem;
+			line-height: 1.7rem;
+			padding-left: 2.5rem;
+		}
+		.static-nav-mod .m2 .bot2{
+			background: url({?$jieqi_url?}/style/m/images/148819281821111062_40_40.png) no-repeat left top;
+			background-size: 1.7rem 1.7rem;
+			line-height: 1.7rem;
+			padding-left: 2.5rem;
+		}
+		.static-nav-mod .m3 .bot3{
+			background: url({?$jieqi_url?}/style/m/images/14875915595529179_32_41.png) no-repeat left top;
+			background-size: 1.7rem 1.7rem;
+			line-height: 1.7rem;
+			padding-left: 2.5rem;
+		}
+
+		.static-nav-mod .on span{
+			color: #999;
+		}
+		.static-nav-mod .on .bot1{
+			background: url({?$jieqi_url?}/style/m/images/148819281373818788_41_41.png) no-repeat;
+			background-size: 1.7rem 1.7rem;
+		}
+		.static-nav-mod .on .bot2{
+			background: url({?$jieqi_url?}/style/m/images/148759151425335146_40_41.png) no-repeat;
+			background-size: 1.7rem 1.7rem;
+		}
+		.static-nav-mod .on .bot3{
+			background: url({?$jieqi_url?}/style/m/images/14881928278401681_32_41.png) no-repeat;
+			background-size: 1.7rem 1.7rem;
+		}
+	</style>
+	<div style="height:50px;"></div>
+	<div class="static-nav-mod">
+		<ul>
+			<li class="m1 on">
+				<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" id ="persion">
+					<em class="bot1">书架 </em>
+				</a>
+			</li>
+
+			<li class="m2 ">
+				<a href="{?$jieqi_url?}/">
+					<em class="bot2">精选</em>
+				</a>
+			</li>
+
+			<li class="m3 ">
+				<a href="{?$jieqi_url?}/userdetail.php">
+					<em class="bot3">我的</em>
+				</a>
+			</li>
+		</ul>
+		<script type="text/javascript">
+        // 头部 菜单
+		var jieqi_token = "{?$jieqi_token?}";
+        $(function () {
+            common_header.init();
+            page_collect.init();
+        })
+		</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

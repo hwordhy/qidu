@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="{?$jieqi_charset?}">
+	<title>{?$jieqi_pagetitle?}</title>
+	<meta content="zh-cn" http-equiv="Content-Language">
+	<meta name="keywords" content="{?$articlename?} {?$chaptername?} {?$author?} {?$sort?} {?$jieqi_sitename?}" />
+	<meta name="description" content="{?if $summary|isset == true?}{?$summary|truncate:500:'..'?}{?else?}{?$intro|truncate:500:'..'?}{?/if?}" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-3.2.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/login_re.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/layer.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/page.css" media="screen"/>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/head.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/layer.js"></script>
+	{?if $chapterid > 0?}
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/readbook.js"></script>
+	<link href="{?$jieqi_url?}/style/css/shuku.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/bookread.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/animation.css">
+	<style type="text/css">
+		.detail_cover {
+			display: none;
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #000000;
+			opacity: 0.5;
+			z-index: 9999;
+		}
+	</style>
+	<script type="text/javascript">
+        $(function(){
+            $("#book_case_text").bind('click', function(){
+                var book_id = $("#bid").val()
+                $.ajax({
+                    type: "GET",
+                    url: '/user/add_bookshelf',
+                    data: {'book_id' : book_id},
+                    dataType: "json",
+                    global: false,
+                    success: function (data) {
+                        if (data['code'] == "201") {
+                            alert(data['msg'])
+                            $("#user").show()
+                            $("#denglu").show()
+                        }
+                        if (data['code'] == "200" && data['flag'] == false) {
+                            alert(data['msg'])
+                            return false
+                        }
+                        alert(data['msg'])
+                    }
+                })
+            })
+        })
+	</script>
+	{?else?}
+	<link href="{?$jieqi_url?}/style/css/mulu.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/read.js"></script>
+	<!--<script type="text/javascript">-->
+        <!--$(function(){-->
+            <!--catalog()-->
+        <!--})-->
+	<!--</script>-->
+	{?/if?}
+	<script>var jieqi_token = "{?$jieqi_token?}"; var jumpurl = window.location.href; var egoldname = "{?$egoldname?}"</script>
+</head>
+<body {?if $chapterid > 0?}style="background: #E5E4Db" id="shuku" class="x_reader" oncopy="return false;" oncut="return false;"{?else?}id="mulu"{?/if?}>
+<style type="text/css">
+	body,div,a,p,span,h1,h2,h3,h4,ul,li,dl,dd,dt,img,input{ margin:0; padding:0; border:0; list-style:none;}
+	body{ font-size:14px; font-family:"微软雅黑"; color:#666666; background:#fff; }
+	a{ color:#2e2e2e; text-decoration:none;}
+	a:hover{ color:#333; text-decoration:underline;}
+	a:link{text-decoration:none;} a:visited{text-decoration:none;} a:active{text-decoration:none;}
+	input {outline:none;}
+
+	.head_1{height: 80px;box-shadow: 0 0 10px #e2e2e2;padding:0 6%;background: #fff;}
+	.head_logo{width: 12%;height: 80px;text-align: center;line-height: 80px; float: left;}
+	.nevigation{width:26%;height:80px;margin-left:3%;float: left;}
+	.nevigation a{text-decoration:none;color:#000;}
+	.nevigation ul{}
+	.nevigation ul li{float:left;width:23%;height:80px;text-align:center;line-height:80px;list-style-type:none;background-color:#fff;margin:opx;font-size: 16px;}
+	.nevigation ul li a:hover {display:block;background-color:#f96650;color: #fff; }
+	.sousu{width: 20%;height: 80px;text-align: center;float: left; position: relative;}
+	.sousu input{width: 88%;height: 40px;border:1px solid #f96650;border-radius: 40px;padding-left: 10%;margin-top: 20px;}
+	.sousu_logo{position:absolute;right:0%;top: 20px;}
+	.sc{width: 6%;height: 80px;line-height: 80px;text-align: center;float: left;margin-left: 2%;}
+	.login-button-box a:hover{color: #FFF;}
+	.login_con{
+		position:fixed;
+		width: 420px;
+		height:400px;
+		border: 1px solid #e2e2e2;
+		border-radius: 6px;
+		padding:  10px 0;
+		margin-top: 8%;
+		left:55%;
+		top:5%;
+		margin-left:-260px;/*为.fixed宽的一半*/;
+		background: #fff;
+		display: none;
+	}
+	.yzm{background: #f96650;color: #fff;padding:10px 15px;font-size: 12px;border-radius: 5px;border:1px solid #fff;margin-top: 100px;line-height: 50px;}
+
+	.qq{width: 100%;height: 1000px;}
+
+	.user_main{box-shadow: 0 3px 10px #e2e2e2;position: absolute;right: 0;z-index: 99999;background: #fff;width: 150px;display: none;}
+	.user_main li{border-bottom: 1px solid #e2e2e2;height: 40px;line-height: 40px;}
+	.user_main li a:hover {display:block;background-color:#f96650;color: #fff; }
+</style>
+
+
+<script type="text/javascript">
+    //登录
+    // $(function(){
+    // 	$("#deng img").click(function(){
+    // 		$("#denglu").show();
+    // 		$("#user").show();
+    // 	})
+    // })
+
+    $(function(){
+        $("#guanbi").click(function(){
+            $("#denglu").hide();
+            $("#re").hide();
+            $("#user").hide();
+        })
+    })
+    $(function(){
+        $("#zh").click(function(){
+            $("#zhaohui").slideToggle();
+            $("#user").hide();
+        })
+    })
+    //注册
+    $(function(){
+        $("#zhuce").click(function(){
+            $("#re").slideToggle();
+            $("#user").hide();
+        })
+    })
+    $(function(){
+        $("#reguanbi").click(function(){
+            $("#re").hide();
+            $("#denglu").hide();
+        })
+    })
+    $(function(){
+        $("#yiyou").click(function(){
+            $("#user").slideToggle();
+            $("#re").hide();
+        })
+    })
+    $(function(){
+        $("#b2").click(function(){
+            $("#b2").css('background','#f96650');
+            $("#b1").css('background','#fff');
+            $("#xiao").slideToggle();
+        })
+    })
+    $(function(){
+        $("#b1").click(function(){
+            $("#b1").css('background','#f96650');
+            $("#b2").css('background','#fff');
+            $("#xiao").slideToggle();
+        })
+    })
+    //找回密码
+    $(function(){
+        $("#guanbi_3").click(function(){
+            $("#zhaohui").hide();
+            $("#denglu").hide();
+        })
+    })
+
+    $(function(){
+        $("#ss").bind('click', function(){
+            var keyword = $("#search_input").val()
+            if (!keyword) {
+                layer.open({
+                    content : '搜索关键字不能为空',
+                    icon:7,
+                    btn : ['确定'],
+                });
+                return false
+            }
+
+            if (!isNaN(keyword)) {
+                location.href = '/'+keyword
+                return false
+            }
+
+            $("#form_search").submit()
+        })
+    })
+
+    //创作入口
+    $(function(){
+        $("#create").bind('click', function(){
+            $.ajax({
+                type: "GET",
+                url: '{?$jieqi_modules["article"]["url"]?}/applywriter.php?ajax_gets=1',
+                dataType: "json",
+                global: false,
+                success: function (data) {
+                    if (data['login'] == false) {
+                        layer.open({
+                            content : '对不起，请登录后使用本功能！',
+                            icon:7,
+                            btn : ['确定'],
+                        })
+
+                        setTimeout(function(){
+                            $("#user").show()
+                            $("#denglu").show();
+                        }, 1000)
+
+                        return false
+                    }
+
+                    location.href = '{?$jieqi_modules["article"]["url"]?}/applywriter.php';
+                }
+            })
+        })
+    })
+
+    $(function(){
+        login()
+        head_user()
+        choose_sex()
+        protocol()
+    })
+
+
+
+
+</script>
+
+<body>
+
+
+<div class="login_con" id="user" style="z-index: 99999">
+	<div class="login_header">
+		<span>用户登录</span>
+		<div class="close_login">
+			<a  href="JavaScript:;" id="guanbi"><img  src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err" style="display: none;" class="prompt" ><img src="{?$jieqi_url?}/style/images/wrong.png"> <span>信息提示</span></div>
+	<form>
+		<div class="login-input-box">
+			<span class="icon icon-user"></span>
+			<input id="acount" type="text" name="username" placeholder="帐号">
+
+		</div>
+		<div class="login-input-box" >
+			<span class="icon icon-password"></span>
+			<input id="password" align="content" name="password" type="password" placeholder="登录密码">
+		</div>
+		{?if $jieqi_login_checkcode > 0?}
+		<div class="login-input-box" >
+			<input style="padding-left: 10px;width: 100px;margin-right: 20px;" id="login_code" align="content" type="text" placeholder="验证码">
+			<img style="border-radius: 4px;width: 80px; height: 32px;" class="verify" src="{?$jieqi_url?}/checkcode.php" alt="验证码" onClick="this.src=this.src+'?rand='+Math.random()" />
+		</div>
+		{?/if?}
+	</form>
+	<div class="remember-box">
+		<label>
+			<input type="checkbox" id="usecookie" name="usecookie" value="1" style="float: left; outline: 1px solid #fff;">记住密码
+		</label>
+		<div class="remember-box-right">
+			<a href="JavaScript:;" id="zhuce"><span style="color: #999999">免费注册&nbsp;|</span></a>
+			<a href="JavaScript:;" id="zh"><span style="color: #999999">&nbsp;找回密码</span></a>
+		</div>
+	</div>
+	<div class="login-button-box" >
+		<a href="JavaScript:;" id="login">登录</a>
+	</div>
+	<div class="cha" >
+		<span style="color: #999999">———— 使用其他方式登录 ————</span>
+	</div>
+	<div class="login_logo">
+		<div style="width:230px; margin:0 auto;margin-top: 8px;">
+			{?if $jieqi_api_sites['qq']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/qq/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/qq_hover.png"></a>{?/if?}
+			{?if $jieqi_api_sites['weixin']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/weixin/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/weixin_normal.png"></a>{?/if?}
+			{?if $jieqi_api_sites['weibo']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/weibo/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/weibo_normal.png"></a>{?/if?}
+			<!--<a href="/user/other/type/baidu"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/baidu_normal.png"></a>-->
+		</div>
+	</div>
+
+</div>
+<!--  注册 -->
+
+<div class="re_con" id="re" style="z-index: 99999;padding-top: 0px;height: 520px;margin-top: 2%;">
+	<div class="login_header" style="background: #fff;">
+		<span style="margin-left: 45%;">用户注册</span>
+		<div class="close_login">
+			<a href="JavaScript:;"> <img id="reguanbi" src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err2" class="prompt" style="display: none;"><img src="{?$jieqi_url?}/style/images/wrong.png"><span>信息提示</span></div>
+
+	<div class="zc">
+		<div class="zc_text">
+			<span>用户名</span>
+			<span>密码</span>
+			<span>确认密码</span>
+			<span>邮箱</span>
+			{?if $show_emailrand == 1?}
+			<span>邮箱验证码</span>
+			{?/if?}
+			{?if $show_checkcode == 1?}
+			<span>验证码</span>
+			{?/if?}
+		</div>
+
+		<div class="zc_text2" style="width:244px ;margin-left: 20px;position: relative;">
+			<input id="username" type="int" name="" placeholder="请输入用户名" >
+			<input id="password1" type="password" name="" placeholder="6-15字母、数字或符合" >
+			<input id="password2" type="password" name="" placeholder="请再次输入密码" >
+			<input id="email" type="int" name="" placeholder="请输入电子邮箱~" >
+			{?if $show_emailrand == 1?}
+			<input id="emailcheck" style="width: 100px;float: left;" type="int" name="" placeholder="输入邮箱验证码">
+			<a id="res_code" class="yzm" onclick="get_code()">获取验证码</a>
+			{?/if?}
+			{?if $show_checkcode == 1?}
+			<input id="check" style="padding-left: 10px;width: 100px;margin-right: 20px;" align="content" type="text" placeholder="验证码">
+			<img style="padding-top: 10px;border-radius: 4px;width: 80px; height: 32px;" class="verify" src="{?$jieqi_url?}/checkcode.php" alt="验证码" onClick="this.src=this.src+'?rand='+Math.random()" />
+			{?/if?}
+			<!--<a id="res_code" class="yzm" onclick="get_code()">获取验证码</a>-->
+
+
+		</div>
+
+		<div class="login-button-box" >
+			<a id="register" href="JavaScript:;" style="background: #f96750;" onclick="register()">注册</a>
+		</div>
+		<div class="remember-box">
+			<!--<label>-->
+			<!--<input id="protocol" type="checkbox" style="float: left;background:#f96750;" onclick="register()">同意用户协议-->
+			<!--</label>-->
+			<div class="remember-box-right" id="yiyou">
+				<a href="JavaScript:;"><span style="color: #999999">已有账号？&nbsp;|</span></a>
+				<a href="JavaScript:;"><span style="color: #999999">&nbsp;登录</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<div class="head_1" >
+	<div class="head_logo">
+		<a href="{?$jieqi_url?}/">
+			<img  src="{?$jieqi_url?}/style/images/logo.png" height="60">
+		</a>
+	</div>
+
+	<div class="nevigation">
+		<ul>
+			<li><a href="{?$jieqi_url?}/">首页</a></li>
+			<!--<li><a href="/index/man">频道</a></li>-->
+			<li><a href="{?function jieqi_geturl:article:articlefilter:1:?}">书库</a></li>
+			<li><a href="{?function jieqi_geturl:article:toplist:1:toplist?}">榜单</a></li>
+		</ul>
+	</div>
+
+	<form method="post" id="form_search" action="{?$jieqi_modules['article']['url']?}/search.php">
+		<div class="sousu">
+			<input  type="hidden" name="searchtype" value="all">
+			<input  type="text" name="searchkey" placeholder="搜索小说、作者" id="search_input">
+			<a href="javascript:void(0);" id="ss">
+				<img class="sousu_logo" src="{?$jieqi_url?}/style/images/index_02.png">
+			</a>
+		</div>
+	</form>
+
+	<div class="sc">
+		<a href="{?$jieqi_modules['article']['url']?}/bookcase.php"> <img src="{?$jieqi_url?}/style/images/shujia_icon.png"></a>
+	</div>
+
+	<div class="sc" style="width: 6%;position: relative;">
+		<a href="{?$jieqi_url?}"><img style="position: absolute;top:30px;
+            left: 0;right: 0px;" src="{?$jieqi_url?}/style/images/phone_icon.png">
+			<span style="position: absolute;top: 0px;left: 10px;right: 0;bottom: 0;margin:auto;">手机版</span>
+		</a>
+	</div>
+
+	<div class="sc" style="width: 6%;margin-left:2%;position: relative;" id="deng">
+		<a id="user_menu" data-type="1">
+			<img id="user_image" style="cursor: pointer;border-radius: 50%;float: left;width: 40px;height: 40px;margin-top: 28%;">
+			<img id="down" style="display: none;" src="{?$jieqi_url?}/style/images/down-arrow.png">
+		</a>
+		<ul class="user_main">
+			<li>
+				<a href="{?$jieqi_url?}/userdetail.php">个人资料</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['pay']['url']?}/buyegold.php">帐号充值</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['article']['url']?}/monthlybuy.php">我的包月</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_url?}/message.php?box=inbox">消息提醒</a>
+			</li>
+			<!--<li>-->
+			<!--<a href="/User/answer.html">帮助中心</a>-->
+			<!--</li>-->
+			<li>
+				<a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}">退出登录</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="create" class="sc" style="margin-left: 2%;width: 9%;">
+		<a href="javascript:;">
+			<img  src="{?$jieqi_url?}/style/images/xiezuo_normal.png">
+		</a>
+	</div>
+</div>
+
+
+
+
+<div class="zhaohui_con" id="zhaohui" style="z-index: 99999 ;padding-top: 0px;height: 420px;margin-top: 2%;">
+	<div class="login_header" style="background: #fff;">
+		<span style="margin-left: 45%;">找回密码</span>
+		<div class="close_login">
+			<a href="JavaScript:;"><img id="guanbi_3" src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err3" class="prompt" style="display: none;"><img src="{?$jieqi_url?}/style/images/wrong.png"> <span>信息提示</span></div>
+
+	<div class="zc" style="height: 220px;margin-bottom: 0px;">
+		<div class="zc_text" style="height: 200px;">
+			<span>用户名</span>
+			<span>邮箱</span>
+		</div>
+
+		<div class="zc_text2" style="width:244px ;height: 200px; margin-left: 20px;position: relative;">
+			<input id="username1" type="int" name="" placeholder="请输入用户名" >
+			<input id="email1" type="int" name="" placeholder="请输入电子邮箱" >
+
+		</div>
+
+		<div class="login-button-box" style="margin-top: 0px;">
+			<a href="JavaScript:;" onclick="resetPassword()">提交</a>
+		</div>
+		<div class="remember-box">
+			<p>温馨提示:提交以下信息并后，请查看您的邮箱，根据提示的链接返回本站重新设定密码。</p>
+		</div>
+	</div>
+</div>
+<div style="position:fixed;overflow: hidden;z-index:999;left: 0px;right: 0px;top: 0px;bottom: 0px;display: none;background: #000000;opacity: 0.5;" id="denglu"></div>
+{?$jieqi_contents?}
+
+</body>
+</html>

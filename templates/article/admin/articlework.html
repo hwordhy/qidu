@@ -1,0 +1,27 @@
+{?set jieqi_page_rows = "50"?}
+
+<table class="grid" width="100%" align="center">
+<caption>{?if $order == 'monthupds'?}本月全勤排行 | <a href="articlework.php?order=preupds" class="note">查看上月全勤</a>{?else?}上月全勤排行 | <a href="articlework.php?order=monthupds" class="note">查看本月全勤</a>{?/if?}</caption>
+  <tr align="center">
+    <th width="18%">小说名称</th>
+    <th width="28%">最新章节</th>
+    <th width="8%">作者</th>
+    <th width="16%">上月更新</th>
+    <th width="16%">本月更新</th>
+    <th width="14%">更新时间</th>
+  </tr>
+  <tbody id="jieqi_page_contents">
+  {?section name=i loop=$articlerows?}
+  <tr>
+    <td><a href="{?function jieqi_geturl:'article':'article':$articlerows[i].articleid:'info':$articlerows[i].articlecode?}" target="_blank">{?$articlerows[i].articlename?}</a>{?if $articlerows[i].isvip_n > 0?}<span class="hot">vip</span>{?/if?}</td>
+    <td>{?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}" target="_blank">{?$articlerows[i].vipvolume?} {?$articlerows[i].vipchapter?}</a><span class="hot">vip</span>{?else?}<a href="{?$articlerows[i].url_lastchapter?}" target="_blank">{?$articlerows[i].lastvolume?} {?$articlerows[i].lastchapter?}</a>{?/if?}</td>
+    <td>{?if $articlerows[i].authorid == 0?}{?$articlerows[i].author?}{?else?}<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author?}</a>{?/if?}</td>
+    <td align="center">{?if $articlerows[i].prework > 0?}<strong class="hot">{?$articlerows[i].preupds?}天：{?$articlerows[i].presize_c?}字</strong>{?else?}{?$articlerows[i].preupds?}天：{?$articlerows[i].presize_c?}字{?/if?}</td>
+    <td align="center">{?if $articlerows[i].monthwork > 0?}<strong class="hot">{?$articlerows[i].monthupds?}天：{?$articlerows[i].monthsize_c?}字</strong>{?else?}{?$articlerows[i].monthupds?}天：{?$articlerows[i].monthsize_c?}字{?/if?}</td>
+    <td align="center">{?$articlerows[i].lastupdate|date:'Y-m-d'?}</td>
+  </tr>
+  {?/section?}
+  </tbody>
+</table>
+
+<div class="pages">{?$url_jumppage?}</div>

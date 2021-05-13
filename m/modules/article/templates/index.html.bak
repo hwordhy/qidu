@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+ <head>
+  <title>{?$articlename?}-{?$author?}-{?$sort?}-{?$jieqi_sitename?}</title>
+  <meta charset="gbk" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="Baiduspider" content="noarchive" />
+  <meta name="keywords" content="{?$meta_keywords?}" />
+  <meta name="description" content="{?$meta_description?}" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="baidu-site-verification" content="4a8ExyTvbS" />
+  <meta name="wap-font-scale" content="no" />
+  <link type="text/css" rel="stylesheet" href="/themes/jieqi220/css/base.css" />
+  <!--<link type="text/css"  rel="stylesheet" href="css/wapjieri.css" />-->
+
+  <link type="text/css" rel="stylesheet" href="/themes/jieqi220/css/index.css" />
+     <link type="text/css" rel="stylesheet" href="/themes/jieqi220/css/catalog.css" />
+ </head>
+  <style>
+.page em{
+   text-align: center; 
+}
+#pagestats{
+	position: relative;
+	 left: 50px;
+	 font-size: 14px;
+	 font-style:normal;
+}
+.prev{
+	font-size: 15px;
+    float: left;
+}
+.next{
+	font-size: 15px;
+    float: right;
+}
+</style>
+ <body>
+        <section class="wapheader othead"> 
+                <section class="container">
+                 <a href="/" title="{?$jieqi_sitename?}" class="fl logo"></a> 
+                 <span class="right fr"><a href="/">首页</a>
+                  <a href="/top">排行</a>
+                   <a href="/modules/article/articlefilter.php">书库</a>
+                   <a href="/sou.php">搜索</a>
+                   <a href="/modules/pay/buyegold.php?t=paycardpay">充值</a></span>
+                </section>
+               </section>
+  <section class="menu clearfix">
+                 <!--菜单-->
+                 <section class="menu  newus clearfix">
+                        <section class="container">
+                         <div class="topmenu">
+                          <!--登录后-->
+                          {?if $jieqi_userid ==0?} 
+                          <a href="/register.php">注册</a>
+                          <a href="/login.php">登录</a>
+                          <a href="/api/weixin/login.php" class="wechat"></a>
+                          <a href="/api/qq/login.php" class="qq"></a>
+                          <a href="/api/weibo/login.php" class="weibo"></a>
+                              <!--登录前 end-->
+                          {?else?}
+                          <a href="/modules/article/bookcase.php">我的收藏</a>
+                          <a href="/userdetail.php" class="allways">
+                              <img src="http://q.qlogo.cn/qqapp/101229138/1338A1D1A46947A2AF02FAE9C126CE08/100" class="bd50" /></a>
+                              {?/if?}  
+                          <!--登录后 end-->
+                         </div>
+                        </section>
+                       </section>
+                       <!--菜单 end-->
+					                  <section class="container">
+	<section class="catalog clearfix" style="width: 96%;/*! margin: 0 auto; */margin-left: -1px;">
+        <div class="container" style="width: 96%;">
+        <p class="here">
+            <a>{?$articlename?}</a><b>></b> 
+            
+            <a>目录 </a>
+            <b  class="  fr">作者:&nbsp{?$author?}</b>
+            </p>
+			{?section name=i loop=$chapterrows?}{?if $chapterrows[i].chaptertype > 0?}
+			{?if $i['order'] > 1?}</ul>{?/if?}
+                {?if $chapterrows[i].isvip == 0?}{?/if?}
+                {?if $i['order'] < $i['count']?}
+                <ul class="list_li" id="jsList1" style="display: block;">{?/if?}
+                    {?else?}
+			{?if $i['order'] == 1?}<ul class="list_li" id="jsList1" style="display: block;">{?/if?}
+                {?if $chapterrows[i].isvip > 0?}
+			<li style="width:100%;height:45px;text-align:left" id="{?$chapterrows[i].chapterid?}" class="{?if $chapterrows[i].display != 0?}act{?/if?}{?if $i['order'] %2==0?}two{?/if?}"><a href="{?$chapterrows[i].url_chapter?}"><img style="width:12px;height:10px;margin-right:8px;" src="http://www.cmqxwx.com/sink/image/icon-chapter-vip.png" alt="vip">{?$chapterrows[i].chaptername?}</a><em></em></li>{?else?}
+			<li style="width:100%;height:45px;text-align:left" id="{?$chapterrows[i].chapterid?}" class="{?if $chapterrows[i].display != 0?}act{?/if?}{?if $i['order'] %2==0?}two{?/if?}"><a href="{?$chapterrows[i].url_chapter?}">{?$chapterrows[i].chaptername?}</a><em></em></li>{?/if?}
+            {?if $i['order'] == $i['count']?}
+        </ul>{?/if?}{?/if?}{?/section?}
+			</div>
+			</div>
+	<hr>
+			{?$url_jumppage?}
+            <ul  >
+            </ul>
+      
+        </div>
+        </section>
+
+    <!--尾部-->
+    <section class="footer clearfix" style="width: 96%;">
+        <section class="container"  style="width: 96%;">
+         <a href="/" id="down" class="downChannelCount" data-recommendid="4531"><h1>签到领好礼，阅读更畅快</h1></a>
+                <p class="clearfix"><a href="http://m.cmqxwx.com/">首页</a><a href="/modules/article/articlefilter.php">书库</a><a href="/sou.php">搜索</a><a href="/modules/pay/buyegold.php?t=paycardpay">充值</a><a href="http://www.cmqxwx.com/">电脑站</a></p>
+         <p> Copyright ? 2018-2019 cmqxwx.com All Rights Reserved.   春墨秋香 版权所有<br>
+             陕ICP备19012676号  丨  安全联盟</p>
+        </section>
+       </section>
+       <div style="display:none;">
+
+       <!--尾部 end-->
+      </body>
+     </html>

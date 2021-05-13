@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="{?$jieqi_charset?}"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobile_index.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<title>{?$jieqi_pagetitle?}</title>
+	<style type="text/css">
+		input[type=submit]{-webkit-appearance: none;-moz-appearance: none;-webkit-user-select: none;-moz-appearance: none;-webkit-tap-highlight-color: rgba(0,0,0,0);-moz-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;-moz-touch-callout: none;-webkit-touch-callout: none}
+		input::-webkit-input-placeholder{color:#999;outline:none;font-size:14px;}
+		input::-moz-input-placeholder{color:#999;font-size:14px;outline:none}
+		.yin_pay{display:none;padding-top:15px;}.yin_pay input{display:block;border:none;}
+		.yin_pay p.text-input{height:32px;border:solid 1px #ddd;border-radius:3px;line-height:32px;}
+		.yin_pay p.text-input input{width:99%;padding-left:1%;line-height:32px;}
+		.yin_pay input.submit-input{background:#f60;width:100%;text-align:center;margin-top:15px;border-radius:3px;line-height:34px;text-align:center;color:#fff;}
+		.pay_ul li b,.pay_yin_ul li b{font-weight:normal;display:none;}.pay_ul p i,.pay_yin_ul p i{font-style:normal}.pay_tit span{font-weight:bold;color:#f60;display:none;}.faq_mod{background:#fff;padding:10px;font-size:12px;line-height:20px;color:#999;overflow:hidden;}.faq_mod span{display:block;font-size:14px;padding-bottom:5px;}.faq_mod p{color:#333;}.pay_ul{border:none;padding-bottom:0;margin-bottom:0;}.other_pay{width:100%;font-size:12px;position:relative;overflow:hidden;line-height:28px;}.other_pay a{color:#419bf5;}.other_pay span{position:absolute;right:0;top:0;border-radius:2px;display:inline-block;background:#f60;padding:0 5px;height:28px;line-height:28px;color:#fff;}.pay_ul li{border:none;}.pay_tit{position:relative;height:40px;padding:0 15px;line-height:40px}.pay_tit a{display:block;color:#419bf5;position:absolute;right:15px;top:0}.topup_mod{background:#fff;margin-bottom:10px;padding:0 15px 15px;color:#333;overflow:hidden}.topup_mod_ico{height:40px;line-height:40px;font-size:14px}.topup_mod_ico img{width:20px;padding-right:5px;vertical-align:middle}.topup_mod ul{width:100%;overflow:hidden}.topup_mod ul li{width:32%;float:left;margin-right:2%;line-height:20px}.topup_mod ul li:last-child{margin-right:0}.topup_mod ul li p{border:solid 1px #f60;padding:10px 5px;border-radius:2px;font-size:12px;text-align:center;overflow:hidden}.topup_mod ul li a{display:block;color:#f60}.topup_mod ul li p span{display:block;font-weight:bold;border-bottom:solid 1px #f60;margin-bottom:5px;font-size:14px;line-height:28px;color:#333}#form1{display:block;padding-bottom:0px}
+		.pay_yin_ul li.on{background:#f60;color:#fff;}.pay_yin_ul li.on a{color:#fff;}.topup_mod ul li.on p span{border-bottom:1px solid #fff;color:#fff}
+	</style>
+</head>
+<!--[if IE]>
+<link href="" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!-- header start -->
+<style>
+	.wx_nav_box1{background:#fff!important;position:relative;height:44px}
+	.wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+	.wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+	.wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+	.wx_home1 img{width:9px;margin-top:14px;float:left;}
+	.wx_home1 em{
+		float:left;
+		margin-left:10px;
+		color:#666;
+		font-size:16px;
+	}
+	.wx_nav_box1 a{color:#010101}
+	.wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+	.wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+	.wx_header1{overflow:hidden}
+	.commontitle{
+		position: relative;
+	}
+	.commontitle1{
+		position: fixed;
+		z-index:111;
+	}
+</style>
+<!-- header start -->
+<div id="bd" style="margin-top:10px; height: 100%;">
+	<!-- 微信支付 -->
+	<div class="topup_mod" id="weixin">
+		<input id="openId" value="" hidden=""/>
+		<!--<div class="topup_mod_ico"><img src="{?$jieqi_url?}/style/m/images/topup_84.png"/>微信充值</div>-->
+		<ul class = "pay_ul">
+			<br /><br /><br /><br /><br />
+			<li id="91" style="margin-right:0;width: 100%;">
+				<p>
+					<a href="javascript:;" style="font-size: 20px;">
+						正在打开微信支付中……
+					</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--end header-->
+<script type="text/javascript">
+    //调用微信JS api 支付
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            {?$jsApiParameters?},
+        function(res){
+            //WeixinJSBridge.log(res.err_msg);
+            //alert(res.err_code+res.err_desc+res.err_msg);
+            if(/ok$/i.test(res.err_msg)){
+                alert('支付成功，实际到账请稍候！');
+                window.location.href = '{?$jieqi_url?}/userdetail.php';
+            }else if(/cancel$/i.test(res.err_msg)){
+                alert('支付中断，您可以继续尝试支付！');
+            }else{
+                alert('对不起，支付失败！');
+                window.location.href = '{?$jieqi_url?}/userdetail.php';
+            }
+        }
+    );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
+        }
+    }
+</script>
+<script type="text/javascript">
+    window.onload=function(){
+        callpay();
+    }
+</script>
+</body>
+</html>
+

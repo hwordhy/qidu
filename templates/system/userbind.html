@@ -1,0 +1,76 @@
+{?set jieqi_page_template = "templates/system/userbind.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "账号绑定信息-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+  <div class="systemMod">
+    <div class="i-title">
+      <ul class="ulHd">
+        <li class="on">账号绑定信息<span></span></li>
+      </ul>
+    </div>
+    <div class="accountsBd">
+      <div class="basicAccounts">
+          <table>
+            <tr>
+              <td class="label">登录账号：</td>
+              <td>{?$uname?}{?if $pass == ''?} &nbsp;&nbsp; <span style="color: #ff0000;">您尚未设置本站密码</span> &nbsp;&nbsp; <a class="btnlink" href="{?$jieqi_url?}/passedit.php">马上去设置</a>{?/if?}</td>
+            </tr>
+            {?if $name != $uname?}
+            <tr style="margin-bottom: 20px;">
+              <td class="label">本站昵称：</td>
+              <td>{?$name?}</td>
+            </tr>
+            {?/if?}
+            {?section name=i loop=$userapirows?}
+            {?if $userapirows[i].publish > 0?}
+            <tr style="{?if $userapirows[i].isbind > 0?}line-height: 50px{?else?}line-height: 10px{?/if?};!important;">
+              <td class="label">{?$userapirows[i].apititle?}账号：</td>
+              <td>
+                {?if $userapirows[i].isbind > 0?}
+                已经绑定{?if $pass != '' || $bindcount > 1?} &nbsp;&nbsp; <a class="btnlink" id="act_unbind_{?$userapirows[i].apiname?}" href="javascript:;" onclick="act_unbind('{?$jieqi_url?}/userbind.php', '{?$userapirows[i].apiname?}');">解除绑定</a>{?/if?}
+                {?else?}
+                <a class="btnlink" href="{?$jieqi_url?}/api/{?$userapirows[i].apiname?}/login.php"><input type="button" class="accountsBtn" style="margin: 0;!important;" value="马上去绑定" /></a>
+                {?/if?}
+              </td>
+            </tr>
+            {?/if?}
+            {?/section?}
+          </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+<script type="text/javascript">
+    //解除绑定
+    function act_unbind(url, apiname){
+
+        if(confirm('确实要解除账号绑定么？'))
+        $.ajax({
+            type:'post',
+            url:url,
+            data:{"apiname": apiname, "act": "unbind", "jieqi_token": "{?$jieqi_token?}", "ajax_gets": 1},
+            success:function(data){
+                data = eval(data);
+                if (data.success === true) {
+
+                    layer.msg(data.message == '' ? '解绑成功' : data.message, {icon: 1,shade: .3});
+                    location.reload();
+                }
+                else{
+                    layer.msg(data.message, {icon: 2,shade: .3});
+                }
+            }
+        });
+        return false;
+    }
+</script>
+</body>
+</html>
+

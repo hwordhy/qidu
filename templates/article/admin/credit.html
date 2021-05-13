@@ -1,0 +1,28 @@
+<table class="grid" width="100%" align="center">
+  <caption>粉丝组设置</caption>
+  <tr align="center">
+    <th width="50">序号</th>
+    <th width="150">粉丝组名称</th>
+    <th width="140">所需粉丝值</th>
+	<th width="140">粉丝图标</th>
+    <th width="100">操作</th>
+  </tr>
+  {?section name=i loop=$creditrows?}
+  <tr>
+    <td align="center">{?$i.order?}</td>
+    <td align="center">{?$creditrows[i].caption?}</td>
+    <td align="left">{?$creditrows[i].minnum?}</td>
+	<td align="left"><img src="{?$creditrows[i].icourl?}" /></td>
+    <td align="center"><a href="{?$article_static_url?}/admin/credit.php?cid={?$creditrows[i].cid?}&act=edit">编辑</a> <a id="act_delete_{?$creditrows[i].cid?}" href="javascript:;" onclick="if(confirm('确实要删除该粉丝组？')) Ajax.Tip('{?$article_static_url?}/admin/credit.php?cid={?$creditrows[i].cid?}&act=delete{?$jieqi_token_url?}', {method: 'POST'});">删除</a></td>
+  </tr>
+  {?/section?}
+  <tr>
+    <td colspan="5" class="foot">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">{?$form_addCredit?}</td>
+  </tr>
+</table>

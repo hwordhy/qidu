@@ -1,0 +1,65 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_page_template = "templates/book/chapterstat.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "章节销售统计-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="m-left">
+        <div class="m-title">
+          <a href="{?$jieqi_modules['obook']['url']?}/mreport.php">结算中心&nbsp; > &nbsp;</a>《{?$obookname?}》章节销售统计
+        </div>
+
+        <!--稿费详情 mod-->
+        <div style="margin-bottom: 20px;">
+          <span style="font-size: 16px;">总章节数：<span class="r16">{?$ochaptersum['count']?}</span> 总章价：<span class="r16">{?$ochaptersum['saleprice']?}</span> 合计销售量：<span class="r16">{?$ochaptersum['allsale']?}</span> 合计销售额：<span class="r16">{?$ochaptersum['sumemoney']?} </span>合计销售金额：<span class="r16">{?$ochaptersum['sumemoney']|fen2yuan?} </span>元</span> </div>
+
+        <table class="gfTable" cellspacing="0" cellpadding="0">
+          <tr class="head">
+            <td style="width: 500px;">章节名称</td>
+            <td>单价</td>
+            <td>销售量</td>
+            <td>总销售额</td>
+            <td style="width: 260px;">总销售金额（元）</td>
+            <td>状态</td>
+            <td>详细记录</td>
+          </tr>
+          <tr>
+            {?section name=i loop=$ochapterrows?}
+            <td style="text-align: left;width: 500px;padding-left: 10px;"><a href="{?$ochapterrows[i].url_chapter?}" target="_blank">{?$ochapterrows[i].chaptername?}</a></td>
+            <td>{?$ochapterrows[i].saleprice?}</td>
+            <td>{?$ochapterrows[i].allsale?}</td>
+            <td>{?$ochapterrows[i].sumemoney?}</td>
+            <td>{?$ochapterrows[i].sumemoney|fen2yuan?}</td>
+            <td>{?$ochapterrows[i].display?}</td>
+            <td><a href="{?$obook_dynamic_url?}/chapterbuylog.php?cid={?$ochapterrows[i].ochapterid?}&oid={?$obookid?}" style="color: blue;text-decoration: underline;">详细记录</a></td>
+          </tr>
+          {?/section?}
+        </table>
+        <div class="pages_bottom" style="display: block;">
+          {?$url_jumppage?}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".n04 a").addClass('active');
+        $("#myallwords").html('/');
+
+
+    });
+</script>
+
+{?include file="templates/system/author_footer.html"?}
+
+

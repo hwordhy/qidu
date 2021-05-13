@@ -1,0 +1,43 @@
+<div class="to_top ui-toTop" style="display: none;"></div>
+<div class="rfloat">
+    <ul>
+        <li class="r-1"><a href="{?$jieqi_modules['article']['url']?}/bookshelf.php"><i></i><span>最近阅读</span></a></li>
+        <li class="r-2"><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php"
+        >
+            <i></i><span>充值</span></a></li>
+        <!--<li class="r-3">-->
+        <!--<a href="/about/contactus"><i></i><span>客服</span></a>-->
+        <!--</li>-->
+
+    </ul>
+</div>
+<!--footer-->
+<div class="footer-box" style="clear:both;">
+    <br />
+    <p class="footer-announce">
+        Copyright ? 2011-2017 {?$jieqi_url?} All Rights Reserved.   {?$jieqi_sitename?} 版权所有<br>
+        请作者发布作品时，务必遵守国家互联网信息管理办法规定，本站拒绝任何色情内容，一经发现，即作删除。<br>
+        本站所收录的作品、话题、评论均属其个人行为，不代表本站立场。<br>
+        **ICP备********号
+    </p>
+</div>
+<script language="javascript">
+    function AddFavorite(sURL, sTitle)
+    {
+        try
+        {
+            window.external.addFavorite(sURL, sTitle);
+        }
+        catch (e)
+        {
+            try
+            {
+                window.sidebar.addPanel(sTitle, sURL, "");
+            }
+            catch (e)
+            {
+                alert("加入收藏失败，请使用Ctrl D进行添加");
+            }
+        }
+    }
+</script>

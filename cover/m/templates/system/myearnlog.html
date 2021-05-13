@@ -1,0 +1,18 @@
+{?set $jieqi_pagetitle = "分成记录-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "分成记录"?}
+
+{?block bid="0" blockname="推广分成" module="system" filename="" classname="BlockSystemCustom" side="-1" title="" vars="" template="block_channelnav_tab.html" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<div class="blockb">
+<div class="blockcontent" id="jieqi_page_contents">
+	<ul class="ulrow">
+	{?section name=i loop=$earnrows?}
+	<li>
+	<div>{?$earnrows[i].logtime|date:m-d H:i?} 分成{?$earnrows[i].emoney|fen2yuan?}元</div>
+	<div class="gray">来自 <a href="{?function jieqi_geturl:'system':'user':$earnrows[i].fromuid?}">{?$earnrows[i].fromuname?}</a> 消费{?$earnrows[i].money|fen2yuan?}{?if $earnrows[i].moneytype == 1?}美元{?else?}元{?/if?}</div>
+	</li>
+	{?/section?}
+	</ul>
+</div>
+</div>
+<div class="pages">{?$url_jumppage?}</div>
+

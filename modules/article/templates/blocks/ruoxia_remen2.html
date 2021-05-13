@@ -1,0 +1,3 @@
+{?section name=i loop=$articlerows?}
+ {?if $i['order'] > 1?}<span class="divide">|</span>{?/if?}<a data-collect-index="4" target="_blank" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a>
+{?/section?}

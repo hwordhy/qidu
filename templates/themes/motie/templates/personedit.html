@@ -1,0 +1,201 @@
+{?set jieqi_page_template = "templates/personedit.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "修改联系信息-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+    <div class="systemMod">
+        <div class="i-title">
+            <ul class="ulHd">
+                <li class="on">修改联系信息<span></span></li>
+            </ul>
+        </div>
+        <div class="accountsBd">
+            <div class="basicAccounts">
+                <form id="basicForm" action="" method="post">
+                    <table>
+                        <tr>
+                            <td class="label">用户ID：</td>
+                            <td>{?$jieqi_userid?}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">真实姓名：</td>
+                            <td>
+                                {?if $personsvars['realname']!=""?}
+                                {?$personsvars['realname']?}
+                                <input id= "p_realname" type="hidden" value="{?$personsvars['realname']?}" class="name"/>
+                                {?else?}
+                                <input name= "p_realname" id= "p_realname" type="text" value="{?$personsvars['realname']?}" class="name"/>{?/if?}
+                                <span class="text">提交之后不可更改。且必须与证件姓名一致，2到5个字</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">性别：</td>
+                            <td>
+                                <label><input type="radio" name="p_gender" value="1" class="radio"{?if $personsvars['gender_n'] == 1?} checked{?/if?}/>男</label>&nbsp;&nbsp;&nbsp;
+                                <label><input type="radio" name="p_gender" value="2" class="radio"{?if $personsvars['gender_n'] == 2?} checked{?/if?}>女</label>&nbsp;&nbsp;&nbsp;
+                                <label><input type="radio" name="p_gender" value="0" class="radio" {?if $personsvars['gender_n'] == 0?} checked{?/if?}>保密</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">证件类型：</td>
+                            <td>
+                                {?if $personsvars['idcardtype']!=""?}
+                                {?$personsvars['idcardtype']?}
+                                <input type="text" name="p_idcardtype" id="idcardtype" class="px" value="{?$personsvars['idcardtype']?}" tabindex="1" style="display: none;"/>
+                                {?else?}
+                                <select name="p_idcardtype" id="idcardtype" tabindex="1" class="ps">
+                                    <option value="身份证"{?if $personsvars['idcardtype'] == '身份证' || $personsvars['idcardtype'] == ''?} selected{?/if?}>身份证</option>
+                                    <option value="护照"{?if $personsvars['idcardtype'] == '护照'?} selected{?/if?}>护照</option>
+                                    <option value="驾驶证"{?if $personsvars['idcardtype'] == '驾驶证'?} selected{?/if?}>驾驶证</option>
+                                </select>
+                                {?/if?}
+                                <span class="text">提交之后不可更改</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">证件号码：</td>
+                            <td>
+                                <input name= "p_idcard" id= "p_idcard" type="text" placeholder="请输入证件号码" value="{?$personsvars['idcard']?}" class="name" {?if $personsvars['idcard']!=""?}readonly{?/if?}/>
+                                <span class="text">提交之后不可更改，且必须为成年人。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">QQ：</td>
+                            <td>
+                                <input name= "p_qq" id= "p_qq" type="text" placeholder="请输入QQ号码" value="{?$personsvars['qq']?}" class="name"/>
+                                <span class="text">请输入5-11位数字QQ号码。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">手机号码：</td>
+                            <td>
+                                <input name= "p_mobilephone" id= "p_mobilephone" type="text" placeholder="请输入手机号码" value="{?$personsvars['mobilephone']?}" class="name"/>
+                                <span class="text">请输入11位数字手机号码。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">邮政编码：</td>
+                            <td>
+                                <input name= "p_zipcode" id= "p_zipcode" type="text" placeholder="请输入邮政编码" value="{?$personsvars['zipcode']?}" class="name"/>
+                                <span class="text">可改，请及时更新您的邮政编码。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">邮寄地址：</td>
+                            <td>
+                                <input name= "p_address" id= "p_address" type="text" placeholder="请输入邮寄地址" value="{?$personsvars['address']?}" class="name" />
+                                <span class="text">可改，请及时更新您的邮寄地址。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">开户银行：</td>
+                            <td>
+                                <input name= "p_banktype" id= "p_banktype" type="text" placeholder="请输入开户银行" value="{?$personsvars['banktype']?}" class="name"/>
+                                <span class="text">银行相关信息非常重要，请确保银行账号姓名与您的真实姓名一致。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">持卡人姓名：</td>
+                            <td>
+                                <input name= "p_bankuser" id= "p_bankuser" type="text" placeholder="请输入持卡人姓名" value="{?$personsvars['bankuser']?}" class="name"/>
+                                <span class="text">银行相关信息非常重要，请确保银行账号姓名与您的真实姓名一致。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">银行账号：</td>
+                            <td>
+                                <input name= "p_bankcard" id= "p_bankcard" type="text" placeholder="请输入银行账号" value="{?$personsvars['bankcard']?}" class="name"/>
+                                <span class="text">支付宝的请填写支付宝账号。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">开户地址：</td>
+                            <td>
+                                <input name= "p_bankname" id= "p_bankname" type="text" placeholder="请输入开户地址" value="{?$personsvars['bankname']?}" class="name"/>
+                                <span class="text">请填写准确的开户地址，至少精确到县镇，6~20字以内</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">补充信息：</td>
+                            <td>
+                                <textarea name="p_mynote" id="p_mynote" placeholder="请输入补充信息" class="textarea" maxlength="200">{?$personsvars['mynote']?}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="ajax_gets" value="1" />
+                    <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+                    <input type="button" class="accountsBtn" value="保存" onclick="baseFormSubmit()" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+
+<script type="text/javascript" charset="{?$jieqi_charset?}">
+
+    //baseForm 提交
+    function baseFormSubmit() {
+        var form = $("#basicForm").serializeArray();
+        if ($('#p_realname').val() === '') {
+            layer.msg("对不起，真实姓名不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        var realname = /^[\u4E00-\u9FA5]{2,5}$/;
+        if (!realname.test($('#p_realname').val())) {
+            layer.msg("对不起，真实姓名输入不合法！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_idcard').val() === '') {
+            layer.msg("对不起，证件号码不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        var idcard = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (idcard.test($('#p_idcard').val()) === false) {
+            layer.msg("对不起，身份证输入不合法！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_qq').val() === '' && $('#p_mobilephone').val() === '') {
+            layer.msg("对不起，QQ与手机号码至少需要填写一项！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_banktype').val() === '') {
+            layer.msg("对不起，开户银行不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_bankuser').val() === '') {
+            layer.msg("对不起，持卡人姓名不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_bankcard').val() === '') {
+            layer.msg("对不起，银行账号不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        if ($('#p_bankname').val() === '') {
+            layer.msg("对不起，开户地址不能为空！", {icon: 2,shade: .3});
+            return false;
+        }
+        $.ajax({
+            type:'post',
+            url:'{?$jieqi_url?}/personedit.php?do=submit',
+            data:form,
+            success:function(data){
+                data = eval(data);
+                if (data.success === true) {
+                    layer.msg(data.message, {icon: 1,shade: .3});
+                    location.href = data.backUrl;
+                }
+                else{
+                    layer.msg(data.message, {icon: 2,shade: .3});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

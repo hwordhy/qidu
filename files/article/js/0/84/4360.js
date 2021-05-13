@@ -1,0 +1,1 @@
+document.write('书群 477677991<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;原本不想说的，但现在也就凑合吧，记得，进入看群通知，会踢人的，真的会踢人的。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;欢迎各位进群的书友提供意见。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;txt没有外界（番外）的部分，电脑没有，还请见谅');

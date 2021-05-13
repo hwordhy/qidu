@@ -1,0 +1,125 @@
+{?set jieqi_page_rows = "15"?}
+{?set $jieqi_contenttitle = "发表评论"?}
+{?set jieqi_page_template = "cover/m/templates/article/newreviews.html"?}
+<?xml version="1.0" encoding="{?$jieqi_charset?}"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>{?$articlename?}</title>
+	<style>.review-bg{background:#fff;margin-bottom:15px;border-bototm:solid 1px #ddd;padding:15px 10px;overflow:hidden}.review-bg p{width:100%;overflow:hidden}.review-bg p.rew-mg{margin-bottom:15px}.review-bg p span{display:block}.review-bg p span.rew-r{border:solid 1px #ddd;border-radius:3px;background:#fff;padding-left:10px}.rew-r .rew-tit{height:30px;line-height:30px;width:100%;border:0}.rew-r .rew-textarea{line-height:22px;font-size:14px;width:100%;border:0}.review_but_mod{padding:0 10px;overflow:hidden}.review-button{background:#d1a838!important;height:32px;border-radius:4px;border:0;margin-bottom:15px;line-height:32px;color:#fff;font-family:'微软雅黑';font-size:16px;width:100%;text-align:center;display:block}.review_book{color:#999;line-height:44px;overflow:hidden}
+	.wx_nav_box{background:#505050;position:relative;height:44px}.wx_nav_box a.logo{position:absolute;left:50%;margin-left:-27px;top:0;display:block;font-size:18px;line-height:44px;}.wx_nav_box .wx_home{position:absolute;left:10px;top:0;width:80px;height:44px}.wx_nav_box .wx_home a{width:20px;height:42px;display:inline-block}.wx_home img{width:12px;padding-top:12px}.wx_nav_box a{color:#fff}.wx_nav_box .wx_list{position:absolute;right:0;top:0;width:40px;}.wx_list img{width:30px;display:block;margin-top:7px;border-radius:50%;}#ad_banner{position:relative;overflow:hidden}#ad_banner .change_ico{position:absolute;right:10px;top:10px;z-index:9}.wx_header{overflow:hidden}
+	input[type=radio],input[type=checkbox],input[type=submit]{-webkit-appearance: none;-moz-appearance: none;-webkit-user-select: none;-moz-appearance: none;-webkit-tap-highlight-color: rgba(0,0,0,0);-moz-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;-moz-touch-callout: none;-webkit-touch-callout: none}
+	input::-webkit-input-placeholder{color:#999;outline:none;font-size:14px;}
+	input::-moz-input-placeholder{color:#999;font-size:14px;outline:none}
+	textarea::-webkit-input-placeholder{color:#999;font-size:14px;outline:none}
+	</style>
+
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobile_index.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/layer.js"></script>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+	<style>
+		.wx_nav_box1{background:#fff!important;position:relative;height:44px}
+		.wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+		.wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+		.wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+		.wx_home1 img{width:9px;margin-top:14px;float:left;}
+		.wx_home1 em{
+			float:left;
+			margin-left:10px;
+			color:#666;
+			font-size:16px;
+		}
+		.wx_nav_box1 a{color:#010101}
+		.wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+		.wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+		.wx_header1{overflow:hidden}
+	</style>
+	<!-- header start -->
+	<div id="hd" class="wx_header commontitle">
+		<div class="wx_nav_box1">
+			<div class="wx_home1">
+				<a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+					<img src="{?$jieqi_url?}/style/m/images/14882778674532908_18_33.png" /><em>返回</em>
+				</a>
+			</div>
+			<a href="javascript:void(0);" class="logo text" >发表评论</a>
+			<div class="wx_list" id="wx_list"></div>
+		</div>
+	</div>
+	<!--end header--><div id="bd">
+	<style type="text/css">
+		.alert{background:#fef7e3;padding:7px 10px;margin:0 !important;border:none;position:relative;}.alert img{vertical-align:middle}
+		.alert a{display:block;position:absolute;right:6px;top:5px;width:70px;background:#419af4;color:#fff;text-align:center;border-radius:3px;padding:2px 0;}
+	</style>
+	<div class="review_book">　对《{?$articlename?}》的评论</div>
+	<form action="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}" method="POST"
+		  id="subForm">
+		<div class="review-bg">
+			<p class="rew-mg">
+							<span class="rew-r"> <input name="ptitle" id="name"
+														class="rew-tit" type="text" placeholder="标题" maxlength="50"
+														value="" /><br /> </span>
+			</p>
+			<p>
+							<span class="rew-r"> <textarea name="pcontent" id="content"
+														   class="rew-textarea" placeholder="内容" rows="10" value=""></textarea><br />
+							</span>
+			</p>
+		</div>
+		<p class="review_but_mod">
+			<input type="hidden" name="ajax_gets" value="1" />
+			<input type="hidden" name="act" value="newpost" />{?$jieqi_token_input?}
+			<input type="button" value="发布" onclick="newreviews()" class="review-button" />
+		</p>
+	</form>
+</div>
+
+	<script>
+		function newreviews(){
+		    var data = $("#subForm").serialize();
+            $.ajax({
+                type: 'post',
+                url: "{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}",
+                dataType: 'json',
+                data: data,
+                success: function (data) {
+					if(data.success == true){
+                        layer.open({
+                            content: data.message
+                            ,skin: 'msg'
+                            ,time: 3 //2秒后自动关闭
+                        });
+                        setTimeout(window.location.href = "{?$jieqi_modules['article']['url']?}/articleinfo.php?id={?$articleid?}",6000);
+					}
+					else{
+                        layer.open({
+                            content: data.message
+                            ,skin: 'msg'
+                            ,time: 3 //2秒后自动关闭
+                        });
+					}
+                },
+            });
+		}
+	</script>
+</body>
+</html>
+

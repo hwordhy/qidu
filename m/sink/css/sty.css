@@ -1,0 +1,331 @@
+
+
+	#dialog{
+	position: fixed;
+	top: 10px;;
+	left:400px;;
+	}
+	.ajaxtip {
+    border: 5px solid #21a7ee;
+    background-color: #f5fbf5;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 14px;
+    color: #21a7ee;
+    font-weight: bold;
+    position: fixed;
+	}
+	@media screen and (min-width: 992px) and ( max-width:980px ) {
+	.ajaxtip {
+	top: 40%;
+	left:40%;
+    width: 300px;
+	}
+	}
+	@media screen and (min-width: 1200px) {
+	.ajaxtip {
+	top: 40%;
+	left:40%;
+    width: 300px;
+	}
+	}
+	@media screen and (max-width: 768px) and ( min-width:500px ){
+	.ajaxtip {
+    top: 20%;
+    left: 30%;
+    width: 280px;
+	}
+	}
+	@media screen and (min-width: 330px) and ( max-width:376px ) {
+	.ajaxtip {
+	top: 30%;
+	left:10%;
+    width: 250px;
+	}
+	}
+	@media screen and (min-width: 1000px) and ( max-width:1025px ) {
+	.ajaxtip {
+	top: 25%;
+	left:38%;
+    width: 250px;
+	}
+	}
+	@media screen and (min-width: 300px) and ( max-width:321px ) {
+	.ajaxtip {
+	top: 30%;
+	left:5%;
+    width: 250px;
+	}
+	}
+	@media screen and (min-width: 400px) and ( max-width:460px ) {
+	.ajaxtip {
+	top: 40%;
+	left:15%;
+    width: 250px;
+	}
+	}
+.dialog_t {
+    color: #fff;
+    font-size: 115%;
+    line-height: 2.5em;
+    padding-left: 0.6em;
+    background: #21a7ee;
+}
+.dialog_t {
+    color: #fff;
+    height: 46px;
+    line-height: 46px;
+    overflow: hidden;
+    padding-left: 160px;
+    background: #21a7ee;
+    border-bottom: 1px solid #cccccc;
+}
+#dialog {
+    position: fixed;
+    top: 10px;
+    left: 400px;
+}
+#dialog, .dialog {
+    position: fixed;
+    visibility: hidden;
+    border: 1px solid #d2d2d2;
+    background: #f2f2f2;
+}
+#dialog, .dialog {
+    position: fixed;
+    visibility: hidden;
+    border: 1px solid #cccccc;
+    background: #f2f2f2 url(images/dialogt.gif) repeat-x;
+}
+.dialog_t a {
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial;
+    color: #fff;
+    outline: thin solid #ccc;
+    border: 1px solid #fff;
+    margin: 10px;
+}
+.dialog_t a {
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial;
+    color: #fff;
+    outline: thin solid #ccc;
+    border: 1px solid #fff;
+    margin: 10px;
+}
+.tdr {
+    display: block;
+    margin-top: 10px;
+}
+.tdr {
+    width: 200px;
+}
+		.night .wec,.wec{
+                border: 0;
+            }
+             .wec h4{
+                overflow: hidden;
+            }
+            .read_pay .wechathere {
+                overflow: hidden;
+                padding: 12px 0 0;
+            }
+            .reading .wechathere .fl{
+                width: 70%;
+        /*
+                overflow:hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-break: break-all;
+        */
+            }
+            .reading .wechathere .fl a{ 
+                display: inline-block; 
+                float: left;
+            }
+            .reading .wechathere .mulu{
+                max-width: 50%;
+                padding: 0 5px;
+                overflow:hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-break: break-all;
+            }
+            .reading .wechathere .fr{
+                width: 30%;
+                position: relative;
+                top: 8px;
+                text-align: right;
+            }
+            .reading .wechathere .addfav{
+                line-height: normal;
+            }
+            .wechatfoot {
+                margin: 0 auto;
+                padding:20px 0;
+                border-top: 1px solid #f4f4f4;
+            }
+            .night .wechatfoot { 
+                border-top: 1px solid #747474;
+            }
+            .wechatfoot h2{
+                font-size: 1.06rem ;
+                color: #21a7ee;
+            }
+            .wechatfoot h3{
+                font-size: 1.06rem ;
+                color: #5a5a5a;
+                line-height: 2rem;
+                padding: 0.8rem 0;
+            } 
+            .night .wechatfoot h3{ 
+                color: #666; 
+            }
+            .readbg .bname{ 
+                color: #000;
+                font-size:1.7rem ;
+                padding: 0;
+                font-weight: 600;
+            }
+            .readbg .zj{
+                background: none;
+                color: #535353;
+                font-size:1.24rem ;
+                border: none;
+                font-weight: 600;
+                padding:12px 0 0;
+            }
+            .readbg .mcats{
+                margin-right: 10px;
+            } 
+              .readbg h3 .wmores,.night .reading .zj{ 
+                background: transparent;
+                position: relative; 
+                border: 0;
+            } 
+            .readbg h3 .wmores,.night .reading h3 .wmores{
+                right: 2px;
+                top: 3px;
+                color: #7c7c7c;
+                 background: transparent; 
+            } 
+            .readbg h3 .wmoresd,.night .reading h3 .wmoresd{ 
+                background: transparent;
+                color: #7c7c7c;
+            } 
+            .mcats{
+                display: none;
+            }
+            .hleft{
+                width: 75%;
+            }
+            .hright{
+                width: 25%;
+            }
+            .hright b{
+                display: inline-block;
+                background: url(http://img2.9kus.com/wap_9wus/new_wap/images/wechat-logo.png) no-repeat center;
+                background-size: contain;
+                width: 100%;
+                height: 4rem;
+                position: relative;
+                top: -3px;
+            }
+            .reading .con_tent{
+                position: relative;
+            }
+            .reading .con_tent p{
+                position: relative;
+                z-index: 10;
+            }
+            .welogo{
+                background: url(http://img2.9kus.com/wap_9wus/new_wap/images/wechat-logo.png) no-repeat center;
+                background-size: contain;
+                width:4rem;
+                height: 2rem;
+                position: absolute; 
+                top: 30px;
+                opacity: 0.3; 
+                -webkit-filter: grayscale(1);
+                filter:gray;
+                filter: grayscale(1);
+            }
+            /*2017-03-13*/ 
+            .night  .reading h3 a{
+                background: none;
+            }
+            .reading h3 .daynight{ 
+                -webkit-border-radius:60px;
+                border-radius: 60px;
+                padding: 0;
+                width: 2.2rem;
+                height: 2.2rem;
+                position: relative;
+            }
+            .reading .daynight em{ 
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -0.5rem;
+                margin-top: -0.375rem;
+                width: 1rem;
+                height: 0.75rem; 
+            }
+            .reading .daynight .active{  
+               background: url(http://img2.9kus.com/wap_9wus/images/wxcheck.png) no-repeat center;
+                background-size: contain;
+            }
+            .reading h3 .whites{
+               background: url(http://img2.9kus.com/wap_9wus/images/wxwhite.png) no-repeat center!important;
+                background-size: contain!important;
+            }
+            .reading h3 .blacks{
+               background: url(http://img2.9kus.com/wap_9wus/images/wxblack.png) no-repeat center!important;
+                background-size: contain!important;
+            }
+            .reading h3 .yellows{ 
+               background: url(http://img2.9kus.com/wap_9wus/images/wxyellow.png) no-repeat center!important;
+                background-size: contain!important; 
+            }
+            .reading h3 .greens{ 
+               background: url(http://img2.9kus.com/wap_9wus/images/wxgreen.png) no-repeat center!important;
+                background-size: contain!important; 
+            }
+            .yellow .reading,.yellow .wechatfoot,.yellow .allnotice,.yellow .wapheader,.yellow .footer{
+                background: #faf4e8
+            }
+            .yellow .allnotice{
+                background: #faf4e8
+            }
+           .yellow .wechathere,.green .wechathere,.yellow .herebottom{
+                border-top: 1px solid #d9d9d9;
+                border-bottom: 1px solid #d9d9d9;
+               padding-bottom: 10px;
+            }
+            .green .reading,.green .wechatfoot,.green .allnotice,.green .wapheader,.green .footer{
+                background: #e5f0e8
+            }
+           .green  .reading h4 {
+                border: none
+            }
+            .night  .reading .asmall, .night  .reading .abig{
+            background: #474747; 
+        }

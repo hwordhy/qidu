@@ -1,0 +1,204 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "我要捧场-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "我要捧场"?}
+{?set jieqi_page_template = "cover/m/templates/article/gift.html"?}
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobile_index.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/layer.js"></script>
+	<title>{?$jieqi_pagetitle?}</title>
+	<style type="text/css">
+		.donate-box{color:#333;background:#fff;border:solid 1px #eee;padding-top:0px;margin-top:10px;}.donate-h2{font-weight:bold;border-bottom:solid 1px #eee;border-left:solid 3px #419bf5;padding-left:12px;line-height:38px;}
+		.donate-cont{padding:10px;font-size:14px;overflow:hidden;}.donate-cont p{width:100%;margin-bottom:10px;line-height:24px;overflow:hidden;}.donate-cont span.org{color:#f60;}
+		.donate-cont input[type=radio]{-webkit-appearance: none;-moz-appearance: none;-webkit-user-select: none;-moz-appearance: none;-webkit-tap-highlight-color: rgba(0,0,0,0);-moz-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;-moz-touch-callout: none;-webkit-touch-callout: none}
+		.radio_list_l1 {width:16px;height:22px;display:block;float:left;cursor:pointer;text-align:center;
+			margin-right:15px;background:url({?$jieqi_url?}/style/m/images/donate_radio.png) no-repeat -24px 5px;}
+		.radioclass {opacity:0;cursor:pointer;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);}
+		.donate-cont .on {background-position:0 5px;}.radio_list_r1{float:left;}/*.radio_list_r1 img{vertical-align:middle;}*/
+		.donate-line{border-bottom:dashed 1px #ccc;height:10px;margin-bottom:20px;}
+		.donate-dl{width:100%;display:-moz-box;display:-webkit-box;display:box;margin-bottom:15px;}
+		.donate-dl dt{padding-right:10px;}.donate-dl dd{-moz-box-flex:1.0;-webkit-box-flex:1.0;box-flex:1.0;}
+		.donate-num{width:100%;height:30px;line-height:30px;border:none;border:solid 1px #999;}.donate-content{width:100%;line-height:24px;}
+		.donate-btn input[type=button]{-webkit-appearance:none;-moz-appearance:none;background:#419bf5;width:100%;border:none;color:#fff;display:block;font-size:16px;height:38px;line-height:38px;text-align:center;font-weight:bold;}
+		.donate-notes{margin:10px;font-size:14px;color:#333;background:#fff;border:solid 1px #eee;overflow:hidden;}
+		.donate-notes .donate-h2{font-size:16px;}.donate-notes .org{color:#f60}
+		.donate-d-list{border-bottom:dashed 1px #ccc;padding-bottom:10px;overflow:hidden;}
+		.donate-d-list dl{display:-moz-box;display:-webkit-box;display:box;}
+		.donate-d-list dl dt{padding-right:5px;}.donate-d-list dl dt img{border-radius:20px;}
+		.donate-d-list dl dd{-moz-box-flex:1.0;-webkit-box-flex:1.0;box-flex:1.0;font-size:14px;line-height:20px;}
+		.donate-d-cont{color:#333;padding:3px 0 0 40px;}.donate-d-share{position:relative;font-size:12px;height:20px;}.donate-d-share .time{position:absolute;top:3px;left:40px;font-size:12px;}
+		.donate-d-share .txtbox-toolbar-bd{position:absolute;right:0px;top:3px;}.txtbox-item{padding-bottom:0px;}
+		.donate-d-page{padding:15px 0;overflow:hidden;}.page_form{padding-left:0px;}
+
+
+		.donate-dl .donate-content{
+			font-size: 12px;
+		}
+
+	</style>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head><body>
+<div class="wrapper">
+	<style>
+		.wx_nav_box1{background:#fff!important;position:relative;height:44px}
+		.wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+		.wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+		.wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+		.wx_home1 img{width:9px;margin-top:14px;float:left;}
+		.wx_home1 em{
+			float:left;
+			margin-left:10px;
+			color:#666;
+			font-size:16px;
+		}
+		.wx_nav_box1 a{color:#010101}
+		.wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+		.wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+		.wx_header1{overflow:hidden}
+	</style>
+	<!-- header start -->
+	<div id="hd" class="wx_header commontitle">
+		<div class="wx_nav_box1">
+			<div class="wx_home1">
+				<a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+					<img src="{?$jieqi_url?}/style/m/images/14882778674532908_18_33.png" /><em>返回</em>
+				</a>
+			</div>
+			<a href="javascript:void(0);" class="logo text" >我要捧场</a>
+			<div class="wx_list" id="wx_list"></div>
+		</div>
+	</div>
+	<!--end header--><style type="text/css">
+	.alert{background:#fef7e3;padding:7px 10px;margin:0 !important;border:none;position:relative;}.alert img{vertical-align:middle}
+	.alert a{display:block;position:absolute;right:6px;top:5px;width:70px;background:#419af4;color:#fff;text-align:center;border-radius:3px;padding:2px 0;}
+</style>
+	<div id="bd">
+		<div class="txtbox-item donate-box">
+			<div class="donate-h2">此书太赞，客官来捧个场吧~  </div>
+			<div class="donate-cont">
+				<form action="" method="POST" id="gift_form">
+					<p>
+									<span class="radio_list_l1 {?if $gift_type == ''?}on{?/if?}">
+										<input type="radio" name="type" value="1" class="radioclass" {?if $gift_type == ''?} checked="checked"{?/if?}/>
+									</span>
+						<span class="radio_list_r1">
+										<img src="{?$jieqi_url?}/style/m/images/mb.gif" align="absmiddle" />
+										<span class="org">1</span>{?$egoldname?}
+									</span>
+					</p>
+					{?section name=i loop=$giftrows?}
+					{?if $giftrows[i].display > 0?}
+					<p>
+									<span class="radio_list_l1 {?if $gift_type == $giftrows[i].gid?}on{?/if?}">
+										<input type="radio" name="type" value="{?$giftrows[i].gid?}" class="radioclass" {?if $gift_type == $giftrows[i].gid?} checked="checked"{?/if?} />
+									</span>
+						<span class="radio_list_r1">
+										<img src="{?$giftrows[i].icourl?}">
+										<span class="org">{?$giftrows[i].price?}</span>{?$egoldname?}/朵
+									</span>
+					</p>
+					{?/if?}
+					{?/section?}
+					<div class="clear"></div>
+					<div class="donate-line"></div>
+					<dl class="donate-dl">
+						<dt>数量</dt>
+						<dd><input name="{?if $gift_type ==''?}payegold{?else?}num{?/if?}" value="1" size="3" type="text" class="donate-num"/></dd>
+					</dl>
+					<dl class="donate-dl">
+						<dt>贺词</dt>
+						<dd>
+							<textarea class="donate-content" name="content" rows="10" placeholder="" required>千金难买相如赋，小小红包犒劳一下！</textarea></dd>
+					</dl>
+					<div class="donate-btn">
+						<input type="hidden" name="act" value="post" />{?$jieqi_token_input?}
+						<input type="hidden" name="id" value="{?$articleid?}" />
+						<input type="hidden" name="ajax_gets" value="1" />
+						<input value="捧场" type="button" onclick="gift()" />
+					</div>
+				</form>
+				<div class="mgb_t">
+					<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" class="blue"><&nbsp;{?$articlename?}</a>
+				</div>
+			</div>
+		</div>
+		<!-- 捧场记录 -->
+		<div class="donate-notes">
+			<div class="donate-h2">本书最新捧场</div>
+			{?$jieqi_pageblocks['3']['content']?}
+			<p style="margin:0 0 10px 10px;">
+				<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" class="blue"><&nbsp;{?$articlename?}</a>
+			</p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var jieqi_userid = "{?$jieqi_userid?}";
+    $('.radio_list_l1').click(function(){
+        $(this).addClass('on').parent().siblings().find('.radio_list_l1').removeClass('on');
+        $(this).find('input[type="radio"]').attr("checked", true);
+        $(this).find('input[type="radio"]').val() == 1 ? $(".donate-num").attr('name', 'payegold') : $(".donate-num").attr('name', 'num');
+        $(this).parent().siblings().find('input[type="radio"]').removeAttr("checked");
+    });
+
+    function loginclick(){
+        if (jieqi_userid == 0){
+            window.location.href = '{?$jieqi_url?}/login.php?jumpurl='+window.location.href;
+            return false;
+        }
+    }
+
+    function gift(){
+        loginclick();
+        var data = $("#gift_form").serialize();
+        var type = $('input[name="type"]:checked').val();
+        var url = type == 1 ? "{?$jieqi_modules['article']['url']?}/tip.php" : "{?$jieqi_modules['article']['url']?}/gift.php";
+        $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: data,
+            success: function (data) {
+                if(data.success == true){
+                    layer.open({
+                        content: "打赏成功！"
+                        ,skin: 'msg'
+                        ,time: 3 //2秒后自动关闭
+                    });
+                    window.location.href = "{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}";
+                }
+                else{
+                    layer.open({
+                        content: data.message
+                        ,skin: 'msg'
+                        ,time: 3 //2秒后自动关闭
+                    });
+                }
+            },
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+

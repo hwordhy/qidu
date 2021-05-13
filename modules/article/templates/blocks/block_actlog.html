@@ -1,0 +1,47 @@
+
+    {?section name=i loop=$actlogrows?}
+    {?if $actlogrows[i].actname == 'redrose'?}
+            <p>
+                    <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+                    <span class="desc">打赏了</span>
+                    <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个红包</span>
+                    <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+            </p>
+    {?elseif $actlogrows[i].actname == 'yellowrose'?}            <p>
+            <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+            <span class="desc">打赏了</span>
+            <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个宝石</span>
+            <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </p>
+
+    {?elseif $actlogrows[i].actname == 'greenrose'?} <p>
+            <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+            <span class="desc">打赏了</span>
+            <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个马车</span>
+            <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </p>
+
+    {?elseif $actlogrows[i].actname == 'bluerose'?}<p>
+            <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+            <span class="desc">打赏了</span>
+            <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个丫鬟</span>
+            <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </p>
+
+    {?elseif $actlogrows[i].actname == 'whiterose'?}<p>
+            <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+            <span class="desc">打赏了</span>
+            <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个府邸</span>
+            <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </p>
+    {?elseif $actlogrows[i].actname == 'blackrose'?}<p>
+            <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+            <span class="desc">打赏了</span>
+            <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}个金印</span>
+            <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </p>
+    {?/if?}
+
+    {?/section?}
+
+    

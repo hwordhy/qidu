@@ -1,0 +1,47 @@
+<div class="footer clr">
+    <div class="wd1100 index clr">
+        <p>Copyright (C) 2016 {?$jieqi_sitename?} All Rights Reserved {?$jieqi_sitename?} 版权所有
+            <br>请作者发布作品时，务必遵守国家互联网信息管理办法规定，本站拒绝任何色情内容，一经发现，即作删除。
+            <br>本站所收录的作品、话题、评论均属其个人行为，不代表本站立场。<br>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank">**ICP备********号</a></p>
+    </div>
+</div>
+<link href="{?$jieqi_url?}/style/css/top.css" rel="stylesheet" type="text/css">
+<div class="tops">
+  <ul id="jump">
+    <li style="display:none;height:50px;"><a id="top" href="#top"></a></li>
+    <li style="height:50px"><a id="weixin" href="javascript:void(0)" onmouseover="showEWM()" onmouseout="hideEWM()">
+      <div id="EWM"><img src="{?$jieqi_url?}/style/images/weixin_code.jpg" /></div>
+      </a></li>
+    <script>
+	  	function showEWM()
+			{
+				document.getElementById("EWM").style.display = 'block';
+				}
+		function hideEWM()
+			{
+				document.getElementById("EWM").style.display = 'none';
+				}
+	  </script>
+  </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > 50) {
+			$('#jump li:eq(0)').fadeIn(800);
+		} else {
+			$('#jump li:eq(0)').fadeOut(800);
+		}
+	});
+	$("#top").click(function() {
+		$('body,html').animate({
+			scrollTop: 0
+		},
+		1000);
+		return false;
+	});
+});
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/gb.min.js"></script>

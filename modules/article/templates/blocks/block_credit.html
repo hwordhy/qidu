@@ -1,0 +1,31 @@
+
+
+
+{?section name=i loop=$creditrows?}
+{?if $i['order'] == 1?}
+<div class="gold card">
+		<span class="crown"></span>  <img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}"
+				 alt="" class="fans_pic">
+		<p class="fans-name">{?$creditrows[i].uname?}</p>
+			<p class="motiecoin">打赏榜<span class="ui_color">第一名</span></p>
+		</div>
+		{?/if?}
+		{?if $i['order'] == 2?}
+	<div class="silver card">
+		<span class="crown"></span>
+		<img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}"
+				 alt="" class="fans_pic">
+		<p class="fans-name">{?$creditrows[i].uname?}</p>
+			<p class="motiecoin">打赏榜<span class="ui_color">第二名</span></p>
+		</div>
+		{?/if?}
+		{?if $i['order'] == 3?}
+	<div class="best card">
+		<span class="crown"></span>
+	   <img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}"
+				 alt="" class="fans_pic">
+		<p class="fans-name">{?$creditrows[i].uname?}</p>
+			<p class="motiecoin">打赏榜<span class="ui_color" >第三名</span></p>
+		</div>
+		{?/if?}
+		{?/section?}

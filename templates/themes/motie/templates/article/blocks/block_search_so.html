@@ -1,0 +1,14 @@
+{?section name=i loop=$articlerows?}
+<dl class="book-block">
+  <dt><a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"></a> </dt>
+  <dd>
+    <a data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" class="book-name" target="_blank">{?$articlerows[i].articlename?}</a>
+    <span class="book-author"><a href="javascript:;" target="_blank">{?$articlerows[i].author?}</a> | <a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" target="_blank">{?$articlerows[i].sort?}</a>
+
+                    </span>
+    <a boxid="mobile_yiyun_recommend_tags" data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" class="book-info" target="_blank">{?$articlerows[i].intro?}</a>
+
+  </dd>
+</dl>
+{?/section?}
+

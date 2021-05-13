@@ -1,0 +1,27 @@
+<div class="new-book-w-l">
+  {?section name=i loop=$articlerows?}
+  {?if $i.order < 3?}
+  <dl class="book-block">
+    <dt><a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img class="lazyimg" data-original="http://pic.motieimg.com/book/92799l2.jpg"></a></dt>
+    <dd>
+      <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="book-name">{?$articlerows[i].articlename?}</a>
+      <span data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  class="book-info">{?$articlerows[i].intro?}</span>
+      <span class="book-author">作者：<a data-msg='{seatid:"1",bookid:"92799"}'  boxid="Yy_2017_index_book_recommend_4" data-control-type="shelf"  target="_blank" href="javascript:;">{?$articlerows[i].author?}</a></span>
+    </dd>
+  </dl>
+  {?/if?}
+  {?/section?}
+</div>
+<ul class="boxlist">
+  {?section name=i loop=$articlerows?}
+  {?if $i.order > 2?}
+  <li>
+    <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+      <span class="tags">[{?$articlerows[i].sort?}]</span>
+      {?$articlerows[i].articlename?}
+    </a>
+  </li>
+  {?/if?}
+  {?/section?}
+</ul>
+

@@ -1,0 +1,16 @@
+<li>
+{?section name=i loop=$chapterrows?}
+    {?if $chapterrows[i].chaptertype == 0?}
+    {?if $i.order % 3 == 0 && $i.order < 3?}</li><li>{?/if?}
+    <a target="_blank" href="{?$chapterrows[i].url_chapter?}"  data-time="2017-09-07 12:23:44"
+           rel="nofollow" >
+
+                                    <span class="chapter_name">
+                                        {?$chapterrows[i].chaptername?}</span>
+        {?if $chapterrows[i].isvip_n > 0?}<img alt="vip" src="{?$jieqi_url?}/style/images/vip.gif">{?/if?}
+        <span class="chapter_date">{?$chapterrows[i].lastupdate|date:'H:i'?} </span>
+    </a>
+    {?/if?}
+{?/section?}
+</li>
+

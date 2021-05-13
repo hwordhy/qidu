@@ -1,0 +1,31 @@
+<div class="notempty">
+    {?section name=i loop=$bookcaserows?}
+    {?if $i.order < 6?}
+    <div class="item clearfixer">
+        <a href="{?$bookcaserows[i].url_articleinfo?}" class="fl bookpic" target="_blank">
+            <img src="{?$bookcaserows[i].url_image?}" alt="">
+        </a>
+        <div class="fl bookdetail">
+            <a href="{?$bookcaserows[i].url_articleinfo?}" target="_blank" class="title">{?$bookcaserows[i].articlename?}</a>
+            {?if $bookcaserows[i].viptime > $bookcaserows[i].freetime?}
+            <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].vipchapterid?}"  class="newest">最新章节
+                : {?$bookcaserows[i].vipchapter?}</a>
+            {?else?}
+            <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].lastchapterid?}"  class="newest">最新章节
+                : {?$bookcaserows[i].lastchapter?}</a>
+            {?/if?}
+            {?if $bookcaserows[i].articlemark != ""?}
+            <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].chapterid?}"  class="readnow">看到
+                : {?$bookcaserows[i].articlemark?}</a>{?/if?}
+            <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].chapterid?}"  class="continue">继续阅读</a>
+        </div>
+    </div>
+    {?/if?}
+    {?/section?}
+    <div class="bottom">
+        <a href="{?$jieqi_modules['article']['url']?}/bookshelf.php">查看更多>></a>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,367 @@
+//–ﬁ Œ
+
+.fix, .lm {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cf, .row, .frow, .form {
+  *zoom: 1;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+.cb {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.db {
+  display: block;
+}
+
+.dn {
+  display: none;
+}
+
+.di {
+  display: inline;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.df {
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+  li {
+    display: block;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+  }
+}
+
+.bsc {
+  box-sizing: content-box;
+}
+
+.bsb {
+  box-sizing: border-box;
+}
+
+.bsi {
+  box-sizing: inherit;
+}
+
+.psa {
+  position: absolute;
+}
+.psr {
+  position: relative;
+}
+.psf {
+  position: fixed;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.fn {
+  float: none;
+}
+
+.mg {
+  margin: $spacer;
+}
+
+.mgs {
+  margin: $spacer / 2;
+}
+
+.mt {
+  margin-top: $spacer;
+}
+
+.mts {
+  margin-top: $spacer / 2;
+}
+
+.mb {
+  margin-bottom: $spacer;
+}
+
+.mbs {
+  margin-bottom: $spacer / 2;
+}
+
+.ml {
+  margin-left: $spacer;
+}
+
+.mls {
+  margin-left: $spacer / 2;
+}
+
+.mr {
+  margin-right: $spacer;
+}
+
+.mrs {
+  margin-right: $spacer / 2;
+}
+
+
+.pd {
+  padding: $spacer;
+}
+
+.pds {
+  padding: $spacer / 2;
+}
+
+.pt {
+  padding-top: $spacer;
+}
+
+.pts {
+  padding-top: $spacer / 2;
+}
+
+.pb {
+  padding-bottop: $spacer;
+}
+
+.pbs {
+  padding-bottop: $spacer / 2;
+}
+
+.pl {
+  padding-left: $spacer;
+}
+
+.pls {
+  padding-left: $spacer / 2;
+}
+
+.pr {
+  padding-right: $spacer;
+}
+
+.prs {
+  padding-right: $spacer / 2;
+}
+
+.lhs {
+  line-height: 1.2;
+}
+
+.lhm {
+  line-height: 1.6;
+}
+
+.lhl {
+  line-height: 2;
+}
+
+.lhh {
+  line-height: 2.5;
+}
+
+.bn {
+  @include box-border(0, 0, none);
+}
+
+.bd {
+  border: $border-width solid $border-color;
+}
+
+.bt {
+  border-top: $border-width solid $border-color;
+}
+
+.bb {
+  border-bottom: $border-width solid $border-color;
+}
+
+.bl {
+  border-left: $border-width solid $border-color;
+}
+
+.br {
+  border-right: $border-width solid $border-color;
+}
+
+.bdr {
+  @include border-radius($border-radius);
+}
+
+.bdc {
+  @include border-radius(50%);
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.fss {
+  font-size: $font-size-sm;
+}
+
+.fsl {
+  font-size: $font-size-lg;
+}
+
+.fwb {
+  font-weight: bold;
+}
+
+.fwn {
+  font-weight: normal;
+}
+
+.nw {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.wn {
+  white-space: normal;
+  overflow: auto;
+}
+
+.wa {
+  width: auto;
+}
+
+.wf, .w1, .w2, .w3, .w4, .w5, .w3_2, .w4_3, .w5_2, .w5_3, .w5_4, .w10_3, .w10_7{
+  box-sizing: border-box;
+}
+
+.wf {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.w1 {
+  width: 100%;
+}
+
+.w2 {
+  width: 50%;
+}
+
+.w3 {
+  width: 33.33%;
+}
+
+.w4 {
+  width: 25%;
+}
+
+.w5 {
+  width: 20%;
+}
+
+.w3_2 {
+  width: 66.66%;
+}
+
+.w4_3{
+  width: 75%;
+}
+
+.w5_2{
+  width: 40%;
+}
+
+.w5_3{
+  width: 60%;
+}
+
+.w5_4{
+  width: 80%;
+}
+
+.w10_3{
+  width: 30%;
+}
+
+.w10_7{
+  width: 70%;
+}
+
+@each $key, $value in $brands {
+  .cl_#{$key}, a.cl_#{$key} {
+    color: $value;
+  }
+}
+
+@each $key, $value in $txtcolors {
+  .cl_#{$key}, a.cl_#{$key}, .#{$key}, a.#{$key} {
+    color: $value;
+  }
+}
+
+@each $key, $value in $brands {
+  .bg_#{$key} {
+    background: $value;
+  }
+}
+
+@each $key, $value in $brands {
+  .bd_#{$key} {
+    border: $border-width solid $value;;
+  }
+}
+
+@each $key, $value in $bgcolors {
+  .bg_#{$key} {
+    background: $value;
+  }
+}
+
+a.more, .more a {
+  display: block;
+  color: $gray;
+  text-align: right;
+  margin-right: 0.3em;
+  line-height: 2;
+}
+
+a.moretop, .moretop a {
+  display: block;
+  height: 2.25em;
+  line-height: 2.25;
+  color: $gray;
+  text-align: right;
+  margin: -3em 0.3em 0.5em 0;
+}

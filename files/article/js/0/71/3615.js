@@ -1,0 +1,1 @@
+document.write('怪兽岛<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;群号125222652<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;欢迎前来讨论特摄动漫还有本书等内容，没什么规矩，请勿人身攻击即可');

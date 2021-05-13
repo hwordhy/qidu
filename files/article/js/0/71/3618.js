@@ -1,0 +1,1 @@
+document.write('∫√Õ»°≠°≠<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3618/60.gif\" border=\"0\" class=\"imagecontent\"></div>');

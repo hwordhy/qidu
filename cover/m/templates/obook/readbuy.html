@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="{?$jieqi_charset?}"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobile_index.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<title>章节购买</title>
+	<style>
+		input[type=submit]{-webkit-appearance:none;-moz-appearance:none;}
+		.txtbox-item h3{text-align:left;margin:0 15px 20px;padding:15px 0;border-bottom:solid 1px #333;color: #d93636;}
+		.txtbox-item h3 span{display:block;font-size:12px;color:#999;}
+		.demo{word-wrap: break-word;font-size:16px;}
+		.intro{padding:0 15px 10px;color:#333;}
+		.book_buy{background:#fff;padding:15px 15px 50px;margin-top:20px;overflow:hidden;}
+		.book_buy .book_price{color:#333;font-size:14px;line-height:24px;}
+		.book_buy .buy-btn{display:block;height:36px;width:100%;text-align:center;margin-bottom:13px;font-size:16px;border-radius:3px;margin-top:20px;line-height:36px;font-weight:bold;background:#fd6974;border:none;color:#fff;}
+		.buy_radio{font-size:12px;height:24px;line-height:24px;color:#333;width:100%;margin-bottom:5px;}
+		.buy_tips{color:#999;font-size:12px;margin-left:10px;}.buy_tips span{display:block;}.buy_tips span.t2{text-indent:36px;}
+		input[type=radio]{width:18px;height:18px;display:block;float:left;}
+		.radio_input{margin:3px 5px 0 10px;}
+		.buy_radio span{display:block;float:left;}
+	</style>
+	<!--[if IE]>
+	<link href="{?$jieqi_url?}/style/m/css/style-ie.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head><body>
+<div class="wrapper">
+	<style>
+		nav,ul,li,div{padding:0;margin:0}ul,li{list-style:none}.clear{clear:both}a.c_col{color:#ccc}a.c_col_c{color:#ccc;width:100px;display:block;float:left;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clearbox:after{display:table;line-height:0;content:"";clear:both}.wx_nav_box{background:#fd6974;position:relative;height:44px}.wx_nav_box a.logo{display:block;width:100%;text-align: center;font-size:18px;line-height:44px;}.wx_nav_box .wx_home{position:absolute;left:10px;top:0;width:80px;height:44px}.wx_nav_box .wx_home a{width:20px;height:42px;display:inline-block}.wx_home img{width:20px;height:20px;padding-top:12px}.wx_nav_box a{color:#fff}.wx_nav_box .wx_list{position:absolute;right:0;top:0;width:40px;}.wx_list img{width:30px;height:30px;display:block;margin-top:7px;border-radius:50%;}#ad_banner{position:relative;overflow:hidden}#ad_banner .change_ico{position:absolute;right:10px;top:10px;z-index:9}.wx_header{overflow:hidden}
+	</style>
+
+	<!-- 微信站header -->
+	<div id="hd" class="wx_header">
+		<div class="wx_nav_box">
+			<div class="wx_home">
+				<a href="{?$jieqi_url?}/" ><img src="{?$jieqi_url?}/style/m/images/wx_index_ico.png" /></a>
+			</div>
+			<a href="{?$jieqi_url?}/" class="logo">{?$jieqi_sitename?}</a>
+			<div class="wx_list" id="wx_list">
+				<a href="{?$jieqi_url?}/userdetail.php" ><img src="{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'l':$jieqi_avatar?}"/></a>
+			</div>
+		</div>
+	</div>
+	<div id="bd" class="txtbox-item" style="border:none;margin:0;">
+		<h3><a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}"><img src="{?$jieqi_url?}/style/m/images/chapter_arrow.png" width="10" /></a>&nbsp;{?$chaptername?}</h3>
+		<div class="demo">
+			<div class="intro">{?$summary|truncate:250:'......'?}</div>
+		</div>
+		<div class="book_buy">
+			<p class="book_price">本章价格：{?$saleprice?}{?$egoldname?} | {?$size_c?}字</p>
+			<p class="book_price">账号余额：{?$jieqi_egold?}{?$egoldname?} </p>
+			<form action="{?$jieqi_modules['obook']['url']?}/buychapter.php" method="post">
+				<input name="act" value="buy" type="hidden"/>{?$jieqi_token_input?}
+				<input type="hidden" name="cid" value="{?$chapterid?}">
+				{?if $jieqi_egold < $saleprice?}<a id="go_topup" href="{?$jieqi_modules['pay']['url']?}/buyegold.php" style="display:block;" class="buy-btn">余额有点不够啦，充个值再来吧</a>{?else?}<input type="submit" value="购买章节" class="buy-btn" />{?/if?}
+				<p class="buy_radio">
+					<input type="radio" class="radio_input j_radio1" name="buytype" value = "1" />
+					<span>自动购买下一章，不再提醒</span>
+				</p>
+				<p class="buy_tips"><span>提示：感谢支持作者，支持正版阅读~</span></p>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

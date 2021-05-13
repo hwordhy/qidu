@@ -1,0 +1,471 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/newarticle.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "新建作品-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+<style>
+    .file {
+        position: relative;
+        display: inline-block;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 4px 12px;
+        overflow: hidden;
+        color: #1E88C7;
+        text-decoration: none;
+        text-indent: 0;
+        line-height: 20px;
+    }
+    .file input {
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .file:hover {
+        background: #AADFFD;
+        border-color: #78C3F3;
+        color: #004974;
+        text-decoration: none;
+    }
+    .tags {
+        top: 800px !important;
+    }
+</style>
+<div class="container-fluid container-box worksmanage_wrapper">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {?include file="templates/system/author_left.html"?}
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header"><span class="f22"><a href="{?$article_dynamic_url?}/masterpage.php">作品管理</a><img style="margin:0 15px;" src="{?$jieqi_url?}/style/author/images/arrow_1.png" /></span>新建作品</h1>
+            <div class="container-wrap">
+                <form id="iform" name="iform" action="{?$url_newarticle?}" method="post" enctype="multipart/form-data">
+                    <div class="txtbox">
+                        <span class="wtitle">作品名称:</span>
+                        <div class="rbox">
+                            <input name="articlename" id="name" type="text" value="" class="textbox">
+                            <em class="tips">请勿添加书名号等特殊符号</em>
+                        </div>
+                        <em class="warning nameMsg"></em>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">副&nbsp;&nbsp;标&nbsp;题:</span>
+                        <div class="rbox">
+                            <input name="backupname" id="backupname" type="text" value="" class="textbox">
+                            <em class="tips">请勿添加书名号等特殊符号</em>
+                        </div>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">作品分类:</span>
+                        <div class="rbox">
+                            <div id="parent" class="parent">
+                                <select name="rgroup" onchange="showsorts(this)" id="sort">
+                                    <option value="0">请选择频道</option>
+                                    {?section name=i loop=$rgroup['items']?}
+                                    <option value="{?$i['key']?}" >{?$rgroup['items'][i]?}</option>
+                                    {?/section?}
+                                </select>
+                                <i></i>
+                            </div>
+                            <span id="sortselect" name="sortselect"></span>
+                            <span id="typeselect" name="typeselect"></span>
+                            <em class="warning sortMsg"></em>
+
+                        </div>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">责&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编:</span>
+                        <div class="rbox">
+                            <div class="parent">
+                                <select id="master" name="master">
+                                    <option value="0">请选择所属责编</option>
+                                    {?section name=i loop=$masterrows?}
+                                    <option value="{?$masterrows[i]['uname']?}">{?$masterrows[i]['name']?}（QQ：{?$masterrows[i]['qq']?}）</option>
+                                    {?/section?}
+                                </select>
+                                <i></i>
+                            </div>
+                            <em class="tips">责编是负责编辑管理您的书籍的，选择后不可更改，请添加所属责编QQ！</em>
+                        </div>
+                        <em class="warning masterMsg"></em>
+                    </div>
+                    {?if $allowtrans > 0?}
+                    <div class="txtbox">
+                        <span class="wtitle">作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者:</span>
+                        <div class="rbox">
+                            <input name="author" id="author" type="text" value="" class="textbox">
+                            <em class="tips">转载作品请填写，发表自己作品请留空</em>
+                        </div>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">作者授权:</span>
+                        <div class="rbox">
+                            {?section name=i loop=$authorflag['items']?}
+                            <div class="radiobox">
+                                <label class="radio-l{?if $i['key'] == $authorflag['default']?} checked{?/if?}">
+                                    <input type="radio" name="authorflag" id="authorflag" value="{?$i['key']?}" {?if $i['key'] == $authorflag['default']?}checked="checked"{?/if?}>
+                                </label>
+                                {?$authorflag['items'][i]?}
+                            </div>
+                            {?/section?}
+                            <em class="tips">转载作品请选择，不是请忽略</em>
+                        </div>
+                    </div>
+                    {?/if?}
+                    <div class="txtbox">
+                        <span class="wtitle">授权级别:</span>
+                        <div class="rbox">
+                            {?section name=i loop=$permission['items']?}
+                            <div class="radiobox">
+                                <label class="radio-l{?if $i['key'] == $permission['default']?} checked{?/if?}">
+                                    <input type="radio" name="permission" id="permission" value="{?$i['key']?}" {?if $i['key'] == $permission['default']?}checked="checked"{?/if?}>
+                                </label>
+                                {?$permission['items'][i]?}
+                            </div>
+                            {?/section?}
+                        </div>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">首发状态:</span>
+                        <div class="rbox">
+                            {?section name=i loop=$firstflag['items']?}
+                            <div class="radiobox">
+                                <label class="radio-l{?if $i['key'] == $firstflag['default']?} checked{?/if?}">
+                                    <input type="radio" name="firstflag" id="firstflag" value="{?$i['key']?}" {?if $i['key'] == $firstflag['default']?}checked="checked"{?/if?}>
+                                </label>
+                                {?$firstflag['items'][i]?}
+                            </div>
+                            {?/section?}
+                        </div>
+                    </div>
+                    <div class="txtbox txtboxinfo">
+                        <span class="wtitle">作品简介:</span>
+                        <div class="rbox">
+                            <textarea placeholder="请填写对作品的大致介绍，字数500字以内" name="intro" id="intro" class="textarea" maxlength="500"></textarea>
+                            <span class="fb" id="intro-status"></span>
+                        </div>
+                        <em class="warning wintroMsg introduceMsg"></em>
+                    </div>
+
+                    <div class="txtbox txtboxinfo">
+                        <span class="wtitle">本书公告：</span>
+                        <div class="rbox">
+                            <textarea placeholder="请输入对作品推广的介绍（选填），300字以内" name="notice" id="promote" class="textarea" maxlength="300"></textarea>
+                            <span class="fb" id="promote-status"></span>
+                        </div>
+                        <em class="warning promoteMsg"></em>
+                    </div>
+
+                    <div class="txtbox">
+                        <span class="wtitle">作品标签:</span>
+                        <div class="rbox col2">
+                            <div class="insert-tags" style="width: 567px;">
+                                <ul class="names-tags"></ul>
+                                <input type="text"  id="tags" name="keywords" value="" class="input-tags fl " />
+                                <div class="cl"></div>
+                            </div>
+                            <div class="cl sp-10" style="display: none"></div>
+                            <span class="desc">多个标签间请以空格隔开(最多5个)</span>
+                        </div>
+                        <em class="warning tagMsg"></em>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">封面小图:</span>
+                        <div class="rbox">
+                            <a href="javascript:;" class="file">点击这里上传图片<input name="articlespic" id="articlespic" type="file" value=""></a>
+                            <em class="tips">图片格式：{?$imagetype?}</em>
+                        </div>
+                    </div>
+                    <div class="txtbox">
+                        <span class="wtitle">封面大图:</span>
+                        <div class="rbox">
+                            <a href="javascript:;" class="file">点击这里上传图片<input name="articlelpic" id="articlelpic" type="file" value=""></a>
+                            <em class="tips">图片格式：{?$imagetype?}</em>
+                        </div>
+                    </div>
+                    <div class="submitbtn subadd">
+                        <input type="hidden" name="ajax_gets" id="ajax_gets" value="1" />
+                        <input type="hidden" name="act" id="act" value="newarticle" />{?$jieqi_token_input?}
+                        <input type="button" class="btn-submit" id="btnsave" value="创建作品" title="创建作品" name="btnsave">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{?include file="templates/system/author_footer.html"?}
+
+<script type="text/javascript" src="{?$jieqi_url?}/style/author/js/tags.js"></script>
+<script type="text/javascript">
+    var ztMaleObjs = '';
+    var ztFemaleObjs = '';
+    //选择分类
+    function showsorts(obj){
+        var sortselect = document.getElementById('sortselect');
+        sortselect.innerHTML = '';
+        typeselect.innerHTML = '';
+        {?section name=i loop=$rgroup['items']?}
+        if(obj.options[obj.selectedIndex].value == {?$i['key']?}) sortselect.innerHTML = '<div style="margin-left: 10px;" class="parent"><select name="sortid" id="sortid" onchange="showtypes(this)"><option value="0">请选择类别</option>{?section name=j loop=$sortrows?}{?if $sortrows[j].rgroup == $i['key']?}<option value="{?$j['key']?}">{?$sortrows[j].caption?}</option>{?/if?}{?/section?}</select><i></i></div>';
+        {?/section?}
+        }
+    //选择子分类
+    function showtypes(obj){
+        var typeselect = document.getElementById('typeselect');
+        typeselect.innerHTML = '';
+        {?section name=i loop=$sortrows?}
+        {?if $sortrows[i].types != ''?}
+        if(obj.options[obj.selectedIndex].value == {?$i['key']?}) typeselect.innerHTML = '<div style="margin-left: 10px;" class="parent"><select name="typeid" id="typeid"><option value="0">请选择类别</option>{?section name=j loop=$sortrows[i].types?}<option value="{?$j['key']?}">{?$sortrows[i]['types'][j]?}</option>{?/section?}</select><i></i></div>';
+        {?/if?}
+            {?/section?}
+        }
+
+    $(function(){
+        //给所有的单选按钮点击添加处理
+        $(".radiobox").click(function(){
+            var checkedEle =$('.radiobox .checked');
+
+            if (checkedEle) {
+                $(this).children('.radio-l').addClass("checked");
+
+                var ele = $(this).children('.radio-l').children('input[name="authorflag"]');
+                if (ele) {
+                    $(ele).attr("checked", true);
+                }
+                ele = $(this).children('.radio-l').children('input[name="permission"]');
+                if (ele) {
+                    $(ele).attr("checked", true);
+                }
+                ele = $(this).children('.radio-l').children('input[name="firstflag"]');
+                if (ele) {
+                    $(ele).attr("checked", true);
+                }
+
+                $(this).siblings().children('.radio-l').removeClass("checked");
+                ele = $(this).siblings().children('.radio-l').children('input[name="group"]');
+                if (ele) {
+                    $(ele).attr("checked", false);
+                }
+
+
+                var var_group =    $("input[name='group'][checked]").val();
+                if(var_group==6){
+                    $('#sort').empty();
+                    $('#sort').append(ztMaleObjs);
+                    $(ele).attr("checked", true);
+                } else if(var_group==7){
+                    $('#sort').empty();
+                    $('#sort').append(ztFemaleObjs);
+                }
+
+            }else{
+                $(this).children('.radio-l').removeClass("checked");
+                $(this).siblings().children('.radio-l').addClass("checked");
+
+            }
+
+
+        });
+        //计数提示
+        var intro = $('#intro');
+        intro.keyup(function(){
+            var val = intro.val();
+            canbesubmit = Motie.limitTextarea(intro, 500, $('#intro-status'));
+            if(canbesubmit){
+                $(".wintroMsg").html(rgtdot);
+            }else{
+                $(".introduceMsg").html("字数不能超过500字");
+            }
+        }).trigger('keyup');
+
+
+        var promote = $('#promote'), canbesubmit = true;
+        promote.keyup(function(){
+            var val = promote.val();
+            canbesubmit = Motie.limitTextarea(promote, 300, $('#promote-status'));
+            if(canbesubmit){
+                $(".promoteMsg").html(rgtdot);
+            }else{
+                $(".promoteMsg").html("字数不能超过300字");
+            }
+        }).trigger('keyup');
+
+
+
+        var rgtdot = '<img src="{?$jieqi_url?}/style/author/images/rgtdot.png" />';
+
+        var checkSort = function () {
+            if($("select[name='rgroup']").val() == 0) {
+                $(".sortMsg").html('请选择作品分类！');
+                return false;
+            }else{
+                $(".sortMsg").html(rgtdot);
+            }
+        }
+
+
+        $("#sort").change(function(){
+            checkSort();
+        });
+
+        var checkMater = function () {
+            if($("#master").val() == 0){
+                $(".masterMsg").html('请选择对应责编');
+                return false;
+            }else{
+                $(".masterMsg").html(rgtdot);
+            }
+        }
+
+        $("#master").change(function(){
+            checkMater();
+        });
+
+        $("textarea").focus(function () {
+            checkSort();
+            checkMater();
+        });
+
+        var checkForm = function () {
+            if(isNameExist){
+                $('.nameMsg').html('作品名称已经存在');
+                return false;
+            }else{
+                $(".nameMsg").append(rgtdot);
+
+            }
+            $(".warning").empty();
+            var inputName = $.trim($("input[name='articlename']").val()).length;
+            if (inputName > 20 || inputName == 0) {
+                $(".nameMsg").append('请正确填写标题');
+                return false;
+            }else{
+                $(".nameMsg").append(rgtdot);
+
+            }
+
+            if($("select[name='rgroup']").val() == 0) {
+                $(".sortMsg").append('请选择作品分类！');
+                return false;
+            }else{
+                $(".sortMsg").append(rgtdot);
+            }
+            if($("#master").val() == 0){
+                $(".masterMsg").append('请选择对应责编');
+                return false;
+            }else{
+                $(".masterMsg").html(rgtdot);
+            }
+            if($.trim($("textarea[name='intro']").val()).length > 500){
+                $(".wintroMsg").append('作品简介500字内！');
+                return false;
+            }else{
+                $(".wintroMsg").html(rgtdot);
+            }
+            if($.trim($("textarea[name='notice']").val()).length > 300){
+                $(".promoteMsg").html('本书公告300字内！');
+                return false;
+            }else{
+                $(".promoteMsg").html(rgtdot);
+            }
+
+            if($("input[name='keywords']").val().length < 2) {
+                $(".tagMsg").append('请填写至少两个标签！');
+
+                return false;
+            }else{
+                $(".tagMsg").append(rgtdot);
+            }
+        }
+        var isNameExist = false;
+        $('#name').blur (function () {
+            var url = "{?$jieqi_modules['article']['url']?}/articlecheck.php";
+            var name = $(this).val();
+            if(!name){
+                $('.nameMsg').html('作品名称不能为空');
+                return;
+            }
+            //name = encodeURI(name);
+            var data = {articlename:name,ajax_gets:1};
+            $.post(url,data,function(data){
+                var data = eval("("+data+")");
+                if(data.success === false){
+                    $('.nameMsg').html(data.message);
+                    isNameExist = true;
+                }else{
+                    $(".nameMsg").html(rgtdot);
+                    isNameExist = false;
+                }
+            });
+        })
+
+
+        $("#btnsave").click(function(){
+
+            $('.tagMsg').html('');
+            var flag =  checkForm();
+            if(flag ==false){
+                return ;
+            }
+            $("#btnsave").attr("disabled",true);
+
+            var data = new FormData($('#iform')[0]);
+            popUp.openLoading('正在新建作品..');
+            save(data)
+        });
+
+        var  save= function (data) {
+            var url = "{?$url_newarticle?}";
+            var flag = false;
+            $.ajax({
+                url: url,
+                type: 'POST',
+                cache: false,
+                data: data,
+                processData: false,
+                contentType: false
+            }).done(function(result) {
+                var result = eval(result);
+                if(!result){
+                    return ;
+                }
+
+                if(result.success==true){
+                    setTimeout(function(){
+                        popUp.close();
+                    }, 1000);
+
+                    setTimeout(function(){
+                        layer.msg('新建作品成功！');
+                    }, 1100);
+
+                    setTimeout(function(){
+                        window.location.href=result.backUrl;
+                    }, 2000);
+
+                }else{
+                    popUp.close();
+                    layer.msg(result.message);
+                }
+                $("#btnsave").attr("disabled",false);
+            })
+        }
+
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".n02 a").addClass('active');
+        $("#name").focus();
+
+
+    });
+</script>
+

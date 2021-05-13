@@ -1,0 +1,10 @@
+{?section name=i loop=$articlerows?}
+<li>
+    <a href="{?$articlerows[i].url_articleinfo?}"><img src="{?$articlerows[i].url_image?}" border="0">
+    </a>
+    <div class="name">
+        <a href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a>
+    </div>
+</li>
+{?/section?}
+

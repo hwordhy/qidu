@@ -1,0 +1,16 @@
+    {?section name=i loop=$articlerows?}
+    <a href="{?$articlerows[i].url_articleinfo?}">
+        <div class="listpic">
+            <img alt="{?$articlerows[i].articlename?}" data-original="{?$articlerows[i].url_image?}" class="lazy" />
+            <em class="number">{?$i.order?}</em>
+        </div>
+        <div class="listinfo">
+	        			<span class="title">
+	        				{?$articlerows[i].articlename?}</span>
+            <span class="name">{?$articlerows[i].author?}</span>
+            <p class="digest">{?$articlerows[i].intro?}</p>
+        </div>
+    </a>
+    {?/section?}
+
+

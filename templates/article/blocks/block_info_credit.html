@@ -1,0 +1,9 @@
+{?section name=i loop=$creditrows?}
+<li class="li5">
+  <img class="fl" src="{?function jieqi_geturl:'system':'avatar':$creditrows[i].uid:'l':$creditrows[i].avatar?}">
+  <ul class="fl">
+    <li>{?$creditrows[i].uname?}</li>
+    <li style="font-size: 12px;">打赏了{?$creditrows[i].payegold?}{?$egoldname?}</li>
+  </ul>
+</li>
+{?/section?}

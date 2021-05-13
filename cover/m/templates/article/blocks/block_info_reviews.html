@@ -1,0 +1,23 @@
+{?if $reviewrows|count > 0?}
+{?section name=i loop=$reviewrows?}
+<li style="width:100%;">
+	<p class="rew-li-l"><img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s':$reviewrows[i].avatar?}"/></p>
+	<p class="rew-li-r">
+		<a id="red_url"
+		   href="{?$jieqi_modules['article']['url']?}/reviewshow.php?tid={?$reviewrows[i].topicid?}">
+										<span class="tit">
+											{?$reviewrows[i].poster?}<br/>
+											<span class="rew-time">{?$reviewrows[i].replytime|date:Y-m-d?}</span>
+											<span class="jinghua-ico answer">
+												<img src="{?$jieqi_url?}/style/m/images/book_detail_review_ico.png"/>({?$reviewrows[i].replies?})
+											</span>
+										</span>
+			<span class="r_title">{?$reviewrows[i].title?}</span>
+			<span class="text">{?$reviewrows[i].posttext?}</span>
+		</a>
+	</p>
+</li>
+{?/section?}
+{?/if?}
+
+

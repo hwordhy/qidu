@@ -1,0 +1,71 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "templates/article/bookshelf.html"?}
+{?set $jieqi_pagetitle = "最近阅读-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+    <!--我的书架 mod -->
+    <div class="i-title" style="padding-left:30px;">最近阅读</div>
+    <div class="bookshelfMod">
+        <table>
+            <tr class="head">
+                <td>封面</td>
+                <td class="t2">书名</td>
+                <td class="t3">最新章节</td>
+                <td class="t4">作者</td>
+                <td class="t5">更新时间</td>
+                <td class="t6">状态</td>
+                <td class="t7">操作</td>
+            </tr>
+            {?section name=i loop=$bookcaserows?}
+            <tr>
+                <input type="hidden" value="{?$bookcaserows[i].caseid?}" class="bookId" />
+                <td><a href="{?$bookcaserows[i].url_articleinfo?}" target="_blank"><img src="{?$bookcaserows[i].url_image?}" /></a></td>
+                <td class="t2"><a href="{?$bookcaserows[i].url_articleinfo?}" target="_blank">{?$bookcaserows[i].articlename?}</a>{?if $bookcaserows[i].isvip > 0?}<span><img src="{?$jieqi_url?}/style/images/vip.gif" /></span>{?/if?}</td>
+                <td class="t3"><a href="{?$bookcaserows[i].url_lastchapter?}" target="_blank">{?$bookcaserows[i].lastchapter?}</a></td>
+                <td class="t4"><a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$bookcaserows[i].authorid?}" target="_blank">{?$bookcaserows[i].author?}</a></td>
+                <td class="t5">{?$bookcaserows[i].lastupdate|date:"Y-m-d H:i:s"?}更新</td>
+                <td class="t6">{?$bookcaserows[i].fullflag?}</td>
+                <td class="t7">
+                    {?if $bookcaserows[i].articlemark != ""?}
+                    <a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].chapterid?}" class="goon">继续阅读</a>
+                    {?else?}
+                    <a href="{?$jieqi_modules['article']['url']?}/articleread.php?id={?$bookcaserows[i].articleid?}" class="goon">免费试读</a>
+                    {?/if?}
+                </td>
+            </tr>
+            {?/section?}
+        </table>
+
+        <!--没有数据的情况 mod -->
+        <!--翻页-->
+        <form id="myForm"  onkeydown="if(event.keyCode==13)return false;">
+            <link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+            <div class="pages_bottom">
+                <ul>
+                </ul>
+                <div class="pageform" id="pageForm">
+                    <span>飞到</span>
+                    <input type="text" name="page" id="pageNum" class="pageNum" value="1">
+                    <span>页</span>
+                    <span class="gobtn" id="gobtn">go</span>
+                </div>
+            </div></form>
+    </div>
+</div>
+</div>
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script>
+    $('a').attr('data-namecard',false);
+    //分页
+    doCreatePageNav(".pages_bottom >ul",1,1);
+    var doPage  = function (pageNum) {
+        $("#pageNum").val(pageNum);
+        $("#myForm").action="/modules/article/bookshelf.php";
+        $("#myForm").submit();
+    }
+</script>
+</body>
+</html>
+
+

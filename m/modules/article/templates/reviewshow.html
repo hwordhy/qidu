@@ -1,0 +1,59 @@
+{?set jieqi_page_rows = "10"?}
+
+<link rel="stylesheet" href="/themes/jieqi220/css/comment.css">
+<script src="/themes/jieqi220/js/wapnew.js" type="text/javascript"></script>
+<section class="wapcomment">
+        <div class="container">
+         <p class="here"><a href="{?$url_articleinfo?}" title="">{?$articlename?}</a><b> &gt; 评论回复 </b></p>
+         <h2><b class="bclickurl active">回复评论</b>
+          <a href="javascript:;" class="publish fr">发表评论</a></h2>
+         <ul>
+                {?section name=i loop=$replyrows?}
+          <li><h3 class="clearfix"><span class="com_left fl"><a title="">
+              <img class="bd50" src="{?function jieqi_geturl:'system':'avatar':$replyrows[i].userid:'l':$replyrows[i].avatar?}" alt="{?$replyrows[i].username?}" /></a></span>
+              <span class="com_right fl">
+                  <a title="">{?$replyrows[i].username?}</a><b>{?$replyrows[i].posttime|date:"Y-m-d H:i:s"?}</b><a class="fr "></a>
+             <!--点评--></span></h3><a >
+            <div class="con_content clearfix">
+                    {?$replyrows[i].posttext?}
+            </div></a><h4 class="clearfix">
+            <!-- <a href="javascript:;" class="report" onclick="$.report(this)">举报</a><a href="javascript:;" class="fav" onclick="$.favs(this)" onclick="$.favs(this)">0</a><a href="javascript:;" class="comto">0</a> -->
+            <a  class="comto">{?$replyrows[i].order?}楼</a>
+        </h4></li>
+            {?/section?}
+          </ul>
+         <div class="com_total page">
+                {?$url_jumppage?}
+         </div>
+        </div>
+       </section>
+
+
+<!--评论弹框--><section class="com_alert ">
+        <section class="container">
+                <div class="downs">
+                        <form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$article_dynamic_url?}/reviewshow.php?tid={?$topicid?}&aid={?$articleid?}" onsubmit="return frmpost_validate();" enctype="multipart/form-data" target="_blank"> 
+                        {?if $jieqi_userid > 0?}
+                        <div class="contxt bd3 ">
+                                <a href="javascript:" class="close"></a>
+                        <div class="puss">
+                            <h3>标题(选填)</h3>
+                            <input type="text" class="bd2"  name="ptitle" placeholder="标题" maxlength="100"> 
+                            <h3>内容</h3>
+                            <textarea name="pcontent" class="bd3" placeholder="内容" style="overflow: hidden;"></textarea> 
+                            <input type="hidden" name="act" id="act" value="newpost" />{?$jieqi_token_input?}
+                            <input type="button" value="提交" class="com_push bd3 style="cursor:pointer;" onclick="Ajax.Request('frmreview',{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));Form.reset('frmreview');}});">
+                            </div><!--评论成功-->
+                            </div>
+                        </div>
+                               {?else?}
+                               <div class="contxt bd3 ">
+                                    <a href="javascript:" class="close"></a>
+                               <div class="puss" style="color:#000;font-size:15px;">
+                                    您只有<a href="{?$jieqi_user_url?}/login.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank" style="color:#09c">登陆</a>后才可以发表书评
+                                </div>
+                            </div>
+                               {?/if?}
+                            </form> 
+                </section>
+            </section><!--评论弹框 end-->

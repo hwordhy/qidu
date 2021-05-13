@@ -1,0 +1,148 @@
+ 
+/*注册*/
+.reg{
+    padding: 15px 0;
+}
+.reg h2{
+    font-size: 1.42rem;
+    color:#333333;
+}
+.reg .left,.reg .right{
+    width: 60%;  
+    overflow: hidden;
+}
+.reg .left input{
+    max-width: 58%;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.reg .right{
+    width: 40%;    
+    position: absolute;
+    top: 0;
+    right: 0; 
+/*    max-height: 1.866rem;*/
+} 
+.reg  .bindPhone_time{
+    display: inline-block;
+    width: 98%;
+    height: 44px;
+    text-align: center;
+    background: #f35ab0;
+    font-size: 1.15rem;
+    color: #fff;
+    border: none;
+    padding: 1rem 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+     
+}
+.reg ul li{
+    margin: 15px 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.reg li  input{
+    padding: 1rem 2%;
+    font-size: 1.15rem;
+    color: #b3b3b3;
+    border: 1px solid #b3b3b3; 
+    width: 95.2%;
+    z-index: 10;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+     height: 18px;
+}
+.reg .tips{
+    display: block;
+    color: #fe4f4f;
+    padding-left: 10px;
+    margin-top: 15px;
+    display: none;
+}
+.btn-primary{
+    display: block;
+    background: #927438;
+    color: #fff;
+    border: none;
+    font-size: 1.33rem;
+    text-align: center; 
+    padding: 1rem;
+     -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+}
+.reg  .timerOver{ 
+	color: #fff;
+     border: 1px solid #21a7ee;
+}
+.reg  .timerStart{
+	background: #aeaeae;
+	color: #fff;
+    border: 1px solid #aeaeae;
+}
+.reg .eye{
+    display: inline-block;
+    background: url(../images/eyeclose.png) no-repeat center center;
+    background-size: contain;
+    width:2rem ;
+    height: 0.98rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem; 
+    z-index: 100;
+}
+.reg .eyeopen{ 
+    background: url(../images/eye.png) no-repeat center center;
+    background-size: contain; 
+}
+.reg .lostpsd input{
+    width: 16px;
+    height: 16px;
+}
+.reg .lostpsd .rems{
+    position: relative; 
+    width: 60%;   
+    display: inline-block;
+}
+.reg .lostpsd b{
+    position: absolute;
+    top: 4px; 
+    color: #c1c1c1;
+}
+.reg .lostpsd a{
+    position: relative;
+    top: 3px;
+    color: #c1c1c1;
+}
+.reg .ot_login{
+    padding: 0.5rem 0;
+    text-align: center;
+}
+.reg .ot_login a{
+    margin: 0 10px; 
+}
+
+.reg .left:first-child input{
+    width: 56%;
+}
+.reg  .xieyi {
+    padding-bottom: 0.5rem;
+}
+.reg  .xieyi input{
+    width: 1.2rem;
+    position: relative;
+    top: 0.3rem;
+} 
+.reg  .CodeImg{ 
+    margin-left: 1rem;
+    width: 80%;
+    height: 3rem;
+    position: relative;
+    top: 0.35rem;
+}

@@ -1,0 +1,14 @@
+    {?section name=i loop=$articlerows?}
+    <a href="{?$articlerows[i].url_articleinfo?}" id="editor-b-dl" style="padding-bottom:5px;">
+        <dl class="editor-b-dl">
+            <dt><img src="{?$articlerows[i].url_image?}"  title="{?$articlerows[i].articlename?}"></dt>
+            <dd>
+                <span class="book-name">{?$articlerows[i].articlename?}</span>
+                <span class="author-name">作者：{?$articlerows[i].author?}</span>
+                <span class="book-brief">{?$articlerows[i].intro?}</span>
+            </dd>
+        </dl>
+    </a>
+    {?/section?}
+
+

@@ -1,0 +1,9 @@
+{?section name=i loop=$newsrows?}
+<li>
+    <a   href="{?function jieqi_geturl:'news':'info':$newsrows[i].topicid?}" target="_blank">
+        <em class="dot"></em>
+        {?$newsrows[i].title?}{?if $i.order < 4?}<em class="new">最新</em>{?/if?}
+        <span class="date">{?$newsrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+    </a>
+</li>
+{?/section?}

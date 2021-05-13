@@ -1,0 +1,44 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "{$articlename}粉丝排行"?}
+{?set jieqi_page_rows = "10"?}
+<link rel="stylesheet" href="/sink/css/comment_list.css">
+<div class="comment-box clearfixer">
+		<div class="path ">
+			<span>
+				<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" target="_blank">{?$articlename?}</a>
+			</span>
+			<span>&gt;</span>
+			<span>粉丝排行榜</span>
+		</div>
+		<div class="fl authorbox">
+			<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" class="authorimg" target="_blank"><img src="{?$url_limage?}"></a>
+			<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" class="a-book-tit" target="_blank">{?$articlename?}</a>
+			<a href="{?function jieqi_geturl:'system':'user':$authorid?}" class="a-name" target="_blank">{?$author?}</a>
+			<p class="a-btn">
+				<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" target="_blank" class="a-free-btn btn ui_bg_bdcolor">查看书籍</a>
+				</p>
+		</div>
+		<div class="reader_comments fr" id="comment-tab">
+			<div class="comment_tit clearfixer">
+				<span class="text fl">粉丝排行榜</span>
+			</div>
+			<div class="comment_con j-comment-main clear">
+				<div class="fans_content">
+						{?section name=i loop=$creditrows?}
+		<ul class="fans_table">
+
+			<li class="fans_number ui_bg_bdcolor">{?$creditrows[i].order?}</li>
+			<li class="fans_head"><a href="{?function jieqi_geturl:'system':'user':$creditrows[i].uid?}" target="_blank"><img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}"></a></li>
+			<li class="fans_name">粉丝名:<a class="ui_color" href="{?function jieqi_geturl:'system':'user':$creditrows[i].uid?}" target="_blank">{?$creditrows[i].uname?}</a></li>
+			<li class="fans_level">粉丝级别:<span>	<img alt="{?$creditrows[i].rank?}" src="{?$creditrows[i].img?}" title="{?$creditrows[i].rank?}"></span></li>
+			<li class="fans_tip">粉丝值<span class="ui_color">{?$creditrows[i].point?}</span></li>
+		</ul>
+		{?/section?}
+	</div>
+			</div>
+			<div class="pages">{?$url_jumppage?}</div>
+		</div>
+	</div>
+
+					

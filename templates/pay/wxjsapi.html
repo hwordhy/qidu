@@ -1,0 +1,47 @@
+<script type="text/javascript">
+	//调用微信JS api 支付
+	function jsApiCall()
+	{
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',
+			{?$jsApiParameters?},
+			function(res){
+				//WeixinJSBridge.log(res.err_msg);
+				//alert(res.err_code+res.err_desc+res.err_msg);
+				if(/ok$/i.test(res.err_msg)){
+					alert('支付成功，实际到账请稍候！');
+					window.location.href = '{?$jieqi_url?}/userdetail.php';
+				}else if(/cancel$/i.test(res.err_msg)){
+					alert('支付中断，您可以继续尝试支付！');
+				}else{
+					alert('对不起，支付失败！');
+					window.location.href = '{?$jieqi_url?}/userdetail.php';
+				}
+			}
+		);
+	}
+
+	function callpay()
+	{
+		if (typeof WeixinJSBridge == "undefined"){
+		    if( document.addEventListener ){
+		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+		    }else if (document.attachEvent){
+		        document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+		    }
+		}else{
+		    jsApiCall();
+		}
+	}
+</script>
+<div style="margin:3em auto;">
+<div class="block">
+	<div class="blocktitle">微信钱包支付</div>
+	<div class="blockcontent">
+		<div class="tc mt mb">您选择了购买：{?$20?}元（{?$2000?}）</div>
+		<div class="tc mt mb"><button type="button" class="button b_l b_hot" onclick="callpay()">立即支付</button></div>
+	</div>
+</div>
+</div>
+

@@ -1,0 +1,103 @@
+{?set jieqi_blocks_module = "article"?}
+{?set $jieqi_pagetitle = "{$articletitle}-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "30"?}
+<link rel="stylesheet" href="/sink/css/rank.css">
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+    <div class="leftbar fl">
+    <ul data-type="tuijian">
+		<li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">总点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvisit'?}">月点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvisit'?}">周点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvote'?}">总推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvote'?}">月推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvote'?}">周推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'goodnum'?}">总收藏榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'size'?}">总字数榜 </a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'toptime'?}">编辑推荐</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'postdate'?}">最新入库</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'giftnumus'?}">总捧场榜</a></li>
+        </ul>
+</div>
+
+<div class="right-cont-box fr rankdata">
+        <div class="comment-r-menu">
+    <span class=" fl r-c-t">{?$ordername?}</span>
+    <ul class="fl comment-status">
+        </ul>
+</div><div class="rankdatacont">
+            <div class="tabsbox1">
+                <div class="rankday">
+                    <ul class="clrbtn clrbtna">
+                        <li class="clrbtn1 on"><a href="#"></a></li>
+                        <li class="clrbtn2"><a href="#"></a></li>
+                    </ul>
+                    <div class="tabsday-cont">
+                        <div class="tabs-cont-1">
+							<!-- 判断是不是点击 -->
+							{?section name=i loop=$articlerows?}
+                                <div class="secd-rank-list">
+                                    <dl>
+                                        <dt><a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"></a></dt>
+                                        <dd>
+                                            <a href="{?$articlerows[i].url_articleinfo?}" class="bigpic-book-name" target="_blank">
+                                                <span class="num red">{?$i['order']?}</span>{?$articlerows[i].articlename?}</a>
+                                            <p>
+                                                <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author?}</a> | <a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" target="_blank">{?$articlerows[i].sort|truncate:4:''?}</a> | {?if $articlerows[i].fullflag =='连载'?}连载{?else?}完结{?/if?}<span class="clicknum">{?$articlerows[i].size_c?} 字</span></p>
+                                            <p class="big-book-info">{?$articlerows[i].intro|htmlclickable|truncate:180:'.....'?}
+</p>
+                                            <p><a href="{?$articlerows[i].url_lastchapter?}" target="_blank" class="red">最近更新 {?$articlerows[i].lastchapter?}</a><span>| {?$articlerows[i].lastupdate|date:'Y-m-d h:i'?}</span></p>
+                                        </dd>
+                                    </dl>
+                                    <div class="bigbtn">
+                                        <a href="{?$articlerows[i].url_articleinfo?}" class="detailbtn" target="_blank">立即查看</a>
+                                            </div>
+								</div>
+								{?/section?}
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="http://pic.motieimg.com/_resources/motiepc/css/common/layer.css?version=201710011057" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "",
+        sitestate:"1",
+        userId:"",
+        coinName:"磨铁币",
+        siteValue:"motie",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+	var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="http://pic.motieimg.com/_resources/motiepc/js/vendor/dest/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://pic.motieimg.com/_resources/motiepc/js/lib/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="http://pic.motieimg.com/_resources/motiepc/js/common/handlebars.helper.js?version=201710011057"></script>
+<script type="text/javascript" src="http://pic.motieimg.com/_resources/motiepc/js/vendor/dest/vendor.js?version=201710011057"></script>
+<link rel="stylesheet" href="http://pic.motieimg.com/_resources/motiepc/css/common/ui_common.css?version=201710011057">
+<script src="http://pic.motieimg.com/_resources/motiepc/js/header/index_header.js?version=201710011057"></script>
+<script type="text/javascript" src="http://pic.motieimg.com/_resources/motiepc/js/rank/rank.js?version=201710011057"></script>
+<script>
+    $(".nav_rank").addClass("curr");
+</script>

@@ -1,0 +1,15 @@
+.hd{
+    text-align: center;
+    margin-top: 8px;
+}
+.filter a{
+display: inline-block;
+font-size: 16px;
+margin-top: 4px;
+width: 24%;
+line-height: 2;
+color: #595959;
+}
+.column-2{
+    width: 100%;
+}

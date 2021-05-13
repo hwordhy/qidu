@@ -1,0 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+{?section name=i loop=$actlogrows?}
+<li><span><a class="color_e0e0e0" href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:info?}">{?$actlogrows[i].uname?}</a>
+</span>订阅了 
+<a href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info':$articlecode?}"><span class="color_f8c400">《{?$actlogrows[i].articlename?}》</span></a>
+</li>
+{?/section?}

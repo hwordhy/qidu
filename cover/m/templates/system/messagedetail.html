@@ -1,0 +1,60 @@
+{?set $jieqi_pagetitle = "阅读消息-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "阅读消息"?}
+
+
+<table class="grid" width="100%" align="center">
+  <tr>
+    <td>标　题：{?$messagevals['title']?}</td>
+  </tr>
+  <tr>
+    <td>发送人：{?if $messagevals['fromid'] > 0?}{?$messagevals['fromname']?}{?else?}<span class="hot">网站管理员</span>{?/if?}</td>
+  </tr>
+  <tr>
+    <td>接收人：{?if $messagevals['toid'] > 0?}{?$messagevals['toname']?}{?else?}<span class="hot">网站管理员</span>{?/if?}</td>
+  </tr>
+  <tr>
+    <td>时　间：{?$messagevals['postdate']|date:'Y-m-d H:i:s'?}</td>
+  </tr>
+  <tr>
+    <td>{?$messagevals['content']?}</td>
+  </tr>
+  <tr>
+    <td class="foot">
+	{?if $messagevals['toid'] == $jieqi_userid?}<a href="{?$jieqi_url?}/newmessage.php?reid={?$messagevals['messageid']?}&tosys={?if $messagevals['fromid'] > 0?}0{?else?}0{?/if?}">回复消息</a>&nbsp;&nbsp;&nbsp;&nbsp;{?/if?}<a href="{?$jieqi_url?}/newmessage.php?fwid={?$messagevals['messageid']?}">转发消息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="act_delete" href="javascript:;" onclick="if(confirm('确实要删除该消息么？')) Ajax.Tip('{?$jieqi_url?}/message.php?box={?$box?}&id={?$messagevals['messageid']?}&act=delete{?$jieqi_token_url?}', {method: 'POST'});">删除消息</a>&nbsp;&nbsp;&nbsp;&nbsp;{?if $box == 'outbox'?}<a href="{?$jieqi_url?}/message.php?box=outbox">返回发件箱</a>{?else?}<a href="{?$jieqi_url?}/message.php?box=inbox">返回收件箱</a>{?/if?}
+	</td>
+  </tr>
+</table>
+{?if $messagevals['toid'] == $jieqi_userid?}
+<script type="text/javascript">
+  function jieqiFormValidate_newmessage(){
+    if ( window.document.newmessage.title.value == "" ){
+      alert( "请输入 标题" );
+      window.document.newmessage.title.focus();
+      return false;
+    }
+  }
+</script>
+<br />
+<form name="newmessage" action="{?$jieqi_url?}/newmessage.php?do=submit" method="post" onsubmit="return jieqiFormValidate_newmessage();">
+<table class="grid" width="100%" align="center">
+  <caption>快速回复</caption>
+  <tr valign="middle" align="left">
+    <td>收件人：{?if $messagevals['fromid'] > 0?}<a href="{?function jieqi_geturl:'system':'user':$messagevals['fromid']?}">{?$messagevals['fromname']?}</a><input type="hidden" name="receiver" size="25" value="{?$messagevals['fromname']?}" />{?else?}<span class="hot">网站管理员</span><input type="hidden" name="tosys" id="tosys" value="1" />{?/if?}</td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td>标　题：<input type="text" class="text" name="title" size="25" value="Re:{?$messagevals['title']?}" /></td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td><textarea class="textarea" name="content"></textarea></td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td>
+	<button type="submit" class="button" name="submit">回复消息</button>
+	<input type="hidden" name="act" value="add" />
+	{?$jieqi_token_input?}
+	</td>
+  </tr>
+</table>
+</form>
+{?/if?}
+

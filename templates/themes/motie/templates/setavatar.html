@@ -1,0 +1,215 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "templates/setavatar.html"?}
+{?set $jieqi_pagetitle = "设置头像-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/jquery.jcrop.css" type="text/css" />
+<style>input[name=uploadfile]{height:40px;width:400px;}</style>
+<div class="i-right">
+  <div class="systemMod">
+    <div class="i-title">
+      <ul class="ulHd">
+        <li class="on">头像设置<span></span></li>
+      </ul>
+    </div>
+    <div class="accountsBd">
+      <!--头像设置mod-->
+      <div class="basicAccounts">
+        <div class="mod-basic-form mod-set-head form-account mod">
+          <form action="" method="post" onsubmit="return false;">
+            <!--<input id="left" name="left" type="hidden" value="62" />-->
+            <!--<input id="top" name="top" type="hidden" value="62" />-->
+            <!--<input id="width" name="width" type="hidden" value="100" />-->
+            <!--<input id="height" name="height" type="hidden" value="100" />-->
+            <input id="tempFile" name="tempFile" type="hidden" value="" />
+            <input id="cut_pos" name="cut_pos" type="hidden" value="" />
+            <div class="form-content">
+              <!-- <div class="alert-error alert">
+                  错误提示：图片文件尺寸不得超过2M。
+              </div>
+
+              <div class="alert-ok alert">
+                  帐号设置更新成功
+              </div>
+               -->
+              <table class="form-table">
+                <tr>
+                  <td style="padding-left: 30px;">
+                    <a href="javascript:;" class="uploadImgHandle fl">选择您要上传的头像</a><br/>
+                    <span id="errorMessage" class="desc">仅支持JPEG\JPG\GIF\PNG文件，且图片尺寸不超过5M。</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="jcropSeticon" colspan="2">
+
+                    <div class="sp-20"></div>
+                    <div class="fl c1">
+                      <div id="pic-wrap-300" class="pic-head pic-300">
+                        <img src="{?$jieqi_url?}/style/images/html5-logo.jpg" id="target" alt="" />
+                      </div>
+                    </div>
+                    <div class="fl c2" style="margin-top:120px;width:182px;margin-right:0;">
+                      <div class="pic-head pic-180">
+                        <img src="{?if $url_avatar == ''?}{?$jieqi_url?}/style/images/userIco.jpg{?else?}{?$url_avatar?}{?/if?}" alt="" id="tumb-180" />
+                      </div>
+                      <p class="ac desc">180×180</p>
+                    </div>
+                    <div class="fl c3" style="width:340px;">
+                      <div class="fl w100">
+                        <div class="pic-head pic-100">
+                          <img src="{?if $url_avatars == ''?}{?$jieqi_url?}/style/images/userIco.jpg{?else?}{?$url_avatars?}{?/if?}" alt="" id="tumb-100" />
+                        </div>
+                        <p class="ac desc">100×100</p>
+                      </div>
+                      <div class="sp-20"></div>
+                      <div class="fl w50">
+                        <div class="pic-head pic-50 fl">
+                          <img src="{?if $url_avatari == ''?}{?$jieqi_url?}/style/images/userIco.jpg{?else?}{?$url_avatari?}{?/if?}" alt="" id="tumb-50" />
+                        </div>
+                        <p class="ac desc">50×50 </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
+              <div class="sp-20"></div>
+              <input type="hidden" name="ajax_gets" value="1" />
+              <input type="hidden" name="act" value="cutsave" />{?$jieqi_token_input?}
+              <p class="ac"><button type="button" class="imgBtn" onclick="imgBtn();">保存</button></button></p>
+            </div>
+          </form><!-- end form -->
+        </div><!-- end mod -->
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+<script src="{?$jieqi_url?}/style/js/ajaxupload.js"></script>
+
+<script type="text/javascript">
+    jQuery(".systemMod").slide({titCell:".ulHd li",mainCell:".accountsBd",trigger:"click"});
+    var loadUserIconSetting = function(url){
+        var pw300 = $('#pic-wrap-300'),pw180 = $('#pic-wrap-180'), pw100 = $('#pic-wrap-100'),pw50 = $('#pic-wrap-50');
+        pw300.empty().append('<img alt="" id="target" src="'+url+'" style="">');
+        pw180.empty().append('<img alt="" id="tumb-180" src="'+url+'" style="">');;
+        pw100.empty().append('<img alt="" id="tumb-100" src="'+url+'" style="">');;
+        pw50.empty().append('<img alt="" id="tumb-50" src="'+url+'" style="">');;
+        $("#tempFile").val(url);
+        var target = $('#target'), t180 = $('#tumb-180'), t100 = $('#tumb-100'), t50 = $('#tumb-50');
+        //改变宽高
+        function setHeight(obj,w,h,max){
+            if(w>h){
+                obj.css('width',max);
+                return w;
+            }else if(w<=h){
+                obj.css('height',max);
+                return h;
+            }
+        }
+
+        target.load(function(){
+            var trImg = setHeight(target,target.width(),target.height(),300);
+            setHeight(t180,t180.width(),t180.height(),180)
+            setHeight(t100,t100.width(),t100.height(),100)
+            setHeight(t50,t50.width(),t50.height(),50);
+
+            function updatePreview(c){
+                var _up = function(obj,rx,ry){
+                    obj.css({
+                        width: Math.round(rx * boundx) + 'px',
+                        height: Math.round(ry * boundy) + 'px',
+                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                        marginTop: '-' + Math.round(ry * c.y) + 'px'
+                    });
+//                    $("#left").val(c.x);
+//                    $("#top").val(c.y);
+//                    $("#width").val(c.w);
+//                    $("#height").val(c.h);
+                    var cut_pos = c.x +','+c.y+','+c.w+','+c.h;
+                    $("#cut_pos").val(cut_pos);
+                }
+
+                if (parseInt(c.w) > 0){
+                    var rx180 = 180 / c.w,ry180 = 180 / c.h,
+                        rx100 = 100 / c.w,ry100 = 100 / c.h,
+                        rx50 = 50 / c.w,ry50 = 50 / c.h;
+
+                    _up(t180,rx180,ry180);
+                    _up(t100,rx100,ry100);
+                    _up(t50,rx50,ry50);
+                }
+            }
+
+            var jcrop_api, boundx, boundy;
+            target.Jcrop({
+                onChange: updatePreview,
+                onSelect: updatePreview,
+                aspectRatio: 1
+            },function(){
+                // Use the API to get the real image size
+                bounds = this.getBounds();
+                boundx = bounds[0];
+                boundy = bounds[1];
+                // Store the API in the jcrop_api variable
+                jcrop_api = this;
+                //初始化选择区域
+                jcrop_api.setSelect([10,10,trImg/2,trImg/2])
+            });
+        })
+    }
+
+    $(function(){
+        var status = $("#errorMessage"), firstUpload = false;
+        new AjaxUpload($('.uploadImgHandle:first')[0], {
+            action: '/setavatar.php?do=submit',
+            name: 'avatarimage',
+            data: {act: "upload", jieqi_token: jieqi_token, ajax_gets: 1},
+            onSubmit: function(file, ext){
+                if (!(ext && /^(jpg|jpeg|gif|png)$/i.test(ext))) {
+                    status.addClass('error').text('仅支持JPEG\JPG\GIF\PNG文件，且图片尺寸不超过5M。');
+                    return false;
+                }
+            },
+            onComplete: function(file, response){
+                var index = response.indexOf("<");
+                if (index != -1) {
+                    response = response.substring(0, index);
+                }
+                console.log(response);
+                $("#jcropSeticon img").attr("src", response);
+                if (firstUpload) {
+                    firstUpload = true;
+                }
+                loadUserIconSetting(response);
+            }
+        });
+    })
+
+    function imgBtn() {
+        $.ajax({
+            url: "{?$jieqi_url?}/setavatar.php?do=submit",
+            data: $("form").serialize(),
+            type: "POST",
+            beforeSend: function() {
+                $(".imgBtn").text("提交中...");
+            },
+            success: function(t) {
+                t = eval(t);
+                if (t.success === true) {
+                    layer.msg(t.message, {icon: 1,shade: .3});
+                    location.reload();
+                }
+                else{
+                    layer.msg(t.message, {icon: 2,shade: .3});
+                    $(".imgBtn").text("重新提交");
+                }
+            },
+            error: function(e) {}
+        });
+    }
+</script>
+</body>
+</html>

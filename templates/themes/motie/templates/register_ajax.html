@@ -1,0 +1,72 @@
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+<div class="zhuce_cot clr">
+  <div class="zhuce_cot_lt clr">
+    <div class="zhuce_cot_lt_cur clr">用户注册</div>
+    <input type="hidden" id="frmregister" value="{?$form_action?}?do=submit"/>
+    <div class="zhuce_cot_lt_hang clr">
+      <label class="zhuce_cot_lt_hang_span" for="reg_username">账号：</label>
+      <input type="text" class="txt" maxlength="30" id="reg_username" placeholder="请输入账号"/>
+      <p class="reg_show reg_telshow"></p>
+      <p class="relname reg_tel">请输入账号</p>
+    </div>
+    <div class="zhuce_cot_lt_hang clr">
+      <label class="zhuce_cot_lt_hang_span" for="reg_email">电子邮箱：</label>
+      <input type="text" class="txt" maxlength="30" id="reg_email" placeholder="请输入电子邮箱"/>
+      <p class="reg_show reg_emailshow"></p>
+      <p class="relname reg_email">电子邮箱是找回密码重要途径</p>
+    </div>
+    <div class="zhuce_cot_lt_hang clr">
+      <label class="zhuce_cot_lt_hang_span" for="reg_password">登录密码：</label>
+      <input type="password" class="txt" maxlength="20" id="reg_password" placeholder="请在此处输入登录密码"/>
+      <span class="strength" id="strength_L"></span>
+      <span class="strength" id="strength_M"></span>
+      <span class="strength" id="strength_H"></span>
+      <p class="reg_show reg_passshow"></p>
+      <p class="password">长度为8~20个字符,<br>支持数字大小写字母与符号<br>不允许有空格</p>
+    </div>
+    <div class="zhuce_cot_lt_hang clr">
+      <label class="zhuce_cot_lt_hang_span" for="reg_password1">确认密码：</label>
+      <input type="password" class="txt" maxlength="20" id="reg_password1" placeholder="请再次输入密码确认"/>
+      <p class="reg_show reg_passshow1"></p>
+    </div>
+    <!--<div class="zhuce_cot_lt_hang clr" style="height:38px;">
+      <label class="zhuce_cot_lt_hang_span" for="zhuce_rdmcode">校验码：</label>
+      <input type="text" id="zhuce_rdmcode" class="rdmtxt" maxlength="8"/>
+      <input type="button" id="reg_codebutton" value="获取校验码" class="button"/>
+      <input type="hidden" id="codesubmit" value="0"/>
+      <p class="reg_show reg_codemsgshow"></p>
+      <p class="relname codemsg">用于验证是您本人操作</p>
+    </div>-->
+    {?if $show_checkcode == 1?}
+    <div class="zhuce_cot_lt_hang clr" style="height:38px;">
+      <label class="zhuce_cot_lt_hang_span" for="reg_seccode">验证码：</label>
+      <input type="text" class="rdmtxt" maxlength="8" id="reg_seccode" name="login_seccode"/>
+      <img src="{?$jieqi_url?}/checkcode.php" class="image imageshow"/>
+    </div>
+    {?/if?}
+
+    <div class="zhuce_cot_lt_hang clr" style="width:640px;margin-top:-15px;"><br />
+        <div class="zhuce_cot_lt_hang" style="margin-top:-35px;padding-top:5px;padding-bottom:-15px;height:20px;">
+            <p class="reg_codemsgshow" style="margin-top:10px;margin-bottom:5px;height:20px;width:300px;color:red;"></p>
+            <p class="codemsg" style="margin-top:10px;margin-bottom:5px;height:20px;width:300px;color:deepskyblue;"></p>
+        </div>
+      <div class="rgt clr" style="margin-top:-15px;">
+        <p>您可以使用以下方式直接登录:</p>
+        <div class="clr web_qq">
+          <a href="{?$jiqi_url?}/api/qq/login.php" title="使用QQ账号登录"><img src="{?$jieqi_url?}/style/images/qq.png" alt="QQ账号登录"/></a>
+          <a href="{?$jiqi_url?}/api/weibo/login.php" title="使用新浪微博账号登录"><img src="{?$jieqi_url?}/style/images/webqq.png" alt="新浪微博账号登录"/></a>
+          <!--<a href="{?$jiqi_url?}/api/alipay/login.php" title="使用支付宝账号登录"><img src="{?$jieqi_url?}/style/images/alipay.png" alt="支付宝账号登录"/></a>-->
+          <a href="{?$jiqi_url?}/api/weixin/login.php" title="使用微信登录"><img src="{?$jieqi_url?}/style/images/wechat.png" alt="微信登录"/></a>
+          <!--a href="https://www.aizuopin.com/connect.jsp?module=baidu" title="百度账号登录"><img src="{?$jieqi_url?}/style/images/baidu.png"/></a-->
+        </div>
+      </div>
+    </div>
+    <div class="zhuce_cot_lt_hang clr">
+      <input type="button" value="确认注册" class="sub" id="reg_button"/>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">$(".boxblock").show();
+$(".show_loader").addClass("show_zhuce");$(".show_loader").show();</script>
+<script src="{?$jieqi_url?}/style/js/core.min.js" type="text/javascript"></script>

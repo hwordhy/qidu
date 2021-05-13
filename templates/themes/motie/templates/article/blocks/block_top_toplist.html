@@ -1,0 +1,23 @@
+{?section name=i loop=$articlerows?}
+{?if $i.order == 1?}
+<li class="top topred">
+  <span class="num">{?$i.order?}</span>
+  <dl class="book-block">
+    <dt><a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' href="{?$articlerows[i].url_articleinfo?}"  target="_blank"><img class="lazyimg" data-original="{?$articlerows[i].url_image?}"/></a></dt>
+    <dd>
+      <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="book-name">{?$articlerows[i].articlename?}</a>
+      <span class="book-author"><a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="javascript:;" target="_blank">{?$articlerows[i].author?}</a></span>
+    </dd>
+  </dl>
+</li>
+{?else?}
+<li{?if $i.order < 4?} class="topred"{?/if?}>
+  <span class="num">{?$i.order?}</span>
+  <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  class="book-list-f" href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+    {?$articlerows[i].articlename?}</a>
+<span class="clicknum linum fr">{?$articlerows[i].visitnum?}</span>
+</li>
+{?/if?}
+{?/section?}
+<a href="{?$url_more?}" target="_blank" class="more">查看更多&gt;&gt;</a>
+

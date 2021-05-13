@@ -1,0 +1,4 @@
+{?section name=i loop=$articlerows?}
+<a href="{?$articlerows[i].url_articleinfo?}" style="font-size:14px;"><li>{?if $i.order<4?}<span class="count" style="background-color:#f60; color:#FFFFFF;">{?else?}<span class="" style=" color:#FFFFFF;">{?/if?}{?$i.order?}</span>{?$articlerows[i].articlename?}</li></a>{?/section?}
+
+

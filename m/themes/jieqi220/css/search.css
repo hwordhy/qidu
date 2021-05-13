@@ -1,0 +1,174 @@
+﻿ /*æœç´¢*/
+ .search{
+    padding-top: 5px;
+}
+.search,.s_list{
+    background: #fff;
+}
+.search .s_top .SearchKey, .s_top .s_btn{
+   height: 3rem; 
+    border: 1px solid #333333;
+    width: 70%;
+    padding:0 10px;
+}
+.s_top .s_btn{
+   background: #333333;
+    display: inline-block;
+    text-align: center; 
+     width: 20%;
+    border: 1px solid #333333;
+    line-height: 3rem;
+    background-size: auto 70%;
+    padding: 0;
+    color: #fff;
+}
+.search h5{
+    font-size: 1.15rem;
+    color: #f96a74;
+    padding: 10px 0; 
+}
+.s_top h2,.s_top p{
+    padding: 10px 0 ;
+}
+.s_top p a{
+    display: inline-block;
+    margin:0  3.5% 20px 0 ;
+    background: #ececec;
+    color: #979797;
+    font-size: 1.16rem;
+    padding: 0.88rem 1.77rem;
+}
+.s_list{
+    margin: 15px auto; 
+    padding-top: 15px;
+}
+.s_list h1{
+    font-size: 1.15rem;
+    color: #8d8d8d;
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 15px;
+}
+.s_list  .changenow{
+    color: #333333;
+    position: relative;
+    top: -4px;
+    right: 5px;
+}
+.s_list  .changenow b{
+    display: inline-block;
+    background: url(../images/refresh.png) no-repeat center center;
+    background-size: contain;
+    width:1.5rem ;
+    height: 1.5rem;
+    position: relative;
+    top: 4px;
+    left: 5px;
+}
+.s_list ul li{
+    overflow: hidden;
+    border-bottom: 1px solid #f4f4f4;
+     padding: 15px 0;
+}
+.s_list ul li:last-child{
+    border-bottom: none;
+} 
+.s_list li .left {
+    position: relative;
+    max-height: 135px;
+     width: 25%;
+}
+.s_list li .left img{ 
+    max-height: 135px;
+    width: 100%;
+}
+.s_list li .left em{
+    display: inline-block;
+    background: url(../images/hots.png) no-repeat center center;
+    background-size: contain;
+    height: 3rem;
+    width: 1.77rem;
+    position: absolute;
+    top: 2px;
+    left: -1px;
+    color: #fff;
+    z-index: 1;
+    font-size: 0.7rem;
+    text-align: center;
+    font-style: normal;
+    padding-top: 0.2rem;
+} 
+.s_list li .right{
+    width: 70%;
+    margin-left: 5%;
+    font-size: 1.15rem; 
+    color: #3a3a3a;  
+} 
+.s_list li .right h3{
+   font-size: 1.15rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #434343;  
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;  
+}
+.s_list li .right h5 a,.s_endlist h4 a{ 
+    color: #cba943; 
+    margin-right: 5px;
+    border-right: 1px solid #e1e1e1;
+    padding-right: 5px;
+}
+.s_list li .right h5{
+   font-size: 1rem;
+    padding: 1.6rem 0;
+    color: #8a8a8a;
+    font-weight: normal;
+}
+.s_list li .right p{
+    max-height:70px ;
+    overflow: hidden;
+    line-height: 1.8rem;
+    font-size: 1rem;
+    max-height: 40px;
+}
+/*ç»“æžœ*/
+.s_endlist ul li{ 
+    padding: 15px 0;
+    border-top: 1px solid #f4f4f4;
+}
+.s_endlist h3 a{
+    font-size: 1.2rem;
+    color: #434343;
+}
+.s_endlist h4 {
+    margin: 10px 0; 
+    color: #3d3d3d;
+}
+.s_endlist h4 a{
+    font-size: 1rem;
+    color: #3d3d3d;
+}
+.s_endlist li b{ 
+    color: #ff5c5c ;
+}
+.s_endlist p{ 
+    font-size: 1rem;
+    line-height: 1.6rem;
+}
+.s_endlist p a{ 
+    color: #8a8a8a ;
+}
+ .s_endlist ul li:last-child{ 
+    padding: 15px  30px  ;
+    border-bottom:none; 
+     overflow: hidden;
+}
+.s_endlist li:last-child a{ 
+    color: #8d8d8d;
+    font-size: 1.24rem;
+}
+.s_endlist ul li:last-child b{  
+    color: #c3c3c3;
+}

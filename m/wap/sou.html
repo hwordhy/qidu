@@ -1,0 +1,28 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "搜索-搜你想要的！！-{$author}-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="themes/jieqi220/css/search.css">
+<form method="post" action="{?$jieqi_modules['article']['url']?}/search.php" class="search-form">
+<section class="search">
+  <section class="container">
+    <div class="s_top">
+      <h2>
+        <input type="text" id="searchkey" value="" placeholder="请输入书名/作者名/关键词" class="SearchKey" name="searchkey" >
+        <input type="submit" class="s_btn fr post_search">
+      </h2>
+
+    </div>
+  </section>
+</section>
+</form>
+
+     <section class="s_list">
+      <section class="container">
+       <h1>热搜作品 </h1>
+       <ul class="return_hot">
+          {?$jieqi_pageblocks['bid1004']['content']?}
+       
+       </ul>
+      </section>
+     </section>
+  

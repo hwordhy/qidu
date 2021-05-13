@@ -1,0 +1,1 @@
+document.write('王钵手中原版的万古量产式机器人，具有结构简易。高地形适应通过能力成本低的优势。但在这个时空更多因为参与了柏林事件尔知名度大涨！主要武器为一门声波脉冲炮和两门小型反步兵级激光枪。后来又进一步在顶部加强了武装搭载架可加载一门中型量子波动炮或三门粒子速射炮。伴随着王钵的万古军团参与了后来无数场作战<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/158/7951/230.gif\" border=\"0\" class=\"imagecontent\"></div>');

@@ -1,0 +1,229 @@
+{?set jieqi_page_template = "templates/userpage.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userpage"?}
+{?if $authorid != $jieqi_userid?}
+{?set $jieqi_pagetitle = "ta的个人主页-{$jieqi_sitename}"?}
+{?else?}
+{?set $jieqi_pagetitle = "我的个人主页-{$jieqi_sitename}"?}
+{?/if?}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}"/>
+    <meta content="zh-cn" http-equiv="Content-Language">
+    <meta name="keywords"  content="{?$meta_keywords?}">
+    <meta name="description"  content="{?$meta_description?}">
+    <title>{?$jieqi_pagetitle?}</title>
+    <link rel="stylesheet" href="{?$jieqi_url?}/style/css/i.css" type="text/css" />
+    <link rel="stylesheet" href="{?$jieqi_url?}/style/css/iyy.css" type="text/css" />
+    <link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+    <script>
+        function _addConfig(json) {
+            if(window.page_config){
+                for(var i in json){
+                    if(page_config[i] === undefined){
+                        window.page_config[i] = json[i];
+                    }
+                }
+            }else{
+                window.page_config = json;
+            }
+        }
+        _addConfig({
+            username: "{?$jieqi_username?}",
+            sitestate:"7",
+            userId:"{?$jieqi_userid?}",
+            coinName:"{?$egoldname?}",
+            siteValue:"yy",
+            toTop_page:true
+        });
+        var isPeople = location.href.indexOf('/people')>-1;
+        if(isPeople){
+            page_config.toTop_page=false;
+        }
+
+    </script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/js/template-web.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+    <link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+    <script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+
+
+
+    <style>.i-right .myReview .divBd .reviewList li{width:920px;}</style>
+</head>
+<body class="ibody">
+<!--start mod -->
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/header.css" type="text/css" />
+<div class="mod-header" id="topback">
+    <!--零导航 start-->
+    <div   class="topnav">
+        <div class="navbar" style="background:#f2f2f2;">
+            <div class="wrap1200 h40">
+                <div class="left navbox">
+                    <a href="javascript:;" onclick="AddFavorite('{?$jieqi_url?}', '{?$jieqi_sitename?}');">收藏本站</a>
+                </div>
+                <!-- nologin start-->
+                <div class="index-login h40 fr">
+                    <a href="#"  class="indexmobile">
+                        手机版
+                        <div class="pho-tabs" style="display: none">
+                            <em class="dot-top"></em>
+                            <ul>
+                                <li>
+                                    <span class="scode fl"><a href="{?$jieqi_wap_url?}" target="_blank"><img src="{?$jieqi_url?}/style/images/wap.png"/></a></span>
+                                    <p class="fr" style="margin-top: 10px;">
+                                        <span class="f14">{?$jieqi_sitename?}</span>
+                                        <span>让阅读更精彩</span>
+                                    </p>
+                                </li>
+                                <li>
+									<span class="scode fl"><img
+                                            src="{?$jieqi_url?}/style/images/weixin.jpg"/></span>
+                                    <p class="fr" style="margin-top: 17px;">
+                                        <span class="f14">关注{?$jieqi_sitename?}</span>
+                                        <span>微信扫一扫关注</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <!-- nologin end-->
+                <!-- login start-->
+                <div class="index-login fr">
+                    {?if $jieqi_userid == 0?}
+                    <a href="javascript:void(0)" class="login-user" onclick="doMyLogin()">登录</a>
+                    <a href="{?$jieqi_url?}/register.php" class="register">注册</a>
+                    {?else?}
+                    <a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="motie-login">{?$jieqi_username?}</a>
+                    <a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}">退出</a>
+                    <a href="{?$jieqi_url?}/message.php?box=inbox">消息(<span class="red bubbleNum">{?$jieqi_newmessage?}</span>)</a>
+                    {?/if?}
+
+                </div>
+                <!-- login end-->
+            </div>
+        </div>
+    </div>
+    <!--零导航 end-->
+    <div class="headerbg ibody" style="margin-bottom:10px;">
+        <!--搜索部分 start-->
+        <div class="wrap1200 logo iMod">
+            <a href="{?$jieqi_url?}/userdetail.php" class="fl imotie">个人中心</a>
+            <ul class="iUl">
+                <li><a href="{?$jieqi_url?}/">首页</a></li>
+                <li class="accounts">
+                    <a href="javaScript:;">账户设置</a>
+                    <p>
+                        <a href="{?$jieqi_url?}/useredit.php">个人信息</a>
+                        <a href="{?$jieqi_url?}/passedit.php">修改密码</a>
+                    </p>
+                </li>
+                <li><a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$jieqi_userid?}">个人主页</a></li>
+                <li><a href="{?$jieqi_url?}/message.php?box=inbox">消息</a><cite  id="bubble" class="bubbleNum">{?$jieqi_newmessage?}</cite></li>
+                <li><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" target="_blank">充值</a></li>
+            </ul>
+            <div id="mod-search1">
+                <div class="searchbox">
+                    <div class="searchbox-inner">
+                        <input type="text" autocomplete="off" placeholder="找书、找人" class="searchinput" value="">
+                        <i class="search-icon"></i>
+                        <input type="button" value="" class="searchbtn" style="background-color:#f5546f"/>
+                        <span class="loadIcon"></span>
+                    </div>
+                    <ul class="search-list">
+                    </ul>
+                </div>
+            </div>
+            <a href="{?$jieqi_modules['article']['url']?}/bookcase.php" class="mybookshelf fr"><i  style="background-color:#f5546f"></i>我的书架</a>
+        </div>
+        <!--搜索部分 end-->
+        <!--导航 start-->
+    </div>
+    <!--导航 end-->
+</div>
+<script src="{?$jieqi_url?}/style/js/icommon.js"></script>
+<script>
+    accountsMod = (function(){
+        var accounts = $('li.accounts '), accountsDialog = $('li.accounts p');
+        dialogMod(accounts,accountsDialog);
+    })();
+</script>
+</div><!--container mod -->
+<div class="container wrap1200">
+    {?$jieqi_pageblocks['bid1']['content']?}
+    <script type="text/javascript">
+        accountsMod = (function(){
+            dialogMod('.attendDoneMod','.attendDoneMod p');
+        })();
+    </script><!--left mod -->
+    <div class="iw-left">
+        <!--<ul class="homeFans">-->
+            <!--<li>关注<span></span><a href="/people/19713118/attend?type=2"><b>0</b></a></li>-->
+            <!--<li>粉丝<span></span><a href="/people/19713118/attend?type=1"><b>0</b></a></li>-->
+        <!--</ul>-->
+        <!--<div class="homeGray"></div>-->
+        <!--我的作品 mod -->
+        <div class="myWorks">
+            <div class="i-title">{?if $authorid != $jieqi_userid?}Ta的作品{?else?}我的作品{?/if?}</div>
+            <ul>
+                {?$jieqi_pageblocks['bid2']['content']?}
+            </ul>
+        </div>
+    </div>
+    <!--right mod -->
+    <div class="i-right iw-right">
+        <div class="myReview">
+            <div class="i-title">
+                <ul class="ulHd">
+                    <li class="on">书评<span></span></li>
+                </ul>
+            </div>
+            <div class="divBd">
+                <!--我的书评 mod -->
+                <div id="reviewList hide">
+                    <!--没有书评的情况 -->
+                    <!--有书评的情况 -->
+                    <ul class="reviewList" id="shuping_ul">
+                        <li>
+                            <a href="/book/92073" class="bookCover" target="_blank"><img src="picture/1.jpg"></a>
+                            <p class="reviewDetail">
+                                <a href="/review/1661014" target="_blank"><span class="bookName">我要哭了</span></a>
+                                <span class="bookAuthor"><a href="/book/92073" target="_blank">作品：至尊废后，本宫要独宠</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/people/19713118" target="_blank">作者：风颜鱼</a></span>
+                                <span class="reviewCont">小仙女们，昨天答应的二更可能要泡汤了，今天估计连更新都很难办到。蠢作者姨妈来了，难受的都有吐出来了，跟你们请一天假，明天本宝宝应该就满血复活了，到时候给你们二更啊。</span>
+                                <span class="time">2017-10-09 15:31:57<i>浏览（1人）&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/review/1661014" target="_blank">回复(0)</a></i></span>
+                            </p>
+                        </li>
+                    </ul>
+                    <!--点击更多-->
+                    <p class="nomore">已经没有更多新的记录了</p></div>
+                <!-- 只有我才显示相应的项 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script>
+    var isMe = {?if $authorid != $jieqi_userid?}false{?else?}true{?/if?};
+    if(!isMe){
+        $('.iMod .iUl').hide();
+        $('.imotie').attr('href','/modules/article/authorpage.php?id={?$authorid?}');
+        $('.imotie').text('Ta的个人主页');
+    }else{
+        $('.imotie').attr('href','/modules/article/authorpage.php?id={?$jieqi_userid?}');
+        $('.imotie').text('我的个人主页');
+    }
+    jQuery(".myReview").slide({titCell:".ulHd li",mainCell:".divBd",trigger:"click"});
+    $('a').attr('data-namecard',false);
+</script>
+</body>
+</html>
+

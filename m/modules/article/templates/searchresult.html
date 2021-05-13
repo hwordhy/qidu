@@ -1,0 +1,24 @@
+<link type="text/css" rel="stylesheet" href="/themes/jieqi220/css/book.css" />
+<div class="container">
+	<h3 class="page-title" style="text-align: center;font-size:20px;margin-top: 20px;">{?$searchkey?}的搜索结果</h3>
+			<div class="bd">
+				<section class="book_stack">
+						<section class="container">
+								<ul class="list">{?section name=i loop=$articlerows?}
+										<li style="width:100%"><span class="fl lleft">
+												<a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><img src="{?$articlerows[i].url_image?}" alt="" /></a>
+												</span>
+												<span class="fl lright"><h1><a href="{?$articlerows[i].url_articleinfo?}" class="lefts wordhide">{?$articlerows[i].articlename?}</a></h1><h2><a href="{?$articlerows[i].url_articleinfo?}">作者：{?$articlerows[i].author?} </a></h2><p><a href="{?$articlerows[i].url_articleinfo?}"> {?$articlerows[i].intro|truncate:80:...?}</a></p><h2><a class="cat" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].sort?}</a> 更新：{?$articlerows[i].lastchapter?}</h2>
+												</span>
+											</li>{?/section?}
+								</ul>
+								<hr>
+						 <!--列表 end-->
+						</section>
+					   </section>
+		</div>
+			<!--div class="nextp">{?$url_jumppage?}</div-->
+</div>
+
+
+

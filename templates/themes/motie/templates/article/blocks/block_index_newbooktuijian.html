@@ -1,0 +1,33 @@
+<div class="new-book-w-l">
+  {?section name=i loop=$articlerows?}
+  {?if $i.order < 3?}
+  <dl class="book-block">
+    <dt><a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank" ><img class="lazyimg" data-original="{?$articlerows[i].url_image?}"></a></dt>
+    <dd>
+      <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="book-name">
+        {?$articlerows[i].articlename?}</a>
+      <span data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  class="book-info">{?$articlerows[i].intro?}</span>
+      <span class="book-author">作者：<a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  target="_blank" href="javascript:;">{?$articlerows[i].author?}</a></span>
+    </dd>
+  </dl>
+  {?/if?}
+  {?/section?}
+</div>
+<div class="content-3">
+  <ul class="clearfix">
+    {?section name=i loop=$articlerows?}
+    {?if $i.order > 2?}
+    <li>
+      <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img class="lazyimg listimg" data-original="{?$articlerows[i].url_image?}" alt="" ></a>
+      <div class="detail">
+        <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"   href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+          {?$articlerows[i].articlename?}
+        </a>
+        <p><span data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" class="book-info">{?$articlerows[i].intro?}</span></p>
+      </div>
+    </li>
+    {?/if?}
+    {?/section?}
+  </ul>
+</div>
+

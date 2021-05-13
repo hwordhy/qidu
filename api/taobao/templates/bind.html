@@ -1,0 +1,78 @@
+<div style="padding:10px;text-align:center;">
+<div id="tab1">
+     <div class="tablist">
+         <ul>
+             <li><a href="javascript:void(0)" onclick="selecttab(this)" class="selected">完善账号信息</a></li>
+             <li><a href="javascript:void(0)" onclick="selecttab(this)">绑定已有账号</a></li>
+         </ul>
+     </div>
+     <div class="tabcontent">
+         <div class="tabvalue">
+
+		<form class="form bn" name="frmbindnew" id="frmbindnew" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+		<fieldset>
+		<div class="ftext head">{?$apititle?}登录成功，完善本站信息</div>
+
+        <div class="frow">
+            <label><span class="hot">*</span>用户名：</label>
+            <input type="text" class="text" name="username" id="username" size="25" maxlength="30" style="width:140px" value="{?$api_nickname?}" onBlur="Ajax.Tip('{?$check_url?}?item=u&username='+this.value);" />
+        </div>
+
+		<div class="frow">
+            <label><span class="hot">*</span>Email：</label>
+            <input type="text" class="text" name="email" id="email" size="25" maxlength="60" style="width:140px" value="" onBlur="Ajax.Tip('{?$check_url?}?item=m&email='+this.value);" />
+        </div>
+
+		<div class="frow">
+            <label>密码：</label>
+            <input type="password" class="text" name="password" id="password" size="25" maxlength="20" style="width:140px" value="" onBlur="Ajax.Tip('{?$check_url?}?item=p&password='+this.value);" />
+        </div>
+
+		<div class="frow">
+            <label>确认密码：</label>
+            <input type="password" class="text" name="repassword" id="repassword" size="25" maxlength="20" style="width:140px" value=""  onBlur="Ajax.Tip('{?$check_url?}?item=r&password='+password.value+'&repassword='+this.value);" />
+        </div>
+
+		
+        <div class="frow">
+            <label>&nbsp;</label>
+            <button type="submit" class="button" name="submit">确认绑定</button>
+			<input type="hidden" name="act" value="bindnew" />
+			{?$jieqi_token_input?}
+			<p class="tc mt"><a class="note f_s" href="{?$jieqi_url?}/">以后再说，立即去看书！</a></p>
+        </div>
+		
+		<p class="gray f_s">说明：如果希望能用本站用户名登录请设置密码，如果仅用{?$apititle?}登录则无需设置。</p>
+
+		</fieldset>
+		</form>
+
+         </div>
+         <div class="tabvalue" style="display:none">
+
+		<form class="form bn" name="frmbindold" id="frmbindold" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+		<fieldset>
+		<div class="ftext head">{?$apititle?}登录成功，绑定已有账号</div>
+		<div class="frow">
+            <label>用户名：</label>
+            <input type="text" class="text" size="20" maxlength="30" style="width:140px" name="username" onKeyPress="javascript: if (event.keyCode == 32 || event.which == 32) return false;">
+        </div>
+
+		<div class="frow">
+            <label>密　码：</label>
+            <input type="password" class="text" size="20" maxlength="30" style="width:140px" name="password">
+        </div>
+
+		<div class="frow">
+            <label><input type="hidden" name="act" value="bindold" /><input type="hidden" name="usecookie" value="2592000" /></label>
+            <button type="submit" class="button" name="submit">确认绑定</button>
+			<p class="tc mt"><a class="note f_s" href="{?$jieqi_url?}/">以后再说，立即去看书！</a></p>
+        </div>
+		
+		</fieldset>
+
+		</form>
+         </div>
+     </div>
+</div>
+</div>

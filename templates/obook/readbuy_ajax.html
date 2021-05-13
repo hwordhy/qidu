@@ -1,0 +1,100 @@
+
+<div class="chapter-page notread"
+	 data-chapterid="{?$chapterid?}"
+	 data-nextisvip="{?$next_isvip?}"
+	 data-isvip="{?$chapterisvip?}"
+	 data-nextchapter="{?$next_chapterid?}"
+	 data-prechapterid="{?$previous_chapterid?}">
+	<h3 class="bookname">{?$article_title?}</h3>
+	<h4 class="chaptername">{?$chaptername?}</h4>
+
+	<p class="author">
+		<span>作者：<a href="javascript:;">{?$author?}</a></span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字数：{?$chaptersize_c?}</span>
+	</p>
+	<p class="publishtime">发布时间： {?$lastupdate|date:Y-m-d H:i?}</p>
+
+	<div class="page-content AihLvCAb">
+    <pre ondragstart="return false" oncopy="return false;" oncut="return false;" oncontextmenu="return false"
+		 class="note gKCvvNCavZl">{?$summary|truncate:250:'......'?}</pre>
+
+	</div>
+	<i class="line"></i>
+	<div class="subscribe-box">
+		<h4 class="box-title">这是VIP章节 &nbsp;需要订阅后才能阅读</h4>
+		<div class="subscribe-con clearfixer">
+			<div class="con-item j-single active fl">
+				<div class="subscribe-text active fl">
+					订阅本章
+				</div>
+				<div class="subscribe-info fl">
+					<p class="info-chaptername">章节：{?$chaptertime?}</p>
+					<p class="info-chapternum">字数：{?$chaptersize_c?}字 · 1章</p>
+					<p class="info-paynum">需支付 ：
+						<span class="red">{?$saleprice?}</span> {?$egoldname?}</p>
+					<p class="info-balance">账户余额：<span>{?$jieqi_egold?}</span> {?$egoldname?}</p>
+					<p class="info-btn j-single-charge{?if $jieqi_egold < $saleprice?} show{?/if?}"><a target="_blank" href="{?$jieqi_modules['pay']['url']?}/buyegold.php">马上充值</a></p>
+					<p class="info-btn j-single-buy{?if $jieqi_egold >= $saleprice?} show{?/if?}" onclick="buy()">确认订阅</p>
+					<div class="paybox_auto subscribe_auto"><label><input type="checkbox" id="autobuy"> &nbsp;不再显示订阅提醒，自动订阅下一章</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<script type="application/javascript">
+    function buy() {
+        if (0 == {?$jieqi_userid?}) {
+            pop_login();
+        }
+        var autobuy = $("#autobuy").attr("checked");
+        if (autobuy === 'checked')
+            autobuy = 1;
+        else
+            autobuy = 0;
+        $.ajax({
+            url: "/modules/obook/buychapter.php",
+            data: {
+                "cid" : "{?$chapterid?}",
+                "act" : "buy",
+                "jieqi_token" : "{?$jieqi_token?}",
+                "ajax_gets" : 1,
+                "buytype" : autobuy
+            },
+            type: "POST",
+            dataType: "json",
+            success: function(t) {
+                if (t.success === true) {
+                    layer.msg(t.message, {icon: 1,shade: .3});
+                    location.href = t.setting.curl;
+                }
+                else{
+                    layer.msg(t.message, {icon: 2,shade: .3});
+                }
+            },
+            error: function(e) {}
+        });
+    }
+
+</script>
+<script>
+    var page_config = {
+        bookId: "{?$articleid?}", // false
+        chapterId: "{?$chapterid?}",
+        username: "{?$jieqi_username?}",
+        voteNumber: "{?$allvote?}",
+        isInShelf:false,  // true  表示已在书架
+        nextisvip: "{?$next_isvip?}",  // 下一章节是否收费
+        isvip: "{?$chapterisvip?}",
+        authorName: "{?$author?}",
+        userId: "{?$jieqi_userid?}",
+        userMoneyBalance: "{?$jieqi_egold?}",
+        nextChapterId: "{?$next_chapterid?}",
+        votes: "{?$jieqi_votes?}",
+        toTop_page:false,
+        curChapterId:"{?$chapterid?}"
+
+    }
+</script>

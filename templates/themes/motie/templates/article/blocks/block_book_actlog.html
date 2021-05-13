@@ -1,0 +1,8 @@
+{?section name=i loop=$actlogrows?}
+  <p>
+    <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+    {?if $actlogrows[i].actname_n == 'tip'?}<span class="desc">打赏了</span>{?/if?}
+    <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}{?$egoldname?}</span>
+    <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+  </p>
+{?/section?}

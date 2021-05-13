@@ -1,0 +1,339 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set $jieqi_pagetitle = "在线充值-{$jieqi_sitename}"?}
+
+<?xml version="1.0" encoding="{?$jieqi_charset?}"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+    <meta name="keywords" content="{?$meta_keywords?}">
+    <meta name="description" content="{?$meta_description?}">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+    <link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobile_index.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+    <title>{?$jieqi_pagetitle?}</title>
+    <style type="text/css">
+        input[type=submit]{-webkit-appearance: none;-moz-appearance: none;-webkit-user-select: none;-moz-appearance: none;-webkit-tap-highlight-color: rgba(0,0,0,0);-moz-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;-moz-touch-callout: none;-webkit-touch-callout: none}
+        input::-webkit-input-placeholder{color:#999;outline:none;font-size:14px;}
+        input::-moz-input-placeholder{color:#999;font-size:14px;outline:none}
+        .yin_pay{display:none;padding-top:15px;}.yin_pay input{display:block;border:none;}
+        .yin_pay p.text-input{height:32px;border:solid 1px #ddd;border-radius:3px;line-height:32px;}
+        .yin_pay p.text-input input{width:99%;padding-left:1%;line-height:32px;}
+        .yin_pay input.submit-input{background:#f60;width:100%;text-align:center;margin-top:15px;border-radius:3px;line-height:34px;text-align:center;color:#fff;}
+        .pay_ul li b,.pay_yin_ul li b{font-weight:normal;display:none;}.pay_ul p i,.pay_yin_ul p i{font-style:normal}.pay_tit span{font-weight:bold;color:#f60;display:none;}.faq_mod{background:#fff;padding:10px;font-size:12px;line-height:20px;color:#999;overflow:hidden;}.faq_mod span{display:block;font-size:14px;padding-bottom:5px;}.faq_mod p{color:#333;}.pay_ul{border:none;padding-bottom:0;margin-bottom:0;}.other_pay{width:100%;font-size:12px;position:relative;overflow:hidden;line-height:28px;}.other_pay a{color:#419bf5;}.other_pay span{position:absolute;right:0;top:0;border-radius:2px;display:inline-block;background:#f60;padding:0 5px;height:28px;line-height:28px;color:#fff;}.pay_ul li{border:none;}.pay_tit{position:relative;height:40px;padding:0 15px;line-height:40px}.pay_tit a{display:block;color:#419bf5;position:absolute;right:15px;top:0}.topup_mod{background:#fff;margin-bottom:10px;padding:0 15px 15px;color:#333;overflow:hidden}.topup_mod_ico{height:40px;line-height:40px;font-size:14px}.topup_mod_ico img{width:20px;padding-right:5px;vertical-align:middle}.topup_mod ul{width:100%;overflow:hidden}.topup_mod ul li{width:32%;float:left;margin-right:2%;line-height:20px}.topup_mod ul li:last-child{margin-right:0}.topup_mod ul li p{border:solid 1px #f60;padding:10px 5px;border-radius:2px;font-size:12px;text-align:center;overflow:hidden}.topup_mod ul li a{display:block;color:#f60}.topup_mod ul li p span{display:block;font-weight:bold;border-bottom:solid 1px #f60;margin-bottom:5px;font-size:14px;line-height:28px;color:#333}#form1{display:block;padding-bottom:0px}
+        .pay_yin_ul li.on{background:#f60;color:#fff;}.pay_yin_ul li.on a{color:#fff;}.topup_mod ul li.on p span{border-bottom:1px solid #fff;color:#fff}
+    </style>
+
+    <script type="text/javascript">
+        $(function(){
+            if(window != top){
+                var url = window.location.href;
+                var arrUrl = url.split("//");
+                var start = arrUrl[1].indexOf("/");
+                var relUrl = arrUrl[1].substring(start);
+                if(relUrl.indexOf("/zyq") != -1){
+                    top.location.href = "/zyq/accounts/pay";
+                }else if(relUrl.indexOf("/zxy") != -1){
+                    top.location.href = "/zxy/accounts/pay";
+                }else if(relUrl.indexOf("/yysy") != -1){
+                    top.location.href = "/yysy/accounts/pay";
+                }else if(relUrl.indexOf("/jw") != -1){
+                    top.location.href = "/jw/accounts/pay";
+                }else if(relUrl.indexOf("/wechat") != -1){
+                    top.location.href = "/wechat/accounts/pay";
+                }else{
+                    top.location.href = "/accounts/pay";
+                }
+            }
+        })
+    </script>
+</head>
+<!--[if IE]>
+<link href="" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!-- header start -->
+<style>
+    .wx_nav_box1{background:#fff!important;position:relative;height:44px}
+    .wx_nav_box1 a.logo{text-align:center;display:block;font-size:18px;line-height:44px;}
+    .wx_nav_box1 .wx_home1{position:absolute;left:10px;top:0;width:80px;height:44px;line-height:44px;}
+    .wx_nav_box1 .wx_home1 a{height:42px;display:inline-block}
+    .wx_home1 img{width:9px;margin-top:14px;float:left;}
+    .wx_home1 em{
+        float:left;
+        margin-left:10px;
+        color:#666;
+        font-size:16px;
+    }
+    .wx_nav_box1 a{color:#010101}
+    .wx_nav_box1 .wx_list{position:absolute;right:0;top:0;width:40px;}
+    .wx_list1 img{width:30px;display:block;margin-top:7px;border-radius:50%;}
+    .wx_header1{overflow:hidden}
+    .commontitle{
+        position: relative;
+    }
+    .commontitle1{
+        position: fixed;
+        z-index:111;
+    }
+</style>
+<!-- header start -->
+<div id="hd" class="wx_header commontitle">
+    <div class="wx_nav_box1">
+        <div class="wx_home1">
+            <a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+                <img src="{?$jieqi_url?}/style/m/images/14882778674532908_18_33.png" /><em>返回</em>
+            </a>
+        </div>
+        <a href="javascript:void(0);" class="logo text"></a>
+        <div class="wx_list" id="wx_list"></div>
+    </div>
+</div>
+<!--end header-->
+<script>
+    //二级导航
+    $(window).on('scroll', function () {
+        var offsetTo = $(document).scrollTop();
+        if (offsetTo > 0) {
+            $('.wx_header').addClass('commontitle1');
+            //$('.sgoback').css({'top':'0'});
+        } else {
+            $('.wx_header').removeClass('commontitle1');
+            // $('.sgoback').css({'top':'44px'});
+        }
+    });
+</script><body>
+<div id="bd" style="margin-top:10px;">
+        <!-- 微信支付 -->
+        <div class="topup_mod" id="weixin">
+            <input id="openId" value="" hidden=""/>
+            <div class="topup_mod_ico"><img src="{?$jieqi_url?}/style/m/images/topup_84.png"/>微信充值</div>
+            <ul class = "pay_ul">
+                <li id="91" >
+                    <p>
+                        <a href="javascript:;">
+                            <span class = "money">20元</span><i>2000</i>{?$egoldname?}<br/><b></b>
+                        </a>
+                    </p>
+                </li>
+                <li id="91" >
+                    <p>
+                        <a href="javascript:;">
+                            <span class = "money">50元</span><i>5000</i>{?$egoldname?}<br/><b></b>
+                        </a>
+                    </p>
+                </li>
+                <li id="91" style="margin-right:0;">
+                    <p>
+                        <a href="javascript:;">
+                            <span class = "money">100元</span><i>10000</i>{?$egoldname?}<br/><b></b>
+                        </a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <!-- 支付宝 -->
+        <div class="topup_mod" id="aliwap">
+            <div class="topup_mod_ico"><img src="{?$jieqi_url?}/style/m/images/topup_50.png"/>支付宝充值</div>
+            <ul class = "pay_ul">
+                <li id="50" >
+                    <p><a href="javascript:;"><span class = "money">20元</span><i>2000</i>{?$egoldname?}<br/><b></b></a></p>
+                </li>
+                <li id="50" >
+                    <p><a href="javascript:;"><span class = "money">50元</span><i>5000</i>{?$egoldname?}<br/><b></b></a></p>
+                </li>
+                <li id="50" style="margin-right:0;">
+                    <p><a href="javascript:;"><span class = "money">100元</span><i>10000</i>{?$egoldname?}<br/><b></b></a></p>
+                </li>
+            </ul>
+        </div>
+        <!-- 短信支付 -->
+        <!-- 其他支付 -->
+        <!-- 提示 -->
+        <div class="faq_mod">
+            <span>温馨提示：</span>
+            1、充值获得的{?$egoldname?}仅限在本站使用。<br/>
+            2、为保证您的资产权益，请使用官方充值方式进行充值。<br/>
+            3、若充值后账户余额长时间没有变化，请致电客服。<br/>
+            <p>客服电话：029-82285623</p>
+        </div>
+    <form action="" method="post" id="form1" name="SearchForm">
+        <input type = "hidden" name="egold" value=""  id="egold"/>
+        <input type="hidden" name="act" value="pay" />{?$jieqi_token_input?}
+        <input type="hidden" name="jumpurl" value="{?$jumpurl?}" />
+    </form>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+    //没有动态配置title-进行手动添加
+    $(function(){
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        if (isWeixin) {
+            $("#aliwap").hide();
+        }else{
+            $("#weixin").hide();
+        }
+        var title = $('title').text();
+        var mtitle = '';
+        var titlediv = $('.wx_nav_box1 .logo');
+        //console.log(mtitle);
+        if(!mtitle){
+            titlediv.html(title);
+
+        }
+    });
+
+    var totalTicket = 0;
+    function Pay(value, obj){
+        if (value >= 3000 && value < 5000) {
+            totalTicket = 500;
+            //$(obj).text('首充即送' + totalTicket + '阅读券');
+        } else if (value >= 5000 && value < 10000) {
+            totalTicket = 1000;
+            //$(obj).text('首充即送' + totalTicket + '阅读券')
+        } else if (value >= 10000 && value < 20000) {
+            totalTicket = 2500;
+            //$(obj).text('首充即送' + totalTicket + '阅读券')
+        } else if (value >= 20000 && value < 25000) {
+            totalTicket = 5000;
+            //$(obj).text('首充即送' + totalTicket + '阅读券')
+        } else if (value >= 25000) {
+            totalTicket = ((int) (value / 25000)) * 10000;
+            //$(obj).text('首充即送' + totalTicket + '阅读券')
+        }
+
+    }
+
+    $(function(){
+        var sitePath = '';
+        var isChargeUser = 'true';
+        if(isChargeUser == true){
+            $('.pay_tit span,.pay_ul li b').hide();
+        }else{
+            $('.pay_tit span,.pay_ul li b').show();
+        }
+        $('.pay_ul li p i,.pay_yin_ul li p i').addClass('getBi');
+        $(".pay_ul li, .pay_yin_ul li").each(function(index){
+            var getRealBi = $(this).find('.getBi').text();
+            var quan = $(this).find('b');
+            Pay(getRealBi, quan);//firstTopUp
+        });
+        $(".pay_ul li").click(function () {
+            bankId = $(this).attr("id");
+            var money = $(this).find(" .money").text();
+            var Money = parseInt(money.substring(0,money.length - 1));
+            $("#egold").val(Money*100);
+            if (bankId == "50") {
+                $("#form1").attr("action",sitePath +"{?$jieqi_modules['pay']['url']?}/aliwap.php");
+                $("#form1").submit();
+            }
+            else if(bankId == "84"){
+                $("#form1").attr("action", "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0892fc7ce268cec3" +
+                    "&redirect_uri=http://m.novelrd.cn" + sitePath +"/weixin/accounts/weifutong/initialize_order" +
+                    "&response_type=code&scope=snsapi_userinfo&state=" + Money + "#wechat_redirect");
+                $("#form1").submit();
+            }else if(bankId == "91"){
+                /*var weixinPayUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e74038a4ee94f3d&redirect_uri=http://m.motie.com"
+                    + sitePath +"/weixin/accounts/weifutong/initialize_order&response_type=code&scope=snsapi_userinfo&state="
+                    + Money + "#wechat_redirect";
+                $("#form1").attr("action", weixinPayUrl);*/
+                function pay(appId, timeStamp, nonceStr, packages, paySign, kanbi, tradeNo){
+                    if (typeof WeixinJSBridge == "undefined"){
+                        if( document.addEventListener ){
+                            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                        }else if (document.attachEvent){
+                            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                        }
+                    }else{
+                        onBridgeReady(appId, timeStamp, nonceStr, packages, paySign, kanbi, tradeNo);
+                    }
+                }// pay_end
+                function onBridgeReady(appId, timeStamp, nonceStr, packages, paySign, kanbi, tradeNo){
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest', {
+                            "appId" : appId,     //公众号名称，由商户传入
+                            "timeStamp": timeStamp,         //时间戳，自1970年以来的秒数
+                            "nonceStr" : nonceStr, //随机串
+                            "package" : packages,
+                            "signType" : "MD5",         //微信签名方式:
+                            "paySign" : paySign    //微信签名
+                        },function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok"){
+                                window.location.href = "http://m.novelrd.cn/m/wechat/accounts/pay/ok?idealMoney=" + kanbi
+                                    + "&trade_no=" + tradeNo + "&r3_Amt=" + kanbi;
+                            }else if(res.err_msg == "get_brand_wcpay_request:cancel"){
+                                window.location.href = "http://m.novelrd.cn/wechat/accounts/weixin/order";
+                            }else{
+                                alert("支付失败!");
+                                window.location.href = "http://m.novelrd.cn/wechat/accounts/weixin/order";
+                            }
+                        });
+                }//onBridgeReady_end
+                var openId = $('#openId').val();
+                if(openId == ""){
+                    $('#form1').attr('action',"{?$jieqi_modules['pay']['url']?}/wxjsapi.php");
+                    $('#form1').submit();
+                }else{
+                    $.ajax({
+                        url: '/m/wechat/accounts/weixin/initialize_order?state=' + Money + '&openId=' + openId,
+                        dataType: 'json',
+                        success: function(data){
+                            if(data.code == 0){
+                                pay(data.appId, data.timeStamp, data.nonceStr, data.packageValue, data.paySign, data.kanbi, data.tradeNo);
+                            }else{
+                                alert(data.message);
+                            }
+
+                        },
+                        error: function(data){
+                        }
+                    })
+                }
+                //bankId=91 end
+            }else{
+                $("#form1").attr("action", sitePath + "/accounts/cmpay");
+                $("#bankId").val(76);
+                $("#form1").submit();
+            }
+        });
+
+        //银贝壳支付
+        $('.pay_yin_ul li').on('click',function(){
+            var $this = $(this);
+            $this.addClass('on').siblings().removeClass('on');
+            $this.parent().next().show();
+        })
+        $('.submit-input').on('click',function(){
+            var $this = $(this);
+            var money = $(this).parent().prev().find(".on .money").text();
+            var Money = parseInt(money.substring(0,money.length - 1));
+            $("#egold").val(Money*100);
+            var mobile = $this.parent().find('input[name="mobile"]').val();
+            $("#form1").attr("action",sitePath + "/pay/sshell/payment");
+            $("#form1").submit();
+
+        })
+        $(document).filter(".pay_yin_ul").on('click',function(){
+            $('.yin_pay').hide();
+        });
+
+    })
+
+</script>
+
+</html>
+
+
+
+
+
+
+

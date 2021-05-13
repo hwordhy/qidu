@@ -1,0 +1,1 @@
+document.write('那么，就这样的，我以后基本整体都要转移到欢乐书客了。附送一下连接地址……<a href=\"https://www.hbooker.com/book/100053493\" target=\"_blank\" textvalue=&quot;https://www.hbooker.com/book/100053493&quot;>https://www.hbooker.com/book/100053493</a><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;不过不得不说，这里的这个可以插入超链接的功能简直赞。更新频率，我现在基本已经降低到一周一更了……因为在书客开了新书。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;那么，就这样。');

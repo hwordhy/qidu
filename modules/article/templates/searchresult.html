@@ -1,0 +1,61 @@
+{?set $jieqi_pagetitle = "{$searchkey}-的搜索结果-{$jieqi_sitename}"?} {?set jieqi_page_rows = "20"?}
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "topindex"?}
+<link rel="stylesheet" href="/sink/css/search.css">
+<div class="wrap1200 ranklist">
+    <div class="right-cont-box fl rankdata">
+        <div class="comment-r-menu">
+    <div class="tag-search fr" style="width:auto;right: 30px;">
+        <p class="sresult">{?$searchkey?} 共<i class="totalcount">{?$allresults?}</i>个相关结果</p>
+    </div>
+    <ul class="clrbtn clrbtna" style="left: 15px;">
+        <li class="clrbtn1 on" data-type="2"><a href="javascript:;"></a></li>
+        <li class="clrbtn2" data-type="1"><a href="javascript:;"></a></li>
+    </ul>
+</div><div class="rankdatacont">
+            <div class="tabsbox1">
+                <div class="rankday">
+                    <div class="tabsday-cont">
+                        <div class="tab-cont-1">
+                            <div class="showcont">
+                                <div class="s-b-list">
+                                        {?section name=i loop=$articlerows?}
+                                    <div class="secd-rank-list">                          
+                                        <dl>                                
+                                        <dt><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+                                            <img src="{?$articlerows[i].url_image?}"></a>
+                                        </dt>                                
+                                        <dd>                                    
+                                            <a href="{?$articlerows[i].url_articleinfo?}" class="bigpic-book-name" target="_blank">
+                                                {?$articlerows[i].articlename_hl?}</a>                                    <p>            
+                                                    <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author?}</a> | 
+                                                    <a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" target="_blank">{?$articlerows[i].sort|truncate:4:''?}</a> | {?if $fullflag =='连载'?}连载{?else?}完结{?/if?}<span class="clicknum"><em>{?$articlerows[i].size?} 总字数</em></span></p>                                  
+                                                      <p class="big-book-info"> {?$articlerows[i].intro|htmlclickable|truncate:140:'.....'?}</p><p>
+                                                            {?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}"  class="chapter">
+                                                                    {?$articlerows[i].vipchapter?}</a>
+                                                                {?else?}<a href="{?$articlerows[i].url_lastchapter?}"  class="chapter">
+                                                                   {?$articlerows[i].lastchapter?}</a>{?/if?}<span>| {?$articlerows[i].lastupdate|date:'Y-m-d'?}更新</span></p>      
+                                                        </dd>                          
+                                                      </dl>                          
+                                                        <div class="bigbtn">                          
+                                                                  <a href="{?$articlerows[i].url_articleinfo?}" class="detailbtn" target="_blank">书籍详情</a>  
+                                                        </div>                     
+                                    </div>
+                                    {?/section?}
+                                                                </div>
+                                </div>
+<div class="pages_bottom">
+    <div class="pages">{?$url_jumppage?}</div>
+</div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="search-result-r fr">
+        <div class="titmenu">大家都在搜</div>
+        {?$jieqi_pageblocks['803']['content']?}
+
+        </div>
+</div>

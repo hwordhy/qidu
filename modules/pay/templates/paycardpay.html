@@ -1,0 +1,82 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set $jieqi_pagetitle = "充值卡充值-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<link rel="stylesheet" href="/sink/css/book.css" media="all" />
+<link rel="stylesheet" href="/sink/css/pay.css" media="all" />
+<div class="container wrap1200">
+  <!--left mod -->
+  <div class="i-left">
+<p class="title"><span class="zc"></span>支付方式</p>
+<ul>
+  <li><a href="/modules/pay/buyegold.php?t=alipaypay" data-namecard="false"><span class="money"></span>支付宝</a></li>
+  <li><a href="/modules/pay/buyegold.php?t=zhifu" data-namecard="false"><span class="package"></span>微信</a></li>
+  <li><a href="/modules/pay/buyegold.php?t=paycardpay" data-namecard="false"><span class="ticket"></span>充值卡</a></li>
+</ul>
+<!--论坛 mod -->
+<!--设置 mod -->
+<p class="title"><span class="setting"></span>设置</p>
+<ul>
+        <li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>个人信息</a></li>
+        <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>修改信息</a></li>
+        <li><a href="/personedit.php" data-namecard="false"><span class="pictureInfo"></span>联系方式</a></li>
+        <li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>修改密码</a></li>
+        <li><a href="/setavatar.php" data-namecard="false"><span class="basicInfo"></span>头像设置</a></li>
+        </ul>
+    
+</div>
+<link rel="stylesheet" href="/weixin/Css/public.css" media="screen">
+<link rel="stylesheet" href="/weixin/Css/weui.min.css" media="screen">
+<div class="i-right">
+  <input value="1" id="reviewType" type="hidden">
+  <div class="moneyMod">
+      <div class="i-title">
+          <ul class="ulHd" style="padding-left:30px;">
+              <li data-type="1" class="on">充值卡充值<span></span></li>
+          </ul>
+          <!--筛选条件 mod -->
+      </div>
+<style type="text/css">
+
+</style>
+<link rel="stylesheet" href="/weixin/Css/public.css" media="screen">
+<link rel="stylesheet" href="/weixin/Css/weui.min.css" media="screen">
+<div class="bd">
+    <form class="fomm1" id="card" name="card"  method="post" action="{?$jieqi_modules['pay']['url']?}/paycardconfirm.php" onSubmit="return doLogin('card')" target="_blank">
+        <div class="weui_cells">
+           <div style="background:#F9F8F7;"</div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label"></label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                <span style="color:#ff4c2f;">充值卡充值1元=1000{?$egoldname?}</span>
+                    <input class="weui_input" type="hidden" id="username" name="username" placeholder="{?$jieqi_username?}" value="{?$jieqi_username?}"/>
+                </div>
+            </div>
+        </div>
+        <div class="item" >
+ 
+                                            
+                                               <tr align="center">
+                                                <td><table class="hidh" width="100%"  border="0" cellspacing="0" cellpadding="5">
+                                                 <tr >
+                                                 <td width="" style="font-size: 15px;" align="right" valign="middle">卡　号：</td>
+                                                 <td width=""><input type="text" class="testTxt green" size="20" maxlength="30" name="cardno" id="cardno" >&nbsp;&nbsp;<a href="http://www.28ka.com/Shop/Default/Class.aspx?id=82742" target="_blank"  style="color:red;text-decoration:underline;font-size:15px;">点击购买>>></a></td>
+                                                </tr><br />
+                                                <tr>
+                                                  <td align="right" style="font-size: 15px;" valign="middle">密　码：</td>
+                                                  <td><input type="password" class="testTxt green" size="20" maxlength="30" name="cardpass" id="cardpass"></td>
+                                                </tr>
+                                                 </table></td>                          
+                                                </tr>
+                                              <p class="pay-pp">说明：</br>
+                                              1.在未登录状态下，卡密充值会直接失败，请确认登录之后再进行充值操作！<br/>
+                                              2.每张充值卡只可使用一次，不可多次使用。<br/>
+                                              3.特殊情况下，如果充值失败，请联系管理员处理。</p>
+                                           </div>
+           <br />
+        </div>
+        <div style="padding-top:20px;margin:auto;">
+                <input type="submit" name="submit0" id="button" class="button2" style="border:0px" value="提交" />
+        </div>
+        </form>
+	</div>
+

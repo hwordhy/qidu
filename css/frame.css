@@ -1,0 +1,5 @@
+.layui-layout-admin .jieqi-logo{text-align: center; font-size: 16px; height: 50px; line-height: 50px;position: fixed; left: 0; top: 0; z-index: 1002; width: 220px; height: 49px; padding: 0 15px; box-sizing: border-box; overflow: hidden; font-weight: 300; background-repeat: no-repeat; background-position: center center;transition: all .3s; -webkit-transition: all .3s;background-color: #20222A; box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);}
+.layui-layout-admin .jieqi-logo,
+.layui-layout-admin .jieqi-logo a{color: #fff; color: rgba(255,255,255,.8)}
+.layadmin-side-shrink .layui-layout-admin .jieqi-logo{width: 60px; background-image: url(logo_ico.png);}
+.layadmin-side-shrink .layui-layout-admin .jieqi-logo span{display: none;}

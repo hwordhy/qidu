@@ -1,0 +1,1 @@
+document.write('来bbs这里看置顶帖啦啦啦啦<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;http://bbs.acgzc.com/thread.php?fid=16');

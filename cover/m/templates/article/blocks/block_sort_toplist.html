@@ -1,0 +1,12 @@
+    {?section name=i loop=$articlerows?}
+    <li>
+        <p class="pic">
+            <a href="{?$articlerows[i].url_articleinfo?}">
+                <img src="{?$articlerows[i].url_image?}" border="0" title="{?$articlerows[i].articlename?}">
+                <span class="name">{?$articlerows[i].articlename?}</span>
+            </a>
+        </p>
+    </li>
+    {?/section?}
+
+

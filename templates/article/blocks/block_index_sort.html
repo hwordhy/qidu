@@ -1,0 +1,21 @@
+{?section name=i loop=$articlerows?}
+{?if $i.order == 1?}
+<dl class="book-block">
+  <dt><a data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img class="lazyimg" data-original="{?$articlerows[i].url_image?}"/></a></dt>
+  <dd>
+    <a data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" class="book-name" target="_blank">{?$articlerows[i].articlename?}</a>
+    <span data-control-type="shelf" class="book-info">{?$articlerows[i].intro?}</span>
+    <span class="book-author">作者：<a href="javascript:;" target="_blank">{?$articlerows[i].author?}</a></span>
+  </dd>
+</dl>
+<ul class="n-book-list">
+  {?else?}
+  <li>
+    <a data-control-type="shelf" class="n-tags">{?$articlerows[i].sort?}</a>
+    <a data-control-type="shelf" class="f-1" href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+      {?$articlerows[i].articlename?}</a>
+  </li>
+{?/if?}
+{?/section?}
+</ul>
+

@@ -1,0 +1,20 @@
+{?section name=i loop=$userrows?}
+{?if $i.order == 1?}
+<li class="top topred">
+  <span class="num">{?$i.order?}</span>
+  <dl class="book-block">
+    <dt><a  data-msg='{uid:"{?$userrows[i].uid?}"}' href="javascript:;"  target="_blank"><img class="lazyimg" data-original="{?$userrows[i].url_avatar?}"/></a></dt>
+    <dd>
+      <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' href="javascript:;" target="_blank" class="book-name">{?$userrows[i].name?}</a>
+    </dd>
+  </dl>
+</li>
+{?else?}
+<li{?if $i.order < 4?} class="topred"{?/if?}>
+  <span class="num">{?$i.order?}</span>
+  <a  data-msg='{uid:"{?$userrows[i].uid?}"}' data-control-type="shelf"  class="book-list-f" href="javascript:;" target="_blank">
+    {?$userrows[i].name?}</a>
+</li>
+{?/if?}
+{?/section?}
+<!--<a href="{?$jieqi_url?}/topuser.php?sort={?$sort?}" target="_blank" class="more">查看更多&gt;&gt;</a>-->

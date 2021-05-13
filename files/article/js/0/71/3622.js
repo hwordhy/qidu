@@ -1,0 +1,1 @@
+document.write('³°·í°ãµÄÐ¦ÈÝ<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3622/62.gif\" border=\"0\" class=\"imagecontent\"></div>');

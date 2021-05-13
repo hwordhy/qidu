@@ -1,0 +1,263 @@
+a{
+    color:#333;
+    text-decoration: none;
+    outline: none;
+    background: none;
+     -webkit-tap-highlight-color:transparent;
+    -moz-tap-highlight-color:transparent;
+    tap-highlight-color:transparent;
+}  
+p,form,ul,ol{margin:0; padding:0; list-style-type:none;}
+img,video, object, embed{border:0; width:100%;}
+input,textarea{font-size:100%;font-family:inherit;}  
+h1,h2,h3,h4,h5,h6,b{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+em{
+    font-style: normal;
+}
+html { 
+	font: inherit;
+    width: 100%;
+    font-size: 100%;
+    font-size:12px;  /*默认字体大小*/
+    outline: 0;
+    -webkit-text-size-adjust : none ;
+    -moz-text-size-adjust : none ;
+    -ms-text-size-adjust : none ;
+    text-size-adjust : none/*禁止横竖屏时内容自动调整*/
+}
+body {
+    width: 100%;
+    margin: 0; 
+    -webkit-user-select: none; 
+    font-size: 100%;
+    font-family: 'Heiti SC','Microsoft YaHei', 'Helvetica, Tahoma', 'Arial', 'sans-serif'; 
+    background: #f4f4f4; 
+} 
+.clearfix:before,.clearfix:after{
+    content: '';
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix{
+    zoom:1;
+} 
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.bd3{ 
+    -webkit-border-radius: 3px;
+     border-radius: 3px;
+}
+.bd5{ 
+    -webkit-border-radius: 5px;
+     border-radius: 5px;
+}
+.bd30{ 
+    -webkit-border-radius: 30px;
+     border-radius: 30px;
+}
+.bd50{ 
+    -webkit-border-radius: 50%;
+     border-radius: 50%;
+} 
+.wh{ 
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.container{
+    width: 94%; 
+    margin: 0 auto;
+    padding: 0 3%;
+    max-width: 750px; 
+} 
+.wbg{ 
+    background: #fff;
+    padding: 15px 0;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.mypays .paytop{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;  
+}
+.mypays .paytop h1,.mypays .paytop h2{
+    font-size: 1.2rem;
+    color: #9f9f9f;
+    margin: 0 3%;
+}
+.mypays .paytop h2 b{
+    color: #ff7800;
+}
+.mypays .paytop h2{ 
+    padding: 0.6rem 0 0.8rem;
+}
+.mypays .paytop b{
+    color: #333;
+}
+.payways .checkme {
+    margin: 0 -1.5%;
+}
+.payways .checkpay{  
+    position: relative;
+}
+.checkme strong{
+    position: absolute;
+    top: -1rem;
+    right: -0.5rem;
+    width: 2.58rem;
+    height: 2.58rem;
+    background: url(../images/hui.png) no-repeat center;
+    background-size: contain;
+}
+.payways h1,.payways h2,.paytips h2{
+    font-size: 1.25rem;
+    margin: 15px 0;
+    color: #9f9f9f;
+}
+.payways h2{
+    font-size: 1.2rem;
+}
+.waysh1 em{
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    top: 4px;
+}
+.waysh1 .wepay{
+    background: url(../images/wepay.png) no-repeat center;
+    background-size: contain;
+}
+.waysh1 .alipay{
+    background: url(../images/alipay2.png) no-repeat center;
+    background-size: contain;
+}
+.waysh1 .unpay{
+    background: url(../images/unpay.png) no-repeat center;
+    background-size: contain;
+}
+.payways .checkme a{
+    float: left;
+    width: 30.33%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 1.5% 15px;
+    border: 1px solid #e9e9e9;
+    padding: 0.5rem 0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.payways .checkme b,.payways .checkme em{
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: #888;
+     padding: 3px 0;
+    height: 1.2rem;
+}
+.payways .checkme b{
+    font-size: 1.5rem;
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.payways .checkme em:last-child{
+    color: #666;  
+}
+.payways .checkme button{
+    display: inline-block;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: none;
+    position: relative;
+    top: 1px;
+    background: url(../images/zeng.png) no-repeat left center;
+    background-size: contain;
+}
+.payways .checkme double{
+    display: inline-block;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: none;
+    position: relative;
+    top: 1px;
+    background: url(../images/double.png) no-repeat left center;
+    background-size: contain;
+}
+.payways .checkme .checkok{
+     border: 1px solid #fd8c02;
+}
+.checkme .checkok b,.checkme .checkok em,.payways .checkok em:last-child{
+    color: #fd8c02;
+}
+.otways{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.otways a{
+    float: left;
+    width:30.33%;
+    margin: 0 1.5%;
+    display: block;
+    text-indent: -999em;
+    height: 3.8rem;
+    opacity: 0.6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #eee; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.otways .opa{
+    opacity: 1;
+    border: 1px solid #fd8c02;
+}
+.otways .wepay{
+    background: url(../images/bwepay.png) no-repeat center;
+    background-size: 95% auto;
+}
+.otways .alipay{
+    background: url(../images/balipay.png) no-repeat center;
+    background-size: 95% auto;
+}
+.otways .unpay{
+    background: url(../images/bunpay.png) no-repeat center;
+    background-size: 95% auto;
+}
+.paytips{
+    margin-top: 2rem;
+    border-top: 1px solid #f4f4f4;
+}
+.paytips p{
+    font-size: 1.1rem;
+    line-height: 2rem;
+    color: #919090;
+    margin: 15px 0;
+}
+.mypays{
+    max-width: 750px;
+    margin: 0 auto 15px;
+}
+
+
+
+
+
+
+
+
+
+

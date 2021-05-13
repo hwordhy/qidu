@@ -1,0 +1,293 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_rows = "30"?}
+{?set $jieqi_pagetitle = "书友评论-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/comment_list.css">
+<link rel="stylesheet" rev="stylesheet" href="/sink/css/base.css" type="text/css" media="all" />
+<script src="/sink/css/s_common.js"></script>
+<script type="text/javascript">
+//置顶置后
+function act_top(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onFinish: ''
+	}
+	if(o.getAttribute('switch') == '0'){
+		url = url.replace('act=untop', 'act=top');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+				o.setAttribute('switch', '1');
+				o.innerHTML = '置后';
+			}
+		}
+	}else{
+		url = url.replace('act=top', 'act=untop');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+				o.setAttribute('switch', '0');
+				o.innerHTML = '置顶';
+			}
+		}
+	}
+	Ajax.Tip(url, param);
+	return false;
+}
+//加精去精
+function act_good(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onReturn: ''
+	}
+	if(o.getAttribute('switch') == '0'){
+		url = url.replace('act=normal', 'act=good');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+			o.setAttribute('switch', '1');
+			o.innerHTML = '去精';
+			}
+		}
+	}else{
+		url = url.replace('act=good', 'act=normal');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+			o.setAttribute('switch', '0');
+			o.innerHTML = '加精';
+			}
+		}
+	}
+	Ajax.Tip(url, param);
+	return false;
+}
+//删除
+function act_delete(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onReturn: function(){
+			$_(o.parentNode.parentNode).remove();
+		}
+	}
+	if(confirm('确实要删除该书评么？')) Ajax.Tip(url, param);
+	return false;
+}
+</script>
+
+<div class="comment-box clearfixer">
+
+		<div class="fl authorbox">
+			<a href="{?$url_articleinfo?}" class="authorimg" target="_blank"><img src="{?function jieqi_geturl:'article':'cover':$articleid:'s':$imgflag?}"></a>
+			<a href="{?$url_articleinfo?}" class="a-book-tit" target="_blank">{?$articlename?}</a>
+			<a href="{?$url_articleinfo?}" class="a-name" target="_blank">返回书籍页面</a>
+		</div>
+		<div class="reader_comments fr" id="comment-tab">
+			<div class="comment_tit clearfixer">
+				<span class="text fl">{?$articlename?}的评论</span>
+				<div class="comment-tab fl j-comment-tab">
+					<span class="on" id="lastest"><a >所有评论</a></span>
+				</div>
+				<span class="sendcomment">发表评论</span>
+			</div>
+	
+			<div class="comment_con j-comment-main">
+				<div class="comment_con_newes">
+
+						 {?section name=i loop=$reviewrows?}	  
+					<div class="comment_item clearfixer j_comment_item">
+							<div class="left fl">
+								<a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="avatar" target="_blank">
+									<img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}">
+								</a>
+								<div class="nickname">
+									<a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="" target="_blank">{?$reviewrows[i].poster?}</a>
+								</div>
+							</div>
+							<div class="right fl">
+								<p class="item_title">
+										{?if $reviewrows[i].istop == 1?}<span class="totop">[置顶]</span>{?/if?}{?if $reviewrows[i].isgood == 1?}<span class="totop">[精华]</span><a href="/review/detail/1646987" target="_blank"> <span class="">{?/if?}{?$reviewrows[i].title|str_replace:"<br />":" "|truncate:80:'..'?}</span></a>
+								</p>
+								<div class="right">
+								<pre class="comment-text">{?$reviewrows[i].posttext?} </pre>
+								<p class="clearfixer behavior">
+									<span class="fl time">{?$reviewrows[i].posttime|date:Y-m-d H:i:s?}</span>
+									<span class="fr reply">回复(<em class="reply_num">{?$reviewrows[i].replies?}</em>)</span>
+									
+									{?if $ismaster == 1?}
+									{?if $reviewrows[i].istop == 0?}
+									<a class="fr like" id="act_top_{?$reviewrows[i].topicid?}" href="javascript:;" onclick="act_top('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$reviewrows[i].topicid?}&act=top{?$jieqi_token_url?}');" switch="0">置顶</a>
+									{?else?}
+									<a class="fr like" id="act_untop_{?$reviewrows[i].topicid?}" href="javascript:;" onclick="act_top('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$reviewrows[i].topicid?}&act=untop{?$jieqi_token_url?}');" switch="1">取消置顶</a>
+									{?/if?} 
+									{?if $reviewrows[i].isgood == 0?}
+									<a class="fr like" id="act_good_{?$reviewrows[i].topicid?}" href="javascript:;" onclick="act_good('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$reviewrows[i].topicid?}&act=good{?$jieqi_token_url?}');" switch="0">加精</a>
+									{?else?}
+									<a class="fr like" id="act_normal_{?$reviewrows[i].topicid?}" href="javascript:;" onclick="act_good('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$reviewrows[i].topicid?}&act=normal{?$jieqi_token_url?}');" switch="1">去精</a>
+									{?/if?} 
+									<a class="fr like" id="act_del_{?$reviewrows[i].topicid?}" href="javascript:;" onclick="act_delete('{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&rid={?$reviewrows[i].topicid?}&act=del{?$jieqi_token_url?}');">删除</a>
+									{?/if?}
+								</p>
+							</div>
+						</div>
+						</div>
+						{?/section?}
+	
+					</div>
+	
+			</div>
+
+	<div class="pages_bottom">
+			<div class="pages">{?$url_jumppage?}</div>
+			<div class="c-left">
+					<div id="write"><div class="mod mod-base comment-form book-comment-form">
+				 <div class="bd">
+				 {?if $jieqi_userid > 0?}
+				 <div class="column-2">
+					<div style="float:left;"><p style="margin-left:20px;"> <img src="{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'s'?}" alt="评论" width="50" height="50" class="hy-is-placeholder"> </p> <span style="margin-left:20px;" class="name">{?$jieqi_username?}</span>
+				 </div> 
+				 <div> 
+				 <div style="float:right;margin-right:30px;"">
+				 <form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}" target="_blank"> 
+				 <div class="item"> 
+				 <input type="text" class="text-name" name="ptitle" placeholder="标题" maxlength="100"> 
+				 </div> 
+				 <div class="item"> 
+				 <textarea name="pcontent" class="text-cont" placeholder="内容" style="overflow: hidden;"></textarea> 
+				 <div style="position: absolute; display: none; word-wrap: break-word; font-weight: 400; width: 584px; font-family: Simsun; line-height: normal; font-size: 14px; padding: 10px;">&nbsp;</div>
+				 </div> 
+
+				 {?if $postcheckcode > 0?}
+				 <div class="buttons">
+				 <span class="codeimg"><img src="{?$jieqi_url?}/checkcode.php" style="cursor:pointer;" onclick="this.src='{?$jieqi_url?}/checkcode.php?rand='+Math.random();"></span>
+				 <input type="text" class="text-submit" name="checkcode" id="checkcode" size="8" maxlength="8" value="" /> 
+				 </div>
+				 {?/if?}
+				 <div class="buttons"> 
+				 <input type="hidden" name="act" id="act" value="newpost" />{?$jieqi_token_input?}
+				 <input type="button" value="提交" class="bun-submit" style="cursor:pointer;" onclick="Ajax.Request('frmreview',{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));Form.reset('frmreview');}});">
+				 </div>
+				 </form> 
+				</div>
+				 </div>
+				 </div>
+				 {?else?}
+				 <div class="alert alert-error">您只有<a href="{?$jieqi_user_url?}/login.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank" style="color:#09c">登陆</a>后才可以发表书评</div>
+				 {?/if?}
+				 </div></div></div>
+				 </div>
+
+	</div>
+		</div>
+	</div>
+
+{?if $newpost > 0?}
+<div class="textbox hot" id="postresult">{?$postresult?}</div>
+<script type="text/javascript">
+setTimeout(function(){$_('postresult').hide()}, 3000);
+</script>
+{?/if?}
+<script>
+		_inlineRun(function(){
+			
+			require(["kernel","mo/ui/Tabs"], 
+			function(core, Tabs){
+				var zone1 = $(".pattern-home-column3");
+				
+				new Tabs({
+					toggleItem: zone1.find(".mask li"),
+					handles: zone1.find(".handles img"),
+					auto: true,
+					handleCurrentClass: "active"
+				});
+				
+				var updateList = $(".pattern-update-list");
+				new Tabs({
+					toggleItem: updateList.find("table"),
+					handles: updateList.find(".handles span"),
+					handleCurrentClass: "active"
+				});
+				
+				var comList = $(".reviews");
+				new Tabs({
+					toggleItem: comList.find(".review-item"),
+					handles: comList.find(".tab-choose a"),
+					handleCurrentClass: "active"
+				});
+				
+				var comList = $(".reviews");
+				new Tabs({
+					toggleItem: comList.find(".items"),
+					handles: comList.find(".donate-item"),
+					handleCurrentClass: "active"
+				});
+				
+				$(".pattern-slide-ad").each(function(){
+					var slideAd =  $(this);
+					if( slideAd.length && slideAd.find("a").length > 1 ){
+						new Tabs({
+							toggleItem: slideAd.find("a"),
+							handles: slideAd.find("span"),
+							auto: true,
+							handleCurrentClass: "active",
+							animate: "opacity"
+						})
+					}
+				});
+				
+				$(".pattern-rank").each(function(){
+					var mod = $(this), handles = mod.find(".handles");
+					if(handles.length){
+						new Tabs({
+							toggleItem: mod.find("ol"),
+							handles: handles.find("span"),
+							handleCurrentClass: "active"
+						})
+					}
+				});
+				
+				var shelf = $(".shelf");
+				if( shelf.length ){
+					var shelflist = shelf.find(".bd"),
+						table = shelflist.find("table tbody");
+					
+					var loaded = false;
+					var getMoreShelf = function( callback ){
+						$.ajax({
+							url: "/ajax/home/book/reading",
+							data: { bookIds: [shelf.find(".primary").data("book-id")], count: 5 },
+							cache: false,
+							success: function( html ){
+								loaded = true;
+								table.append( html );
+								callback();
+							}
+						})
+					}
+					
+					var showMoreBtn = shelf.find(".show");
+					showMoreBtn.click(function(){
+						if( !loaded ){
+							getMoreShelf(function(){
+								shelflist.slideToggle("fast");
+								showMoreBtn.toggleClass("showed");
+							});
+						}else{
+							shelflist.slideToggle("fast");
+							showMoreBtn.toggleClass("showed");
+						}
+					});
+					
+					shelf.find(".bd").delegate("tr", "mouseenter", function(){
+						//control 只能使用Js设置属性显示
+						//因为 ie6 需要reflow 才能显示
+						$(this).addClass("hover").find(".control").show();
+					}).delegate("tr", "mouseleave", function(){
+						$(this).removeClass("hover").find(".control").hide();
+					})
+				}
+			})
+		})
+	</script>
+
+	<script src="/sink/css/jquery.min.js"></script>
+	<script src="/sink/css/require.js"></script>
+	<script type="text/javascript" src="/sink/js/jquery-1.7.2.min.js"></script>

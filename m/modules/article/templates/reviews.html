@@ -1,0 +1,178 @@
+{?set jieqi_page_rows = "30"?}
+<link rel="stylesheet" href="/themes/jieqi220/css/comment.css">
+<script src="/themes/jieqi220/js/wapnew.js" type="text/javascript"></script>
+<script type="text/javascript">
+//置顶置后
+function act_top(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onFinish: ''
+	}
+	if(o.getAttribute('switch') == '0'){
+		url = url.replace('act=untop', 'act=top');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+				o.setAttribute('switch', '1');
+				o.innerHTML = '置后';
+			}
+		}
+	}else{
+		url = url.replace('act=top', 'act=untop');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+				o.setAttribute('switch', '0');
+				o.innerHTML = '置顶';
+			}
+		}
+	}
+	Ajax.Tip(url, param);
+	return false;
+}
+//加精去精
+function act_good(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onReturn: ''
+	}
+	if(o.getAttribute('switch') == '0'){
+		url = url.replace('act=normal', 'act=good');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+			o.setAttribute('switch', '1');
+			o.innerHTML = '去精';
+			}
+		}
+	}else{
+		url = url.replace('act=good', 'act=normal');
+		param.onFinish = function(res){
+			if(res.match('成功')){
+			o.setAttribute('switch', '0');
+			o.innerHTML = '加精';
+			}
+		}
+	}
+	Ajax.Tip(url, param);
+	return false;
+}
+//删除
+function act_delete(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onReturn: function(){
+			$_(o.parentNode.parentNode).remove();
+		}
+	}
+	if(confirm('确实要删除该书评么？')) Ajax.Tip(url, param);
+	return false;
+}
+</script>
+
+
+
+
+		 <section class="wapcomment">
+		  <div class="container">
+		   <p class="here"><a href="{?$url_articleinfo?}" title="">{?$articlename?}</a><b> &gt; 全部评论 </b></p>
+		   <h2><b class="bclickurl active">全部评论</b>
+			<a href="javascript:;" class="publish fr">发表评论</a></h2>
+		   <ul>
+				{?section name=i loop=$reviewrows?}
+			<li><h3 class="clearfix"><span class="com_left fl"><a title="">
+				<img class="bd50" src="{?function jieqi_geturl:'system':'avatar':$replyrows[i].userid:'l':$replyrows[i].avatar?}" alt="" /></a></span>
+				<span class="com_right fl"><a title="">{?$reviewrows[i].poster?}</a><b>{?$reviewrows[i].replytime|date:m-d H:i?}</b><a class="fr "></a>
+			   <!--点评--></span></h3><a href="http://m.9wus.com/BookComment/commentResponse/book_id/37892/pid/98292">
+			  <div class="con_content clearfix">
+					{?$reviewrows[i].title?}
+			  </div></a><h4 class="clearfix">
+					<td width="80%">□ {?if $reviewrows[i].topflag == 1?}<span class="hot">[顶]</span>{?/if?}{?if $reviewrows[i].goodflag == 1?}<span class="hot">[精]</span>{?/if?}{?$reviewrows[i].content?}</td>
+					<td width="20%" align="center">{?$reviewrows[i].username?}<br />
+						{?$reviewrows[i].postdate?}{?if $ismaster == 1?}<br />
+						{?if $reviewrows[i].topflag == 0?}[<a href="{?$reviewrows[i].url_top?}">置顶</a>]
+						{?else?}[<a href="{?$reviewrows[i].url_untop?}">置后</a>]{?/if?} 
+						{?if $reviewrows[i].goodflag == 0?}[<a href="{?$reviewrows[i].url_good?}">加精</a>]
+						{?else?}[<a href="{?$reviewrows[i].url_normal?}">去精</a>]{?/if?}
+						 [<a href="javascript:if(confirm('确实要删除该书评么？')) document.location='{?$reviewrows[i].url_delete?}';">删除</a>]
+						 {?/if?}</td>
+
+					{?if $reviewrows[i].istop == 1?}
+					<a  class="report">[置顶]</a>{?/if?}{?if $reviewrows[i].isgood == 1?}
+					<a class="fav" >[精华]{?/if?}</a>
+					<a  href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="comto">{?$reviewrows[i].replies?}</a>
+			</h4></li>
+			  {?/section?}
+			</ul>
+		   <div class="com_total page">
+				<div class="pages">{?$url_jumppage?}</div> 
+		   </div>
+		  </div>
+		 </section>
+
+
+<!--评论弹框--><section class="com_alert ">
+        <section class="container">
+                <div class="downs">
+                        <form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$article_dynamic_url?}/reviewshow.php?tid={?$topicid?}&aid={?$articleid?}" onsubmit="return frmpost_validate();" enctype="multipart/form-data" target="_blank"> 
+                        {?if $jieqi_userid > 0?}
+                        <div class="contxt bd3 ">
+                                <a href="javascript:" class="close"></a>
+                        <div class="puss">
+                            <h3>标题(选填)</h3>
+                            <input type="text" class="bd2"  name="ptitle" placeholder="标题" maxlength="100"> 
+                            <h3>内容</h3>
+                            <textarea name="pcontent" class="bd3" placeholder="内容" style="overflow: hidden;"></textarea> 
+                            <input type="hidden" name="act" id="act" value="newpost" />{?$jieqi_token_input?}
+                            <input type="button" value="提交" class="com_push bd3 style="cursor:pointer;" onclick="Ajax.Request('frmreview',{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));Form.reset('frmreview');}});">
+                            </div><!--评论成功-->
+                            </div>
+                        </div>
+                               {?else?}
+                               <div class="contxt bd3 ">
+                                    <a href="javascript:" class="close"></a>
+                               <div class="puss" style="color:#000;font-size:15px;">
+                                    您只有<a href="{?$jieqi_user_url?}/login.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank" style="color:#09c">登陆</a>后才可以发表书评
+                                </div>
+                            </div>
+                               {?/if?}
+                            </form> 
+                </section>
+            </section><!--评论弹框 end-->
+
+<script type="text/javascript">
+function setTab(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);
+var con=document.getElementById("con_"+name+"_"+i);
+menu.className=i==cursel?"item active":"item";
+con.style.display=i==cursel?"block":"none";
+}
+}
+	function showReply(id, obj) {
+        var comment = $("#__comment_" + id);
+        var _html = comment.html();
+        //alert(comment.is(":hidden"));
+        if (comment.is(":hidden")) {
+            if (_html == "") {
+                $.ajax({
+                    url: '/ajax/chapter/SubReply/',
+                    type: 'post',
+                    data: { replyId: id, page: 1, size: 50 },
+                    async: false, //默认为true 异步     
+                    error: function () {
+                        alert('error');
+                    },
+                    success: function (data) {
+                        comment.html(data);
+                    }
+                });
+            }
+            comment.show();
+        } else {
+            comment.hide();
+            $(obj).removeClass("comment-status-open");
+        }
+    }
+
+</script>

@@ -1,0 +1,65 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/demo.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "测试-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">测试</h1>
+      <div class="container-wrap">
+        <div class="bd">
+          <table class="cash_table">
+            <tbody>
+                <tr class="tit">
+                    <td class="bg">参数</td>
+                    <td class="bg">值</td>
+                </tr>
+                <tr>
+                    <td align="center">全勤稿费</td>
+                    <td align="center">{?$qqgf?}</td>
+                </tr>
+                <tr>
+                    <td align="center">订阅稿费</td>
+                    <td align="center">{?$dygf?}</td>
+                </tr>
+                <tr>
+                    <td align="center">自有渠道稿费</td>
+                    <td align="center">{?$zyqdgf?}</td>
+                </tr>
+                <tr>
+                    <td align="center">第三方渠道稿费</td>
+                    <td align="center">{?$dsfqdgf?}</td>
+                </tr>
+                <tr>
+                    <td align="center">保底稿酬</td>
+                    <td align="center">{?$bdgc?}</td>
+                </tr>
+                <tr>
+                    <td align="center">买断稿酬</td>
+                    <td align="center">{?$mdgc?}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".n06 a").addClass('active');
+
+    });
+    function showLoading() {
+        popUp.openLoading('正在查询');
+    }
+
+
+</script>
+

@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body,.ma_bg{background:#222;}
+.txtbox-item h3{color:#ccc;border-bottom: solid 1px #ccc;}
+.demo .font-change a{background:#333;color:#fff;}
+.intro .chapter{border-right: 1px solid #ccc;}
+.intro .chapter i{border:2px solid #eee;}
+.intro .chapter i.red{background:#ccc;}
+.font_list{border-top: solid 1px #ccc;}
+.font_list a{color:#999;}
+.chapter_spread li{background:#333;}
+.chapter_spread li a,.chapter_spread li a span{color:#999;}
+.chapter_ma{color:#999;border:solid 1px #ccc;}
+.chapter_ma span{background: #222;}
+.intro .chapter i{background: #ccc;}
+.intro div{color:#999;}
+.intro .chapter{color:#999;}
+.alert-c{color:#999;}
+.blue{color:#ccc !important;display:inline-block;padding-bottom:5px;}
+.alert-c-bg .top{background:url(../images/author_alert_top_bg.png) repeat;height:3px;width:100%;}
+.alert-c-bg .bottom{background:url(../images/author_alert_bottom_bg.png) repeat;height:3px;width:100%;}
+.alert-c-bg .top{background:url(../images/author_alert_top_bg.png) repeat;height:3px;width:100%;}
+.alert-c-bg .bottom{background:url(../images/author_alert_bottom_bg.png) repeat;height:3px;width:100%;}
+.zan.red{background:url(../images/chapter_zan_hover_ico.png) no-repeat top center;color:#333;padding-top:12px}
+#reply .prevPage{background:url(../images/chapter_page_prev_ico.png) no-repeat top center;}
+#reply .nextPage{background:url(../images/chapter_page_next_ico.png) no-repeat top center;}
+.reply-input-r{background:#39f;}
+.app_down_mod a{color:#ccc;border:solid 1px #ccc;}
+.chapter_spread li a span.r b{color:#999;}

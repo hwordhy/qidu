@@ -1,0 +1,28 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "修改资料-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+  <div class="i-right">
+    <div class="systemMod">
+      <div class="i-title">
+        <ul class="ulHd">
+          <li class="on">每日签到<span></span></li>
+        </ul>
+      </div>
+      <div class="accountsBd">
+        <div class="basicAccounts">
+          <form action="{?$jieqi_url?}/sign.php" method="post">
+            <input type="hidden" name="act" value="post" />{?$jieqi_token_input?}
+            <input type="submit" class="accountsBtn" value="签到" />
+          </form>
+        </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{?section name=i loop=$actlogrows?}
+  <div class="txtbox-item">
+    <div class="donate-d-list">
+      <dl>
+        <dt><a href="javascript:;"><img src="{?function jieqi_geturl:'system':'avatar':$actlogrows[i].uid:'s':$actlogrows[i].avatar?}" width="30" height="30"></a></dt>
+        <dd>&nbsp;为
+          <a class="blue" target="_blank"  href="{?function jieqi_geturl:'article':'article':$actlogrows[i].articleid:'info':$actlogrows[i].articlecode?}">{?$actlogrows[i].articlename?}</a>
+          捧场了{?if $actlogrows[i].icourl == ''?}{?$egoldname?}{?else?}<img src="{?$actlogrows[i].icourl?}" title="{?$actlogrows[i].actname?}">{?/if?}<span class="org"> x {?$actlogrows[i].actnum?}</span></dd>
+      </dl>
+    </div>
+  </div>
+{?/section?}

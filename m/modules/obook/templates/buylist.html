@@ -1,0 +1,37 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_rows = "30"?}
+{?set $jieqi_pagetitle = "我的订阅-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/paylist.css" type="text/css"/>
+<link type="text/css" rel="stylesheet" href="/sink/css/base.css" />
+<section class="paylist clearfix">
+<div class="container">
+<p class="here"><a href="/userdetail.php" title="">用户中心 </a><b>&gt;</b><a href="##" title="">订阅记录   </a></p>
+<h2><a href="/modules/obook/buylist.php" class="active">订阅记录</a><a href="/modules/pay/paylog.php" >充值记录</a></h2>
+
+	<ul><!--不参与循环-->
+		<li class="upnextss">
+		<em style="width:25%">时间</em><em style="width:20%">书名</em><em style="width:30%">已订阅/总章节</em><em style="width:20%">操作</em>
+		</li>
+		<!--不参与循环 end-->
+  {?section name=i loop=$obuyrows?}
+		<li class="upnextss">
+		<em style="width:25%">{?$obuyrows[i].buytime|date:"Y-m-d H:i"?}</em>
+		<em style="width:20%"><a href="{?function jieqi_geturl:'article':'article':$obuyrows[i].articleid:'index'?}" >{?$obuyrows[i].obookname?}</a></em>
+		<em style="width:30%">{?$obuyrows[i].chapternum?}/{?$obuyrows[i].chapters?}</em>
+		<em style="width:20%">	{?if $obuyrows[i].autobuy > 0?}
+	<a id="act_unsetautobuy_{?$obuyrows[i].obuyid?}" href="javascript:;" onclick="Ajax.Tip('{?$obook_dynamic_url?}/buylist.php?obuyid={?$obuyrows[i].obuyid?}&page={?$jieqi_page_nowpage?}&act=unsetautobuy{?$jieqi_token_url?}', {method: 'POST'});" title="自动订阅表示点击一个未订阅VIP章节阅读时，系统不提示购买，自动订阅并显示阅读页面">取消自动订阅</a>
+	{?else?}
+	<a id="act_setautobuy_{?$obuyrows[i].obuyid?}" href="javascript:;" onclick="Ajax.Tip('{?$obook_dynamic_url?}/buylist.php?obuyid={?$obuyrows[i].obuyid?}&page={?$jieqi_page_nowpage?}&act=setautobuy{?$jieqi_token_url?}', {method: 'POST'});" title="自动订阅表示点击一个未订阅VIP章节阅读时，系统不提示购买，自动订阅并显示阅读页面">设为自动订阅</a>
+	{?/if?}</em>
+		</li>
+  {?/section?}
+	</ul>
+
+</div>
+<hr>
+<div class="mod page pages">{?$url_jumppage?}</div>
+</section>
+
+
+
+

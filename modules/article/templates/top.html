@@ -1,0 +1,193 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "topindex"?}
+{?set $jieqi_pagetitle = "排行榜-{$jieqi_sitename}"?}
+{?set $meta_keywords = "小说 排行榜 {$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/rank.css">
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+    <div class="leftbar fl">
+    <ul data-type="">
+	<li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">总点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvisit'?}">月点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvisit'?}">周点击榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvote'?}">总推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvote'?}">月推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvote'?}">周推荐榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'goodnum'?}">总收藏榜</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'size'?}">总字数榜 </a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'toptime'?}">编辑推荐</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'postdate'?}">最新入库</a></li>
+        <li><a href="{?function jieqi_geturl:'article':'toplist':1:'giftnumus'?}">总捧场榜</a></li>
+        </ul>
+</div>
+
+<div class="rightcont fr">
+        <div class="rank-list-w">
+            <span class="titmenu">点击榜</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 点击榜 日 -->
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['805']['content']?}
+                        </ul>
+                <!-- 点击榜 周 -->
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['2']['content']?}
+                        </ul>
+                <!-- 点击榜 总 -->
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['3']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+
+        <div class="rank-list-w">
+            <span class="titmenu">热读榜</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>月</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 热读榜 日 -->
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['4']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['5']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['6']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">推荐榜</span>
+            <div class="tabs-cont-r">
+                <!-- 推荐榜 日 -->
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['7']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+
+        <div class="rank-list-w">
+            <span class="titmenu">新书榜</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>月</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 新书榜 日 -->
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['10']['content']?}
+                        </ul>
+                <!-- 新书榜 周 -->
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['31']['content']?}
+                        </ul>
+                <!-- 新书榜 总 -->
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['11']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">字数榜</span>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['12']['content']?}
+                        </ul>
+                </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">捧场榜</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['22']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['23']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['24']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">推荐榜</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['16']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['17']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['18']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">更新榜</span>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['25']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+
+        <div class="rank-list-w riches-rank">
+            <span class="titmenu">VIP更新</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                        {?$jieqi_pageblocks['28']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['29']['content']?}
+                        </ul>
+                <ul class="rank-1" style="display: none">
+                        {?$jieqi_pageblocks['30']['content']?}
+                        </ul>
+            </div>
+            <a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" target="_blank" class="more">查看更多>></a>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/sink/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/sink/js/vendor.js"></script>
+<script type="text/javascript" src="/sink/js/rank.js"></script>
+<script>
+    $(".nav_rank").addClass("curr");
+</script>

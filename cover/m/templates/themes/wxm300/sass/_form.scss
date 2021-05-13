@@ -1,0 +1,113 @@
+// ±íµ¥
+
+form, .form {
+  fieldset {
+    margin: 0;
+    padding: 0.3em 0;
+    border: 0;
+  }
+  legend {
+    display: block;
+    width: 100%;
+    border-bottom: $border-width solid $border-color;
+    margin-bottom: 0.2em;
+    text-align: center;
+    color: map-get($brands, warning);
+    font-weight: bold;
+    font-size: $font-size-lg;
+    line-height: 2;
+  }
+  .flabel {
+    text-align: right;
+    vertical-align: middle;
+  }
+  .frow {
+    margin: 0.6em 0;
+    .last {
+      float: right;
+      margin-right: 0;
+    }
+  }
+}
+
+.form {
+  border: $border-width solid $border-color;
+  margin-bottom: $spacer;
+  padding: 0.6em;
+  overflow: hidden;
+  background: $body-bg;
+  @include border-radius($border-radius-lg);
+}
+
+textarea.textarea, input.text, input.file {
+  @include box-border($input-border, $input-border-radius, $input-box-shadow);
+  &:focus{
+    outline: 0;
+    @include box-border($input-border-focus, $input-border-radius-focus, $input-box-shadow-focus);
+  }
+  &::-moz-placeholder, &:-ms-input-placeholder, &::-webkit-input-placeholder {
+    color: $input-color-placeholder;
+  }
+
+  &.t_s, &.small {
+    padding: $input-padding-sm;
+  }
+
+  &.t_l, &.large {
+    padding: $input-padding-lg;
+  }
+}
+
+textarea.textarea {
+  width: 100%;
+}
+
+input {
+  &.text {
+    padding: $input-padding;
+  }
+  &.checkbox, &.radio {
+    cursor: pointer;
+  }
+}
+
+select, select.select {
+  padding: 0.3em;
+}
+
+.inputgroup{
+  .text, .textarea, .select, .file {
+    width:auto;
+  }
+}
+
+label.checkbox, label.radio{
+  line-height: 2;
+}
+
+.checkgroup{
+  margin: 10px 0;
+}
+.checkgroup .radio{
+  position: relative;
+  display: block;
+  margin: 8px;
+}
+
+.checkgroup input{
+  position: absolute;
+  top: 8px;
+  left: 3px;
+}
+.checkgroup .radio span{
+  display: block;
+  text-indent: 2em;
+  padding: 5px 0;
+  border: $border-width solid $border-color;
+  @include border-radius($border-radius);
+}
+
+.checkgroup input:checked+span{
+  color:$color-bg;
+  background: map-get($brands, info);
+}

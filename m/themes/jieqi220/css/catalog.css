@@ -1,0 +1,114 @@
+﻿/*目录*/
+.catalog{
+    padding: 10px 0;
+}
+.catalog h2{ 
+    font-size: 1.25rem;
+    border-bottom: 1px solid #f4f4f4;
+}
+.catalog h2 a{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: #989898;
+    padding: 15px 0;
+}
+.catalog h2 .active{
+    color: #21a7ee;
+    border-bottom: 2px solid #21a7ee;
+}
+.catalog ul li{
+    margin: 5px 0 10x;
+    border-bottom:1px solid #f4f4f4;
+    color: #434343;
+    font-size: 1.24rem; 
+    overflow: hidden;
+}
+.catalog ul li a{
+    display: block;
+    padding: 15px 0 10px; 
+    overflow: hidden;
+}
+.cancels ul li {
+    display: block;
+    padding: 15px 0 10px!important; 
+    overflow: hidden;
+     margin: 5px 0 10x;
+}
+.catalog ul li span{
+    margin: 0 ; 
+    display: inline-block;
+    max-width: 82%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    color: #434343;
+}
+
+.cancels ul li span{
+     max-width: 90%;
+}
+.cancels ul   .cancelgo{
+    margin-right: 1rem;
+    color: #d9d9d9;
+}
+@media(max-width:320px){
+    .catalog ul li span{  
+    max-width: 80%; 
+}
+    .cancels ul li span{  
+    max-width: 90%; 
+}
+}
+ .catalog ul li:last-child,.book_stack .list li:last-child{ 
+    padding: 15px 30px 10px;
+    border-bottom:none;  
+} 
+.upnextss{
+    border-top:1px solid #f4f4f4;
+    padding: 15px 0;
+}
+.catalog ul li:last-child{
+    padding: 0;
+}
+.book_stack .list li:last-child a{ 
+    color: #8d8d8d;
+    font-size: 1.24rem;
+}
+.book_stack .list li:last-child b{  
+    color: #c3c3c3;
+ 
+}
+.catalog  li em{
+    font-style: normal;
+    color: #ff7800;
+}
+.catalog .lookgo{
+    background: #21a7ee;
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
+    position: relative;
+    top: 0;
+}
+.catlook{
+    background: #5aabf1;
+    padding: 15px 2%;
+    text-align: center;
+    max-width: 675px;
+    margin: 0 auto; 
+}
+.catlook .lookgroup{
+    color: #fff!important;
+    background:  url(../images/g05.png) no-repeat left center!important; 
+    background-size: contain !important ;
+    padding-left: 20px;
+    display: inline-block!important;
+    font-size: 1.1rem;
+}
+.catlook .lookgroup b{
+    background: #fff; 
+    color: #5aabf1;
+    padding: 5px 8px;
+}

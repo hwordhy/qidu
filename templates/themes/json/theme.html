@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="{?$jieqi_charset?}">
+	<title>{?$jieqi_pagetitle?}</title>
+	<meta content="zh-cn" http-equiv="Content-Language">
+	<meta name="keywords"  content="{?$meta_keywords?}">
+	<meta name="description"  content="{?$meta_description?}">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-3.2.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/login_re.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/layer.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/page.css" media="screen"/>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/head.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/layer.js"></script>
+	<script>
+        var jieqi_token = "{?$jieqi_token?}";
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        var jumpurl = (getUrlParam("jumpurl") == null) ? (window.location.href == '{?$jieqi_url?}/login.php') ? '{?$jieqi_url?}' : window.location.href : getUrlParam("jumpurl");
+        var egoldname = "{?$egoldname?}"
+    </script>
+	<!-- <script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-3.2.0.min.js"></script> -->
+	{?if $jieqi_thisurl == '/'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/layer.css">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/swiper-3.4.2.min.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/index.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/swiper.animate1.0.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/swiper-3.4.2.min.css">
+	<style type="text/css">
+		body,div,a,p,span,h1,h2,h3,h4,ul,li,dl,dd,dt,img,input{margin:0; padding:0; border:0; list-style:none;}
+		body{font-size:14px; font-family:"微软雅黑"; color:#666666; background:#fff;}
+		a{color:#2e2e2e; text-decoration:none;}
+		a:hover{ color:#333; text-decoration:underline;}
+		a:link{text-decoration:none;} a:visited{text-decoration:none;} a:active{text-decoration:none;}
+
+		.fl{float:left;}
+		.fr{float:right;}
+
+		#index .main{margin:0 auto; box-sizing: border-box;width: 1000px;margin-top: 50px;margin-bottom: 100px;}
+		#index .main .con1{width: auto;margin-right: 40%;}
+		#index .main .con1 .list{margin-top: 20px;width: 100%;height: 520px;}
+		#index .main .con1 .list img{box-shadow: 0 0 10px #e2e2e2;}
+		.list_img{width: 100%;max-height: 160px;}
+		/*#man .main .con1 .list ul{display: inline;}*/
+		#index .main .con1 ul li{float: left;margin: 0 2% 20px 2%;width: 21%;text-align: center;max-height: 38%;}
+		#index .main .con1 ul li p{margin-top: 6px;}
+		#index .main .con1 .head span{color: #f96650;font-size: 18px;}
+
+		#index .main .con2{width: 32%;}
+		#index .main .con2 .head{color: #f96650;font-size: 18px;}
+		#index .main .con2 .head span{margin-right: 40px;padding-bottom: 3px;}
+		#index .main .con2 .list{box-shadow: 0 0 10px #e2e2e2;padding: 20px 10px;margin-top: 20px;height: 465px;position: relative;height: 460px;}
+		#index .main .con2 .list  img{max-height: 118px;}
+		/*#man .main .con2 .list div{float: left;margin-left: 20px;}*/
+		#index .main .con2 .list ul{margin-left: 10px;}
+		#index .main .con2 .list .li2{margin: 20px 0;height: 12px;line-height: 12px;position: relative;}
+		.li2 img{position: absolute;left: 75%;}
+		#index .main .con2 .list .li2 .a1{position: absolute;left: 30px;}
+		#index .main .con2 .list .li3{text-align: center;height: 12px;line-height: 12px;}
+
+
+		#index .main .con3{width: auto;margin-top: 30px;margin-right: 40%;height: 250px;}
+		#index .main .con3 .head{font-size: 18px;}
+		#index .main .con3 .head .span1{margin-right: 20px;}
+		#index .main .con3 .head .span2{font-size: 14px;margin: 0 15px;color: #000;}
+		#index .main .con3 .head .current1{padding-bottom: 3px;border-bottom: 1px solid #f96650;color: #f96650;}
+		#index .main .con3 .head a{font-size: 14px;color: #f96650;}
+		#index .main .con3 .list{margin: 20px 2%;}
+		#index .main .con3 .list a{width: 120px;}
+		#index .main .con3 .list img{width: 100%;}
+		#index .main .con3 .list ul{width: auto;margin-left: 150px;padding-top: 10px;}
+		#index .main .con3 .list ul .li1{color: #000;}
+		#index .main .con3 .list ul .li2{margin-top: 2px;font-size: 12px;}
+		#index .main .con3 .list ul .li3{margin-top: 20px;font-size: 12px;}
+		#movieIp img{max-height: 160px;}
+
+		#index .main .con4{width: 32%;margin-top: 30px;height: 250px;}
+		#index .main .con4 .head{font-size: 18px;color: #f96650;}
+		#index .main .con4 .head img{width: 16px;}
+		#index .main .con4 .list{margin-top: 20px;box-shadow: 0 0 10px #e2e2e2;padding: 10px 5px;}
+		#index .main .con4 .list1{margin: 10px 5px;border-bottom: 1px dashed #e2e2e2;padding: 5px 0;padding-bottom: 5px;}
+		#index .main .con4 .list1 .li1 img{width: 25%;}
+		#index .main .con4 .list1 .li1 ul{width: auto;margin-left: 30%;}
+		#index .main .con4 .list1 .li1 ul .l_1{color: #000;margin-bottom: 5px;}
+		#index .main .con4 .list1 .li1 ul .l_2{font-size: 12px;margin-bottom: 5px;}
+		#index .main .con4 .list1 .li2{margin: 5px 0;}
+		#index .main .con4 .list1 .li2 .sp1{background: #f96650;border-radius: 50%;width: 4px;height: 4px;display: inline-block;}
+		#index .main .con4 .list1 .li2 .sp2{color: #000;margin-left: 5px;}
+		#index .main .con4 .list1 .li2  a:hover{color: #f96650;}
+		#index .main .con5{width: 32%;margin-top: 30px;height: 250px;position: relative;}
+		#index .main .con5 .head{font-size: 18px;color: #f96650;}
+		#index .main .con5 .head a{color: #f96650;font-size: 14px;}
+		#index .main .con5 .list{margin-top: 15px;}
+		#index .main .con5 .list .ul1{width: 50%;box-shadow: 0 0 10px #e2e2e2;padding: 40px 0 30px 0;text-align: center;height: 140px;position:absolute;bottom: 0px;left: 0px;}
+		#index .main .con5 .list .ul3{width: 50%;box-shadow: 0 0 10px #e2e2e2;padding: 40px 0 30px 0;text-align: center;height: 140px;position:absolute;bottom: 0px;right: 0px;}
+		#index .main .con5 .list .ul3 img{width: 60px;border-radius: 50%;}
+		#index .main .con5 .list .ul3 .li1{margin: 10px;color: #000;}
+		#index .main .con5 .list .ul3 .li2{font-size: 12px;margin: 2px 0;}
+
+		#index .main .con5 .list .ul1 img{width: 60px;border-radius: 50%;}
+		#index .main .con5 .list .ul1 .li1{margin: 10px;color: #000;}
+		#index .main .con5 .list .ul1 .li2{font-size: 12px;margin: 2px 0;}
+		#index .main .con5 .list .ul2{width: 50%; height: 160px;position: absolute;right: 25%;bottom: 0px;box-shadow: 0 0 10px #e2e2e2;text-align: center;background: #fff;padding: 40px 0 30px 0;}
+		#index .main .con5 .list .ul2 img{width: 80px;border-radius: 50%;}
+		#index .main .con5 .list .ul2 .li1{margin: 20px;color: #000;}
+		#index .main .con5 .list .ul2 .li2{font-size: 12px;margin: 2px 0;}
+
+		#index .main .con6{width: auto;margin-top: 30px;margin-right: 40%;height: 290px;}
+		#index .main .con6 .head{color: #f96650;font-size: 18px;}
+		#index .main .con6 .list{margin: 20px 0;box-shadow: 0 0 10px #e2e2e2;padding: 20px 2.5%;height: 200px;}
+		#index .main .con6 .list .a1{width: 25%;}
+		#index .main .con6 .list .a1 img{width: 100%;}
+		#index .main .con6 .list ul{margin-left: 32%;width: auto;}
+		#index .main .con6 .list ul .li1{margin: 10px 0 20px 0;height: 20px;line-height: 20px;}
+		#index .main .con6 .list ul .li1 .sp1{color: #f96650;}
+		#index .main .con6 .list ul .li1 .sp2{font-size: 18px;}
+		#index .main .con6 .list ul .li1 .sp3{color: #000;}
+		#index .main .con6 .list ul .li1 .sp4{color: #999;}
+		#index .main .con6 .list ul .li2{margin-top: 30px;color: #999;}
+		.book_name_eye{color: #000;margin-bottom: 5px;height: 12px;line-height: 12px;position: relative;}
+		.book_name_eye img{position: absolute;left: 51%;}
+		.loading_img{position:fixed;top: 40%;left: 48%;width: 50px;z-index: 99999}
+		#xuan span{cursor: pointer;}
+		.yudu{position: absolute;bottom: 80px;padding: 0 5px;color: #fff;width: 100%;display: none;}
+		.yudu_back{position: absolute;display: none;background: #999;opacity: 0.6;width: 100%;bottom: 80px;height: 20px;}
+
+	</style>
+	<script type="text/javascript">
+        $(function(){
+            // index()
+            rankHover()
+            channelHover()
+        })
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'search.php'?}
+	<script src="{?$jieqi_url?}/style/js/layui.js" type="text/javascript"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/index.js"></script>
+	<style type="text/css">
+		body,div,a,p,span,h1,h2,h3,h4,ul,li,dl,dd,dt,img,input{ margin:0; padding:0; border:0; list-style:none;}
+		body{ font-size:14px; font-family:"微软雅黑"; color:#666666; background:#fff; }
+		a{ color:#2e2e2e; text-decoration:none;}
+		a:hover{ color:#333; text-decoration:underline;}
+		a:link{text-decoration:none;} a:visited{text-decoration:none;} a:active{text-decoration:none;}
+
+		.fl{ float:left;}
+		.fr{ float:right;}
+		.time{padding: 1px 4px;background: #f96650;border-radius: 5px;color: #fff;font-size: 12px;}
+
+		#search .ss{ width:100%; height:160px; background:#47464a; overflow:hidden;}
+		#search .ss .ss_con{ width:630px; height:50px; background:#fff; border-radius:50px; margin:0 auto; margin-top:55px; }
+
+		#search .ss .ss_con .li1{ height:50px; line-height:50px; padding-left:24px; font-size:16px; color:#999999;}
+		#search .ss .ss_con .li1 input{height: 30px;font-size: 18px;width: 500px;outline: none;}
+		#search .ss .ss_con .li2{ height:26px; width:26px; margin-top:12px; margin-right:20px;}
+
+		#search .main{padding: 40px 15%;width: 930px;margin:0 auto;}
+		#search .main .list{padding: 25px 1%;border-bottom: 1px solid #e2e2e2;height: 170px;}
+		#search .main .list .li1{margin-left: 40px;color: #000;width: 600px;}
+		#search .main .list .li1 .btn{color: #fff;margin-left: 10px;padding: 2px 7px;border-radius: 5px;background: #f96650;}
+		#search .main .list .li1 ul{margin: 15px 0 30px 0;}
+		#search .main .list .li1 p{color: #666;font-size: 12px;}
+		#search .main .list .li1 ul li{display: inline;margin-right: 20px;color: #666;font-size: 12px;}
+		#search .main .list .li2 p{color: #000;margin-bottom: 60px;}
+		#search .main .list .li2 a{float: right;padding: 5px 20px;background: #f96650;border-radius: 5px;color: #fff;}
+
+		.page {width: 400px;height: 40px;line-height: 40px;text-align: center;/* margin: 0 auto; */margin-top: 40px;margin-left: 260px;}
+		.page_nav {cursor: pointer;width: 50px;height: 27px;background: #e2e2e2;color: #666666;margin-left: 5px;border-radius: 5px;text-align: center;line-height: 27px;display: block;float: left;}
+		.loading_img{position:fixed;top: 40%;left: 48%;}
+		.monvip{width: 45px; position: absolute;top: 0px;left: 0px;display: none;}
+
+	</style>
+
+	<script type="text/javascript">
+        $(function(){
+            search()
+        })
+
+        function sub(){
+            var search = $("#search_form input").val()
+            if (search == '') {
+                layer.open({
+                    content : '搜索关键字不能为空',
+                    icon:7,
+                    btn : ['确定'],
+                });
+                return false
+            }
+
+            $("#search_form").submit()
+        }
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'articlefilter.php'?}
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/stack.js"></script>
+	<!--     <script src="{?$jieqi_url?}/style/js/jquery.paginate.js" type="text/javascript"></script> -->
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/stackroom.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/page.css" media="screen"/> -->
+	<script src="{?$jieqi_url?}/style/js/layui.js" type="text/javascript"></script>
+	<script type="text/javascript">
+        $(function(){
+            stackroom();
+            channel_mw();
+            classification();
+            category();
+            is_finish();
+            is_size();
+            is_update();
+            order_list();
+            god_showtime();
+
+        });
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'toplist.php'?}
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/rank.js"></script>
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/rank.css">
+	<script type="text/javascript">
+        $(function(){
+            rank();
+            List_click();
+            Week_month_click();
+            book_bottom()
+        })
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'articleinfo.php'?}
+	<link href="{?$jieqi_url?}/style/css/shuxq.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/shuxq.js"></script>
+	<style type="text/css">
+		#shuXQ .point{position: absolute;top: 133px;right: 260px;color: #a5bac8;width: 150px;}
+		#shuXQ .point ul{margin-left: 5px;}
+		#shuXQ .point ul li{font-size: 12px;}
+		.detail_cover {
+			display: none;
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #000000;
+			opacity: 0.5;
+			z-index: 9999;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+        $(function(){
+            click_top()
+            reply();
+            book_comments();
+            book_xq_json();
+            book_bottom();
+            reply_add()
+            pinglun_add()
+            doReward()
+            $("#add_case").bind('click', function(){
+                if (add_type == 0) {
+                    add_case()
+                }
+            })
+        })
+
+        $(function(){
+            $("#gl").click(function(){
+                $(".gl_zz").show()
+                $(".gl_con").slideToggle();
+            })
+
+            $("#x_img").click(function(){
+                $(".gl_zz").hide()
+                $(".gl_con").hide()
+            })
+            $(".gl_int li").click(function(){
+                var m = ''
+                var i = $(".gl_int li").index(this)
+                $(".gl_int li").css("color","#666666")
+                $(this).css("color","#f96650")
+                if (i == 0) {
+                    m =100
+                }else if (i == 1) {
+                    m =500
+                }else if (i == 2) {
+                    m =1000
+                }else if (i == 3) {
+                    m =5000
+                }else if (i == 4) {
+                    m =10000
+                }
+                $("#gl_money").val(m)
+            })
+        })
+
+        $(function(){
+            $("#zdy input").on('input oninput',function(){
+                m = $(this).val()
+                $("#gl_money").val(m)
+            })
+            $('#zdy input').blur(function(){
+                $('#zdy input').val('')
+            });
+        })
+
+		var postcheckcode = "{?$postcheckcode?}";
+
+
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'userdetail.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/userindex.css">
+	<script language="javascript" src="{?$jieqi_url?}/style/js/city.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script type="text/javascript">
+        $(function(){
+            index()
+            infoSave()
+        })
+        //切换账号安全及个人中心
+        $(function(){
+            $("#zhangh").click(function(){
+                $("#geren").css('border-bottom','none')
+                $("#zhangh").css('border-bottom','2px solid #f96750')
+                $("#con8").hide();
+                $("#con8_2").show();
+            })
+        })
+        $(function(){
+            $("#geren").click(function(){
+                $("#zhangh").css('border-bottom','none')
+                $("#geren").css('border-bottom','2px solid #f96750')
+                $("#con8_2").hide();
+                $("#con8").show();
+            })
+        })
+
+        //修改个人信息
+        $(function(){
+            $("#bianji .xiugai").click(function(){
+                var i =	$("#bianji .xiugai").index(this)
+                $("#bianji .xuan").eq(i).hide()
+                $("#bianji .showXspan").eq(i).show()
+                $("#bianji .baocun").eq(i).show()
+                $("#bianji .xiugai").eq(i).hide()
+                $("#bianji .qx").eq(i).show();
+
+            })
+        })
+
+        $(function(){
+            $("#bianji .qx").click(function(){
+                var i =	$("#bianji .qx").index(this)
+                $("#bianji .xuan").eq(i).show()
+                $("#bianji .showXspan").eq(i).hide()
+                $("#bianji .baocun").eq(i).hide()
+                $("#bianji .xiugai").eq(i).show()
+                $("#bianji .qx").eq(i).hide();
+            })
+        })
+
+        //修改昵称
+        $(function(){
+            $("#nickxiu").click(function(){
+                $("#nickname").hide()
+                $("#nickxiu").hide()
+                $("#nick").show()
+                $("#nickbao").show()
+                $("#nickqu").show()
+            })
+        })
+
+        $(function(){
+            $("#nickqu").click(function(){
+                $("#nickname").show()
+                $("#nickxiu").show()
+                $("#nick").hide()
+                $("#nickbao").hide()
+                $("#nickqu").hide()
+            })
+        })
+
+
+
+	</script>
+	<style type="text/css">
+
+		.showXspan{display: none;}
+		.baocun{position:absolute;right:100px;color: #f96750;margin-left:0px;display: none;}
+		.qx{margin-left: 0px;position:absolute;right:30px;color: #f96750;display: none;cursor: pointer;}
+		.huiyan{float: left;position: relative;width: 60px;height: 15px;border-radius: 5px;border:1px solid #f96750;font-size: 10px;line-height: 15px;text-align: content;color:#f96750;}
+	</style>
+	{?elseif $jieqi_thisfile|basename == 'monthlybuy.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/recharge.css">
+	<script type="text/javascript">
+
+        $(document).ready(function(){
+            $(".set_list li").removeClass("xuanzhong")
+            $("#wdby").addClass("xuanzhong")
+        })
+
+        var data_monthly = 1;
+        var  mdata_zf = 1;
+        function Popup_monthly(){
+
+            $(".w_cz").slideToggle();
+            $(".zhe").show()
+            $("#loading").hide()
+            $(".w_xx").click(function(){
+                $(".w_cz").hide()
+                $(".zhe").hide()
+            })
+        }
+
+
+        $(function(){
+            $(".byxx ul").click(function(){
+                $(".byxx ul").css({'border':'1px solid #e2e2e2',})
+                $(".byxx img").hide();
+                $(this).css('border','2px solid #f96750')
+                data_monthly = $(this).attr('data-monthly')
+                $("#total_fee").val(data_monthly)
+                var i = $('.byxx ul').index(this)
+                $(".byxx img").eq(i).show()
+            })
+        })
+
+        $(function(){
+            $("#zf_1").click(function(){
+                $("#wang_1").css("border-bottom",'1px solid #e2e2e2')
+                $("#wei").css("border-bottom",'1px solid #e2e2e2')
+                $("#zf_1").css("border-bottom",'none')
+                $("#qudao").val('alipay')
+                $("#erweima").hide()
+                $("#sdk").show()
+                $("#w_c_z").hide()
+                $("#b_c_z").show()
+                $(".menu0_img").attr('src', '{?$jieqi_url?}/style/images/fi_zfb_03.jpg')
+                $(".menu0_img").css('width','15%')
+            })
+            $("#wang_1").click(function(){
+                $("#zf_1").css("border-bottom",'1px solid #e2e2e2')
+                $("#wei").css("border-bottom",'1px solid #e2e2e2')
+                $("#wang_1").css("border-bottom",'none')
+                $("#w_c_z").hide()
+                $("#b_c_z").show()
+                $("#erweima").hide()
+                $("#sdk").show()
+                $("#qudao").val('chinapay')
+                $(".menu0_img").attr('src', '{?$jieqi_url?}/style/images/yinlian.jpg')
+                $(".menu0_img").css('width','15%')
+            })
+            $("#wei").click(function(){
+                $("#zf_1").css("border-bottom",'1px solid #e2e2e2')
+                $("#wang_1").css("border-bottom",'1px solid #e2e2e2')
+                $("#wei").css("border-bottom",'none')
+                $("#b_c_z").hide()
+                $("#w_c_z").show()
+                $("#qudao").val('chinapay')
+                $(".menu0_img").attr('src', '{?$jieqi_url?}/style/images/weixin_normal.png')
+                $(".menu0_img").css('width','10%')
+
+            })
+        })
+
+       function recharge() {
+               $("#loading").show()
+               $.ajax({
+                   type:'POST',
+                   url:'/modules/article/monthlybuy.php',
+                   data:$("#recharge_form").serialize(),
+                   dataType:'json',
+                   global:false,
+                   success:function(data){
+
+                       if (data['success'] == false) {
+                           layer.open({
+                               content : data['message'],
+                               icon:7,
+                               btn : ['确定'],
+                           });
+                           return false
+                       }
+                       $("#loading").hide()
+                       layer.open({
+                           content : data['message'],
+                           icon:7,
+                           btn : ['确定'],
+                       });
+
+                       location.reload()
+                   }
+               })
+       }
+
+
+	</script>
+	<style type="text/css">
+		.head_top1{width:92%;height: 100px;padding: 2% 4%;position: relative;}
+		.tx{position: absolute;top: 30%;left: 5%;width: 70px;border-radius: 50%;height:70px; }
+		.head_text_1{width: 40%;height: 80px;margin-left: 15%;float: left;}
+		.head_text_1 p {height: 25px;;line-height: 25px;}
+		.byxx{width: 92%;height: 200px;padding: 1% 4%;}
+		.byxx ul{width: 100%;border:1px solid #e2e2e2;border-bottom: none; height: 39px;position: relative;cursor: pointer;}
+		.byxx ul li{width:15%;padding: 1.5% 4%;float: left;}
+		.li_1{font-size: 14px;color: #333333;}
+		.li_2{font-size: 14px;color: #f96750;}
+		.li_3{font-size: 12px;color: #999999;}
+		.ul_img{position: absolute;right: 4%; top: 10px;display: none;}
+		.men li{width:33%;height: 30px;padding: 4px 0px;line-height: 30px;text-align: center;border-bottom: 1px solid #e2e2e2;border-right: 1px solid #e2e2e2;float: left;cursor: pointer; }
+	</style>
+	{?elseif $jieqi_thisfile|basename == 'message.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/recharge.css">
+	<script type="text/javascript"  src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script type="text/javascript">
+
+
+        $(document).ready(function(){
+            $(".set_list li").removeClass("xuanzhong")
+            $("#xx").addClass("xuanzhong")
+        })
+
+
+        $(function(){
+            $("#transaction").click(function(){
+                $("#people").css('border-bottom','none')
+                $("#transaction").css('border-bottom','2px solid #f96750')
+                $("#xt").hide();
+                $("#wo").show();
+
+            })
+        })
+        $(function(){
+            $("#people").click(function(){
+                $("#transaction").css('border-bottom','none')
+                $("#people").css('border-bottom','2px solid #f96750')
+                $("#wo").hide();
+                $("#xt").show();
+
+            })
+        })
+
+        $(function(){
+            message()
+        })
+
+	</script>
+	<style type="text/css">
+
+		.con5{width: 92%;padding: 2% 4%;}
+		.con5 ul{width: 100%;}
+		.con5 ul li{width: 96%;padding:1% 1% ;line-height: 30px;border-bottom:1px solid #e2e2e2; }
+
+	</style>
+	{?elseif $jieqi_thisfile|basename == 'myreviews.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/recharge.css">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script type="text/javascript">
+
+
+        $(document).ready(function(){
+            $(".set_list li").removeClass("xuanzhong")
+            $("#wdsp").addClass("xuanzhong")
+        })
+
+
+        $(function(){
+            $("#w2").click(function(){
+                $(".con6_ul li").removeClass("color1")
+                $("#w2").addClass("color1")
+                $("#wdpl").hide();
+                $("#hfwd").hide();
+                $("#wdhf").show();
+            })
+        })
+        $(function(){
+            $("#w1").click(function(){
+                $(".con6_ul li").removeClass("color1")
+                $("#w1").addClass("color1")
+                $("#wdhf").hide();
+                $("#hfwd").hide();
+                $("#wdpl").show();
+
+            })
+        })
+        $(function(){
+            $("#w3").click(function(){
+                $(".con6_ul li").removeClass("color1")
+                $("#w3").addClass("color1")
+                $("#wdhf").hide();
+                $("#wdpl").hide();
+                $("#hfwd").show();
+
+            })
+        })
+
+        // $(function(){
+        // 	$("#zhankai").click(function(){
+        // 		page = page+1
+        // 		if (page>totalpage) {
+        // 			var  zk = '没有更多了<img src="static/picture/down-arrow.png">'
+        // 			$("#zk").html(zk)
+        // 			return false
+        // 		}
+        // 		user()
+        // 	})
+        // })
+
+        $(function(){
+            user()
+        })
+
+
+	</script>
+
+	<style type="text/css">
+
+		.con6{width: 92%;padding: 4% 4%;}
+		.con6_ul{width:96%;background: #f8f8f8;padding: 1% 2%;height:20px;line-height: 20px;}
+		.con6_ul li{width: 14%;text-align: center;float: left; cursor: pointer;}
+
+		.con_ul{width: 100%;margin-top: 20px;}
+		.con_ul li{width: 96%;padding:1% 1% ;border-bottom:1px solid #e2e2e2; }
+		.con_ul_li_text{width: 100%;padding: 1%;height: 20px;line-height: 20px;}
+		.con_ul_li_text2{width: 100%;padding: 1%;}
+		.color1{color:#f96650;}
+		.loading_img{position:fixed;top: 40%;left: 48%;width: 50px;z-index: 99999}
+		.quesheng{margin-top: 40px; width:500px;height: 50px;line-height: 50px;text-align: center;display: none;}
+		.quespan{width: 300px;height: 50px;font-size: 20px;color: #999999;float: left; }
+
+	</style>
+	{?elseif $jieqi_thisfile|basename == 'buyegold.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/recharge.css">
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/recharge.js"></script>
+	<style>
+		#ullist li{cursor: pointer;}
+		#yi li{cursor: pointer;}
+		#sdklist li{cursor: pointer;}
+	</style>
+	<script type="text/javascript">
+        var nowTime = '20181030';
+        function Popup(){
+            $(".w_cz").slideToggle();
+            $(".zhe").show()
+            $("#loading").hide()
+            $(".w_xx").click(function(){
+                $(".w_cz").hide()
+                $(".zhe").hide()
+            })
+        }
+
+        $(function(){
+            rech()
+            $(".cz_text").bind('click', function(){
+                $("#recharge_form").submit()
+
+            })
+
+            $(document).ready(function(){
+                $(".set_list li").removeClass("xuanzhong")
+                $("#cz").addClass("xuanzhong")
+            })
+        })
+
+        $(function(){
+            $("#quding").click(function(){
+                $("#loading").show()
+                var total_fee = $("#total_fee").val()
+                var pay_jumpurl = $("input[name='jumpurl']").val()
+                var entrance = $("input[name='entrance']").val()
+                var chid = $("input[name='chid']").val()
+                // console.log(cin);console.log(entrance);console.log(chid);return false;
+                $.ajax({
+                    type:'POST',
+                    url:'/modules/pay/wxnative.php',
+                    data:{'egold':total_fee,'act':'pay','jieqi_token':jieqi_token,'jumpurl':pay_jumpurl,'ajax_gets':1},
+                    dataType:'json',
+                    global:false,
+                    success:function(data){
+						if (data['success'] == false) {
+                            data['message'] = (data['data']['err_code_des'] != '') ? data['data']['err_code_des'] : data['message'];
+                            layer.open({
+                                content :data['message'],
+                                icon:7,
+                                btn : ['确定'],
+                            })
+                            return false
+                        }
+
+                        $(".w_con img").attr('src', '{?$jieqi_modules["pay"]["url"]?}/qrcode.php?data='+data['data']['code_url'])
+                        Popup()
+                    }
+                })
+            })
+        })
+
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'bookcase.php'?}
+	<link rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/css/bookcase.css">
+	<script type="text/javascript"  src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script src="{?$jieqi_url?}/style/js/layui.js" type="text/javascript"></script>
+	<script type="text/javascript">
+        $(function(){
+            bookcase_Json()
+
+        })
+
+
+        function delete_book(){
+            $(function(){
+                $('.con1').hover(function(){
+                    $(this).find('.del').show();
+                })
+            })
+
+            $(function(){
+                $('.con1').mouseleave (function(){
+                    $(this).find('.del').hide();
+                })
+            })
+
+            $(function(){
+                $('.del').click (function(){
+                    var i =$('.del').index(this)
+                    $('.con1').eq(i).find('.kuang').show();
+                })
+            })
+
+            $(function(){
+                $('.k_quxiao').click(function(){
+                    var i =$('.k_quxiao').index(this)
+                    $('.con1').eq(i).find('.kuang').hide()
+                })
+            })
+
+            delete_qd()
+
+        }
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'bookshelf.php'?}
+	<script type="text/javascript"  src="{?$jieqi_url?}/style/js/user.js"></script>
+	<script src="{?$jieqi_url?}/style/js/layui.js" type="text/javascript"></script>
+	<style type="text/css">
+		body,div,a,p,span,h1,h2,h3,h4,ul,li,dl,dd,dt,img,input{ margin:0; padding:0; border:0; list-style:none;}
+		body{ font-size:14px; font-family:"微软雅黑"; color:#666666; background:#fff; }
+		a{ color:#2e2e2e; text-decoration:none;}
+		a:hover{ color:#333; text-decoration:underline;}
+		a:link{text-decoration:none;} a:visited{text-decoration:none;} a:active{text-decoration:none;}
+
+		.fl{ float:left;}
+		.fr{ float:right;}
+		.current{display: inline-block;padding-bottom: 2px;border-bottom: 1px solid #f96650;color: #f96650;}
+
+		#recent .main{padding: 40px 15%;}
+		#recent .main .list{width: 1040px;margin:0 auto;}
+		#recent .main .list .con1{padding: 15px 1%;float: left;width: 26%;box-shadow: 0 0 10px #e2e2e2;margin: 20px 2%;position: relative;}
+		#recent .main .list .con1 img{max-height: 160px;}
+		#recent .main .list .con1 ul li p{font-size: 12px;margin-bottom: 15px;}
+		#recent .main .list .con1 .load{width: 90px;height: 6px;background: #999;display: inline-block;border-radius: 20px;}
+		#recent .main .list .con1 .load span{display: inline-block;height: 6px;background: #5599FF;border-radius: 20px;}
+		#recent .main .list .con1 .btn{position: absolute;background: #5599FF;padding: 5px 8px;right: 4%;bottom: 17px;font-size: 12px;color: #fff;border-radius: 5px;}
+		#recent .main .list .con1 .del{position: absolute;top: 21px;right: 4%;display: none;}
+		.page{width:400px;height: 40px;line-height: 40px;text-align: center;/*margin:0 auto;*/margin-top: 40px;margin-left: 20px;}
+		.page_a{width: 36px;height: 27px; background: #e2e2e2;color: #666666;margin-left: 5px;border-radius: 5px;text-align: center;line-height: 27px;display: block;float: left;}
+		.page_nav{cursor: pointer;width: 50px;height: 27px; background: #e2e2e2;color: #666666;margin-left: 5px;border-radius: 5px;text-align: center;line-height: 27px;display: block;float: left;}
+		.page  a:hover {display:block;background-color:#f96650;color: #fff;cursor: pointer;}
+		.page_color{width: 36px;height: 27px; background: #f96650;color: #fff;margin-left: 5px;border-radius: 5px;text-align: center;line-height: 27px;display: block;float: left;}
+		.loading_img{position:fixed;top: 40%;left: 48%;width: 50px;}
+		.kuang{position: absolute;z-index: 9999;background: #fff;border:1px solid #e2e2e2;border-radius: 5px;width: 150px;height: 80px;top: 45px;right:6px;display: none;}
+		.k_text{margin-top: 10px; width: 100%;height: 20px;color: #000;line-height: 20px;text-align: center;font-size: 14px;}
+		.k_queding{padding: 3px 5px;color: #fff;background: #f96650;border-radius: 5px;font-size: 10px;}
+		.k_quxiao{padding: 3px 5px;color: #fff;background: #999999;border-radius: 5px;font-size: 10px;float: right;}
+		.detail_cover {
+			display: none;
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #000000;
+			opacity: 0.5;
+			z-index: 9999;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+        $(function(){
+            recent_Json()
+            zj_page_click()
+        })
+
+	</script>
+	{?elseif $jieqi_thisfile|basename == 'personedit.php'?}
+	<link href="{?$jieqi_url?}/style/css/style.css" rel="stylesheet" style="css/text">
+	<link href="{?$jieqi_url?}/style/css/myindex_style.css" rel="stylesheet" style="css/text">
+	<script>
+        $(function(){
+            //alert('sdf');
+            var a=0;
+            $("#name").click(function(){
+                //alert('daf');
+                if(a==0){
+                    //$("#box").attr('style','display:block');
+                    $("#box").stop().show();
+                    a=1;
+                }else{
+                    //$("#box").attr('style','display:none');
+                    $("#box").stop().hide();
+
+                    a=0;
+                }
+            });
+            /*$("#box").mouseout(function(){
+             if(a>0){
+             //$("#box").attr('style','display:none');
+             $("#box").stop().hide();
+             a=0;
+             }
+             })*/
+
+        })
+	</script>
+	{?/if?}
+</head>
+<body {?if $jieqi_thisurl == '/'?}id="index"{?elseif $jieqi_thisfile|basename == 'articlefilter.php'?}id="stackroom" style="position: relative;"{?elseif $jieqi_thisfile|basename == 'toplist.php'?}id="rank" style="position: relative;"{?elseif $jieqi_thisfile|basename == 'articleinfo.php'?}id="shuXQ"{?elseif $jieqi_thisfile|basename == 'search.php'?}id="search"{?elseif $jieqi_thisfile|basename == 'bookcase.php' || $jieqi_thisfile|basename == 'bookshelf.php'?}id="recent"{?/if?}>
+<style type="text/css">
+	body,div,a,p,span,h1,h2,h3,h4,ul,li,dl,dd,dt,img,input{ margin:0; padding:0; border:0; list-style:none;}
+	body{ font-size:14px; font-family:"微软雅黑"; color:#666666; background:#fff; }
+	a{ color:#2e2e2e; text-decoration:none;}
+	a:hover{ color:#333; text-decoration:underline;}
+	a:link{text-decoration:none;} a:visited{text-decoration:none;} a:active{text-decoration:none;}
+	input {outline:none;}
+
+	.head_1{height: 80px;box-shadow: 0 0 10px #e2e2e2;padding:0 6%;background: #fff;}
+	.head_logo{width: 12%;height: 80px;text-align: center;line-height: 80px; float: left;}
+	.nevigation{width:26%;height:80px;margin-left:3%;float: left;}
+	.nevigation a{text-decoration:none;color:#000;}
+	.nevigation ul{}
+	.nevigation ul li{float:left;width:23%;height:80px;text-align:center;line-height:80px;list-style-type:none;background-color:#fff;margin:opx;font-size: 16px;}
+	.nevigation ul li a:hover {display:block;background-color:#f96650;color: #fff; }
+	.sousu{width: 20%;height: 80px;text-align: center;float: left; position: relative;}
+	.sousu input{width: 88%;height: 40px;border:1px solid #f96650;border-radius: 40px;padding-left: 10%;margin-top: 20px;}
+	.sousu_logo{position:absolute;right:0%;top: 20px;}
+	.sc{width: 6%;height: 80px;line-height: 80px;text-align: center;float: left;margin-left: 2%;}
+	.login-button-box a:hover{color: #FFF;}
+	.login_con{
+		position:fixed;
+		width: 420px;
+		height:400px;
+		border: 1px solid #e2e2e2;
+		border-radius: 6px;
+		padding:  10px 0;
+		margin-top: 8%;
+		left:55%;
+		top:5%;
+		margin-left:-260px;/*为.fixed宽的一半*/;
+		background: #fff;
+		display: none;
+	}
+	.yzm{background: #f96650;color: #fff;padding:10px 15px;font-size: 12px;border-radius: 5px;border:1px solid #fff;margin-top: 100px;line-height: 50px;}
+
+	.qq{width: 100%;height: 1000px;}
+
+	.user_main{box-shadow: 0 3px 10px #e2e2e2;position: absolute;right: 0;z-index: 99999;background: #fff;width: 150px;display: none;}
+	.user_main li{border-bottom: 1px solid #e2e2e2;height: 40px;line-height: 40px;}
+	.user_main li a:hover {display:block;background-color:#f96650;color: #fff; }
+</style>
+
+
+<script type="text/javascript">
+    //登录
+    // $(function(){
+    // 	$("#deng img").click(function(){
+    // 		$("#denglu").show();
+    // 		$("#user").show();
+    // 	})
+    // })
+
+    $(function(){
+        $("#guanbi").click(function(){
+            $("#denglu").hide();
+            $("#re").hide();
+            $("#user").hide();
+        })
+    })
+    $(function(){
+        $("#zh").click(function(){
+            $("#zhaohui").slideToggle();
+            $("#user").hide();
+        })
+    })
+    //注册
+    $(function(){
+        $("#zhuce").click(function(){
+            $("#re").slideToggle();
+            $("#user").hide();
+        })
+    })
+    $(function(){
+        $("#reguanbi").click(function(){
+            $("#re").hide();
+            $("#denglu").hide();
+        })
+    })
+    $(function(){
+        $("#yiyou").click(function(){
+            $("#user").slideToggle();
+            $("#re").hide();
+        })
+    })
+    $(function(){
+        $("#b2").click(function(){
+            $("#b2").css('background','#f96650');
+            $("#b1").css('background','#fff');
+            $("#xiao").slideToggle();
+        })
+    })
+    $(function(){
+        $("#b1").click(function(){
+            $("#b1").css('background','#f96650');
+            $("#b2").css('background','#fff');
+            $("#xiao").slideToggle();
+        })
+    })
+    //找回密码
+    $(function(){
+        $("#guanbi_3").click(function(){
+            $("#zhaohui").hide();
+            $("#denglu").hide();
+        })
+    })
+
+    $(function(){
+        $("#ss").bind('click', function(){
+            var keyword = $("#search_input").val()
+            if (!keyword) {
+                layer.open({
+                    content : '搜索关键字不能为空',
+                    icon:7,
+                    btn : ['确定'],
+                });
+                return false
+            }
+
+            if (!isNaN(keyword)) {
+                location.href = '/'+keyword
+                return false
+            }
+
+            $("#form_search").submit()
+        })
+    })
+
+    //创作入口
+    $(function(){
+        $("#create").bind('click', function(){
+            $.ajax({
+                type: "GET",
+                url: '{?$jieqi_modules["article"]["url"]?}/applywriter.php?ajax_gets=1',
+                dataType: "json",
+                global: false,
+                success: function (data) {
+                    if (data['login'] == false) {
+                        layer.open({
+                            content : '对不起，请登录后使用本功能！',
+                            icon:7,
+                            btn : ['确定'],
+                        })
+
+                        setTimeout(function(){
+                            $("#user").show()
+                            $("#denglu").show();
+                        }, 1000)
+
+                        return false
+                    }
+
+                    location.href = '{?$jieqi_modules["article"]["url"]?}/applywriter.php';
+                }
+            })
+        })
+    })
+
+    $(function(){
+        login()
+        head_user()
+        choose_sex()
+        protocol()
+    })
+
+
+
+
+</script>
+
+<body>
+
+
+<div class="login_con" id="user" style="z-index: 99999">
+	<div class="login_header">
+		<span>用户登录</span>
+		<div class="close_login">
+			<a  href="JavaScript:;" id="guanbi"><img  src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err" style="display: none;" class="prompt" ><img src="{?$jieqi_url?}/style/images/wrong.png"> <span>信息提示</span></div>
+	<form>
+		<div class="login-input-box">
+			<span class="icon icon-user"></span>
+			<input id="acount" type="text" name="username" placeholder="帐号">
+
+		</div>
+		<div class="login-input-box" >
+			<span class="icon icon-password"></span>
+			<input id="password" align="content" name="password" type="password" placeholder="登录密码">
+		</div>
+		{?if $jieqi_login_checkcode > 0?}
+		<div class="login-input-box" >
+			<input style="padding-left: 10px;width: 100px;margin-right: 20px;" id="login_code" align="content" type="text" placeholder="验证码">
+			<img style="border-radius: 4px;width: 80px; height: 32px;" class="verify" src="{?$jieqi_url?}/checkcode.php" alt="验证码" onClick="this.src=this.src+'?rand='+Math.random()" />
+		</div>
+		{?/if?}
+	</form>
+	<div class="remember-box">
+		<label>
+			<input type="checkbox" id="usecookie" name="usecookie" value="1" style="float: left; outline: 1px solid #fff;">记住密码
+		</label>
+		<div class="remember-box-right">
+			<a href="JavaScript:;" id="zhuce"><span style="color: #999999">免费注册&nbsp;|</span></a>
+			<a href="JavaScript:;" id="zh"><span style="color: #999999">&nbsp;找回密码</span></a>
+		</div>
+	</div>
+	<div class="login-button-box" >
+		<a href="JavaScript:;" id="login">登录</a>
+	</div>
+	<div class="cha" >
+		<span style="color: #999999">———— 使用其他方式登录 ————</span>
+	</div>
+	<div class="login_logo">
+		<div style="width:230px; margin:0 auto;margin-top: 8px;">
+			{?if $jieqi_api_sites['qq']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/qq/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/qq_hover.png"></a>{?/if?}
+			{?if $jieqi_api_sites['weixin']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/weixin/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/weixin_normal.png"></a>{?/if?}
+			{?if $jieqi_api_sites['weibo']['publish'] > 0?}
+			<a href="{?$jieqi_url?}/api/weibo/login.php"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/weibo_normal.png"></a>{?/if?}
+			<!--<a href="/user/other/type/baidu"><img style="margin-left: 10px;" src="{?$jieqi_url?}/style/images/baidu_normal.png"></a>-->
+		</div>
+	</div>
+
+</div>
+<!--  注册 -->
+
+<div class="re_con" id="re" style="z-index: 99999;padding-top: 0px;height: 520px;margin-top: 2%;">
+	<div class="login_header" style="background: #fff;">
+		<span style="margin-left: 45%;">用户注册</span>
+		<div class="close_login">
+			<a href="JavaScript:;"> <img id="reguanbi" src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err2" class="prompt" style="display: none;"><img src="{?$jieqi_url?}/style/images/wrong.png"><span>信息提示</span></div>
+
+	<div class="zc">
+		<div class="zc_text">
+			<span>用户名</span>
+			<span>密码</span>
+			<span>确认密码</span>
+			<span>邮箱</span>
+			{?if $show_emailrand == 1?}
+			<span>邮箱验证码</span>
+			{?/if?}
+			{?if $show_checkcode == 1?}
+			<span>验证码</span>
+			{?/if?}
+		</div>
+
+		<div class="zc_text2" style="width:244px ;margin-left: 20px;position: relative;">
+			<input id="username" type="int" name="" placeholder="请输入用户名" >
+			<input id="password1" type="password" name="" placeholder="6-15字母、数字或符合" >
+			<input id="password2" type="password" name="" placeholder="请再次输入密码" >
+			<input id="email" type="int" name="" placeholder="请输入电子邮箱~" >
+			{?if $show_emailrand == 1?}
+			<input id="emailcheck" style="width: 100px;float: left;" type="int" name="" placeholder="输入邮箱验证码">
+			<a id="res_code" class="yzm" onclick="get_code()">获取验证码</a>
+			{?/if?}
+			{?if $show_checkcode == 1?}
+			<input id="check" style="padding-left: 10px;width: 100px;margin-right: 20px;" align="content" type="text" placeholder="验证码">
+			<img style="padding-top: 10px;border-radius: 4px;width: 80px; height: 32px;" class="verify" src="{?$jieqi_url?}/checkcode.php" alt="验证码" onClick="this.src=this.src+'?rand='+Math.random()" />
+			{?/if?}
+			<!--<a id="res_code" class="yzm" onclick="get_code()">获取验证码</a>-->
+
+
+		</div>
+
+		<div class="login-button-box" >
+			<a id="register" href="JavaScript:;" style="background: #f96750;" onclick="register()">注册</a>
+		</div>
+		<div class="remember-box">
+			<!--<label>-->
+				<!--<input id="protocol" type="checkbox" style="float: left;background:#f96750;" onclick="register()">同意用户协议-->
+			<!--</label>-->
+			<div class="remember-box-right" id="yiyou">
+				<a href="JavaScript:;"><span style="color: #999999">已有账号？&nbsp;|</span></a>
+				<a href="JavaScript:;"><span style="color: #999999">&nbsp;登录</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<div class="head_1" >
+	<div class="head_logo">
+		<a href="{?$jieqi_url?}/">
+			<img  src="{?$jieqi_url?}/style/images/logo.png" height="60">
+		</a>
+	</div>
+
+	<div class="nevigation">
+		<ul>
+			<li><a href="{?$jieqi_url?}/">首页</a></li>
+			<!--<li><a href="/index/man">频道</a></li>-->
+			<li><a href="{?function jieqi_geturl:article:articlefilter:1:?}">书库</a></li>
+			<li><a href="{?function jieqi_geturl:article:toplist:1:toplist?}">榜单</a></li>
+		</ul>
+	</div>
+
+	<form method="post" id="form_search" action="{?$jieqi_modules['article']['url']?}/search.php">
+		<div class="sousu">
+			<input  type="hidden" name="searchtype" value="all">
+			<input  type="text" name="searchkey" placeholder="搜索小说、作者" id="search_input">
+			<a href="javascript:void(0);" id="ss">
+				<img class="sousu_logo" src="{?$jieqi_url?}/style/images/index_02.png">
+			</a>
+		</div>
+	</form>
+
+	<div class="sc">
+		<a href="{?$jieqi_modules['article']['url']?}/bookcase.php"> <img src="{?$jieqi_url?}/style/images/shujia_icon.png"></a>
+	</div>
+
+	<div class="sc" style="width: 6%;position: relative;">
+		<a href="{?$jieqi_url?}"><img style="position: absolute;top:30px;
+            left: 0;right: 0px;" src="{?$jieqi_url?}/style/images/phone_icon.png">
+			<span style="position: absolute;top: 0px;left: 10px;right: 0;bottom: 0;margin:auto;">手机版</span>
+		</a>
+	</div>
+
+	<div class="sc" style="width: 6%;margin-left:2%;position: relative;" id="deng">
+		<a id="user_menu" data-type="1">
+			<img id="user_image" style="cursor: pointer;border-radius: 50%;float: left;width: 40px;height: 40px;margin-top: 28%;">
+			<img id="down" style="display: none;" src="{?$jieqi_url?}/style/images/down-arrow.png">
+		</a>
+		<ul class="user_main">
+			<li>
+				<a href="{?$jieqi_url?}/userdetail.php">个人资料</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['pay']['url']?}/buyegold.php">帐号充值</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['article']['url']?}/monthlybuy.php">我的包月</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_url?}/message.php?box=inbox">消息提醒</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['article']['url']?}/myreviews.php">我的书评</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['article']['url']?}/bookcase.php">我的书架</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_modules['article']['url']?}/bookshelf.php">最近阅读</a>
+			</li>
+			<li>
+				<a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}">退出登录</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="create" class="sc" style="margin-left: 2%;width: 9%;">
+		<a href="javascript:;">
+			<img  src="{?$jieqi_url?}/style/images/xiezuo_normal.png">
+		</a>
+	</div>
+</div>
+
+
+
+
+<div class="zhaohui_con" id="zhaohui" style="z-index: 99999 ;padding-top: 0px;height: 420px;margin-top: 2%;">
+	<div class="login_header" style="background: #fff;">
+		<span style="margin-left: 45%;">找回密码</span>
+		<div class="close_login">
+			<a href="JavaScript:;"><img id="guanbi_3" src="{?$jieqi_url?}/style/images/close_login.png"></a>
+		</div>
+	</div>
+	<div id="err3" class="prompt" style="display: none;"><img src="{?$jieqi_url?}/style/images/wrong.png"> <span>信息提示</span></div>
+
+	<div class="zc" style="height: 220px;margin-bottom: 0px;">
+		<div class="zc_text" style="height: 200px;">
+			<span>用户名</span>
+			<span>邮箱</span>
+		</div>
+
+		<div class="zc_text2" style="width:244px ;height: 200px; margin-left: 20px;position: relative;">
+			<input id="username1" type="int" name="" placeholder="请输入用户名" >
+			<input id="email1" type="int" name="" placeholder="请输入电子邮箱" >
+
+		</div>
+
+		<div class="login-button-box" style="margin-top: 0px;">
+			<a href="JavaScript:;" onclick="resetPassword()">提交</a>
+		</div>
+		<div class="remember-box">
+			<p>温馨提示:提交以下信息并后，请查看您的邮箱，根据提示的链接返回本站重新设定密码。</p>
+		</div>
+	</div>
+</div>
+<div style="position:fixed;overflow: hidden;z-index:999;left: 0px;right: 0px;top: 0px;bottom: 0px;display: none;background: #000000;opacity: 0.5;" id="denglu"></div>
+	{?if $jieqi_sideblocks|empty == false?}{?/if?}
+	{?if $jieqi_top_bar != ""?}{?$jieqi_top_bar?}{?/if?}
+
+	{?if $jieqi_sideblocks|empty == false?}
+	{?if $jieqi_sideblocks['7']|empty == false?}
+
+
+			{?section name=i loop=$jieqi_sideblocks['7']?}
+			{?if $jieqi_sideblocks['7'][i].title != ""?}
+
+				{?$jieqi_sideblocks['7'][i].title?}
+				{?$jieqi_sideblocks['7'][i].content?}
+			{?else?}
+			{?$jieqi_sideblocks['7'][i].content?}
+			{?/if?}
+			{?/section?}
+
+	{?/if?}
+
+	{?if $jieqi_sideblocks['2']|empty == false || $jieqi_sideblocks['3']|empty == false?}
+
+			{?section name=i loop=$jieqi_sideblocks['2']?}
+			{?if $jieqi_sideblocks['2'][i].title != ""?}
+
+			{?$jieqi_sideblocks['2'][i].title?}
+			{?$jieqi_sideblocks['2'][i].content?}
+
+			{?else?}
+			{?$jieqi_sideblocks['2'][i].content?}
+			{?/if?}
+			{?/section?}
+
+			{?section name=i loop=$jieqi_sideblocks['3']?}
+			{?if $jieqi_sideblocks['3'][i].title != ""?}
+
+				{?$jieqi_sideblocks['3'][i].title?}
+				{?$jieqi_sideblocks['3'][i].content?}
+
+			{?else?}
+			{?$jieqi_sideblocks['3'][i].content?}
+			{?/if?}
+			{?/section?}
+
+	{?/if?}
+
+
+		{?if $jieqi_sideblocks['9']|empty == false?}
+
+			{?section name=i loop=$jieqi_sideblocks['9']?}
+			{?if $jieqi_sideblocks['9'][i].title != ""?}
+
+				{?$jieqi_sideblocks['9'][i].title?}
+				{?$jieqi_sideblocks['9'][i].content?}
+
+			{?else?}
+			{?$jieqi_sideblocks['9'][i].content?}
+			{?/if?}
+			{?/section?}
+
+		{?if $jieqi_sideblocks['1']|empty == false?}{?else?}{?/if?}
+		{?elseif $jieqi_sideblocks['0']|empty == false?}
+
+			{?section name=i loop=$jieqi_sideblocks['0']?}
+			{?if $jieqi_sideblocks['0'][i].title != ""?}
+
+				{?$jieqi_sideblocks['0'][i].title?}
+				{?$jieqi_sideblocks['0'][i].content?}
+
+			{?else?}
+			{?$jieqi_sideblocks['0'][i].content?}
+			{?/if?}
+			{?/section?}
+
+		{?if $jieqi_sideblocks['1']|empty == false?}{?else?}{?/if?}
+			{?else?}
+			{?if $jieqi_sideblocks['1']|empty == false?}{?else?}{?/if?}
+				{?/if?}
+				{?if $jieqi_sideblocks['4']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['4']?}
+				{?if $jieqi_sideblocks['4'][i].title != ""?}
+
+					{?$jieqi_sideblocks['4'][i].title?}
+					{?$jieqi_sideblocks['4'][i].content?}
+
+				{?else?}
+				{?$jieqi_sideblocks['4'][i].content?}
+				{?/if?}
+				{?/section?}
+				{?/if?}
+				{?if $jieqi_sideblocks['5']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['5']?}
+				{?if $jieqi_sideblocks['5'][i].title != ""?}
+
+					{?$jieqi_sideblocks['5'][i].title?}
+					{?$jieqi_sideblocks['5'][i].content?}
+
+				{?else?}
+				{?$jieqi_sideblocks['5'][i].content?}
+				{?/if?}
+				{?/section?}
+				{?/if?}
+
+				{?if $jieqi_contents != ""?}{?$jieqi_contents?}{?/if?}
+
+				{?if $jieqi_sideblocks['6']|empty == false?}
+				{?section name=i loop=$jieqi_sideblocks['6']?}
+				{?if $jieqi_sideblocks['6'][i].title != ""?}
+
+					{?$jieqi_sideblocks['6'][i].title?}
+					{?$jieqi_sideblocks['6'][i].content?}
+
+				{?else?}
+				{?$jieqi_sideblocks['6'][i].content?}
+				{?/if?}
+				{?/section?}
+				{?/if?}
+
+
+				{?if $jieqi_sideblocks['1']|empty == false?}
+
+					{?section name=i loop=$jieqi_sideblocks['1']?}
+					{?if $jieqi_sideblocks['1'][i].title != ""?}
+
+						{?$jieqi_sideblocks['1'][i].title?}
+						{?$jieqi_sideblocks['1'][i].content?}
+
+					{?else?}
+					{?$jieqi_sideblocks['1'][i].content?}
+					{?/if?}
+					{?/section?}
+
+				{?/if?}
+
+
+			{?if $jieqi_sideblocks['8']|empty == false?}
+
+					{?section name=i loop=$jieqi_sideblocks['8']?}
+					{?if $jieqi_sideblocks['8'][i].title != ""?}
+
+						{?$jieqi_sideblocks['8'][i].title?}
+						{?$jieqi_sideblocks['8'][i].content?}
+
+					{?else?}
+					{?$jieqi_sideblocks['8'][i].content?}
+					{?/if?}
+					{?/section?}
+
+			{?/if?}
+
+			{?else?}
+			{?$jieqi_contents?}
+			{?/if?}
+
+			{?if $jieqi_bottom_bar != ""?}{?$jieqi_bottom_bar?}{?/if?}
+			{?if $jieqi_sideblocks|empty == false?}{?/if?}
+
+</body>
+</html>

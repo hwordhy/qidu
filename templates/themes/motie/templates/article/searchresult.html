@@ -1,0 +1,114 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "searchblocks"?}
+{?set $jieqi_pagetitle = "搜索关键词“{$searchkey}”-{$jieqi_sitename}"?}
+<div class="wrap1200">
+	<div class="s-result">
+		<div class="searchbox-r">
+			<div class="searchinput fl">
+				<input type="text" default-value="" id="gosearchbtn" class="searchtext" name="tag" value="{?$searchkey?}"/>
+			</div>
+			<div class="searchbtn fl">
+				<button class="btn-search" type="button">搜索</button>
+			</div>
+		</div>
+		<div class="searchkey">
+			{?$jieqi_pageblocks['bid1']['content']?}
+		</div>
+	</div>
+</div>
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+	<div class="right-cont-box fl rankdata">
+		<div class="comment-r-menu">
+			<div class="tag-search fr" style="width:auto;right: 30px;">
+				<p class="sresult">共<i class="totalcount">0</i>个相关结果</p>
+			</div>
+			<!--<ul class="clrbtn clrbtna" style="left: 15px;">-->
+				<!--<li class="clrbtn1 on" data-type="2"><a href="javascript:;"></a></li>-->
+				<!--<li class="clrbtn2" data-type="1"><a href="javascript:;"></a></li>-->
+			<!--</ul>-->
+		</div><div class="rankdatacont">
+		<div class="tabsbox1">
+			<div class="rankday">
+				<div class="tabsday-cont">
+					<div class="tab-cont-1">
+						<div class="showcont">
+							<div class="s-b-list">
+							</div>
+						</div>
+						<div class="showcont">
+							<div class="searchauthor" style="display: none;">
+							</div>
+						</div>
+						<div class="loading" style="display: none"><img src="{?$jieqi_url?}/style/images/loading.gif" /></div>
+						<link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+						<div class="pages_bottom">
+							<ul>
+							</ul>
+							<div class="pageform" id="pageForm">
+								<span>飞到</span>
+								<input type="text" name="page" id="pageNum" class="pageNum" value="1">
+								<span>页</span>
+								<span class="gobtn" id="gobtn">go</span>
+							</div>
+						</div></div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+	<div class="search-result-r fr">
+		<div class="titmenu">{?$jieqi_pageblocks['bid2']['title']?}</div>
+		{?$jieqi_pageblocks['bid2']['content']?}
+	</div>
+</div>
+<div style="height: 20px;"></div>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer_1.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/search.js"></script>
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script type="text/javascript">
+    var doPage  = function (pageNum) {
+        //var type = type;
+        //alert(pageNum);
+        getdataList(pageNum);
+    }
+
+</script>

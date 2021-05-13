@@ -1,0 +1,4 @@
+<?php
+$this->_tpl_vars['jieqi_pagetitle'] = "¶©ÔÄÕÂ½Ú-{$this->_tpl_vars['jieqi_sitename']}";
+
+?>

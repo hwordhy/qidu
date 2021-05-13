@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="{?$jieqi_charset?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="keywords" content=" {?$meta_keywords?}">
+	<meta content="zh-cn" http-equiv="Content-Language">
+	<title>章节购买 - {?$chaptername?} - {?$jieqi_pagetitle?}</title>
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/reader.css" type="text/css">
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css" type="text/css"/>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">var uid = "{?$jieqi_userid?}"; var checkcodelogin = "{?$jieqi_checkcodelogin?}"; var jieqi_token = '{?$jieqi_token?}';var jumpurl = window.location.href;</script>
+</head>
+<body ondragstart="return false;" oncopy="return false;" oncut="return false;" oncontextmenu="return false;" class="whitetheme">
+
+<div class="reader_header">
+</div>
+<div class="path">
+	<!--<a href="/" target="_blank">首页</a>-->
+	<!--<span>></span>-->
+	<!--<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}" target="_blank">{?$obookname?}</a>-->
+</div>
+<div id="windowthemebg"></div>
+<div class="read">
+	<div class="read-box">
+		<div class="chapter-page notread"
+			 data-chapterid="{?$chapterid?}"
+			 data-nextisvip="{?$next_isvip?}"
+			 data-isvip="{?$chapterisvip?}"
+			 data-nextchapter="{?$next_chapterid?}"
+			 data-prechapterid="{?$previous_chapterid?}">
+			<h3 class="bookname">{?$article_title?}</h3>
+			<h4 class="chaptername">{?$chaptername?}</h4>
+
+			<p class="author">
+				<span>作者：<a href="javascript:;">{?$author?}</a></span>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字数：{?$chaptersize_c?}</span>
+			</p>
+			<p class="publishtime">发布时间： {?$lastupdate|date:Y-m-d H:i?}</p>
+
+			<div class="page-content AihLvCAb">
+			<pre ondragstart="return false" oncopy="return false;" oncut="return false;" oncontextmenu="return false"
+				 class="note gKCvvNCavZl">{?$summary|truncate:250:'......'?}</pre>
+
+			</div>
+			<i class="line"></i>
+			<div class="subscribe-box">
+				<h4 class="box-title">这是VIP章节 &nbsp;需要订阅后才能阅读</h4>
+				<div class="subscribe-con clearfixer">
+					<div class="con-item j-single active fl">
+						<div class="subscribe-text active fl">
+							订阅本章
+						</div>
+						<div class="subscribe-info fl">
+							<p class="info-chaptername">章节：{?$chaptername?}</p>
+							<p class="info-chapternum">字数：{?$chaptersize_c?}字 · 1章</p>
+							<p class="info-paynum">需支付 ：
+								{?if $jieqi_vipid > 0?}您是<span class="red">{?$jieqi_vipname?}</span>用户，原价 <del class="red">{?$saleprice?}{?$egoldname?}</del>,现价<span class="red">{?$disprice?}</span>{?else?}<span class="red">{?$saleprice?}</span>{?/if?}{?$egoldname?}</p>
+							<p class="info-balance">账户余额：<span>{?$jieqi_egold?}</span> {?$egoldname?}</p>
+							<p class="info-btn j-single-charge{?if $jieqi_egold < $saleprice?} show{?/if?}"><a target="_blank" href="{?$jieqi_modules['pay']['url']?}/buyegold.php">马上充值</a></p>
+							<p class="info-btn j-single-buy{?if $jieqi_egold >= $saleprice?} show{?/if?}" onclick="buy()">确认订阅</p>
+							<div class="paybox_auto subscribe_auto"><label><input type="checkbox" id="autobuy"> &nbsp;不再显示订阅提醒，自动订阅下一章</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<div class="addscorllbar"></div>
+<div id="floatbox">
+	<link rel="stylesheet" href="{?$jieqi_url?}/style/css/index_header.css" type="text/css"
+		  class="mmyqwhref"/>
+	<div class="secondnav" id="back-to-top" style="display: none;">
+		<div class="wrap1200">
+			<div class="secondnav-l fl">
+				<ul>
+					<li><a href="/" class="sitename">{?$jieqi_sitename?}</a></li>
+					<li><a href="{?function jieqi_geturl:article:articlefilter:1:?}" target="_blank" class="site-tag">书库</a></li>
+					<li><a href="{?function jieqi_geturl:article:toplist:1:toplist?}" target="_blank" class="site-tag">排行</a></li>
+					<li><a href="{?function jieqi_geturl:'article':'articlelist':1::1?}" target="_blank" class="site-tag">全本</a></li>
+					<li><a href="{?$jieqi_modules['forum']['url']?}/" target="_blank" class="site-tag">论坛</a></li>
+					<li><a href="{?$jieqi_modules['article']['url']?}/applywriter.php" target="_blank" class="site-tag">作家专区</a></li>
+					<li class="morefl "><a href="#" target="_blank" class="moreh ">更多</a>
+						<div class="morestyle">
+							{?section name=i loop=$sortrows?}
+							<a href="{?function jieqi_geturl:article:articlelist:1:$i.key?}" target="_blank">{?$sortrows[i].caption?}</a>
+							{?/section?}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="secondnav-r fr">
+				{?if $jieqi_userid == 0?}
+				<div class="nav-login">
+					<a href="javascript:void(0)" class="login-user" onclick="doMyLogin()">登录</a>
+					<a href="{?$jieqi_url?}/register.php" class="register">注册</a>
+				</div>
+				{?else?}
+				<div class="secondnav-user fl">
+					<a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="firstname"><span>{?$jieqi_username?}</span><i></i></a>
+					<ul>
+						<li><a href="{?$jieqi_modules['article']['url']?}/bookcase.php" target="_blank">我的书架</a></li>
+						<li><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" target="_blank">充值</a></li>
+						<li><a href="{?$jieqi_url?}/userdetail.php" target="_blank">个人中心</a></li>
+						<li><a href="{?$jieqi_url?}/message.php?box=inbox" target="_blank">消息(<em class="red bubbleNum">{?$jieqi_newmessage?}</em>)</a></li>
+						<li><a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}" target="_blank">退出</a></li>
+					</ul>
+				</div>
+				{?/if?}
+				<div class="fr lateread">
+					<a href="javascript:void(0);"  class="lateread_text">最近阅读</a>
+					<div class="lastread_box">
+						<span class="icon-read"></span>
+						<div class="lastread_con">
+							<p class="unlogin"><a href="javascript:void(0)" class="login" onclick="pop_login()">登录</a></p>
+							<p class="loading">loading...</p>
+						</div>
+					</div>
+				</div>
+				<div id="mod-search2">
+					<div class="searchbox">
+						<div class="searchbox-inner">
+							<input type="text" autocomplete="off" placeholder="找书、找人" class="searchinput" value="">
+							<i class="search-icon"></i>
+							<input type="button" value="" class="searchbtn" style="background-color:#f5546f"/>
+							<span class="loadIcon"></span>
+						</div>
+						<ul class="search-list">
+						</ul>
+					</div></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+    var page_config = {
+        bookId: "{?$articleid?}", // false
+        username: "{?$jieqi_username?}",
+        voteNumber: "{?$allvote?}",
+        isInShelf:false,  // true  表示已在书架
+        isvip: "{?$isvip_n?}",
+        authorName: "{?$author?}",
+        userId: "{?$jieqi_userid?}",
+        userMoneyBalance: "{?$jieqi_egold?}",
+        votes: "{?$jieqi_votes?}",
+        toTop_page:false
+
+    }
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script>
+<script type="application/javascript">
+    function  doMyLogin() {
+        if(typeof(pop_login)=='undefined'){
+            window.location.href="{?$jieqi_url?}/login.php"
+        }else{
+            pop_login();
+        }
+
+    }
+
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+
+<script src="{?$jieqi_url?}/style/js/common_chapter.js"></script>
+<script type="application/javascript">
+    function buy() {
+        if (0 == {?$jieqi_userid?}) {
+            pop_login();
+		}
+        var autobuy = $("#autobuy").attr("checked");
+        if (autobuy === 'checked')
+            autobuy = 1;
+        else
+            autobuy = 0;
+        $.ajax({
+            url: "/modules/obook/buychapter.php",
+            data: {
+                "cid" : "{?$chapterid?}",
+                "act" : "buy",
+                "jieqi_token" : "{?$jieqi_token?}",
+                "ajax_gets" : 1,
+                "buytype" : autobuy
+            },
+            type: "POST",
+			dataType: "json",
+            success: function(t) {
+                if (t.success === true) {
+                    layer.msg(t.message, {icon: 1,shade: .3});
+                    // location.href = t.setting.curl;
+                    setTimeout(function(){
+                    	window.location.reload();
+                    }, 600)
+                }
+                else{
+                    layer.msg(t.message, {icon: 2,shade: .3});
+                }
+            },
+            error: function(e) {}
+        });
+    }
+
+</script>
+</html>

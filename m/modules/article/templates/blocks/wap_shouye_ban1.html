@@ -1,0 +1,7 @@
+{?section name=i loop=$articlerows?}
+<a href="{?$articlerows[i].url_articleinfo?}" class="item" data-recommendid="78890"><span class="left fl"><img src="{?$articlerows[i].url_image?}" alt="" /></span><span class="right fl"><h3>{?$articlerows[i].articlename?}</h3><h5>×÷Õß£º&nbsp{?$articlerows[i].author?}</h5>
+    <div>
+        {?$articlerows[i].intro|truncate:130:...?}
+    </div></span></a>
+{?/section?}
+    

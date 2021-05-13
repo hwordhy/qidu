@@ -1,0 +1,42 @@
+﻿@charset "utf-8";
+
+/* body,.ma_bg{background:#f9e8e8;} */
+body, .ma_bg {
+    background: #efefef;
+}
+.txtbox-item h3{border-bottom:solid 1px #333;color:#d93636;}
+.demo .font-change a{background:#ddd; color: #333;}
+.intro .chapter{border-right:1px solid #f7a4a4;}
+.intro .chapter i{background:#f7a4a4;border:2px solid #f9e8e8;}
+.intro .chapter i.red{background:#f7a4a4;}
+.font_list{border-top:solid 1px #333;}
+.font_list a{color:#333;}
+.chapter_spread li{background:#fff;}
+.chapter_spread li a{color:#333;}
+.chapter_spread li a span{color:#333;}
+.chapter_ma{color:#999;}
+.chapter_ma span{background:#f9e8e8;}
+.intro div{color:#333;}
+.intro .chapter{color:#333;}
+.alert-c{color:#333;}
+.blue{color:#d93636 !important;display:inline-block;padding-bottom:5px;}
+.alert-c-bg .top{background:url(../images/author_alert_top_bg.png) repeat;height:3px;width:100%;}
+.alert-c-bg .bottom{background:url(../images/author_alert_bottom_bg.png) repeat;height:3px;width:100%;}
+.zan.red{background:url(../images/chapter_zan_zyq_hover_ico.png) no-repeat top center;color:#f7a4a4;padding-top:12px}
+#reply .prevPage{background:url(../images/chapter_page_zyq_prev_ico.png) no-repeat top center}
+#reply .nextPage{background:url(../images/chapter_page_zyq_next_ico.png) no-repeat top center}
+.reply-input-r{background:#f7a4a4;}
+.chapter_spread li a span.r b{color:#333;}
+
+/*首页需要摘除的部分css*/
+.wx_nav_box_n{background:#fd6974;}
+.wx_nav_box_n .wx_home{background:#e74652;}
+#ad_banner .hd li.on {background: #fd6974;}
+.editor-b-dl dd p i{background:#f7a4a4;}
+/*书籍详情页*/
+.detail_ul li{background:#fd6974;}
+/* .app_down_mod a{color:#d93636;border:solid 1px #d93636;} */
+.app_down_mod a {
+    color: #321;
+    border: solid 1px #321;
+}

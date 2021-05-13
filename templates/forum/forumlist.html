@@ -1,0 +1,150 @@
+{?set jieqi_blocks_module = "forum"?}
+{?set jieqi_blocks_config = "forumblocks"?}
+<div class="wrap1200">
+    <div class="w950 fl">
+        {?section name=i loop=$forumcats?}
+        {?section name=j loop=$forums[i]?}
+        <div class="index_top">
+            <dl class="fl">
+                <dt class="fl"><img src="{?$jieqi_url?}/style/images/bbs.jpg"/></dt>
+                <dd class="fl">
+                    <span class="f24"><a href="{?function jieqi_geturl:'forum':topiclist:1:$forums[i][j].forumid?}" style="font-size: 20px;">{?$forums[i][j].forumname?}</a></span>
+                    <span class="f14 mtop20">最后发表时间：{?$forums[i][j].lasttime|date:"Y-m-d H:i:s"?}</span>
+                    <span class="f14 mtop10">版主：{?section name=k loop=$forums[i][j]['masters']?}<a target="_blank" href="javascript:;"
+                                                   class="f14 red ui_color">{?$forums[i][j]['masters'][k].uname?}</a>&nbsp;&nbsp;&nbsp;&nbsp;{?/section?}</span>
+                </dd>
+            </dl>
+            <div class="fl b_textlist">
+                <div class="clearfixer">
+                    <i class="dot ui_bgcolor fl"></i>
+                    <span class="texttop fl" title="{?$forums[i][j].desc?}">{?$forums[i][j].desc|truncate:180:'...'?}</span>
+                </div>
+            </div>
+        </div>
+        {?/section?}
+        <div class="block10"></div>
+        {?/section?}
+    </div>
+
+    <div class="index_post_r fr">
+        <div class="boxcont">
+            <span class="titmenu">{?$jieqi_pageblocks['bid1']['title']?}</span>
+            <ul class="boxlist">
+                {?$jieqi_pageblocks['bid1']['content']?}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script id="topic-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <li class="index_post_list_cont">
+        <span class="w530 index_post_tags" >
+            {{#if top}}
+                <img src="{?$jieqi_url?}/style/images/topicon.png"/>
+            {{else}}
+                <img src="{?$jieqi_url?}/style/images/msgicon.png"/>
+            {{/if}}
+            {{#if tagName}}
+                <em class="p_tags red">「{{ tagName }}」</em>
+            {{/if}}
+            <a href={{ url }} target="_blank">{{ name }}</a>
+            {{#if top}}
+                <em class="top">顶</em>
+            {{/if}}
+            {{#if best}}
+                <em class="per">精</em>
+            {{/if}}
+        </span>
+        <span class="author_text w105">
+              <a href="{{ user.url }}" target="_blank">
+                  {{ user.name }}
+              </a>
+            <em>{{substr createTime 0 16}}</em>
+        </span>
+        <span class="reply_text w50">{{ replyCount }}</span>
+        <span class="lastreply_text w110">
+            {{#if reply}}
+            <a href="{{ attributes.replyUserUrl }}" target="_blank">
+                {{ attributes.replyUserName }}
+            </a>
+            <em>{{substr attributes.replyTime 0 16}}</em>
+            {{else}}
+                已设置禁止回复
+            {{/if}}
+        </span>
+    </li>
+    {{/each}}
+</script>
+
+</body>
+</html>
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "",
+        sitestate:"7",
+        userId:"",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "",
+        sitestate:"7",
+        userId:"",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/data.js"></script>
+
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/forum.js"></script>
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script>
+    $(".nav_bbs").addClass("curr");
+</script>

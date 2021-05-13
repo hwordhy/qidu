@@ -1,0 +1,1 @@
+document.write('一个副本出场机体设定图提示！各位想到这是哪个剧情位面了吗？事实上我也是无意中在某个浏览中受到刺激才选定该剧情为新副本位面的，算是主角第一个可以双向物质穿越的位面！尽管可持续时间不是太长（各位自行理解）<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/158/7971/263.gif\" border=\"0\" class=\"imagecontent\"></div>');

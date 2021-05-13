@@ -1,0 +1,1 @@
+document.write('骑士的造型和装备等完全按照假面骑士ghost来，不过剧情前期和中期，主角方三骑士陆续得到的是传说骑士眼魂，而tv中的英雄眼魂要等在中期开始才会用上……<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;ghost系列三骑士使用传说（前辈）骑士眼魂后的形象如下，仅限平成系——<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/75/4027/101.gif\" border=\"0\" class=\"imagecontent\"></div>');

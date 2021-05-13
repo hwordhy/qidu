@@ -1,0 +1,4 @@
+{?section name=i loop=$articlerows?}
+<a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"  class="slider-film"  href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+  <img src="{?$articlerows[i].url_limage?}"> </a>
+{?/section?}

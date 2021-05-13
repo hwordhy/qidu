@@ -1,0 +1,24 @@
+<div class="catalog_con">
+	<p class="catalog_title">目录</p>
+	<span class="catalog-close"><i></i></span>
+	<div class="catalog-inner">
+		<div  class="volume cur_volume" data-collapse=""   >
+
+			<div class="volume_title">
+				作品正文<span class="arrow_icon"></span>
+			</div>
+			<ul class="volume_con clearfixer">
+				{?section name=i loop=$chapterrows?}
+				{?if $chapterrows[i].chaptertype == 0?}
+				<li class="{?if $chapterrows[i].chapterid == $cid?}bookmark{?/if?}">
+					<a href="{?$chapterrows[i].url_chapter?}">
+						&nbsp;{?$chapterrows[i].chaptername?}{?if $chapterrows[i].isvip > 0?}<img alt="vip" src="{?$jieqi_url?}/style/images/vip.gif">{?/if?}</a>
+				</li>
+				{?/if?}
+				{?/section?}
+			</ul>
+		</div>
+	</div>
+
+</div>
+

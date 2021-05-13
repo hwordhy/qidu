@@ -1,0 +1,138 @@
+//°´Å¥
+
+.button, .btnlink, .filebutton {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  vertical-align: middle;
+  line-height: $button-line-height;
+  padding: $button-padding;
+  margin: $button-margin;
+  color: $button-color;
+  background: $button-bg;
+  @include box-border($button-border, $button-border-radius, $button-box-shadow);
+
+  &:hover{
+    color: $button-color;
+    background: darken($button-bg, 10%);
+  }
+
+  @each $key,$value in $brands {
+    &.#{$key}{
+      background: $value;
+      &:hover{
+        color: $button-color;
+        background: darken($value, 12%);
+      }
+    }
+    &.outline.#{$key} {
+      color: $value;
+      border-color: $value;
+      &:hover{
+        color: $button-color;
+        background: $value;
+      }
+    }
+  }
+
+  &.b_hot{
+    @extend .warning;
+  }
+  &.b_note{
+    @extend .info;
+  }
+  &.b_error{
+    @extend .danger;
+  }
+
+  &.b_ico, &.ico{
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align:center;
+    padding: 0;
+    @include border-radius(50%);
+  }
+
+  &.outline{
+    background: transparent;
+    color: $button-bg;
+    border-color: $button-bg;
+    &:hover{
+      color: $button-color;
+      background: $button-bg;
+    }
+  }
+
+  &.b_b {
+    @extend .wf;
+  }
+
+  &.small, &.b_s {
+    font-size: $font-size-sm;
+    padding: $button-padding-sm;
+  }
+
+  &.large, &.b_l {
+    font-size: $font-size-lg;
+    padding: $button-padding-lg;
+  }
+}
+
+a.button, a.btnlink{
+  text-decoration: none;
+}
+
+.btngroup {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  .button, btnlink {
+    position: relative;
+    float: left;
+    margin: 0;
+    border-radius: 0;
+    @if $button-border-width != 0 {
+      &:not(:first-child) {
+        margin-left: -$button-border-width;
+        margin-top: 0;
+      }
+    }
+    @if $button-border-radius != 0 {
+      &:first-child:not(:last-child) {
+        border-top-left-radius: $button-border-radius;
+        border-bottom-left-radius: $button-border-radius;
+      }
+      &:last-child:not(:first-child) {
+        border-top-right-radius: $button-border-radius;
+        border-bottom-right-radius: $button-border-radius;
+      }
+    }
+  }
+  &.vertical{
+    .button, btnlink {
+      position: relative;
+      display: block;
+      float: none;
+      width: 100%;
+      max-width: 100%;
+      @if $button-border-width != 0 {
+        &:not(:first-child) {
+          margin-left: 0;
+          margin-top: -$button-border-width;
+        }
+      }
+      @if $button-border-radius != 0 {
+        &:first-child:not(:last-child) {
+          border-top-left-radius: $button-border-radius;
+          border-top-right-radius: $button-border-radius;
+        }
+        &:last-child:not(:first-child) {
+          border-bottom-left-radius: $button-border-radius;
+          border-bottom-right-radius: $button-border-radius;
+        }
+      }
+    }
+  }
+
+}

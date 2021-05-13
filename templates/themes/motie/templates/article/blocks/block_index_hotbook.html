@@ -1,0 +1,17 @@
+<ul id="tabs-yy-bd" class="tabs-yy-bd">
+  {?section name=i loop=$articlerows?}
+  <li{?if $i.order == 1?} class="on"{?/if?}></li>
+  {?/section?}
+</ul>
+<div class="hot-story" id="tabs-yy-hd">
+  {?section name=i loop=$articlerows?}
+  <dl class="book-block"{?if $i.order > 1?} style="display: none;"{?/if?}>
+    <dt><a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"></a></dt>
+    <dd>
+      <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="book-name">{?$articlerows[i].articlename?}</a>
+      <span class="book-author">作者：<a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="javascript:;" target="_blank">{?$articlerows[i].author?}</a></span>
+    </dd>
+  </dl>
+  {?/section?}
+</div>
+

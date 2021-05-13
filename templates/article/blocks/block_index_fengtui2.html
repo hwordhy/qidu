@@ -1,0 +1,10 @@
+{?section name=i loop=$articlerows?}
+<a class="fl" href="{?$articlerows[i].url_articleinfo?}"><img src="{?$articlerows[i].url_image?}" onerror="this.src='{?$jieqi_url?}/style/images/default.jpg'"></a>
+<ul>
+    <a href="{?$articlerows[i].url_articleinfo?}">
+        <li class="li1">{?$articlerows[i].articlename?}</li>
+    </a>
+    <li class="li2">作者：{?$articlerows[i].author?}</li>
+    <li class="li3">{?$articlerows[i].intro?}</li>
+</ul>
+{?/section?}

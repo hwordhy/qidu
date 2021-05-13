@@ -1,0 +1,10 @@
+﻿.wapheader{   
+    padding-top: 0.7rem ;  
+    background: #e7fbf9 url(../images/wbgs.png) no-repeat center;
+    background-size: cover;
+    border-bottom:1px solid  #f4f4f4; 
+}
+.wapheader .logo{ 
+    background: url(../images/logo.png) no-repeat center center;
+    background-size: contain;
+}

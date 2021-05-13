@@ -1,0 +1,17 @@
+{?set $jieqi_pagetitle = "提现记录-{$jieqi_sitename}"?}
+{?set $jieqi_contenttitle = "提现记录"?}
+
+{?block bid="0" blockname="推广分成" module="system" filename="" classname="BlockSystemCustom" side="-1" title="" vars="" template="block_channelnav_tab.html" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<div class="blockb">
+<div class="blockcontent" id="jieqi_page_contents">
+	<ul class="ulrow">
+	{?section name=i loop=$settlerows?}
+	<li>
+	<div><em>{?$settlerows[i].payamount|fen2yuan?}元</em>{?$settlerows[i].logtime|date:Y-m-d H:i?} 提现</div>
+	</li>
+	{?/section?}
+	</ul>
+</div>
+</div>
+<div class="pages">{?$url_jumppage?}</div>
+

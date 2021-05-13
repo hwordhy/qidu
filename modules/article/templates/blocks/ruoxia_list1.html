@@ -1,0 +1,11 @@
+{?section name=i loop=$articlerows?}
+<li class="pattern-big-picture">
+											<a data-collect-index="27" href="{?$articlerows[i].url_articleinfo?}" target="_blank">
+												<img src="{?$articlerows[i].url_image?}" width="150" height="210">
+											</a>
+											<h5><a data-collect-index="27" href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].articlename?}</a></h5>
+											<p class="info">
+												×÷Õß£º<a href="{?function jieqi_geturl:'system':'user':$articlerows[i].authorid?}" class="name" target="_blank">{?$articlerows[i].author?}</a>
+											</p>
+										</li>
+{?/section?}

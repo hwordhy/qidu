@@ -1,0 +1,139 @@
+ /*æˆ‘�?š„ä¹¦æž�?*/
+ .mybook .here{
+    font-size: 1.43rem;
+    padding: 15px 2%;
+    border-bottom: none;
+    background: #f4f4f4;
+    margin: 0 -2%;
+    border-top: 1px solid #dadada;
+}
+.mybook .here .dels{
+    font-size: 1.066rem;
+    background: #21a7ee;
+    color: #fff;
+    padding: 5px 8px;
+}
+.mybook .here b{
+    font-size: 0.98rem;
+    color: #a6a6a6;
+}
+.mybook .here a{  
+    color: #999;
+}
+.mybook .here .bigsize{  
+    font-size: 1.3rem;
+    color: #403843;
+}
+.mybook ul li{
+    border-top:1px solid #f4f4f4; 
+    padding: 15px 0 ;
+}
+.mybook  li h3{
+    padding: 5px 0 10px;
+}
+.mybook  li h3 a{
+    color: #434343;
+    font-weight: 500;
+    font-size:1.15rem ; 
+}
+.mybook  li .del_book{
+    color: #21a7ee;
+    border: 1px solid #21a7ee;
+    font-weight: normal;
+    padding: 5px 8px;
+    font-size:1rem ; 
+    position: relative;
+    top: -5px;
+    display: none;
+}
+.mybook li p{
+    padding: 5px 0;
+}
+.mybook li p a{
+    color: #8a8a8a;
+    font-size:1.066rem ;
+}
+.mybook li p .wordhide{
+    width: 80%;
+    display: inline-block;
+}
+.mybook li p .going{
+    width:  18%;
+    margin-left: 2%;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #f60;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    border-radius: 30px;
+    font-size: 1rem;
+    position: relative;
+    top: -2px;
+    color: #f60;
+}
+.mybook .here em{ 
+    display: inline-block;
+    margin-right: 2px;
+    font-style:normal; 
+}
+.myread  li .del_book{
+    display: block;
+}
+.myread  li .fav_book{
+    background: #ddd;
+    color: #fff;
+    border: 1px solid #ddd;
+}
+.nohistory .word{
+    line-height: 1.6rem;
+    overflow: hidden;
+}
+.nohistory .word b{
+     font-size:1.5rem ;
+    color: #dcdcdc;
+}
+.nohistory .word a{
+    font-size:1.5rem ;
+    color: #1f98ff;
+    display: inline-block;
+}
+.nohistory .word .girl{
+    color: #ff6095;
+}
+
+
+.mybook .bookcats{
+    padding-top: 15px;
+    overflow: hidden;
+}
+.mybook .bookcats a{
+    float: left;
+    width: 40%;
+    margin: 0 5%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.mybook .bookcats .active{
+    border-bottom: 2px solid #1d9cc9;
+    color: #1d9cc9;
+    padding-bottom: 15px;
+}
+.mybook .readsmore{
+    text-align: right;
+    padding-right: 15px;
+}
+.readmores .here{
+    text-align: center;
+    background: #fff;
+    border-top:none; 
+    border-bottom: 1px solid #f1f1f1; 
+    margin-bottom: -1px;
+    font-size: 1.2rem;
+}
+.allsee{
+    margin: 15px auto;
+    background: #fff;
+    padding: 10px 0 0;
+    max-width: 750px;
+}

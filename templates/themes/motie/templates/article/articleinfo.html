@@ -1,0 +1,271 @@
+
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "{$articlename}-{$author}-{$jieqi_sitename}"?}
+{?set $meta_keywords = "{$articlename} {$author} {$sort}"?}
+<div class="path ">
+    <a href="/" target="_blank">首页</a>
+    <span>></span>
+    <a target="_blank" href="{?function jieqi_geturl:article:articlelist:1:$sortid?}">{?$sort?}</a>
+    <span>></span>
+    <span>
+      <a href="{?$url_articleinfo?}" >{?$articlename?}</a>
+    </span>
+</div>
+<div class="work_brief clearfixer">
+    <div class="pic fl">
+        <span><img src="{?$url_image?}" alt=""></span>
+    </div>
+    <div class="brief fl">
+        <div class="title clearfixer">
+            <span class="name fl">{?$articlename?}</span>
+            <a href="javascript:;" class="author fl" target="_blank">{?$author?}</a>
+            <span class="write fl">著</span>
+        </div>
+        <div class="tags clearfixer">
+
+            <a href="javascript:;"><span class="fl isfinish">{?$fullflag?}</span></a><a href="javascript:;"><span class="fl isfinish">{?$issign?}</span></a><a href="javascript:;"><span class="fl isfinish">{?$isvip?}</span></a>
+            {?section name=i loop=$tagrows?}
+            <a href="{?$jieqi_modules['article']['url']?}/articlefilter.php?keywords={?$tagrows[i].tagencode?}"><span class="fl ">{?$tagrows[i].tagname?}</span></a>
+            {?/section?}
+        </div>
+        <div class="hits">
+            <i></i>
+            <span>{?$size_c?}字</span>
+            <i></i>
+            <span>总点击 {?$allvisit?}</span>
+            <i></i>
+            <span>推荐票 {?$allvote?}</span>
+        </div>
+        <p class="brief_text">{?$intro|strip_tags?}</p>
+        <div class="btns">
+            <a href="{?$jieqi_modules['article']['url']?}/articleread.php?id={?$articleid?}" class="free on ui_bg_bdcolor" target="_blank">免费试读</a>
+            {?if $is_bookcase == true?}
+            <span class="addshelf onshelf">已在书架</span>
+            {?else?}
+            <a href="javascript:;" class="addshelf">加入书架</a>
+            {?/if?}
+            <a href="javascript:;" class="interaction">粉丝互动</a>
+        </div>
+    </div>
+    <div class="popular fr">
+        <div class="action">
+            <a href="javascript:;" class="phoneread">手机阅读</a>
+            <div class="erweima_app">
+                <img src="{?$jieqi_url?}/style/images/wap.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="work_content clearfixer" id="content-tab">
+    <div class="header">
+        <div class="tab fl j-content-tab">
+            <a href="#brief"><span class="on">作品简介</span></a>
+            <a href="#catalog"><span >目录({?$chapters?}章)</span></a>
+        </div>
+        <a href="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}" class="fl comment" target="_blank">书友评论</a>
+    </div>
+    <div class="tabcontent j-content-main">
+        <div class="tabcontent-1 clearfixer"  >
+            <div class="column_left fl">
+                <div class="summary">
+
+                    <p class="summary1">{?$intro|strip_tags?}</p>
+                </div>
+                <div class="newchapter">
+                    <div class="title clearfixer">
+                        {?if $isvip_n > 0 && $vipchapterid > 0?}
+                        <span class="chaptername fl">最新章节&nbsp;:&nbsp;&nbsp;<a target="_blank" href="{?$url_vipchapter?}" rel="nofollow" ><img alt="vip" src="{?$jieqi_url?}/style/images/vip.gif">{?$vipchapter?}</a> </span>
+                        {?else?}
+                        <span class="chaptername fl">最新章节&nbsp;:&nbsp;&nbsp;<a target="_blank" href="{?$url_lastchapter?}" rel="nofollow" >{?$lastchapter?}</a> </span>
+                        {?/if?}
+                        <span class="updatetime fr">更新时间&nbsp;:&nbsp;{?$lastupdate|date:"Y-m-d H:i:s"?}</span>
+                    </div>
+                    <p>{?if $isvip_n > 0 && $vipchapterid > 0?}<a target="_blank" href="{?$url_vipchapter?}">{?$vipsummary|strip_tags?}...</a>{?else?}<a target="_blank" href="{?$url_lastchapter?}">{?$lastsummary|strip_tags?}...</a>{?/if?}</p>
+                </div>
+                <div class="fans">
+                    <div class="title">粉丝打赏</div>
+                    <div class="fans-con clearfixer">
+                        <div class="hongbao fl">
+                            <span class="pic"></span>
+                            <span class="num">{?$tipnums?}人次</span>
+                            <span class="btn">打赏作者</span>
+                            <!--<a href="{?$jieqi_modules['article']['url']?}/articleactlog.php?id={?$articleid?}" class="allbonus" target="_blank">全部打赏记录>></a>-->
+                        </div>
+                        <div class="rank fl">
+                            <span class="rank-title">粉丝贡献榜</span>
+                            <div class="bonusitems">
+                                <div class="fans_scrolling_wrapper">
+                                    <div class="inner" id="fans_scrolling">
+                                        {?$jieqi_pageblocks['bid1']['content']?}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fansitems clearfixer">
+                                {?$jieqi_pageblocks['bid2']['content']?}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reader_comments" id="comment-tab">
+                    <div class="comment_tit clearfixer">
+                        <span class="text fl">书友评论({?$reviewsnum?})</span>
+                        <div class="comment-tab fl j-comment-tab">
+                            <span class="on">最新</span>
+                            <span>精华</span>
+                        </div>
+                        <span class="sendcomment">发表评论</span>
+                    </div>
+                    <div class="comment_con j-comment-main">
+                        <div class="comment_con_1"></div>
+                        <div class="comment_con_2"></div>
+                        <div class="loading-comment">
+                            <img src="{?$jieqi_url?}/style/images/loading.gif" alt="">
+                        </div>
+                    </div>
+                    <div class="morecomment">
+                        <a href="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}" target="_blank">
+                            更多评论>>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column_right fr">
+                <div class="author ">
+                    <div class="medalwrapper">
+                        <div class="medalbox">
+                            {?$jieqi_pageblocks['bid3']['content']?}
+                            <!--<div class="medal clearfixer">-->
+                                <!--<div class="medal-pic">-->
+                                    <!--<span class="angle"></span>-->
+                                    <!--<div class="img-big">-->
+                                        <!--<img class="" src="{?$jieqi_url?}/style/images/gold_crown.png" alt=""-->
+                                             <!--data-imgbig="#"-->
+                                             <!--data-imgtitle="#" data-desc="">-->
+                                    <!--</div>-->
+                                    <!--<img src="" class="img-title" alt="">-->
+                                    <!--<div class="desc"></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <!--<div class="line1"></div>-->
+                    <!--<div class="data clearfixer">-->
+                        <!--<div class="allwork fl">-->
+                            <!--<p>作品总数</p>-->
+                            <!--<span class="ui_color">-->
+                                <!--1</span>-->
+                        <!--</div>-->
+                        <!--<div class="allchar fl">-->
+                            <!--<p>累计字数</p>-->
+                            <!--<span class="ui_color">260946</span>-->
+                        <!--</div>-->
+                        <!--<div class="allday fl">-->
+                            <!--<p>驻站天数</p>-->
+                            <!--<span class="ui_color">60</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="line1"></div>
+                    <div class="allbook">
+                        <div class="title clearfixer">
+                            <div class="text fl">全部作品</div>
+                            <div class="tab fr">
+                                <span class="j_all_work_prev fl"></span>
+                                <span class="j_all_work_next fl"></span>
+                            </div>
+                        </div>
+                        <div class="all_work_content">
+                            <div class="all_work_contentbox">
+                                {?$jieqi_pageblocks['bid4']['content']?}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fansrank">
+                    <div class="title">粉丝排行榜</div>
+                    <ul class="content">
+                        {?$jieqi_pageblocks['bid5']['content']?}
+                    </ul>
+                    <a href="{?$jieqi_modules['article']['url']?}/creditlist.php?id={?$articleid?}" target="_blank" style="display: inline-block;font-size: 14px; margin-bottom:10px; color: #ccc;" class="see_more">查看更多>></a>
+                </div>
+                <div class="same-recomend">
+                    <div class="rec-title">{?$jieqi_pageblocks['bid6']['title']?}</div>
+                    <ul class="rec-content ">
+                        {?$jieqi_pageblocks['bid6']['content']?}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrap1200 catebg" >
+            <div class="cate-tit">
+                <h2>作品正文</h2>
+            </div>
+            <div class="cate-list">
+                <ul>
+                    {?$jieqi_pageblocks['bid7']['content']?}
+                </ul>
+                <div class="cl"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block20"></div>
+<div id="floatbox">
+    <div id="windowbg"></div>
+
+</div>
+
+<script>
+    var page_config = {
+        voteNumber:'{?$allvote?}',
+        userMoneyBalance:'{?$jieqi_egold?}',
+        bookId:'{?$articleid?}',
+        isInShelf:'{?$is_bookcase?}',  // true  表示已在书架
+        username: "{?$jieqi_username?}",
+        authorName: "{?$jieqi_username?}",
+        userLevel:"{?$jieqi_group?}",
+        userIcon:"{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'l':$jieqi_avatar?}",
+        votes:"{?$jieqi_votes?}",
+        postcheckcode: "{?$postcheckcode?}",
+        callbackPageStr:''
+    }
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script src="{?$jieqi_url?}/style/js/common_chapter.js"></script>
+<script src="{?$jieqi_url?}/style/js/work_detail.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/data.js"></script>

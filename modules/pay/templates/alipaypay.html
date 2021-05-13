@@ -1,0 +1,71 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set $jieqi_pagetitle = "支付宝充值-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<link rel="stylesheet" href="/sink/css/book.css" media="all" />
+<link rel="stylesheet" href="/sink/css/pay.css" media="all" />
+<div class="container wrap1200">
+    <!--left mod -->
+    <div class="i-left">
+<p class="title"><span class="zc"></span>支付方式</p>
+<ul>
+    <li><a href="/modules/pay/buyegold.php?t=alipaypay" data-namecard="false"><span class="money"></span>支付宝</a></li>
+    <li><a href="/modules/pay/buyegold.php?t=zhifu" data-namecard="false"><span class="package"></span>微信</a></li>
+    <li><a href="/modules/pay/buyegold.php?t=paycardpay" data-namecard="false"><span class="ticket"></span>充值卡</a></li>
+</ul>
+<!--论坛 mod -->
+<!--设置 mod -->
+<p class="title"><span class="setting"></span>设置</p>
+<ul>
+        <li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>个人信息</a></li>
+        <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>修改信息</a></li>
+        <li><a href="/personedit.php" data-namecard="false"><span class="pictureInfo"></span>联系方式</a></li>
+        <li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>修改密码</a></li>
+        <li><a href="/setavatar.php" data-namecard="false"><span class="basicInfo"></span>头像设置</a></li>
+        </ul>
+    
+</div>
+<link rel="stylesheet" href="/weixin/Css/public.css" media="screen">
+<link rel="stylesheet" href="/weixin/Css/weui.min.css" media="screen">
+<div class="i-right">
+    <input value="1" id="reviewType" type="hidden">
+    <div class="moneyMod">
+        <div class="i-title">
+            <ul class="ulHd" style="padding-left:30px;">
+                <li data-type="1" class="on">支付宝支付<span></span></li>
+            </ul>
+            <!--筛选条件 mod -->
+        </div>
+<link rel="stylesheet" href="/weixin/Css/public.css" media="screen">
+<link rel="stylesheet" href="/weixin/Css/weui.min.css" media="screen">
+<div class="bd">
+    <form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/alipay.php">
+        <div class="weui_cells_title"><img src="/imagesd/zhifubao.png" width="200" height="58"></div>
+        <div class="weui_cells">
+           <div style="background:#F9F8F7;"</div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label"></label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                <span style="color:#ff4c2f;">支付宝充值</span>
+                    <input class="weui_input" type="hidden" id="username" name="username" placeholder="{?$jieqi_username?}" value="{?$jieqi_username?}"/>
+                </div>
+            </div>
+        </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">金额</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <ul id="price"  class="pay-ul">
+                      <li style="line-height:250%;float:left;"><input type="radio" name="egold" value="50000" class="price radio"> 500元(50000币)</li>
+    									<li style="line-height:250%;float:left;"><input type="radio" name="egold" value="20000" class="price radio"> 200元(20000币)</li>
+    									<li style="line-height:250%;float:left;"><input type="radio" name="egold" value="10000" class="price radio"> 100元(10000币)</li>
+    									<li style="line-height:250%;float:left;"><input type="radio" name="egold" value="5000" class="price radio"> 50元(5000币)</li>
+    									<li style="line-height:250%;float:left;"><input type="radio" name="egold" value="2000" class="price radio"> 20元(2000币)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top:20px;margin:auto;">
+            <input type="submit" name="Submit" value="进入下一步" class="button2" >
+            <input type="hidden" name="act" value="pay">{?$jieqi_token_input?}
+        </div>
+        </form>
+	</div>

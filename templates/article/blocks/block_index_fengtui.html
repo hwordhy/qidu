@@ -1,0 +1,17 @@
+{?section name=i loop=$articlerows?}
+<li style="position:relative"><a href="{?$articlerows[i].url_articleinfo?}"><img class="list_img" src="{?$articlerows[i].url_image?}" onerror="this.src='{?$jieqi_url?}/style/images/default.jpg'"></a>
+    <div class="yudu_back">
+    </div>
+    <div class="yudu">
+        <img src="{?$jieqi_url?}/style/images/eyes.png"><span style="font-size: 12px;">{?$articlerows[i].articlename?}</span><img width="14px" src="{?$jieqi_url?}/style/images/xingx01.png"><span style="font-size: 12px;">{?$articlerows[i].articlename?}</span>
+    </div>
+    <a href="{?$articlerows[i].url_articleinfo?}">
+        <p style="color: #000;">
+            {?$articlerows[i].articlename?}
+        </p>
+    </a>
+    <p style="font-size: 12px;">
+        {?$articlerows[i].author?}
+    </p>
+</li>
+{?/section?}

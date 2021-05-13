@@ -1,0 +1,1 @@
+document.write('在那艘密匙舰的一角，有一个不起眼的物体，没有任何工程师甚至是无上怜悯都不知道它的存在。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;在物件的上面，印有偏见制裁的图标。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;（全文完）');

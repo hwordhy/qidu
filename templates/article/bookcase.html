@@ -1,0 +1,331 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_template = "templates/article/bookcase.html"?}
+{?set $jieqi_pagetitle = "我的书架-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+    <!--我的书架 mod -->
+    <div class="i-title" style="padding-left:30px;">
+        <ul class="ulHd j-title">
+            <li class="on" datatype="0">我的书架<span></span></li>
+            <!--{?section name=i loop=$markclassrows?}-->
+            <!--<li datatype="{?$markclassrows[i].classid?}">第{?$markclassrows[i].classid?}书架<span></span></li>-->
+            <!--{?/section?}-->
+            <!--<div class="screenMod">-->
+                <!--<select class="screenSelect">-->
+                    <!--<option value="-1" selected="selected">移出书架</option>-->
+                    <!--<option value="0">移到默认书架</option>-->
+                    <!--{?section name=i loop=$markclassrows?}-->
+                    <!--<option value="{?$markclassrows[i].classid?}">移到第{?$markclassrows[i].classid?}书架</option>-->
+                    <!--{?/section?}-->
+                <!--</select>-->
+                <!--<span class="screenBtn" onclick="screenBtn()">查询</span>-->
+            <!--</div>-->
+        </ul>
+    </div>
+    <div class="bookshelfMod">
+        <table>
+            <tr class="head">
+                <!--<td style="width: 3px;">&nbsp;</td>-->
+                <td>封面</td>
+                <td class="t2">书名</td>
+                <td class="t3">最新章节</td>
+                <td class="t4">作者</td>
+                <td class="t5">更新时间</td>
+                <td class="t6">状态</td>
+                <td class="t7">操作</td>
+            </tr>
+        </table>
+        <p class="bookNone" style="display: none;"><span></span>您还没有在读的书，快去<a href="/" target="_blank">首页</a>看看吧</p>
+        <div class="page-box">
+            <div class="page-content"></div>
+        </div>
+
+    </div>
+</div>
+</div>
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+<script id="content_template" type="text/x-handlebar-template">
+    {{#each items}}
+    <tr>
+        <input type="hidden" value="{{caseid}}" class="bookId"/>
+        <!--<td style="width: 3px;"><input type="checkbox" id="checkid[]" class="checkbox" name="checkid[]" value="{{caseid}}"></td>-->
+        <td><a href="{{url_articleinfo}}" target="_blank"><img src="{{url_image}}"/></a></td>
+        <td class="t2"><a href="{{url_articleinfo}}" target="_blank">{{articlename}}</a>
+            {{#if isvip}}
+            <span><img src="{?$jieqi_url?}/style/images/vip.gif"/></span>
+            {{else}}
+            {{/if}}
+        </td>
+        <td class="t3">
+            {{#if lastchapter}}
+            <a href="{{url_lastchapter}}" target="_blank">{{lastchapter}}</a>
+            {{else}}
+            <span style="cursor:text; font-size: 12px; line-height: 18px;color: #666;">无最新章节</span>
+            {{/if}}
+        </td>
+        <td class="t4"><a href="javascript:;" target="_blank">{{author}}</a></td>
+        {{#if lastchapter}}
+        <td class="t5">{{lastchapter}}</td>
+        {{else}}
+        <td class="t5">无最新章节</td>
+        {{/if}}
+
+        <td class="t6">
+            {{fullflag}}
+        </td>
+        <td class="t7">
+            {{#if articlemark}}
+            <a href="{{url_articlemark}}" class="goon" target="_blank">继续阅读</a>
+            {{else}}
+            <a href="{?$jieqi_modules['article']['url']?}/articleread.php?id={{articleid}}" class="goon" target="_blank">免费试读</a>
+            {{/if}}
+            <a href="JavaScript:;" class="goon" style="color: #FF0000;" onclick="delMod(this)">移出书架</a>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
+<script>
+    //Handlebars判断方法
+
+    //----方法----
+    var status, free, pageNo, ajaxObj = null,Index=0,_Index=0;;
+    //模块
+    var handlebar_Fn = function (data) {
+        var ncontent_template = Handlebars.compile($("#content_template").html());
+        $(".head").after(ncontent_template(data));
+    }
+    //DataAjax
+    var DataAjax = function (status, free, pageNo) {
+        ajaxObj = $.ajax({
+            type: 'GET',
+            url: '/modules/article/bookcase.php',
+            async: true,
+            dataType: 'JSON',
+            data: {
+                classid: status,       //书架分类
+                //free: free,   //空为全部，true：vip，false:免费
+                page: pageNo, //翻页
+                ajax_gets: 1
+            },
+            success: function (data) {
+                $(".head").siblings().remove();//清空内容
+                if (data.items.length <= 0) {
+                    $('.bookNone').show();
+                    if(status==0){
+                        $('.bookNone').html('<span></span>您还没有在读的书，快去<a href="/" target="_blank">首页</a>看看吧');
+                    }else{
+                        $('.bookNone').html('<span></span>书架暂无书，您可以去<a href="/modules/article/bookcase.php">我的书架</a>挑选添加');
+                    }
+                    $('.page-box').hide();
+                } else {
+                    $('.bookNone').hide();
+                    handlebar_Fn(data);//遍历数据
+                    if (data.pageCount > 1) {
+                        $('.page-box').show();
+                    } else {
+                        $('.page-box').hide();
+                    }
+                    pageFn(data.pageCount, data.currentPage, pageNo);//翻页
+                }
+            }
+        })
+    }
+//    //layer 取消订阅
+//    var havaSub = function (t) {
+//        var self = $(t), t7 = self.closest('.t7'), bookid = self.closest('tr').find('.bookId').val();
+//        layer.confirm('确定要取消该作品的自动订阅吗？', {
+//            btn: ['确定', '取消'], //按钮
+//            title: '自动订阅'
+//        }, function () {
+//            $.ajax({
+//                type: 'get',
+//                url: '/ajax/book/' + bookid + '/autoSubscribe?auto=false',
+//                success: function (data) {
+//                    if (!data.error) {
+//                        if (data.success == true) {
+//                            layer.msg('已经取消自动订阅', {icon: 1, shade: 0.3});
+//                            self.hide();
+//                            self.siblings('.del').after('<b class="autoSub" onclick="autoSub(this)">自动订阅</b>');
+////                                t7.find('.autoSub').show();
+//                        }
+//                    } else {
+//                        layer.msg(data.error.common, {icon: 2, shade: 0.3});
+//                    }
+//                }
+//            });
+//        }, function () {
+//            layer.close()
+//        });
+//    };
+//    //layer 自动订阅
+//    var autoSub = function (t) {
+//        var self = $(t), t7 = self.closest('.t7'), bookId = self.closest('tr').find('.bookId').val();
+//        $.ajax({
+//            type: 'get',
+//            url: '/ajax/book/' + bookId + '/autoSubscribe?auto=true',
+//            success: function (data) {
+//                if (!data.error) {
+//                    if (data.success == true) {
+//                        layer.msg('自动订阅成功！', {icon: 1, shade: 0.3});
+//                        self.hide().siblings('.del').after('<b class="havaSub" onclick="havaSub(this)">已订阅</b>');
+////                            t7.find('.havaSub').show();
+//                    }
+//                } else {
+//                    layer.msg(data.error.common, {icon: 2, shade: 0.3});
+//                }
+//            }
+//        })
+//
+//    };
+    //删除
+    var delMod = function (t) {
+        var self = $(t), trMod = self.closest('tr'), caseid = trMod.find('.bookId').val();
+        if (status == 0) {
+            $.ajax({
+                type: 'post',
+                url: '/modules/article/bookcase.php',
+                data: {
+                    "bid":caseid,
+                    "act":"delete",
+                    "jieqi_token":jieqi_token,
+                    "ajax_gets":1
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success === true) {
+//                            trMod.fadeOut(400, function () {
+//                                $(this).remove();
+//                                //判断当前页是否已经删除了所有数据
+//                                var len = $("tr:not(.head)").length;
+//                                if (len == 0) {
+//                                    window.location.href = "/people/bookshelf";
+//                                }
+//                            });
+                        var len = $("tr:not(.head)").length;
+                        console.log(len);
+                        if (len == 1) {
+                            trMod.hide();
+                            $('.page-box').hide();
+                            DataAjax(status, free, pageNo);
+                        }else{
+                            trMod.fadeOut(400, function () {
+                                $(this).remove();
+                            });
+                        }
+                    }
+                    else{
+                        layer.msg(data.message, {icon: 2, shade: 0.3});
+                    }
+                }
+            })
+        } else {
+            $.ajax({
+                type: 'post',
+                url: '/modules/article/bookcase.php',
+                data: {
+                    "bid":caseid,
+                    "act":"delete",
+                    "jieqi_token":jieqi_token,
+                    "ajax_gets":1
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success === true) {
+                        var len = $("tr:not(.head)").length;
+                        console.log(len);
+                        if (len == 1) {
+                            trMod.hide();
+                            $('.page-box').hide();
+                            DataAjax(status, free, pageNo);
+                        }else{
+                            trMod.fadeOut(400, function () {
+                                $(this).remove();
+                            });
+                        }
+
+                    }
+                    else {
+                    layer.msg(data.message, {icon: 2, shade: 0.3});
+                    }
+                }
+            })
+        }
+
+
+    };
+    //翻页
+    var pageFn = function (pageAll, current, callback) {
+        $('.page-content').pagination({
+            hoverCls: 'ui_hoverbgbd',
+            activeCls: 'ui_bg_bdcolor',
+            pageAll: pageAll,
+            current: current,
+            callback: function (page) {
+                var pageCur = page.getCurrent();//当前页码
+                if(ajaxObj){
+                    ajaxObj.abort();
+                    ajaxObj = null;
+                }
+                DataAjax(status, free, pageCur);
+            }
+        }, function (page) {
+        })
+    }
+
+    //----事件----
+    $('a').attr('data-namecard', false);
+    DataAjax(0, '', 1);  //初始状态
+
+    //title选项卡
+    $('.j-title>li').on("click", function () {
+        $(this).addClass('on').siblings().removeClass('on');
+        $(".head").siblings().remove();//清空内容
+        $('.page-box').hide();//翻页隐藏
+
+        status = $(this).attr('dataType');//0 或  4
+        if (status == 0) {
+            $('title').text('我的书架-{?$jieqi_sitename?}');
+            $('.j-Type>li').eq(Index).addClass('on').siblings().removeClass('on');
+            free=$('.j-Type>li').eq(Index).attr('datatype');
+            if(ajaxObj){
+                ajaxObj.abort();
+                ajaxObj = null;
+            }
+            DataAjax(status, free);
+        } else {
+            $('title').text('我的书架-{?$jieqi_sitename?}')
+            $('.j-Type>li').eq(_Index).addClass('on').siblings().removeClass('on')
+            free=$('.j-Type>li').eq(_Index).attr('datatype');
+            if(ajaxObj){
+                ajaxObj.abort();
+                ajaxObj = null;
+            }
+            DataAjax(status, free);
+        }
+    });
+    //type选项卡
+    $('body').on("click", '.j-Type>li', function () {
+        $(this).addClass('on').siblings().removeClass('on');
+        $(".head").siblings().remove();//清空内容
+        $('.page-box').hide();//翻页隐藏
+
+        if (status == 0) {
+            Index = $(this).index();
+        } else {
+            _Index = $(this).index();
+        }
+        free = $(this).attr('datatype');
+        if(ajaxObj){
+            ajaxObj.abort();
+            ajaxObj = null;
+        }
+        DataAjax(status, free);
+    });
+
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,3 @@
+{?section name=i loop=$articlerows?}{"id":{?$articlerows[i].articleid?},"iconUrlDefault":"{?$articlerows[i].url_image?}","intrduce":"{?$articlerows[i].intro?}","words":{?$articlerows[i].size_c?},"name":"{?$articlerows[i].articlename?}","authorName":"{?$articlerows[i].author?}","tagName":[{?section name=j loop=$articlerows[i].tagname?}"{?$articlerows[i].tagname[j]?}"{?if $j.order != $j.count?},{?/if?}{?/section?}],"isFinished":false,"url":"{?$articlerows[i].url_articleinfo?}","url_index":"{?$articlerows[i].url_read?}","isFinished":{?$articlerows[i].fullflag_n?},"readPv":{?$articlerows[i].allvisit?}}{?if $i.order != $i.count?},{?/if?}{?/section?}
+
+

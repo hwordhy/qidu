@@ -1,0 +1,123 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "sortblocks"?}
+{?set $jieqi_pagetitle = "{$articletitle}-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "30"?}
+<style>
+	.container{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.container .mod {
+    margin-bottom: 18px;
+}
+.mod-block .hd {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.sidebar-menu .bd {
+    padding: 0;
+    background: #fff;
+}
+.container .c-aleft {
+    width: 245px;
+    float: left;
+}
+.sidebar-menu .bd li {
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid #ECF0F0;
+    zoom: 1;
+    vertical-align: top;
+}
+.sidebar-menu .bd li a {
+	font-size: 16px;
+    color: #000;
+    display: block;
+}
+.mod-block .hd h5 span {
+    display: inline-block;
+    line-height: inherit;
+    border-bottom: 1px solid #ff4c2f;
+}
+.hd h5{
+	font-size: 20px;
+	color: #ff4c2f;
+}
+</style>
+<link rel="stylesheet" href="/sink/css/book.css">
+<div class="block10"></div>
+<div class="wrap ranklist">
+<div class="right-cont-box fr rankdata">
+        <div class="comment-r-menu">
+    <ul class="fl comment-status">
+
+            <li class="orderOther cur"  data-ordetype="7"><a style="font-size: 20px;" href="{?$orderrows[i]['url']?}" class="r-cream-btn">{?if $sort == ''?}全部分类{?else?}{?$sort?}{?/if?}</a></li>
+
+    </ul>
+</div><div class="rankdatacont">
+            <div class="tabsbox1">
+                <div class="rankday">
+                    <ul class="clrbtn clrbtna">
+                        <li class="clrbtn1 on"><a href="javascript:;"></a></li>
+                        <li class="clrbtn2"><a href="javascript:;"></a></li>
+                    </ul>
+                    <div class="tabsday-cont">
+                            <div class="tab-cont-1 secd-rank-list">
+                                <div class="listboxw">
+                                    {?section name=i loop=$articlerows?}
+                                        <dl style="margin-bottom: 30px;">                                    
+                                            <dt>
+                                                <a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"></a>
+                                            </dt>                                     
+                                        <dd>  
+                                            <a href="{?$articlerows[i].url_articleinfo?}" class="bigpic-book-name" target="_blank">{?$articlerows[i].articlename?}</a>                                          
+                                             <p>                                             
+                                                <a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].author?}</a> |
+                                                <a href="/all?sort=1" target="_blank">{?$articlerows[i].sort|truncate:4:''?}</a></p>    <p class="big-book-info">    {?$articlerows[i].intro?}    
+</p>                                            <p><span href="javascript:;" target="_blank">{?$articlerows[i].size_c?}字 | </span><span class="red">{?$articlerows[i].lastupdate|date:'Y-m-d'?}更新</span></p>                                       
+                         </dd>                            
+
+                               </dl>
+                                     {?/section?}
+                                </div>
+                            </div>
+                        <div class="loading" style="display: none"><img src="picture/loading.gif" /></div>
+                        <p class="errorshow" style="display: none"><img src="picture/error.png"/></p>
+                    </div>
+                </div>
+            </div>
+            <link rel="stylesheet" href="css/page.css" type="text/css"></link>
+<div class="pages_bottom">
+    {?$url_jumppage?}
+    <ul>
+    </ul>
+</div></div>
+    </div>
+</div>
+<div style="height: 20px;"></div>
+<link rel="stylesheet" href="css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+	var _loginUser = 'basic';
+    var _config = '';
+</script>

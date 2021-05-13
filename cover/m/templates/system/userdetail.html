@@ -1,0 +1,440 @@
+
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "个人中心-{$jieqi_sitename}"?}
+
+<!DOCTYPE html >
+<html>
+<head>
+
+	<title>{?$jieqi_pagetitle?}</title>
+	<style type="text/css">
+		.wx_nav_box {
+			background: #505050;
+			position: relative;
+			height: 44px
+		}
+
+		.wx_nav_box a.logo {
+			position: absolute;
+			left: 50%;
+			margin-left: -27px;
+			top: 0;
+			display: block;
+			font-size: 18px;
+			line-height: 44px;
+		}
+
+		.wx_nav_box .wx_home {
+			position: absolute;
+			left: 10px;
+			top: 0;
+			width: 80px;
+			height: 44px
+		}
+
+		.wx_nav_box .wx_home a {
+			width: 20px;
+			height: 42px;
+			display: inline-block
+		}
+
+		.wx_home img {
+			width: 12px;
+			padding-top: 12px
+		}
+
+		.wx_nav_box a {
+			color: #fff
+		}
+
+		.wx_nav_box .wx_list {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 40px;
+		}
+
+		.wx_list img {
+			width: 30px;
+			display: block;
+			margin-top: 7px;
+			border-radius: 50%;
+		}
+
+		#ad_banner {
+			position: relative;
+			overflow: hidden
+		}
+
+		#ad_banner .change_ico {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			z-index: 9
+		}
+
+		.wx_header {
+			/*overflow: hidden*/
+		}
+
+		.i_cover {
+			position: relative;
+			height: 130px;
+			margin-bottom: 10px;
+			border-bottom: solid 1px #ddd;
+			overflow: hidden;
+			background: #79c2f4;
+			z-index: 0;
+		}
+
+		.i_cover .i_site {
+			position: absolute;
+			top: 15px;
+			right: 35px;
+			z-index: 3;
+		}
+
+		.i_site img {
+			width: 20px;
+		}
+
+		.i_cover .cover {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+		}
+
+		.i_cover .cover img {
+			width: 100%;
+			display: block;
+		}
+
+		.i_cover .i_detail {
+			position: absolute;
+			color: #fff;
+			top: 0;
+			text-align: center;
+			left: 0;
+			z-index: 2;
+			width: 100%;
+		}
+
+		.i_cover .i_detail p {
+			line-height: 24px;
+			font-size: 16px;
+		}
+
+		.i_cover .i_detail p.person {
+			padding: 15px 0 2px;
+			overflow: hidden;
+		}
+
+		.i_cover .i_detail p.person img {
+			width: 50px;
+			border-radius: 50%;
+			border: solid 2px #fff;
+		}
+
+		.i_cover .i_detail p.name img {
+			vertical-align: middle;
+			width: 40px;
+		}
+
+		.i_cover .i_detail p.name span {
+			font-size: 12px;
+			color: #ffe09d;
+			padding-left: 5px;
+			display: inline-block;
+		}
+		#pages_i .authoradmin{
+			width: 92%;
+			height: 50px;
+			position: relative;
+			background: url({?$jieqi_url?}/style/m/images/authoradmin.png) 15px 15px no-repeat #fff;
+			background-size: 20px 20px;
+			/* border-bottom: none; */
+		}
+		#pages_i .authoradmin a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		#pages_i .authoradmin .text{
+			margin-left: 55px;
+			padding-top: 14px;
+		}
+		/*底部随动*/
+
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+	<meta name="keywords" content="{?$meta_keywords?}">
+	<meta name="description" content="{?$meta_description?}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/core.css" media="all" />
+	<link  rel="stylesheet" type="text/css" href="{?$jieqi_url?}/style/m/css/css20170419.css" media="all" />
+	<link rel="shortcut icon" href="{?$jieqi_url?}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery-1.7.2.min.js"></script>
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                // 设计稿的宽度
+                ddesignWidth = 750,
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / ddesignWidth) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(document, window);
+	</script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/mobilescript.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{?$jieqi_url?}/style/m/js/jquery.lazyload.js"></script>
+	<!--[if IE]>
+	<link href="" rel="stylesheet" type="text/css" />
+	<![endif]-->
+</head><!--nav部分-->
+<body class="page_i_body">
+<div class="wrapper p_relative" id="pages_i">
+	<div class="greybg p_absolute" id="J_greybg"></div>
+	<div class="commontitle wx_header p_relative " id="j_commonHeader">
+		<span class="back p_absolute"></span>
+		<span class="logo text text_mid fs30"></span>
+		<span class="nav p_absolute"></span>
+		<div class="menu p_absolute" id="J_menu">
+			<div class="menu_in">
+				<a href="{?$jieqi_url?}/" class="menu_item1 menu_item">首页</a>
+				<a href="{?function jieqi_geturl:article:articlefilter:1:?}" class="menu_item2 menu_item">分类</a>
+				<a href="{?function jieqi_geturl:'article':'articlelist':1::1?}" class="menu_item3 menu_item">完本</a>
+				<a href="{?function jieqi_geturl:article:toplist:1:toplist?}" class="menu_item4 menu_item">排行</a>
+				<!--<a href="/m/wechat/free_book?group=1" class="menu_item5 menu_item">免费</a>-->
+				<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" class="menu_item6 menu_item">书架</a>
+				<a href="{?$jieqi_url?}/userdetail.php" class="menu_item7 menu_item">账户</a>
+			</div>
+		</div>
+	</div>
+	<div class="commontitle_pos"></div><!-- content start -->
+	<div class="bd ">
+		<a href="#">
+			<div class="i_avatar p_relative">
+				<img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}{?if $refresh > 0?}?{?$jieqi_time?}{?/if?}"
+					 class="avatar p_absolute "
+					 style=" width:46px; height:46px; border-radius:100%; left:5.2%;top:50%; margin-top:-23px; overflow: hidden;">
+				<div class="vip_name p_absolute">
+					<span class="text p_absolute">{?$name?}</span>
+					<!--<span class="vip p_absolute" data-level="-1"></span>-->
+					<span class="bar p_absolute"></span>
+					<span class="barred p_absolute" style="width:0%"></span>
+				</div>
+				<!--<a href="/m/wechat/accounts/to/person">-->
+					<!--<span class="arrow_avatar p_absolute"></span>-->
+				<!--</a>-->
+			</div>
+		</a>
+		<!-- 我的账户 start -->
+		<div class="user_account p_relative">
+			<div class="text fz28 color333">我的账户</div>
+			<div class="account fz24 color999">{?$egold?}&nbsp;{?$egoldname?}
+			</div>
+			<a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" class="recharge fz24 p_absolute">充值</a>
+		</div>
+		<!-- 充值记录 start -->
+		<div class="rechargerecord">
+			<a href="{?$jieqi_modules['pay']['url']?}/paylog.php">
+				<div class="text fz28 color333">充值记录</div>
+				<span class="arrow"></span>
+			</a>
+		</div>
+		<!-- 消费记录 start -->
+		<div class="consumerecord">
+			<a href="{?$jieqi_modules['article']['url']?}/myactlog.php">
+				<div class="text fz28 color333">消费记录</div>
+				<span class="arrow"></span>
+			</a> h
+		</div>
+		<!-- 自动订阅 start -->
+		<div class="autosubscribe">
+			<a href="{?$jieqi_modules['obook']['url']?}/buylist.php">
+				<div class="text fz28 color333">自动订阅</div>
+				<span class="arrow"></span>
+			</a>
+		</div>
+
+		<!-- 退出登录  -->
+		<div class="aboutus" style="border-bottom: 1px solid #e6e6e6;">
+			<a href="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}">
+				<div class="text fz28 color333">退出登录</div>
+				<span class="arrow"></span>
+			</a>
+		</div>
+
+		<!--&lt;!&ndash; 作家专区  &ndash;&gt;-->
+		<!--<div class="authoradmin">-->
+			<!--<a href="http://www.motie.com/author_area/index">-->
+				<!--<div class="text fz28 color333">作家专区</div>-->
+			<!--</a>-->
+		<!--</div>-->
+
+	</div>
+	<!-- end content-->
+	<form action="{?$jieqi_user_url?}/logout.php?jumpurl={?$jieqi_thisurl|urlencode?}" method="get" id="logoutform">
+		<div class="logout" id="j_logout">
+			<span>退出登录</span>
+		</div>
+	</form>
+</div>
+<style>
+
+
+	body{
+		position: relative;
+	}
+	.static-nav-mod {
+		position: fixed;
+		background: #fafafa;
+		bottom: 0rem;
+		z-index: 9999;
+		width: 100%;
+		height:5.0rem;
+		font-size:1.4rem;
+	}
+	.static-nav-mod ul {
+		display: -webkit-box;
+		display: -moz-box;
+		display: box;
+		overflow: hidden;
+	}
+	.static-nav-mod ul li {
+		-webkit-box-flex: 1.0;
+		-moz-box-flex: 1.0;
+		box-flex: 1.0;
+		text-align: center;
+		background:#fafafa;
+	}
+	.static-nav-mod ul li.on{
+		background:#fff;
+		height:5.0rem;
+	}
+	.static-nav-mod ul li p{
+		margin-top:.5rem;
+	}
+	.static-nav-mod ul li a {
+		display:block;
+		height:5.0rem;
+		color: #999;
+	}
+	.static-nav-mod ul li a img {
+		width:2.8rem;
+	}
+	.static-nav-mod ul li.on a {
+		display:block;
+		height:100%;
+		color: #fd6974;
+		font-weight:bold;
+	}
+	.mm_mod ul li.on a{
+		color: #00b9ef;
+	}
+	.jw_mod ul li.on a{
+		color: #0fb295;
+	}
+	.static-nav-mod ul li em{
+		display: inline-block;
+		margin: 1.5rem auto auto auto;
+		height: 1.7rem;
+	}
+	.static-nav-mod .m1 .bot1{
+		background: url({?$jieqi_url?}/style/m/images/14875915593686341_41_41.png) no-repeat left top;
+		background-size: 1.7rem 1.7rem;
+		line-height: 1.7rem;
+		padding-left: 2.5rem;
+	}
+	.static-nav-mod .m2 .bot2{
+		background: url({?$jieqi_url?}/style/m/images/148819281821111062_40_40.png) no-repeat left top;
+		background-size: 1.7rem 1.7rem;
+		line-height: 1.7rem;
+		padding-left: 2.5rem;
+	}
+	.static-nav-mod .m3 .bot3{
+		background: url({?$jieqi_url?}/style/m/images/14875915595529179_32_41.png) no-repeat left top;
+		background-size: 1.7rem 1.7rem;
+		line-height: 1.7rem;
+		padding-left: 2.5rem;
+	}
+
+	.static-nav-mod .on span{
+		color: #999;
+	}
+	.static-nav-mod .on .bot1{
+		background: url({?$jieqi_url?}/style/m/images/148819281373818788_41_41.png) no-repeat;
+		background-size: 1.7rem 1.7rem;
+	}
+	.static-nav-mod .on .bot2{
+		background: url({?$jieqi_url?}/style/m/images/148759151425335146_40_41.png) no-repeat;
+		background-size: 1.7rem 1.7rem;
+	}
+	.static-nav-mod .on .bot3{
+		background: url({?$jieqi_url?}/style/m/images/14881928278401681_32_41.png) no-repeat;
+		background-size: 1.7rem 1.7rem;
+	}
+</style>
+<div style="height:50px;"></div>
+<div class="static-nav-mod">
+	<ul>
+		<li class="m1 ">
+			<a href="{?$jieqi_modules['article']['url']?}/bookcase.php" id ="persion">
+				<em class="bot1">书架 </em>
+			</a>
+		</li>
+
+		<li class="m2 ">
+			<a href="{?$jieqi_url?}/">
+				<em class="bot2">精选</em>
+			</a>
+		</li>
+
+		<li class="m3 on">
+			<a href="{?$jieqi_url?}/userdetail.php">
+				<em class="bot3">我的</em>
+			</a>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //没有引入header  获取不到，在这里进行截取
+        var nowHref = $('#go_topup').attr('href');
+        if (nowHref === undefined) {
+            return;
+        }
+        var array = nowHref.split('?');
+        var finalHref = array[0] + '/accounts/pay?' + array[1];
+        $('#go_topup').attr('href', finalHref);
+
+    });
+</script>
+</body>
+<script>
+    $(function () {
+        common_header.init();
+        page_i.init();
+    })
+
+</script>
+</html>
+
+
+
+
+
+

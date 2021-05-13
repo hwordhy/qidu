@@ -1,0 +1,61 @@
+{?if $reviewsnum > 0?}
+<style>
+    .btns .checkcode {
+        width: 80px;
+        height: 25px;
+        margin-top: 3px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+</style>
+<div class="comment_con_newes">
+    {?section name=i loop=$reviewrows?}
+    <div class="comment_item clearfixer j_comment_item" data-commentid="{?$reviewrows[i].topicid?}">
+        <div class="left fl">
+            <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$reviewrows[i].posterid?}" class="avatar" target="_blank">
+                <img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'l':$reviewrows[i].avatar?}" alt="{?$reviewrows[i].poster?}">
+            </a>
+            <div class="nickname">
+                <!--<span class="level v1"></span>-->
+                <a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$reviewrows[i].posterid?}" target="_blank" class="nickname_text">
+                    {?$reviewrows[i].poster?}</a>
+            </div>
+        </div>
+        <div class="right fl">
+            <p class="item_title">
+                {?if $reviewrows[i].istop == 1?}<span class="totop">[置顶]</span>{?/if?}{?if $reviewrows[i].isgood == 1?}<span class="totop">[精华]</span>{?/if?}<a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?tid={?$reviewrows[i].topicid?}" target="_blank">{?$reviewrows[i].title?}</a>
+            </p>
+            <p class="comment-text">{?$reviewrows[i].posttext?}</p>
+            <p class="clearfixer behavior">
+                <span class="fl time">{?$reviewrows[i].replytime|date:Y-m-d H:i:s?}</span>
+                <span class="fr reply">回复(<em class="reply_num">{?$reviewrows[i].replies?}</em>)</span>
+                <span class="fr like">查看(<em class="like_num">{?$reviewrows[i].views?}</em>)</span>
+            </p>
+            <div class="replybox">
+                <span class="replyer">回复@{?$reviewrows[i].poster?}:</span>
+                <textarea name="" cols="30" rows="10"></textarea>
+                <div class="btns clearfixer">
+                    {?if $postcheckcode > 0?}
+                    <span class="code fl">验证码：<input type="text" class="checkcode" size="8" maxlength="8" id="checkcode" name="checkcode" value=""><img src="{?$jieqi_url?}/checkcode.php" style="margin-right: 10px;" onclick="this.src='{?$jieqi_url?}/checkcode.php?rand=' + Math.random();"></span>
+                    {?/if?}
+                    <span class="face fl"></span>
+                    <span class="replying fl">回复</span>
+                </div>
+                <span class="err-tips">不能少于5个字</span>
+            </div>
+        </div>
+    </div>
+    {?/section?}
+</div>
+{?else?}
+<div class="comment_con_newes">
+    <div class="empty-comment-box">
+        <div class="comment-r">
+            <div class="comment-null">
+                <span><img src="{?$jieqi_url?}/style/images/null-icon.png"/></span>
+                <p>暂时没有评价内容，<a href="javascript:;" class="needreview">我来评价</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{?/if?}

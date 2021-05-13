@@ -1,0 +1,1 @@
+document.write('幼女女王，暂时……<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3617/59.gif\" border=\"0\" class=\"imagecontent\"></div>');

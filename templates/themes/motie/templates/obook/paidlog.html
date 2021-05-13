@@ -1,0 +1,72 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_page_template = "templates/book/paidlog.html"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set $jieqi_pagetitle = "结算记录-作家专区-{$jieqi_sitename}"?}
+{?include file="templates/system/author_header.html"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container-fluid container-box author_cash_sum">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      {?include file="templates/system/author_left.html"?}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="m-left">
+        <div class="m-title">
+          <a href="{?$jieqi_modules['obook']['url']?}/mreport.php">结算中心&nbsp; > &nbsp;</a>结算记录
+        </div>
+
+        <!--稿费详情 mod-->
+        <table class="gfTable" cellspacing="0" cellpadding="0">
+          <tr class="head">
+            <td style="width: 500px;">作品名称</td>
+            <td>结算时间</td>
+            <td>总收入</td>
+            <td>待结算</td>
+            <td>本次结算</td>
+            <td>本次未结算</td>
+            <td>付款金额</td>
+            <td>类型</td>
+          </tr>
+          <tr>
+            {?section name=i loop=$paidrows?}
+            <td style="text-align: left;width: 500px;padding-left: 10px;"><a href="{?$jieqi_modules['article']['url']?}/articleinfo.php?id={?$paidrows[i].articleid?}" target="_blank">{?$osalerows[i].obookname?}</a></td>
+            <td>{?$paidrows[i].paytime|date:Y-m-d H:i?}</td>
+            <td>{?$paidrows[i].sumemoney?}</td>
+            <td>{?$paidrows[i].unpaidemoney?}</td>
+            <td>{?$paidrows[i].payemoney?}</td>
+            <td>{?$paidrows[i].remainemoney?}</td>
+            <td>{?$paidrows[i].paymoney|fen2yuan?}元</td>
+            <td>{?$paidrows[i].paidtype?}</td>
+          </tr>
+          {?/section?}
+        </table>
+        <div class="pages_bottom" style="display: block;">
+          {?$url_jumppage?}
+        </div>
+        <div class="exp">
+          <ul>
+            <li class="exp_txt">温馨提示：</li>
+            <li>1. 每月1日开始结算上月收入，一般截止到10日发放完毕（节假日顺延）；</li>
+            <li>2. 作品捧场及订阅等才会产生收入；</li>
+            <li>3. <span style="color:#ff0000;">本页显示的数据为：未计算分成前的数据，分成比例请查看-><a href="{?$jieqi_url?}/persondetail.php" style="color: blue;text-decoration: underline;" target="_blank">基本信息</a>，实际结算金额以“<b style="color:green;">付款金额</b>”一栏为准；</span></li>
+            <li>4. 对收入明细或福利如有疑问，请联系客服。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".n04 a").addClass('active');
+        $("#myallwords").html('/');
+
+
+    });
+</script>
+
+{?include file="templates/system/author_footer.html"?}
+

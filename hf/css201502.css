@@ -1,0 +1,92 @@
+html, body {height: 100%; margin: 0; padding:0}
+body{ background:url("bigbg.gif")/*tpa=http://topic.hongxiu.com/fuli/images/bigbg.gif*/ repeat-y center 30px ;}
+
+a {color: #000000;text-decoration: none;}
+body, font { color: #000000;font-family: Î¢ÈíÑÅºÚ; font-size: 14px;line-height: 26px;}
+table { border: 0 none;margin: 0;padding: 0;}
+em, cite {font-style: normal;}
+
+img {border: medium none;}
+.fl{ float:left}
+ul,li,p{ list-style:none; margin:0;padding:0}
+.bigbg{ background:url("bg.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/bg.jpg*/ no-repeat center 30px}
+.mainbox{ width:960px; margin:0 auto}
+.t_red{ color:#ff3333}
+.t_red a{ color:#ff3333}
+.t_grey{ color:#999}
+.t12{ font-size:12px; line-height:22px}
+
+.topimg{ width: 980px; margin:0px auto}
+.mainbg{ width:988px; margin:0px auto; background:url("aside.gif")/*tpa=http://topic.hongxiu.com/fuli/images/aside.gif*/ repeat-y; position:relative}
+.main{ width:974px; margin:0px auto; overflow:hidden;background:url("rightbg.gif")/*tpa=http://topic.hongxiu.com/fuli/images/rightbg.gif*/ repeat-y left 0}
+
+.nn_top{width:100%;height:23px;background:url("nn_line.gif")/*tpa=http://www.hongxiu.com/images_20111108/nn_line.gif*/ repeat-x;overflow:hidden;border-bottom:1px solid #DDDDDD;padding:5px 0; font-family:ËÎÌå}
+.nn_top a:hover{color:#c00}
+.nn_top dl{width:960px;margin:auto;line-height:26px}
+.nn_top dl dt{float:left}.nn_top dl dt span{color:#999}.nn_top dl dt span a{padding:0 3px}.nn_top dl dt span.redlink{ color:#d00; font-weight:bold}
+.nn_top dl dt span a.redlink,.nn_top dl dt span a.redlink:visited{color:#d00;text-decoration:underline}
+.nn_top dl dd{float:right}
+.nn_top dl dd a{padding:6px 0 2px 26px;background:url("nn_img.gif")/*tpa=http://www.hongxiu.com/images_20111108/nn_img.gif*/ no-repeat;color:#333}
+.nn_top dl a:visited{color:#333}.nn_top dl a:hover{color:#c00}
+.nn_top dl dd a.i_nav{background-position:-103px -127px}
+.nn_top dl dd a.i_wap{background-position:9px -183px}
+.nn_top dl dd a.i_pay{background-position:-98px -180px;padding-left:30px}
+.nn_top dl dd a.i_help{background-position:9px -215px}
+.nn_top dl dd a.i_bbs{background-position:-96px -210px;padding-left:32px}
+.nn_top dl dd a.i_jian{background-position:-99px -249px;padding-left:32px}
+
+
+.left_a{ width:16px; height:236px; position:absolute; left:-8px; top:0; background:url("left_a.gif")/*tpa=http://topic.hongxiu.com/fuli/images/left_a.gif*/ no-repeat}
+.right_a{ width:16px; height:236px; position:absolute; right:-8px; top:0; background:url("right_a.gif")/*tpa=http://topic.hongxiu.com/fuli/images/right_a.gif*/ no-repeat}
+
+
+.nav_left{ position:relative;  width:268px; float:left; height:100%; overflow:hidden;}
+
+
+.rightbg{background:url("nav_lb.gif")/*tpa=http://topic.hongxiu.com/fuli/images/nav_lb.gif*/ repeat-y 0px 0; overflow:hidden; width:100%}
+
+.nav_left ul{width:268px; float:left; overflow:hidden;}
+.nav_left  li{ height:52px; line-height:52px; margin-bottom:1px; background:url("nav_lbg.gif")/*tpa=http://topic.hongxiu.com/fuli/images/nav_lbg.gif*/ no-repeat; float:left; overflow:hidden; cursor:pointer; width:100%}
+.nav_left  li a span{ float:left; cursor:pointer}
+.nav_left  li a{ display:block; font-size:16px; padding-left:34px; color:#f4e8c3; height:52px; position:relative}
+.nav_left  li a .new{ display:block; background:url("new.gif")/*tpa=http://topic.hongxiu.com/fuli/images/new.gif*/ no-repeat -29px 0;  width:28px; height:18px;  margin-top:9px; margin-left:6px}
+.nav_left  li.active a{ background:url("active.gif")/*tpa=http://topic.hongxiu.com/fuli/images/active.gif*/ no-repeat}
+.nav_right{ width:700px; float:right; line-height:32px; font-size:16px;overflow:hidden}
+.nav_right .inner{ background:url("nav_r_t.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/nav_r_t.jpg*/ no-repeat 0px 0; width:620px;padding:40px; color:#633; overflow:hidden }
+.nav_right .inner .tit{ font-size:20px; color:#c33; background:url("line2.png")/*tpa=http://topic.hongxiu.com/fuli/images/line2.png*/ repeat-x left bottom; height:39px;}
+.nav_right .inner strong{ color:#600;}
+.nav_right .inner em{ color:#666; font-size:15px; line-height:26px}
+.nav_right .inner em strong{ color:#c60; font-size:16px; line-height:32px}
+.nav_right .inner br{ height:15px; overflow:hidden; line-height:15px; }
+.yellow{ color:#f60}
+.nav_right .inner li{ display:none}
+.nav_right table td{border-left:1px solid #c60; border-top:1px solid #c60; padding-left:10px;}
+.nav_right table{border-right:1px solid #c60; border-bottom:1px solid #c60}
+.red{ color:red}
+.red2{color:#c33;}
+.f18{ font-size:18px;}
+
+
+
+.bottbg{ background:url("b.png")/*tpa=http://topic.hongxiu.com/fuli/images/b.png*/ no-repeat 0px top; width:1052px; margin:0px auto; height:123px;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod='crop',src='images/b.png')}
+.bott{background:url("foot.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/foot.jpg*/ no-repeat 0px bottom; height:123px;width:974px;margin:0 auto 0;}
+
+
+
+#footer{overflow:hidden;text-align:center;width:974px;margin:0 auto 0; padding:0px 0 32px; clear:both; }
+#yl_foot{color:#b3917b;font-size:12px; }
+#yl_foot  a{font-size:12px; color:#f4e8c3}
+#footer p.sitenav{height:25px;text-align:center;color:#f4e8c3;}
+#footer p.Copyright{text-align:center;font-size:12px;line-height:18px;color:#b3917b;padding-top:8px;font-family:Verdana, Lucida, Arial, Helvetica}
+
+
+.fl_t{ background:url("fj_t.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/fj_t.jpg*/ no-repeat; width:980px; height:67px; text-align:center; padding-top:5px; margin:0px auto}
+.fl_t a{ display:inline-block}
+.fl_sy{ background:url("fl_sy.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/fl_sy.jpg*/ no-repeat; width:153px; height:62px;}
+.fl_sya{ background:url("fl_sya.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/fl_sya.jpg*/ no-repeat; width:153px; height:62px;}
+.hx_sy{background:url("hx_sy.jpg")/*tpa=http://topic.hongxiu.com/fuli/images/hx_sy.jpg*/ no-repeat; width:153px; height:62px;}
+.c999{ color:#999; font-size:12px}
+.c666{ color:#666}
+.f14{ font-size:14px}
+.fc60{ color:#c60}
+

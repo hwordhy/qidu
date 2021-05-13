@@ -1,0 +1,15 @@
+{?section name=i loop=$articlerows?}
+{?if $i['order'] == 1?}
+    <li class="one"><a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><b>{?$i['order']?}</b>{?$articlerows[i].articlename?}</a></li>
+                      {?/if?}
+                      {?if $i['order'] == 2?}
+                      <li class="two"><a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><b>{?$i['order']?}</b>{?$articlerows[i].articlename?}</a></li>
+                      {?/if?}
+                      {?if $i['order'] == 3 ?}
+                      <li  class="three"><a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><b>{?$i['order']?}</b>{?$articlerows[i].articlename?}</a></li>
+                      {?/if?}
+                      {?if $i['order'] > 3 ?}
+                      <li><a href="{?$articlerows[i].url_articleinfo?}" title="{?$articlerows[i].articlename?}"><b>{?$i['order']?}</b>{?$articlerows[i].articlename?}</a></li>
+                      {?/if?}
+
+{?/section?}

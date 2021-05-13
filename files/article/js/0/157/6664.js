@@ -1,0 +1,1 @@
+document.write('因为我要快速搬完本书的前言和章尾ps，所以许多前言和ps就没时间删掉，大家亦可权当乐子看喵～<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;可能有章尾说什么入群答案是卫凌铎，那个是错误的答案，别当真。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;因为入群填那个是不可能进的，看也知道入群答案是要对应问题的<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;卫洛云的弟弟才是对应于卫凌铎。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;虚允被谁包与养的答案怎么也不可能是卫凌铎。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;亦感谢老读者一直 的支持');

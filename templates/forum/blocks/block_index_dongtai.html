@@ -1,0 +1,5 @@
+{?section name=i loop=$topicrows?}
+<li>
+    <a data-msg='{bookid:"1"}' data-control-type="shelf" target="_blank" href="{?function jieqi_geturl:'forum':showtopic:$topicrows[i].topicid:1:1?}">{?$topicrows[i].title?}</a>
+</li>
+{?/section?}

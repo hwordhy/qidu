@@ -1,0 +1,56 @@
+<div class="chapter-page notread"
+
+	 data-chapterid="{?$cid?}"
+
+	 data-nextchapter="{?$cid?}"
+
+	 data-balance="0"
+
+	 data-singleprice="{?$saleprice?}"
+
+	 data-batchprice="{?$saleprice?}"
+
+	 data-ticket="0"
+
+	 data-disBatchPrice="{?$saleprice?}"
+>
+	<h3 class="bookname">{?$obookname?}</h3>
+	<h4 class="chaptername">{?$chaptername?}</h4>
+
+	<p class="author">
+		<span>作者：<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$authorid?}">{?$author?}</a></span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字数：{?$size?}</span>
+	</p>
+	<p class="publishtime">发布时间： {?$lastupdate|date:"Y-m-d H:i:s"?}</p>
+
+	<div class="page-content AihLvCAb">
+    <pre ondragstart="return false" oncopy="return false;" oncut="return false;" oncontextmenu="return false"
+		 class="note gKCvvNCavZl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{?$summary?}</pre>
+
+	</div>
+	<i class="line"></i>
+	<div class="subscribe-box">
+		<h4 class="box-title">这是VIP章节 &nbsp;需要订阅后才能阅读</h4>
+		<div class="subscribe-con clearfixer">
+			<div class="con-item j-single active fl">
+				<div class="subscribe-text active fl">
+					订阅本章
+				</div>
+				<div class="subscribe-info fl">
+					<p class="info-chaptername">章节：{?$chaptername?}</p>
+					<p class="info-chapternum">字数：{?$size?}字 · 1章</p>
+					<p class="info-paynum">需支付 ：
+						<span class="red">{?$saleprice?}</span> {?$egoldname?}</p>
+					<p class="info-balance">账户余额：<span>{?$useremoney?}</span> {?$egoldname?}</p>
+					<p class="info-btn j-single-buy show">确认订阅</p>
+					<div class="paybox_auto subscribe_auto"><p class="j-single-auto"><i class="show">
+					</i></p> &nbsp;不再显示订阅提醒，自动订阅下一章
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+

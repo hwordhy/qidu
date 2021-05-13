@@ -1,0 +1,114 @@
+<div id="main" style="display: none;"></div>
+<link rel="stylesheet" href="css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+	var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="/sink/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/sink/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="/sink/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="/sink/js/vendor.js"></script>
+<link rel="stylesheet" href="/sink/css/ui_common.css">
+<script src="/sink/js/index_header.js"></script>
+
+
+
+<div class="footer-box" style="clear:both;">
+        <p class="channel-font">
+            <a target="_blank">友情链接：</a>
+            {?$jieqi_pageblocks['700']['content']?} 
+        </p>
+        <p class="footer-announce">
+                Copyright  All Rights Reserved.   泰州彩霞文化传媒有限公司 版权所有<br>
+             苏ICP备19046600号  丨  安全联盟
+        </p>
+        <p class="bei">
+            <a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202012091700010" target="_blank"><img src="/sink/picture/b-1.png" /></a>
+            <a href="http://www.bj.cyberpolice.cn/index.do" target="_blank"><img src="/sink/picture/b-2.png" /></a>
+            <a href="http://www.12377.cn/" target="_blank"><img src="/sink/picture/b-3.png" /></a>
+            <a href="http://www.12377.cn/node_548446.htm" target="_blank"><img src="/sink/picture/b-4.png" /></a>
+        </p>
+    </div>
+<div class="rfloat">
+    <ul>
+        <li class="r-1"><a href="/ssss.php"><i></i><span>最近阅读</span></a></li>
+        <li class="r-2"><a href="/modules/pay/buyegold.php" >
+            <i></i><span>充值</span></a></li>
+        <li class="r-3">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=3254796894&site=qq:3254796894&menu=yes"><i></i><span>客服</span></a>
+            </li>
+
+    </ul>
+</div><link rel="stylesheet" href="/sink/css/index_header.css" type="text/css"
+      class="mmyqwhref"/>
+<div class="secondnav" id="back-to-top" style="display: none;">
+    <div class="wrap1200">
+        <div class="secondnav-l fl">
+            <ul>
+                    <li><a href="/" >首页</a></li>
+                    <li class="nav_book" ><a href="{?$jieqi_modules['article']['url']?}/articlefilter.php" >书库</a></li>
+                    <li class="nav_rank" ><a href="{?$jieqi_modules['article']['url']?}/top.php" >排行</a></li>
+                    <li class="nav_jingpin" ><a href="/modules/pay/buyegold.php" >充值</a></li>
+                    <li  ><a  href="/modules/article/myarticle.php" >作家专区</a></li>
+                    <li class="nav_bbs" ><a href="/" target="_blank">手机版</a></li>
+                    <li class="nav_reward" ><a href="/fuli.htm" >福利</a></li>
+            </ul>
+        </div>
+        <div class="secondnav-r fr">
+
+            <div class="nav-login">
+                    {?if $jieqi_userid == 0?}
+                    <a href="/login.php" class="login-user" >登录</a>
+                        <a href="/register.php" class="register">注册</a>
+                        {?else?}
+                        <a href="{?$jieqi_url?}/userdetail.php" target="_blank" class="motie-login">{?$jieqi_username?}</a>
+                        <a href="{?$jieqi_user_url?}/logout.php">退出</a>
+                        {?/if?}
+                </div>
+
+            <div class="fr lateread">
+                <a href="/ssss.php"  class="lateread_text">最近阅读</a>
+            </div>
+
+                <div class="searchbox">
+
+                        <div class="searchbox-inner">
+                                <form name="t_frmsearch" method="post" action="{?$jieqi_modules['article']['url']?}/search.php">
+                                    <input type="text" autocomplete="off" name="searchkey" placeholder="找书、找人" class="searchinput" value="">
+                                    <i class="search-icon"></i>
+                                    <input type="button" value="" class="searchbtn" style="background-color:#333333"/>
+                                    <span class="loadIcon"></span>
+                                </form>
+                                </div>
+</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/sink/js/index.js"></script>
+
+</body>
+</html>
+<script type="text/javascript" src="/sink/js/data.js"></script>
+
+<script>
+    $(".nav_index").addClass("curr");
+</script>

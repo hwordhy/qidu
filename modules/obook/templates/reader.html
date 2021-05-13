@@ -1,0 +1,253 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <!--<![endif]--><head>
+
+<title>{?$article_title?}-{?$jieqi_title?}-{?$sortname?}-{?$jieqi_sitename?}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$meta_description?}" />
+<meta name="author" content="{?$meta_author?}" />
+<meta name="copyright" content="{?$meta_copyright?}" />
+<script type="text/javascript" charset="utf-8">
+	var _Profile = {
+		id: 0,
+		type: "basic",
+		icon: "",
+		name: "",
+		site: "ruoxia"
+	}
+	var _inlineCodes = [];
+    var _inlineRun = function(fn){
+    	_inlineCodes.push(fn);
+    }
+</script>
+<link rel="stylesheet" rev="stylesheet" href="/sink/css/base.css?bust=201511230131436" type="text/css" media="all" />
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/common.js"></script>
+<script type="text/javascript">
+<!--
+var url_previous = "{?$url_previous?}";
+var url_next = "{?$url_next?}";
+var url_index = "{?$url_index?}";
+var articleid = "{?$articleid?}";
+var chapterid = "{?$chapterid?}";
+function jumpPage() {
+  var event = document.all ? window.event : arguments[0];
+  if (event.keyCode == 37) document.location = url_previous;
+  if (event.keyCode == 39) document.location = url_next;
+  if (event.keyCode == 13) document.location = url_index;
+}
+document.onkeydown=jumpPage;
+-->
+</script>
+<style>
+.cont-bom{
+	background-color: #ff4c2f;
+	color: #fff;
+	padding: 10px 20px 10px 20px;
+	border-radius: 10px;
+}
+
+</style>
+</head>
+{?include file="sink/header.html"?} 
+<div class="wrap">
+			<div class="container">
+				<div class="c-center">
+					<div id="main">
+
+						<div class="mod-s" style="text-align: center;" id="chapter924915" data-chapter-id="924915" data-is-free="true" data-title="{?$article_title?}-{?$jieqi_title?}-{?$sortname?}-{?$jieqi_sitename?}"> 
+						<div class="hd">
+						</div>
+						     <div class="bd" id="chapter_bd_924915">
+								       <h1 id="chapter_title_924915">{?$chaptername?}</h1>
+									   <p class="info" id="chapter_author_924915">作者：<a class="blue" href="{?function jieqi_geturl:'system':'user':$authorid?}">{?$author?}</a>
+									      <span class="divide">|
+										  </span>发布时间：{?$chaptertime|date:'Y-m-d H:i'?}
+										  <span class="divide">|</span>字数：{?$chaptersize_c?}</p>
+							<div class="page-body">
+							      <div class="page-content " id="ChapterContent924915">
+								      <div id="acontent" class="acontent">
+	<div id="loadinginfo" style="width:600px;position:absolute;z-index:1;top:400px;left:0px;width:100%;font-size:15px;color:blue;text-align:center;">正在载入图片，请稍候...</div>
+	<div id="frontdiv" style="position:absolute;z-index:10;border:0px;"><img src="{?$jieqi_modules['obook']['url']?}/images/front.gif" id="frontimage"></div>
+	<div class="imgchapter" style="text-align:center;">
+	<script type="text/javascript">
+	{?section name=i loop=$picrows?}
+	document.write('<img id="obookimage{?$i['order']?}" src="{?$picrows[i].url?}" class="imagecontent" {?if $i['index']==0?}onload="showfront()" {?/if?}>');
+	{?/section?}
+	</script>
+	</div>
+</div>
+							   </div>
+							   </div></div><div class="ft"><div class="ft-bd"><div class="control" style="margin-bottom: 20px;">
+							   <span id="chapter_numbers_924835">
+							   <a  href="{?function jieqi_geturl:'article':'article':$articleid:'info'?}#write" class="comment cont-bom"><i></i>回应</a>
+							   <a href="{?$url_index?}" class="cont-bom"><i></i>回目录</a>
+							   <a href="{?$url_previous?}" class="cont-bom"><i></i>上一章</a>
+							   <a href="{?$url_next?}" class="cont-bom"><i></i>下一章</a></span>
+							   
+							   
+							   </div></div></div></div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="footer">
+			{?include file="sink/footer.html"?} 
+</div>
+		<script>
+			_inlineRun(function(){
+				
+				require(["kernel","mo/ui/Tabs"], 
+				function(core, Tabs){
+					var zone1 = $(".pattern-home-column3");
+					
+					new Tabs({
+						toggleItem: zone1.find(".mask li"),
+						handles: zone1.find(".handles img"),
+						auto: true,
+						handleCurrentClass: "active"
+					});
+					
+					var updateList = $(".pattern-update-list");
+					new Tabs({
+						toggleItem: updateList.find("table"),
+						handles: updateList.find(".handles span"),
+						handleCurrentClass: "active"
+					});
+					
+					var comList = $(".reviews");
+					new Tabs({
+						toggleItem: comList.find(".review-item"),
+						handles: comList.find(".tab-choose a"),
+						handleCurrentClass: "active"
+					});
+					
+					var comList = $(".reviews");
+					new Tabs({
+						toggleItem: comList.find(".items"),
+						handles: comList.find(".donate-item"),
+						handleCurrentClass: "active"
+					});
+					
+					$(".pattern-slide-ad").each(function(){
+						var slideAd =  $(this);
+						if( slideAd.length && slideAd.find("a").length > 1 ){
+							new Tabs({
+								toggleItem: slideAd.find("a"),
+								handles: slideAd.find("span"),
+								auto: true,
+								handleCurrentClass: "active",
+								animate: "opacity"
+							})
+						}
+					});
+					
+					$(".pattern-rank").each(function(){
+						var mod = $(this), handles = mod.find(".handles");
+						if(handles.length){
+							new Tabs({
+								toggleItem: mod.find("ol"),
+								handles: handles.find("span"),
+								handleCurrentClass: "active"
+							})
+						}
+					});
+					
+					var shelf = $(".shelf");
+					if( shelf.length ){
+						var shelflist = shelf.find(".bd"),
+							table = shelflist.find("table tbody");
+						
+						var loaded = false;
+						var getMoreShelf = function( callback ){
+							$.ajax({
+								url: "/ajax/home/book/reading",
+								data: { bookIds: [shelf.find(".primary").data("book-id")], count: 5 },
+								cache: false,
+								success: function( html ){
+									loaded = true;
+									table.append( html );
+									callback();
+								}
+							})
+						}
+						
+						var showMoreBtn = shelf.find(".show");
+						showMoreBtn.click(function(){
+							if( !loaded ){
+								getMoreShelf(function(){
+									shelflist.slideToggle("fast");
+									showMoreBtn.toggleClass("showed");
+								});
+							}else{
+								shelflist.slideToggle("fast");
+								showMoreBtn.toggleClass("showed");
+							}
+						});
+						
+						shelf.find(".bd").delegate("tr", "mouseenter", function(){
+							//control 只能使用Js设置属性显示
+							//因为 ie6 需要reflow 才能显示
+							$(this).addClass("hover").find(".control").show();
+						}).delegate("tr", "mouseleave", function(){
+							$(this).removeClass("hover").find(".control").hide();
+						})
+					}
+				})
+			})
+		</script>
+
+		<script src="/sink/js/jquery.min.js"></script>
+<script>
+	var require = {
+		baseUrl: "{?$jieqi_url?}/sink/js",
+		urlArgs: "bust="+201511261704,
+		waitSeconds: 15,
+		deps: ["index"]
+	}
+</script>
+<script src="/sink/js/require.js"></script>
+
+				</body></html>
+
+<script>
+$.get("/extends/api/allvisit/allvisit.php", { articleid:{?$article_id?}, number:1 } );
+</script>
+
+{?if $content_showtype == 'txt' || $chapterdisplay == 1?}
+
+{?else?}
+<script type="text/javascript">
+function getx(e){ 
+  var l=e.offsetLeft; 
+  
+  while(e=e.offsetParent){ 
+    l+=e.offsetLeft; 
+  } 
+  return(l+'px'); 
+} 
+function gety(e){ 
+  var l=e.offsetTop; 
+  while(e=e.offsetParent){ 
+    l+=e.offsetTop; 
+  } 
+  return(l+'px'); 
+} 
+function showfront(){
+  var frontdiv=document.getElementById('frontdiv');
+  var frontimage=document.getElementById('frontimage');
+  var obookimage=document.getElementById('obookimage1');
+  var loadinginfo=document.getElementById('loadinginfo');
+  loadinginfo.style.visibility='hidden';
+  frontdiv.style.left=getx(obookimage);
+  frontdiv.style.top=gety(obookimage);
+//  frontimage.width=obookimage.width;
+//  frontimage.height=obookimage.height;
+}
+
+</script>
+{?/if?}

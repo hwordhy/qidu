@@ -1,0 +1,24 @@
+<div class="chapter-page"
+	 data-chapterid="{?$chapterid?}"
+	 data-nextisvip="{?$next_isvip?}"
+	 data-isvip="{?$chapterisvip?}"
+	 data-nextchapter="{?$next_chapterid?}"
+	 data-prechapterid="{?$previous_chapterid?}">
+
+	<h3 class="bookname">{?$articlename?}</h3>
+	<h4 class="chaptername">{?$jieqi_title?}</h4>
+
+	<p class="author">
+		<span>作者：<a href="javascript:;">{?$author?}</a></span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字数：{?$chaptersize_c?}</span>
+	</p>
+	<p class="publishtime">发布时间： {?$chaptertime|date:'Y-m-d H:i'?}</p>
+	<div class="page-content">
+		<pre class="note">{?$jieqi_content?}</pre>
+	</div>
+	<ul class="chapter-behavior">
+		<li class="behavior-comment"><span></span>评论</li>
+		<li class="behavior-donate"><span></span>打赏</li>
+	</ul>
+</div>
+

@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" xmlns:wb="http://open.weibo.com/wb"> <!--<![endif]--><head>
+<title>{?$article_title?}-{?$sortname?}-{?$jieqi_sitename?}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$intro|truncate:500:'..'?}" />
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}">
+<script type="text/javascript" charset="utf-8">
+	var _Profile = {
+		id: 0,
+		type: "basic",
+		icon: "",
+		name: "",
+		site: "ruoxia"
+	}
+	var _inlineCodes = [];
+    var _inlineRun = function(fn){
+    	_inlineCodes.push(fn);
+    }
+</script>
+<style>
+.cont-li{
+		padding-right: 40px;
+margin-right: 20px;
+width: 320px;
+height: 44px;
+line-height: 44px;
+display: inline-block;
+font-size: 14px;
+overflow: hidden;
+position: relative;
+vertical-align: middle;
+	}
+	.cont-li a{
+		font-size: 14px;
+	}
+	.mod{
+		padding: 20px;
+	}
+</style>
+<link rel="stylesheet" rev="stylesheet" href="/sink/css/base.css?bust=201511230131436" type="text/css" media="all" />
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/common.js"></script>
+<link rel="stylesheet" href="/sink/css/work_detail.css">
+
+</head>
+{?include file="sink/header.html"?} 
+<div class="wrap1200 catebg" style="display: block;">
+		<div class="cate-tit">
+				<a href="{?$url_articleinfo?}"><h2>{?$articlename?}</h2></a>
+				</div>
+				<div class="mod pattern-fill-container-mod chapter-list">
+						{?section name=i loop=$chapterrows?}
+							{?if $chapterrows[i].chaptertype > 0?}
+								{?if $i['order'] > 1?}</ul></div>{?/if?}
+								<div class="hd">
+								<h2><i></i>{?if $chapterrows[i].chaptername == ''?}章节目录{?else?}{?$chapterrows[i].chaptername?}{?/if?}</h2>
+								{?if $chapterrows[i].isvip == 0?}{?/if?}
+								</div>
+								{?if $i['order'] < $i['count']?}<div class="bd"><ul class="float-list fill-block">{?/if?}
+							{?else?}
+								{?if $i['order'] == 1?}<div class="bd"><ul class="float-list fill-block">{?/if?}
+								{?if $chapterrows[i].isvip > 0?}
+								<li class="cont-li" id="chapter915844" createdate="{?$chapterrows[i].lastupdate|date:'Y-m-d H:i'?}更新，共{?$chapterrows[i].size_c?}字，价格：{?$chapterrows[i].saleprice?}">
+									<img style="margin-top: -5px;" src="/sink/image/vip.gif" alt="vip">
+									<a href="{?$chapterrows[i].url_chapter?}" class="isvip name">{?$chapterrows[i].chaptername?}</a>
+									<span class="time">{?$chapterrows[i].lastupdate|date:'m-d'?}</span>
+								</li>
+								{?else?}
+								<li class="cont-li" id="chapter915844" createdate="{?$chapterrows[i].lastupdate|date:'Y-m-d H:i'?}">
+								
+									<a href="{?$chapterrows[i].url_chapter?}" class="name">{?$chapterrows[i].chaptername?}</a>
+									<span class="time">{?$chapterrows[i].lastupdate|date:'m-d'?}</span>
+								</li>
+								{?/if?}
+								{?if $i['order'] == $i['count']?}</ul></div>{?/if?}
+							{?/if?}
+						{?/section?}	
+													</div>
+				</div>
+			</div>
+
+
+{?include file="sink/footer.html"?} 
+
+<script>
+$.get("/extends/api/allvisit/allvisit.php", { articleid:{?$article_id?}, number:1 } );
+</script>

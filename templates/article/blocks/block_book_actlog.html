@@ -1,0 +1,26 @@
+{?section name=i loop=$actlogrows?}
+  <p>
+    <span class="reader ui_color">{?$actlogrows[i].uname?}</span>
+    {?if $actlogrows[i].actname_n == "tip"?}
+    <span class="desc">打赏了</span>
+    <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}{?$egoldname?}</span>
+    {?elseif $actlogrows[i].actname_n == "buychapter"?}
+    <span class="desc">订阅了价值</span>
+    <span class="motiecoin ui_color">{?$actlogrows[i].egold?}</span>
+    {?$egoldname?}的
+    <span class="motiecoin ui_color">章节</span>
+    {?elseif $actlogrows[i].actname_n == "vipvote"?}
+    <span class="desc">打赏了</span>
+    <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}张{?$actlogrows[i].actname?}</span>
+    {?elseif $actlogrows[i].actname_n == "poll"?}
+    <span class="desc">打赏了</span>
+    <span class="motiecoin ui_color">{?$actlogrows[i].actnum?}张{?$actlogrows[i].actname?}</span>
+    {?else?}
+    <span class="desc">打赏了价值</span>
+    <span class="motiecoin ui_color">{?$actlogrows[i].egold?}</span>
+    {?$egoldname?}的
+    <span class="motiecoin ui_color">{?$actlogrows[i].actname?}</span>
+    {?/if?}
+    <span class="time">{?$actlogrows[i].addtime|date:'Y-m-d H:i:s'?}</span>
+  </p>
+{?/section?}

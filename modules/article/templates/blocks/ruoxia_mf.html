@@ -1,0 +1,18 @@
+{?section name=i loop=$articlerows?}
+<li class="pattern-column2 column-2 privilege">
+                        <div class="left">
+                            <a href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="icon">
+                                <img src="{?$articlerows[i].url_image?}" width="90" height="126" alt="{?$articlerows[i].articlename?}">
+                            </a>
+                        </div>
+                        <div class="right">
+                            <h5><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].articlename?}</a></h5>
+                            <p class="summary  ellipsis">{?$articlerows[i].intro|truncate:166:'...'?}
+                            </p>
+                            <p class="info">
+                                                            ×÷Õß£º<a href="{?function jieqi_geturl:'system':'user':$articlerows[i].authorid?}" class="name" target="_blank">{?$articlerows[i].author?}</a>
+                            </p>
+                        </div>
+                    </li>
+					
+					{?/section?}

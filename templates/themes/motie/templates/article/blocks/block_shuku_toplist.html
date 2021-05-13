@@ -1,0 +1,5 @@
+		{?section name=i loop=$articlerows?}
+	<li{?if $i.order == 1?} class="first"{?elseif $i.order == 2?} class="second"{?elseif $i.order == 3?} class="third"{?/if?}><a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}"><i>{?$i.order?}</i><em>[{?$articlerows[i].sort?}]</em></a>
+            <a href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a>
+            <a title="加入书架" href="javascript:mark({?$articlerows[i].articleid?});" class="jia"></a></li>
+		{?/section?}

@@ -1,0 +1,66 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_page_template = "templates/pay/paylog.html"?}
+{?set $jieqi_pagetitle = "充值记录-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+  <!--我的磨铁币 mod -->
+  <div class="i-title" style="padding-left:30px;">我的{?$egoldname?}</div>
+  <div class="moneyBg">
+    <span class="m1">账户余额</span>
+    <span class="m2"><i>{?$jieqi_egold?}</i><b>{?$egoldname?}</b></span>
+    <a href="{?$jieqi_modules['pay']['url']?}/buyegold.php" target="_blank" class="m4">立即充值</a>
+  </div>
+  <div class="moneyMod">
+    <div class="i-title">
+      <ul class="ulHd"  style="padding-left:30px;">
+        <li data-type="1">充值记录<span></span></li>
+      </ul>
+      <!--&lt;!&ndash;筛选条件 mod &ndash;&gt;-->
+      <!--<div class="screenMod">-->
+        <!--<select class="screenSelect" onchange="changeMod(this)">-->
+          <!--<option value="7">最近一个月交易记录</option>-->
+          <!--<option value="8">最近三个月交易记录</option>-->
+          <!--<option value="9">三个月之前交易记录</option>-->
+        <!--</select>-->
+        <!--<span class="screenBtn" onclick="screenBtn()">查询</span>-->
+      <!--</div>-->
+    </div>
+    <div class="moneyBd">
+      <!--充值记录table mod -->
+      <div class="subList">
+        <!--head-->
+        <table>
+          <tr class="head">
+            <td class="t1">购买日期</td>
+            <td>{?$egoldname?}</td>
+            <td>充值金额</td>
+            <td class="t4">详细说明</td>
+            <td class="t5">交易状态</td>
+          </tr>
+        </table>
+        <table id="rechangeTab">
+          {?section name=i loop=$paylogrows?}
+          <tr>
+            <td class="t1">{?$paylogrows[i].buytime|date:'Y-m-d H:i:s'?}</td>
+            <td>{?if $paylogrows[i].payflag_n > 0?}+{?/if?}{?$paylogrows[i].egold?}</td>
+            <td>{?$paylogrows[i].egold|fen2yuan?}</td>
+            <td class="t4"><b>{?$paylogrows[i].paytype?}</b></td>
+            <td class="t5"><b style="{?if $paylogrows[i].payflag_n > 0?}color: #008000;{?else?}color: #FF0000;{?/if?}">{?$paylogrows[i].payflag?}</b></td>
+          </tr>
+          {?/section?}
+        </table>
+        <!--翻页-->
+        <link rel="stylesheet" href="{?$jieqi_url?}/style/css/page.css" type="text/css">
+        <div class="pages_bottom" id="pageForm">
+          {?$url_jumppage?}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/page.js"></script>
+</body>
+</html>

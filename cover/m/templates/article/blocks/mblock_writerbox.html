@@ -1,0 +1,10 @@
+<ul class="ulnav">
+  <li><a class="db cf" href="{?$article_static_url?}/newarticle.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee4c;</i>发表新作</a></li>
+  <li><a class="db cf" href="{?$article_dynamic_url?}/masterpage.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee48;</i>管理小说</a></li>
+  {?if $jieqi_modules['obook']['publish'] > 0?}
+  <li><a class="db cf" href="{?$jieqi_modules['obook']['url']?}/masterpage.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee42;</i>收入管理</a></li>
+  <li><a class="db cf" href="{?$jieqi_modules['obook']['url']?}/mreport.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee46;</i>销售月报</a></li>
+  {?/if?}
+  <li><a class="db cf" href="{?$article_dynamic_url?}/newdraft.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee49;</i>新建草稿</a></li>
+  <li><a class="db cf" href="{?$article_dynamic_url?}/draft.php"><em class="iconfont fr">&#xee6a;</em><i class="iconfont">&#xee51;</i>管理草稿</a></li>
+</ul>

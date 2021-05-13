@@ -1,0 +1,23 @@
+<ul class="goodbook-b">
+{?section name=i loop=$articlerows?}
+{?if $i.order % 4 == 0?}
+</ul>
+<ul class="goodbook-b">
+{?/if?}
+<dl class="book-block">
+  <dt><a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"
+         href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img class="lazyimg" data-original="{?$articlerows[i].url_image?}"/></a></dt>
+  <dd>
+    <a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"
+       href="{?$articlerows[i].url_articleinfo?}" class="book-name" target="_blank">
+      {?$articlerows[i].articlename|truncate:20?}</a>
+    <span data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"
+          class="book-info">{?$articlerows[i].intro?}</span>
+    <span class="book-author">作者：<a
+            data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf"
+            href="javascript:;" target="_blank">{?$articlerows[i].author?}</a></span>
+  </dd>
+</dl>
+{?/section?}
+</ul>
+

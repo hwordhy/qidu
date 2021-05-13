@@ -1,0 +1,155 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "最近阅读-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<style>
+    .t22{
+        width: 255px;;
+    }
+</style>
+
+<div class="container wrap1200">
+          <!--left mod -->
+	<div class="i-left">
+            <!--关注中心 mod -->
+            <p class="title"><span></span>关注中心</p>
+            <ul>
+                <li><a href="/modules/article/bookcase.php" data-namecard="false"><span></span>我的书架</a></li>
+                <li><a href="http://www.motie.com/people/recentread" data-namecard="false"><span class="readed"></span>最近阅读</a></li>
+                <li><a href="/modules/article/myreviews.php" data-namecard="false"><span class="bookreview"></span>我的评论</a></li>
+                </ul>
+            <!--资产中心 mod -->
+            <p class="title"><span class="zc"></span>资产中心</p>
+            <ul>
+                <li><a href="/modules/pay/paylog.php" data-namecard="false"><span class="money"></span>充值记录</a></li>
+                <li><a href="/modules/article/myactlog.php?act=tip" data-namecard="false"><span class="package"></span>打赏记录</a></li>
+                <li><a href="/modules/obook/buylist.php" data-namecard="false"><span class="ticket"></span>我的订阅</a></li>
+                <li><a href="/modules/pay/buyegold.php" data-namecard="false"><span class="ticket"></span>充值</a></li>
+            </ul>
+    
+            <!--设置 mod -->
+            <p class="title"><span class="setting"></span>设置</p>
+            <ul>
+                <li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>个人信息</a></li>
+                <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>修改信息</a></li>
+                <li><a href="/setavatar.php" data-namecard="false"><span class="pictureInfo"></span>修改头像</a></li>
+                <li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>修改密码</a></li>
+                </ul>
+                <p class="title"><span class="setting"></span>站内消息</p>
+                <ul>
+                    <li><a href="/message.php?box=inbox" data-namecard="false"><span class="basicInfo"></span>我的消息</a></li>
+                    <li><a href="/message.php?box=outbox" data-namecard="false"><span class="pictureInfo"></span>我发送的</a></li>
+                    <li><a href="/newmessage.php" data-namecard="false"><span class="basicInfo"></span>写消息</a></li>
+                    <li><a href="/newmessage.php?tosys=1" data-namecard="false"><span class="basicInfo"></span>意见反馈</a></li>
+                    </ul>
+        </div>
+    
+    <!--right mod -->
+        <div class="i-right">
+            <!--我的书架 mod -->
+            <div class="i-title" style="padding-left:30px;">最近阅读</div>
+            <div class="bookshelfMod">
+                <table>
+                    <tbody><tr class="head">
+                        <td class="t22">书名</td>
+                        <td class="t22">目前阅读</td>
+                        <td class="t22">操作</td>
+                        <td class="t22">移除</td>
+                    </tr>
+                    <script>
+                                xst=localStorage.getItem("xst");
+                                xti=localStorage.getItem("xti");
+                                xurl=localStorage.getItem("xurl");
+                                xst1=localStorage.getItem("xst1");
+                                xti1=localStorage.getItem("xti1");
+                                xurl1=localStorage.getItem("xurl1");
+                                xst2=localStorage.getItem("xst2");
+                                xti2=localStorage.getItem("xti2");
+                                xurl2=localStorage.getItem("xurl2");
+                                xst3=localStorage.getItem("xst3");
+                                xti3=localStorage.getItem("xti3");
+                                xurl3=localStorage.getItem("xurl3");
+                                xst4=localStorage.getItem("xst4");
+                                xti4=localStorage.getItem("xti4");
+                                xurl4=localStorage.getItem("xurl4");
+if (xst!==null) {
+                                    document.writeln("");
+                                    document.writeln("                    <tr>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl+"\' target=\'_blank\' data-namecard=\'false\'>"+xst+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl+"\' target=\'_blank\' data-namecard=\'false\'>"+xti+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'"+xurl+"\' class=\'goon\' data-namecard=\'false\'>继续阅读</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'\' class=\'goon\' data-namecard=\'false\' id=\'del\' >移除</a></td>");
+                                    document.writeln("                            </tr>");
+                                    del.onclick=function(){
+                                        localStorage.removeItem("xurl");
+                                        localStorage.removeItem("xst");
+                                        localStorage.removeItem("xti");
+                                    }
+                                }
+                                if (xst1!==null) {
+                                    document.writeln("");
+                                    document.writeln("                    <tr>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl1+"\' target=\'_blank\' data-namecard=\'false\'>"+xst1+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl1+"\' target=\'_blank\' data-namecard=\'false\'>"+xti1+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'"+xurl1+"\' class=\'goon\' data-namecard=\'false\'>继续阅读</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'\' class=\'goon\' data-namecard=\'false\' id=\'del1\' >移除</a></td>");
+                                    document.writeln("                            </tr>");
+                                    del1.onclick=function(){
+                                        localStorage.removeItem("xurl1");
+                                        localStorage.removeItem("xst1");
+                                        localStorage.removeItem("xti1");
+                                    }
+                                }if (xst2!==null) {
+                                    document.writeln("");
+                                    document.writeln("                    <tr>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl2+"\' target=\'_blank\' data-namecard=\'false\'>"+xst2+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl2+"\' target=\'_blank\' data-namecard=\'false\'>"+xti2+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'"+xurl2+"\' class=\'goon\' data-namecard=\'false\'>继续阅读</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'\' class=\'goon\' data-namecard=\'false\' id=\'del2\' >移除</a></td>");
+                                    document.writeln("                            </tr>");
+                                    del2.onclick=function(){
+                                        localStorage.removeItem("xurl2");
+                                        localStorage.removeItem("xst2");
+                                        localStorage.removeItem("xti2");
+                                    }
+                                }if (xst3!==null) {
+                                    document.writeln("");
+                                    document.writeln("                    <tr>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl3+"\' target=\'_blank\' data-namecard=\'false\'>"+xst3+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl3+"\' target=\'_blank\' data-namecard=\'false\'>"+xti3+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'"+xurl3+"\' class=\'goon\' data-namecard=\'false\'>继续阅读</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'\' class=\'goon\' data-namecard=\'false\' id=\'del3\' >移除</a></td>");
+                                    document.writeln("                            </tr>");
+                                    del3.onclick=function(){
+                                        localStorage.removeItem("xurl3");
+                                        localStorage.removeItem("xst3");
+                                        localStorage.removeItem("xti3");
+                                    }
+                                }
+                                    if (xst4!==null) {
+                                    document.writeln("");
+                                    document.writeln("                    <tr>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl4+"\' target=\'_blank\' data-namecard=\'false\'>"+xst4+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'><a href=\'"+xurl4+"\' target=\'_blank\' data-namecard=\'false\'>"+xti4+"</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'"+xurl4+"\' class=\'goon\' data-namecard=\'false\'>继续阅读</a></td>");
+                                    document.writeln("                                <td class=\'t22\'> <a href=\'\' class=\'goon\' data-namecard=\'false\' id=\'del4\' >移除</a></td>");
+                                    document.writeln("                            </tr>");
+                                    del3.onclick=function(){
+                                        localStorage.removeItem("xurl4");
+                                        localStorage.removeItem("xst4");
+                                        localStorage.removeItem("xti4");
+                                    }
+                                }
+                                if((xst4==null)&&(xst3==null)&&(xst2==null)&&(xst1==null)&&(xst==null)){
+                                    document.writeln("您还没有阅读过一篇文章");
+                                }
+
+        
+</script>
+
+                        </tbody></table>
+    
+                <!--没有数据的情况 mod -->
+                <!--翻页-->
+                </div>
+        </div>
+    </div>

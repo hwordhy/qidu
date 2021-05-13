@@ -1,0 +1,117 @@
+﻿{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_rows = "30"?}
+{?set $jieqi_pagetitle = "�ҵĶ���-{$jieqi_sitename}"?}
+<link rel="stylesheet" href="/sink/css/i.css" media="all" />
+<link rel="stylesheet" href="/sink/css/book.css" media="all" />
+<style>.ajaxtip {
+        position: absolute;
+        width: 300px;
+        _height: 150px;
+        border: 5px solid #ff4c2f;
+        background-color: #f5fbf5;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 14px;
+        color: #ff4c2f;
+        font-weight: bold;
+        position: fixed;
+    }</style>
+<div class="container wrap1200">
+    <!--left mod -->
+    <div class="i-left">
+<!--��ע���� mod -->
+<p class="title"><span></span>��ע����</p>
+<ul>
+        <li><a href="/modules/article/bookcase.php" data-namecard="false"><span></span>�ҵ����</a></li>
+        <li><a href="/ssss.php" data-namecard="false"><span class="readed"></span>����Ķ�</a></li>
+        <li><a href="/modules/article/applywriter.php" data-namecard="false"><span class="readed"></span>��������</a></li>
+
+        </ul>
+    <!--�ʲ����� mod -->
+    <p class="title"><span class="zc"></span>�ʲ�����</p>
+    <ul>
+        <li><a href="/modules/pay/paylog.php" data-namecard="false"><span class="money"></span>��ֵ��¼</a></li>
+        <li><a href="/modules/article/myactlog.php?act=tip" data-namecard="false"><span class="package"></span>���ͼ�¼</a></li>
+        <li><a href="/modules/obook/buylist.php" data-namecard="false"><span class="ticket"></span>�ҵĶ���</a></li>
+        <li><a href="/modules/pay/buyegold.php" data-namecard="false"><span class="ticket"></span>��ֵ</a></li>
+    </ul>
+    <!--���� mod -->
+    <p class="title"><span class="setting"></span>����</p>
+    <ul>
+           
+        <li><a href="/userdetail.php" data-namecard="false"><span class="basicInfo"></span>������Ϣ</a></li>
+        <li><a href="/useredit.php" data-namecard="false"><span class="pictureInfo"></span>�޸���Ϣ</a></li>
+        <li><a href="/personedit.php" data-namecard="false"><span class="pictureInfo"></span>��ϵ��ʽ</a></li>
+        <li><a href="/setavatar.php" data-namecard="false"><span class="pictureInfo"></span>�޸�ͷ��</a></li>
+        <li><a href="/passedit.php" data-namecard="false"><span class="basicInfo"></span>�޸�����</a></li>
+        </ul>
+        <p class="title"><span class="setting"></span>վ����Ϣ</p>
+        <ul>
+                <li><a href="/modules/article/myreviews.php" data-namecard="false"><span class="bookreview"></span>�ҵ�����</a></li>
+            <li><a href="/message.php?box=inbox" data-namecard="false"><span class="basicInfo"></span>�ҵ���Ϣ</a></li>
+            <li><a href="/message.php?box=outbox" data-namecard="false"><span class="pictureInfo"></span>�ҷ��͵�</a></li>
+            <li><a href="/newmessage.php" data-namecard="false"><span class="basicInfo"></span>д��Ϣ</a></li>
+            <li><a href="/newmessage.php?tosys=1" data-namecard="false"><span class="basicInfo"></span>�������</a></li>
+            </ul>
+</div>
+
+<script>
+    $('.i-left ul a').each(function(){
+        var self = $(this),link = self.attr('href');
+        if(location.pathname == link){
+            self.parent().addClass('on');
+        }
+    })
+</script>
+<input value="2017-09-16" id="beginDate" type="hidden">
+    <input value="2017-10-16" id="endDate" type="hidden">
+    <!--right mod -->
+    <div class="i-right">
+        <input value="1" id="reviewType" type="hidden">
+        <div class="moneyMod">
+            <div class="i-title">
+                <ul class="ulHd" style="padding-left:30px;">
+                    <li data-type="1" class="on">�ҵĶ���<span></span></li>
+                </ul>
+                <!--ɸѡ���� mod -->
+            </div>
+            <div class="moneyBd">
+                <!--ĥ����table mod -->
+                <div class="rechangeList hide" style="display: block;">
+                    <!--��ĥ���ҵ���� -->
+                    <!--head-->
+                    <table>
+                        <tbody><tr class="head">
+                            <td class="t1">����</td>
+                            <td>������</td>
+                            <td>�����</td>
+                            <td class="t4">�Ѷ���/���½�</td>
+                            <td class="t5">����</td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody>
+														{?section name=i loop=$obuyrows?}
+                    <tr>
+                        <td class="t16" style="width: 235px;">{?$obuyrows[i].obookname?}</td>
+                        <td style="width: 210px;">{?if $obuyrows[i].lastupdate > $obuyrows[i].buytime?}{?$obuyrows[i].lastupdate|date:"Y-m-d H:i"?}{?else?}{?$obuyrows[i].lastupdate|date:"Y-m-d H:i"?}{?/if?}</td>
+                        <td class="t17" style="width: 245px;">{?$obuyrows[i].buytime|date:"Y-m-d H:i"?}</td>
+                        <td class="t18" style="width: 150px;">{?$obuyrows[i].chapternum?}/{?$obuyrows[i].chapters?}</td>
+                        <td class="t18" style="width: 80px;">	{?if $obuyrows[i].autobuy > 0?}
+														 <a id="act_unsetautobuy_{?$obuyrows[i].obuyid?}" href="javascript:;" onclick="Ajax.Tip('{?$obook_dynamic_url?}/buylist.php?obuyid={?$obuyrows[i].obuyid?}&page={?$jieqi_page_nowpage?}&act=unsetautobuy{?$jieqi_token_url?}', {method: 'POST'});" title="�Զ����ı�ʾ���һ��δ����VIP�½��Ķ�ʱ��ϵͳ����ʾ�����Զ����Ĳ���ʾ�Ķ�ҳ��">ȡ���Զ�����</a>
+														{?else?}
+														<a id="act_setautobuy_{?$obuyrows[i].obuyid?}" href="javascript:;" onclick="Ajax.Tip('{?$obook_dynamic_url?}/buylist.php?obuyid={?$obuyrows[i].obuyid?}&page={?$jieqi_page_nowpage?}&act=setautobuy{?$jieqi_token_url?}', {method: 'POST'});" title="�Զ����ı�ʾ���һ��δ����VIP�½��Ķ�ʱ��ϵͳ����ʾ�����Զ����Ĳ���ʾ�Ķ�ҳ��">��Ϊ�Զ�����</a>
+														{?/if?}</td>
+                    </tr>
+                    {?/section?}
+                  </tbody></table>
+                    <table id="rechangeTab"></table>
+                    {?$url_jumppage?}
+
+                  </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://www.novelrd.cn/sink/js/require.js"></script>

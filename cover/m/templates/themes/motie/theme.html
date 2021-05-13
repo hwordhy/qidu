@@ -1,0 +1,129 @@
+{?if $jieqi_sideblocks|empty == false?}{?/if?}
+{?if $jieqi_top_bar != ""?}{?$jieqi_top_bar?}{?/if?}
+
+{?if $jieqi_sideblocks|empty == false?}
+{?if $jieqi_sideblocks['7']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['7']?}
+{?if $jieqi_sideblocks['7'][i].title != ""?}
+
+{?$jieqi_sideblocks['7'][i].title?}
+{?$jieqi_sideblocks['7'][i].content?}
+
+{?else?}
+{?$jieqi_sideblocks['7'][i].content?}
+{?/if?}
+{?/section?}
+
+{?/if?}
+
+{?if $jieqi_sideblocks['2']|empty == false || $jieqi_sideblocks['3']|empty == false?}
+
+{?section name=i loop=$jieqi_sideblocks['2']?}
+{?if $jieqi_sideblocks['2'][i].title != ""?}
+{?$jieqi_sideblocks['2'][i].title?}
+{?$jieqi_sideblocks['2'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['2'][i].content?}
+{?/if?}
+{?/section?}
+
+{?section name=i loop=$jieqi_sideblocks['3']?}
+{?if $jieqi_sideblocks['3'][i].title != ""?}
+{?$jieqi_sideblocks['3'][i].title?}
+{?$jieqi_sideblocks['3'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['3'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+
+{?if $jieqi_sideblocks['9']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['9']?}
+{?if $jieqi_sideblocks['9'][i].title != ""?}
+{?$jieqi_sideblocks['9'][i].title?}
+{?$jieqi_sideblocks['9'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['9'][i].content?}
+{?/if?}
+{?/section?}
+{?if $jieqi_sideblocks['1']|empty == false?}{?else?}{?/if?}
+{?elseif $jieqi_sideblocks['0']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['0']?}
+{?if $jieqi_sideblocks['0'][i].title != ""?}
+{?$jieqi_sideblocks['0'][i].title?}
+{?$jieqi_sideblocks['0'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['0'][i].content?}
+{?/if?}
+{?/section?}
+
+{?if $jieqi_sideblocks['1']|empty == false?}{?/if?}
+{?else?}
+{?if $jieqi_sideblocks['1']|empty == false?}{?/if?}
+{?/if?}
+{?if $jieqi_sideblocks['4']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['4']?}
+{?if $jieqi_sideblocks['4'][i].title != ""?}
+{?$jieqi_sideblocks['4'][i].title?}
+{?$jieqi_sideblocks['4'][i].content?}
+
+{?else?}
+{?$jieqi_sideblocks['4'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+{?if $jieqi_sideblocks['5']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['5']?}
+{?if $jieqi_sideblocks['5'][i].title != ""?}
+{?$jieqi_sideblocks['5'][i].title?}
+{?$jieqi_sideblocks['5'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['5'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+
+{?if $jieqi_contents != ""?}{?$jieqi_contents?}{?/if?}
+
+{?if $jieqi_sideblocks['6']|empty == false?}
+{?section name=i loop=$jieqi_sideblocks['6']?}
+{?if $jieqi_sideblocks['6'][i].title != ""?}
+{?$jieqi_sideblocks['6'][i].title?}
+{?$jieqi_sideblocks['6'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['6'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+
+
+{?if $jieqi_sideblocks['1']|empty == false?}
+
+{?section name=i loop=$jieqi_sideblocks['1']?}
+{?if $jieqi_sideblocks['1'][i].title != ""?}
+{?$jieqi_sideblocks['1'][i].title?}
+{?$jieqi_sideblocks['1'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['1'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+
+{?if $jieqi_sideblocks['8']|empty == false?}
+
+{?section name=i loop=$jieqi_sideblocks['8']?}
+{?if $jieqi_sideblocks['8'][i].title != ""?}
+{?$jieqi_sideblocks['8'][i].title?}
+{?$jieqi_sideblocks['8'][i].content?}
+{?else?}
+{?$jieqi_sideblocks['8'][i].content?}
+{?/if?}
+{?/section?}
+{?/if?}
+
+{?else?}
+{?$jieqi_contents?}
+{?/if?}
+
+{?if $jieqi_bottom_bar != ""?}{?$jieqi_bottom_bar?}{?/if?}
+{?if $jieqi_sideblocks|empty == false?}{?/if?}

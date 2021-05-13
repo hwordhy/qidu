@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="14ce5926-bf1c-46d8-bc2e-3fc0dac17edc" name="默认" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="jieqi235" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>JIEQI_SUPPORT_MOB</find>
+      <find>JIEQI_DEVICE_FOR</find>
+      <find>n</find>
+      <find>JIEQI_LOCAL_URL</find>
+      <find>curl</find>
+      <find>ebug</find>
+      <find>jieqi_pay_return</find>
+      <find>jieqi_hooks_footer</find>
+      <find>dayvotes</find>
+      <find>vote</find>
+      <find>vote-content</find>
+      <find>vipvotenums</find>
+      <find>vipv</find>
+      <find>jieqiUserSet</find>
+      <find>votes</find>
+      <find>novote-text</find>
+      <find>vipvote-content</find>
+      <find>interaction</find>
+      <find>jieqi_</find>
+      <find>jieqivip</find>
+      <find>jieqi_gethon</find>
+      <find>jieqi_getvipid</find>
+      <find>vip</find>
+      <find>saveToSession</find>
+      <find>jieqi_setusersession</find>
+      <find>jieqivips</find>
+      <find>jieqi_obook_autobuy</find>
+      <find>vips</find>
+      <find>eval(</find>
+      <find>ev</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>include_once jieqi_path_lib(&quot;template/template.php&quot;);</replace>
+      <replace>jieqi_path_template(JIEQI_THEME_NAME . '/' . $jieqiTset['jieqi_page_template'], &quot;themes&quot;)</replace>
+      <replace>{?$jieqi_url?}/style/js/</replace>
+      <replace>{?$articlerows[i].url_articleinfo?}</replace>
+      <replace>href=&quot;JavaScript:;&quot;</replace>
+      <replace>{?$egoldname?}</replace>
+      <replace>{?$jieqi_url?}/style/images</replace>
+      <replace>$top_form</replace>
+      <replace>postdate</replace>
+      <replace>utf8_general_ci</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$USER_HOME$/Desktop/salestat.php" />
+        <option value="$PROJECT_DIR$/configs/article/adminmenu.php" />
+        <option value="$PROJECT_DIR$/configs/article/sync_yuelu_site.php" />
+        <option value="$PROJECT_DIR$/configs/article/sync_shucong_site.php" />
+        <option value="$PROJECT_DIR$/configs/article/syncsite.php" />
+        <option value="$PROJECT_DIR$/modules/article/include/funsync.php" />
+        <option value="$PROJECT_DIR$/modules/article/include/snoopy.php" />
+        <option value="$PROJECT_DIR$/modules/article/include/funsync2.php" />
+        <option value="$PROJECT_DIR$/modules/article/admin/newsync.php" />
+        <option value="$PROJECT_DIR$/modules/article/admin/newsyncedit.php" />
+        <option value="$PROJECT_DIR$/modules/article/admin/newsynclog.php" />
+        <option value="$PROJECT_DIR$/modules/article/admin/newsyncset.php" />
+        <option value="$PROJECT_DIR$/modules/article/admin/logdetail.php" />
+        <option value="$PROJECT_DIR$/install/sql/pay/struct.sql" />
+        <option value="$PROJECT_DIR$/modules/pay/admin/paylog.php" />
+        <option value="$PROJECT_DIR$/modules/pay/include/funpay.php" />
+        <option value="$PROJECT_DIR$/modules/pay/include/paystart.php" />
+        <option value="$PROJECT_DIR$/modules/article/uservote.php" />
+        <option value="$PROJECT_DIR$/modules/article/reviewshow.php" />
+        <option value="$PROJECT_DIR$/modules/article/applywriter.php" />
+        <option value="$PROJECT_DIR$/lang/article/lang.php" />
+        <option value="$PROJECT_DIR$/modules/article/vipvote.php" />
+        <option value="$PROJECT_DIR$/templates/article/articleinfo.html" />
+        <option value="$PROJECT_DIR$/style/css/common_chapter.css" />
+        <option value="$PROJECT_DIR$/templates/article/blocks/block_book_actlog.html" />
+        <option value="$PROJECT_DIR$/modules/article/blocks/block_actlog.php" />
+        <option value="$PROJECT_DIR$/templates/system/userdetail.html" />
+        <option value="$PROJECT_DIR$/style/js/common_chapter.js" />
+        <option value="$PROJECT_DIR$/templates/article/newchapter.html" />
+        <option value="$PROJECT_DIR$/templates/article/chapteredit.html" />
+        <option value="$PROJECT_DIR$/templates/article/draftedit.html" />
+        <option value="$PROJECT_DIR$/templates/article/newdraft.html" />
+        <option value="$PROJECT_DIR$/configs/article/topblocks.php" />
+        <option value="$PROJECT_DIR$/templates/article/toplist.html" />
+        <option value="$PROJECT_DIR$/configs/article/top.php" />
+        <option value="$PROJECT_DIR$/configs/system/adminmenu.php" />
+        <option value="$PROJECT_DIR$/modules/system/class/vips.php" />
+        <option value="$PROJECT_DIR$/lang/system/lang.php" />
+        <option value="$PROJECT_DIR$/admin/vips.php" />
+        <option value="$PROJECT_DIR$/global.php" />
+        <option value="$PROJECT_DIR$/modules/system/class/users.php" />
+        <option value="$PROJECT_DIR$/../jiemi22/header.php" />
+        <option value="$PROJECT_DIR$/header.php" />
+        <option value="$PROJECT_DIR$/modules/obook/reader.php" />
+        <option value="$PROJECT_DIR$/modules/article/class/package.php" />
+        <option value="$PROJECT_DIR$/templates/obook/readbuy.html" />
+        <option value="$PROJECT_DIR$/../jiemi22/modules/obook/include/funbuy.php" />
+        <option value="$PROJECT_DIR$/modules/obook/include/funbuy.php" />
+        <option value="$PROJECT_DIR$/configs/system/define.php" />
+        <option value="$PROJECT_DIR$/cover/m/configs/system/define.php" />
+        <option value="$PROJECT_DIR$/style/js/vendor.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="640" />
+    <option name="height" value="520" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="jieqi235" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jieqi235" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jieqi235" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jieqi235" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jieqi235" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jieqi235" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ranzhi" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\wwwroot\jieqi235\templates\system" />
+      <recent name="E:\wwwroot\jieqi235\templates\themes\json" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wwwroot\jieqi235\templates\system\admin" />
+      <recent name="E:\wwwroot\jieqi235\modules\system\class" />
+      <recent name="E:\wwwroot\jieqi235\admin" />
+      <recent name="E:\wwwroot\jieqi235\open\include\class" />
+      <recent name="E:\wwwroot\jieqi235\templates\system" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14ce5926-bf1c-46d8-bc2e-3fc0dac17edc" name="默认" comment="" />
+      <created>1525059959002</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525059959002</updated>
+      <workItem from="1525059961314" duration="2365000" />
+      <workItem from="1525097058846" duration="6052000" />
+      <workItem from="1525104063425" duration="9000" />
+      <workItem from="1526046103569" duration="1161000" />
+      <workItem from="1526127037538" duration="114000" />
+      <workItem from="1526219215754" duration="1694000" />
+      <workItem from="1526297953814" duration="2276000" />
+      <workItem from="1528546428878" duration="1402000" />
+      <workItem from="1528809864829" duration="374000" />
+      <workItem from="1528811365223" duration="364000" />
+      <workItem from="1529064502403" duration="114000" />
+      <workItem from="1535976113052" duration="1387000" />
+      <workItem from="1536028098288" duration="21866000" />
+      <workItem from="1536109939831" duration="24557000" />
+      <workItem from="1536196459620" duration="19502000" />
+      <workItem from="1536282294876" duration="19344000" />
+      <workItem from="1536389171137" duration="695000" />
+      <workItem from="1536589437614" duration="9000" />
+      <workItem from="1536833269955" duration="3668000" />
+      <workItem from="1536848705196" duration="604000" />
+      <workItem from="1537417157358" duration="40000" />
+      <workItem from="1538638205034" duration="4166000" />
+      <workItem from="1538708060226" duration="126000" />
+      <workItem from="1538708493756" duration="3555000" />
+      <workItem from="1538729317993" duration="2422000" />
+      <workItem from="1538804825109" duration="1967000" />
+      <workItem from="1538908465949" duration="1197000" />
+      <workItem from="1538957630546" duration="9003000" />
+      <workItem from="1538982734826" duration="3241000" />
+      <workItem from="1539133748636" duration="2043000" />
+      <workItem from="1539149592868" duration="264000" />
+      <workItem from="1539307060836" duration="3533000" />
+      <workItem from="1539347088360" duration="2525000" />
+      <workItem from="1539406315430" duration="599000" />
+      <workItem from="1539582406773" duration="118000" />
+      <workItem from="1539583598033" duration="7564000" />
+      <workItem from="1539608853932" duration="6555000" />
+      <workItem from="1539674691714" duration="10134000" />
+      <workItem from="1539696822545" duration="3521000" />
+      <workItem from="1539764948065" duration="7814000" />
+      <workItem from="1539937764965" duration="7706000" />
+      <workItem from="1540014113569" duration="308000" />
+      <workItem from="1540029209099" duration="3099000" />
+      <workItem from="1540117249921" duration="8076000" />
+      <workItem from="1540203064518" duration="8686000" />
+      <workItem from="1540361054279" duration="24296000" />
+      <workItem from="1540447064177" duration="16434000" />
+      <workItem from="1540545899014" duration="5568000" />
+      <workItem from="1540619571977" duration="16155000" />
+      <workItem from="1540704122533" duration="8746000" />
+      <workItem from="1540899403116" duration="3912000" />
+      <workItem from="1540990133517" duration="7816000" />
+      <workItem from="1541047186638" duration="5299000" />
+      <workItem from="1541054375399" duration="1198000" />
+      <workItem from="1541077831661" duration="4785000" />
+      <workItem from="1541117545030" duration="17549000" />
+      <workItem from="1541223901951" duration="18499000" />
+      <workItem from="1541321298404" duration="807000" />
+      <workItem from="1541335529132" duration="325000" />
+      <workItem from="1541398144991" duration="2112000" />
+      <workItem from="1541429596123" duration="50000" />
+      <workItem from="1541429672631" duration="21000" />
+      <workItem from="1541429863526" duration="5000" />
+      <workItem from="1541491068501" duration="4742000" />
+      <workItem from="1541552943869" duration="4214000" />
+      <workItem from="1541658892379" duration="10305000" />
+      <workItem from="1541766319770" duration="6139000" />
+      <workItem from="1541848890803" duration="8791000" />
+      <workItem from="1541913526853" duration="21837000" />
+      <workItem from="1542022941537" duration="11720000" />
+      <workItem from="1542083766634" duration="6687000" />
+      <workItem from="1542104855929" duration="3870000" />
+      <workItem from="1542114324312" duration="2227000" />
+      <workItem from="1542159054795" duration="5746000" />
+      <workItem from="1542174239753" duration="9429000" />
+      <workItem from="1542198740187" duration="89000" />
+      <workItem from="1542241135152" duration="5745000" />
+      <workItem from="1542366653233" duration="2920000" />
+      <workItem from="1542528517709" duration="3486000" />
+      <workItem from="1542793636441" duration="4000" />
+      <workItem from="1546342635596" duration="1131000" />
+      <workItem from="1546344914935" duration="38000" />
+      <workItem from="1546509303756" duration="1728000" />
+      <workItem from="1547088547283" duration="1022000" />
+      <workItem from="1547090921726" duration="1296000" />
+      <workItem from="1547188363262" duration="31000" />
+      <workItem from="1547191959982" duration="17000" />
+      <workItem from="1547277728590" duration="771000" />
+      <workItem from="1547474125511" duration="3325000" />
+      <workItem from="1547613997589" duration="767000" />
+      <workItem from="1547632843601" duration="1818000" />
+      <workItem from="1547640877283" duration="2211000" />
+      <workItem from="1547724381829" duration="78000" />
+      <workItem from="1547769761557" duration="5133000" />
+      <workItem from="1547879598662" duration="232000" />
+      <workItem from="1548137493153" duration="3377000" />
+      <workItem from="1548144055352" duration="33701000" />
+      <workItem from="1549367375582" duration="1428000" />
+      <workItem from="1549534457300" duration="591000" />
+      <workItem from="1549856295304" duration="2116000" />
+      <workItem from="1549860663115" duration="2501000" />
+      <workItem from="1549875776829" duration="159000" />
+      <workItem from="1553738074555" duration="1760000" />
+      <workItem from="1553757002084" duration="5561000" />
+      <workItem from="1557469324947" duration="6110000" />
+      <workItem from="1557540208694" duration="173000" />
+      <workItem from="1565400562424" duration="15302000" />
+      <workItem from="1566009303104" duration="1264000" />
+      <workItem from="1566618060234" duration="862000" />
+      <workItem from="1567823219994" duration="400000" />
+      <workItem from="1567824288937" duration="603000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="542853000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.1641791" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.5005417" side_tool="true" weight="0.11673774" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="调试" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1924307" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="调试" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/style/js/work_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lang/article/lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="884" column="38" selection-start-line="884" selection-start-column="23" selection-end-line="884" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/css/common_chapter.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret column="2889" selection-start-column="2889" selection-end-column="2889" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/blocks/block_book_credit2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/blocks/block_book_credit.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/blocks/block_book_actlog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/article/vipvote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="134" column="23" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/modules/article/blocks/block_actlog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="101" column="9" selection-start-line="86" selection-start-column="8" selection-end-line="101" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/article/blocks/block_actlog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/system/userdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/js/common_chapter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="126" column="7" lean-forward="true" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/articleinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="235" column="19" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/newchapter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="92" column="22" lean-forward="true" selection-start-line="85" selection-start-column="15" selection-end-line="92" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/chapteredit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="66" column="22" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="66" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/draftedit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="790">
+          <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/newarticle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="160" column="26" selection-start-line="153" selection-start-column="20" selection-end-line="160" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/article/rule.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/system/class/vips.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/system/admin/vips.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/blockupdate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/configs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-234" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/vips.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="162" column="16" lean-forward="true" selection-start-line="162" selection-start-column="16" selection-end-line="162" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/system/adminmenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="37" column="71" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="69" selection-start-line="69" selection-end-line="69" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lang/system/lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4302">
+          <caret line="667" column="53" selection-start-line="667" selection-start-column="53" selection-end-line="667" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/article/topblocks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="294" column="45" selection-start-line="294" selection-start-column="45" selection-end-line="294" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/article/top.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="17" column="87" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/toplist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/newdraft.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-848">
+          <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/draft.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="1631" lean-forward="true" selection-start-line="1631" selection-end-line="1631" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/class/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="250" column="9" lean-forward="true" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="468" selection-start-line="468" selection-end-line="468" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/obook/buychapter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/system/class/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6786">
+          <caret line="261" column="26" selection-start-line="261" selection-start-column="26" selection-end-line="261" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/obook/readbuy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1742">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/modules/obook/buychapter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/obook/reader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/article/class/package.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24596">
+          <caret line="946" column="35" selection-start-line="946" selection-start-column="27" selection-end-line="946" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64948">
+          <caret line="2498" column="39" selection-start-line="2498" selection-start-column="4" selection-end-line="2498" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/system/vips.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/obook/include/funbuy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2574">
+          <caret line="194" column="5" lean-forward="true" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="342" column="34" selection-start-line="342" selection-start-column="23" selection-end-line="342" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jiemi22/modules/obook/include/funbuy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="182" column="39" selection-start-line="182" selection-start-column="39" selection-end-line="182" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/system/define.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cover/m/configs/system/define.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/step6.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1508">
+          <caret line="56" column="41" lean-forward="true" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/step5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/step4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-820" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/js/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="201" column="22" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/js/vendor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="3146" column="23" selection-start-line="3146" selection-end-line="3147" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

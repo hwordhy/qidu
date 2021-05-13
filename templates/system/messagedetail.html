@@ -1,0 +1,101 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "templates/system/messagedetail.html"?}
+{?set $jieqi_pagetitle = "阅读消息-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<div class="i-right">
+  <div class="systemMod">
+    <div class="i-title">
+      <ul class="ulHd">
+        <li class="on">阅读消息<span></span></li>
+      </ul>
+    </div>
+    <div class="accountsBd">
+      <div class="basicAccounts">
+          <table>
+            <tr>
+              <td class="label">标题：</td>
+              <td>{?$messagevals['title']?}</td>
+            </tr>
+            <tr>
+              <td class="label">发送人：</td>
+              <td>{?if $messagevals['fromid'] > 0?}<a href="{?function jieqi_geturl:'system':'user':$messagevals['fromid']?}" target="_blank">{?$messagevals['fromname']?}</a>{?else?}<span style="color: #FF0000;">网站管理员</span>{?/if?}</td>
+            </tr>
+            <tr>
+              <td class="label">接收人：</td>
+              <td>{?if $messagevals['toid'] > 0?}<a href="{?function jieqi_geturl:'system':'user':$messagevals['toid']?}" target="_blank">{?$messagevals['toname']?}</a>{?else?}<span style="color: #FF0000;">网站管理员</span>{?/if?}</td>
+            </tr>
+            <tr>
+              <td class="label">内容：</td>
+              <td>{?$messagevals['content']?}</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+  {?if $messagevals['toid'] == $jieqi_userid?}
+  <div class="systemMod">
+    <div class="i-title">
+      <ul class="ulHd">
+        <li class="on">快速回复<span></span></li>
+      </ul>
+    </div>
+    <div class="accountsBd">
+      <div class="basicAccounts">
+        <form id="frmnewmessage" action="" method="post">
+          <table>
+            <tr>
+              <td class="label">收件人：</td>
+              <td>{?if $messagevals['fromid'] > 0?}<a href="{?function jieqi_geturl:'system':'user':$messagevals['fromid']?}" target="_blank">{?$messagevals['fromname']?}</a><input type="hidden" name="receiver" size="30" value="{?$messagevals['fromname']?}" />{?else?}<span style="color: #FF0000;">网站管理员</span><input type="hidden" name="tosys" id="tosys" value="1" />{?/if?}
+              </td>
+            </tr>
+            <tr>
+              <td class="label">标题：</td>
+              <td>
+                <input name= "title" id= "title" type="text" value="Re:{?$messagevals['title']?}" placeholder="请输入标题" class="name"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="label">内容：</td>
+              <td>
+                <textarea name="content" id="content" placeholder="请输入内容" class="textarea" maxlength="50"></textarea>
+              </td>
+            </tr>
+          </table>
+          <input type="hidden" name="ajax_gets" value="1" />
+          <input type="hidden" name="act" value="add" />{?$jieqi_token_input?}
+          <input type="button" class="accountsBtn" value="回复消息" onclick="frmnewmessageSubmit()" />
+        </form>
+      </div>
+    </div>
+  </div>
+  {?/if?}
+</div>
+</div>
+
+<!--footer mod -->
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+
+<script type="text/javascript" charset="{?$jieqi_charset?}">
+
+    //baseForm 提交
+    function frmnewmessageSubmit() {
+        var form = $("#frmnewmessage").serializeArray();
+        $.ajax({
+            type:'post',
+            url:'{?$jieqi_url?}/newmessage.php?do=submit',
+            data:form,
+            dataType: "json",
+            success:function(data){
+                if (data.success === true) {
+                    layer.msg(data.message, {icon: 1,shade: .3});
+                    window.location.href = data.backUrl;
+                }
+                else{
+                    layer.msg(data.message, {icon: 2,shade: .3});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

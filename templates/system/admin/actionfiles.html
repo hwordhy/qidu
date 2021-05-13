@@ -1,0 +1,17 @@
+<table  class="grid" width="100%" align="center">
+  <caption>动作配置文件管理</caption>
+  <tr>
+    <td align="center" width="20%">配置文件标题</td>
+    <td align="center" width="20%">所属模块</td>
+	<td align="center" width="40%">配置文件路径及名称</td>
+    <td align="center" width="20%">操作</td>
+  </tr>
+{?section name=i loop=$actionfiles?}
+  <tr>
+    <td align="center">{?$actionfiles[i].caption?}</td>
+    <td align="center">{?$actionfiles[i].modname?}</td>
+	<td>/configs{?if $actionfiles[i].module != 'system'?}/{?$actionfiles[i].module?}{?/if?}/{?$actionfiles[i].filename?}.php</td>
+    <td align="center"><a href="{?$jieqi_url?}/admin/actionfiles.php?act=blocks&module={?$actionfiles[i].module|urlencode?}&filename={?$actionfiles[i].filename|urlencode?}">管理动作参数</a></td>
+  </tr>
+{?/section?}
+</table>

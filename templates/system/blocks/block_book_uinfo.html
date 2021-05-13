@@ -1,0 +1,13 @@
+{?if $ownerid > 0?}
+<div class="clearfixer">
+  <a href="javascript:;" class="avatar fl" target="_blank">
+    <img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}" alt="">
+  </a>
+  <div class="name fl">
+    <a href="javascript:;" class="text" target="_blank">{?$name?}</a>
+    <span href="javascript:;" class="sign ui_bgcolor">
+                                            {?$group?}
+                                        </span>
+  </div>
+</div>
+{?/if?}

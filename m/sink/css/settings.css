@@ -1,0 +1,160 @@
+/*设置*/
+.settings{
+    padding-top: 10px;
+}
+.settings .my_set li{
+    border-bottom: 1px solid #f4f4f4;
+    padding: 15px 0;
+    font-size:1.25rem ; 
+    color: #b3b3b3;
+    position: relative;
+}
+.settings .my_set b{
+    width: 20%;
+    display: inline-block;
+}
+.settings .my_set .center{ 
+    color: #434343 ;
+     width: auto;
+}
+.settings .my_set .newipt {
+    display: none;
+}
+.settings .my_set .newipt input{
+    padding: 2px 5px ;
+    font-size:1.25rem ; 
+    width: 50%;
+    border: 1px solid #ccc;
+}
+.settings .my_set a{
+    background: #f35ab0;
+    color: #fff;
+    padding: 5px 10px;
+    position: relative;
+    top: -5px;
+}
+.settings .my_set .rename,.settings .my_set .namesok{
+    background: #f35ab0; 
+    position: absolute;
+    top: 1rem;
+    right: 0;
+}
+.settings .my_set .retel{
+    background: #b3b3b3; 
+}
+.settings .my_set .notel{
+    background: #ff9d34; 
+}
+/*
+.settings .my_set li:last-child a{
+    top: 0;
+    display: block;
+    background: #f35ab0;
+    text-align: center;
+    color: #fff;
+    padding: 15px 0;
+}
+*/
+ 
+/*绑定手机*/
+.reg{
+    padding: 5px 0;
+    width: 100%;
+} 
+.reg .left,.reg .right{
+    width: 60%;  
+    overflow: hidden;
+}
+.reg .left input{
+    max-width: 58%;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.reg .right{
+    width: 40%;    
+    position: absolute;
+    top: 0;
+    right: 0; 
+      height: 44px;
+/*    max-height: 1.866rem;*/
+} 
+.reg  .bindPhone_time{
+    display: inline-block;
+    width: 98%;
+    height: 44px;
+    text-align: center;
+    background: #f35ab0;
+    font-size: 1.15rem;
+    color: #fff;
+    border: none;
+    padding: 1rem 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+.reg ul li{
+    margin: 15px 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.reg  li input{
+    padding: 1rem 2%;
+    font-size: 1.15rem;
+    color: #b3b3b3;
+    border: 1px solid #b3b3b3; 
+    width: 95.2%;
+    z-index: 10;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+     height: 18px;
+}
+.reg .tips{
+    display: block;
+    color: #fe4f4f;
+    padding-left: 10px;
+    margin-top: 15px;
+    display: none;
+}
+
+.reg .bind_button,.reg .bindPhone_Num,.reg .add_login_post{
+    display: block;
+    background: #f35ab0;
+    color: #fff;
+    border: none;
+    font-size: 1.33rem;
+    text-align: center; 
+    padding: 1rem;
+     -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.reg  .timerOver{ 
+	color: #fff;
+     border: 1px solid #f35ab0;
+}
+.reg  .timerStart{
+	background: #aeaeae;
+	color: #fff;
+    border: 1px solid #aeaeae;
+}
+.reg .left:first-child input{
+    width: 56%;
+}
+.reg  .xieyi {
+    padding-bottom: 0.5rem;
+}
+.reg  .xieyi input{
+    width: 1.2rem;
+    position: relative;
+    top: 0.3rem;
+} 
+.reg  .CodeImg{ 
+    margin-left: 1rem;
+    width: 80%;
+    height: 3rem;
+    position: relative;
+    top: 0.35rem;
+}

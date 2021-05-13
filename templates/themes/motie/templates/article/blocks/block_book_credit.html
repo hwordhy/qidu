@@ -1,0 +1,8 @@
+{?section name=i loop=$creditrows?}
+  <div class="{?if $i.order == 1?}gold{?elseif $i.order == 2?}silver{?else?}copper{?/if?} card">
+    <span class="crown"></span>  <img src="{?function jieqi_geturl:'system':'avatar':$creditrows[i].uid:'l':$creditrows[i].avatar?}"
+                                      alt="" class="fans_pic">
+    <p class="fans-name">{?$creditrows[i].uname?}</p>
+    <p class="motiecoin">打赏<span class="ui_color">{?$creditrows[i].payegold?}{?$egoldname?}</span></p>
+  </div>
+{?/section?}

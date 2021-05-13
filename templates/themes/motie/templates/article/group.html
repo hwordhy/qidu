@@ -1,0 +1,265 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "groupblocks"?}
+{?set $jieqi_pagetitle = "{$groupname}-{$jieqi_sitename}"?}
+<div class="content clr">
+  <div class="wd1100 index clr">
+    <div class="index_lt2 clr fl">
+        <div class="index_lt_cot clr" style="margin-top:0;">
+            <div class="index_lt_cot_title">
+                <span>{?if $groupid == 1?}{?$jieqi_pageblocks['bid7']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid8']['title']?}{?/if?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+                <div class="fr jidu">
+                </div>
+            </div>
+            <ul>
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid7']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid8']['content']?}
+                {?/if?}
+            </ul>
+        </div>
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?if $groupid == 1?}{?$jieqi_pageblocks['bid1']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid2']['title']?}{?/if?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+          {?if $groupid == 1?}
+          {?$jieqi_pageblocks['bid1']['content']?}
+          {?elseif $groupid == 2?}
+          {?$jieqi_pageblocks['bid2']['content']?}
+          {?/if?}
+        </ul>
+      </div>
+
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?if $groupid == 1?}{?$jieqi_pageblocks['bid3']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid4']['title']?}{?/if?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+            {?if $groupid == 1?}
+            {?$jieqi_pageblocks['bid3']['content']?}
+            {?elseif $groupid == 2?}
+            {?$jieqi_pageblocks['bid4']['content']?}
+            {?/if?}
+        </ul>
+      </div>
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?if $groupid == 1?}{?$jieqi_pageblocks['bid5']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid6']['title']?}{?/if?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+            {?if $groupid == 1?}
+            {?$jieqi_pageblocks['bid5']['content']?}
+            {?elseif $groupid == 2?}
+            {?$jieqi_pageblocks['bid6']['content']?}
+            {?/if?}
+        </ul>
+      </div>
+        {?if $groupid == 1?}
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?$jieqi_pageblocks['bid9']['title']?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+            {?$jieqi_pageblocks['bid9']['content']?}
+        </ul>
+      </div>
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?$jieqi_pageblocks['bid10']['title']?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+            {?$jieqi_pageblocks['bid10']['content']?}
+        </ul>
+      </div>
+      <div class="index_lt_cot clr">
+        <div class="index_lt_cot_title">
+          <span>{?$jieqi_pageblocks['bid11']['title']?}<img src="{?$jieqi_url?}/style/images/hot.png"></span>
+          <div class="fr jidu">
+          </div>
+        </div>
+        <ul>
+            {?$jieqi_pageblocks['bid11']['content']?}
+        </ul>
+      </div>
+        {?/if?}
+    </div>
+    <div class="index_rt2 clr fr">
+      <div class="index_rt2_top clr">
+          {?if $groupid == 1?}
+          {?$jieqi_pageblocks['bid12']['content']?}
+          {?elseif $groupid == 2?}
+          {?$jieqi_pageblocks['bid13']['content']?}
+          {?/if?}
+      </div>
+
+      <div class="index_rt_list clr">
+        <div class="index_rt_list_title">
+          <span class="span_cur fl">{?if $groupid == 1?}{?$jieqi_pageblocks['bid14']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid15']['title']?}{?/if?}</span>
+          <div class="clr fl">
+          </div>
+        </div>
+
+        <div class="index_rt_list_xiaoshuo_2 clr">
+          <div class="hd">
+            <a class="next"></a>
+            <ul></ul>
+            <a class="prev"></a>
+          </div>
+          <div class="bd">
+            <ul class="picList">
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid14']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid15']['content']?}
+                {?/if?}
+            </ul>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          jQuery(".index_rt_list_xiaoshuo_2").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:false,vis:6,trigger:"click"});
+        </script>
+      </div>
+
+      <div class="index_rt_list clr">
+        <div class="paihangxiu clr">
+          <div class="paihangxiu_lt fl clr">
+            <div class="paihangxiu_cur">
+              <span class="paihangxiu_cur_span clr fl">{?if $groupid == 1?}{?$jieqi_pageblocks['bid16']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid17']['title']?}{?/if?}</span>
+            </div>
+
+            <div class="paihangxiu_lt_cot clr">
+
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid16']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid17']['content']?}
+                {?/if?}
+
+            </div>
+          </div>
+
+          <div class="paihangxiu_rt clr fr">
+            <div class="index_lt_cot clr fr">
+              <div class="index_lt_cot_title">
+                <span class="span on"><i>{?if $groupid == 1?}{?$jieqi_pageblocks['bid18']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid19']['title']?}{?/if?}</i></span>
+                <span class="span"><i>{?if $groupid == 1?}{?$jieqi_pageblocks['bid20']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid21']['title']?}{?/if?}</i></span>
+                <span class="span"><i>{?if $groupid == 1?}{?$jieqi_pageblocks['bid22']['title']?}{?elseif $groupid == 2?}{?$jieqi_pageblocks['bid23']['title']?}{?/if?}</i></span>
+              </div>
+              <ul>
+                  {?if $groupid == 1?}
+                  {?$jieqi_pageblocks['bid18']['content']?}
+                  {?elseif $groupid == 2?}
+                  {?$jieqi_pageblocks['bid19']['content']?}
+                  {?/if?}
+              </ul>
+              <ul style="display:none;">
+
+                  {?if $groupid == 1?}
+                  {?$jieqi_pageblocks['bid20']['content']?}
+                  {?elseif $groupid == 2?}
+                  {?$jieqi_pageblocks['bid21']['content']?}
+                  {?/if?}
+              </ul>
+              <ul style="display:none;">
+
+                  {?if $groupid == 1?}
+                  {?$jieqi_pageblocks['bid22']['content']?}
+                  {?elseif $groupid == 2?}
+                  {?$jieqi_pageblocks['bid23']['content']?}
+                  {?/if?}
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="index_rt_list clr">
+        <div class="index_rt_list_title3">
+          <span class="cur">最新更新小说列表</span>
+          <span>VIP小说更新列表</span>
+          <span>最新签约作品列表</span>
+          <span></span>
+        </div>
+        <div class="index_rt_list_div2 clr">
+          <div class="index_rt_list_div_list clr">
+            <div class="index_rt_list_div_list_table clr">
+              <div class="child_rt_table_hang clr">
+                <ul class="first">
+                  <li class="wd95">小说类别</li>
+                  <li class="wd180">书名</li>
+                  <li style="width:248px;">最新章节</li>
+                  <li class="wd136">作者</li>
+                  <li class="wd140">更新时间</li>
+                </ul>
+              </div>
+
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid24']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid25']['content']?}
+                {?/if?}
+            </div>
+          </div>
+
+          <div class="index_rt_list_div_list clr" style="display:none;">
+            <div class="index_rt_list_div_list_table clr">
+              <div class="child_rt_table_hang clr">
+                <ul class="first">
+                  <li class="wd95">小说类别</li>
+                  <li class="wd180">书名</li>
+                  <li style="width:248px;">最新章节</li>
+                  <li class="wd136">作者</li>
+                  <li class="wd140">更新时间</li>
+                </ul>
+              </div>
+
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid26']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid27']['content']?}
+                {?/if?}
+            </div>
+          </div>
+
+          <div class="index_rt_list_div_list clr" style="display:none;">
+            <div class="index_rt_list_div_list_table clr">
+              <div class="child_rt_table_hang clr">
+                <ul class="first">
+                  <li class="wd95">小说类别</li>
+                  <li class="wd180">书名</li>
+                  <li style="width:248px;">最新章节</li>
+                  <li class="wd136">作者</li>
+                  <li class="wd140">更新时间</li>
+                </ul>
+              </div>
+
+                {?if $groupid == 1?}
+                {?$jieqi_pageblocks['bid28']['content']?}
+                {?elseif $groupid == 2?}
+                {?$jieqi_pageblocks['bid29']['content']?}
+                {?/if?}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

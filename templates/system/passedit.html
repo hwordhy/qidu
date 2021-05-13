@@ -1,0 +1,35 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_page_template = "templates/system/passedit.html"?}
+{?set $jieqi_pagetitle = "修改密码-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/modifypassword.css" type="text/css" />
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/common_chapter.css"  type="text/css"/>
+<div class="i-right">
+  <!--修改密码 mod -->
+  <div class="password-modi-zsy">
+    <div class="title">修改登录密码</div>
+    <ul class="password-modi-content">
+      <form action="" id="modifypassword">
+        <li class="password curpassword">
+          <label class="label">当前密码</label>
+          <input name="curpassword"  type="password" placeholder="请填写当前密码" errormsg="手机号码格式不对！"datatype="*6-15" />
+        </li>
+        <li class="password newpassword">
+          <label class="label">新密码</label>
+          <input id="newpassword" name="newpassword"  type="password" placeholder="6-18位大小写字母、符号或数字" nullmsg="sfsfsdf">
+        </li>
+        <li class="password passwordConfirm">
+          <label class="label">确认新密码</label>
+          <input name="confirmpassword"  type="password" placeholder="请再次输入密码">
+        </li>
+        <input id="submit-pass" type="submit" value="确定">
+      </form>
+    </ul>
+  </div>
+</div>
+</div>
+<!--footer mod -->
+<script src="{?$jieqi_url?}/style/js/modifypassword.js"></script>
+{?include file = "templates/system/footer.html"?}
+</body>
+</html>

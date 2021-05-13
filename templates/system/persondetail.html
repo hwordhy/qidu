@@ -1,0 +1,130 @@
+{?set jieqi_page_template = "templates/system/persondetail.html"?}
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "联系信息-{$jieqi_sitename}"?}
+{?include file="templates/system/user_header.html"?}
+<style>.tip{padding: 8px 35px 8px 14px;margin-bottom: 10px;background-color: #fcf8e3;border: 1px solid #fbeed5;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}.tip, .tip h4 {color: #c09853;} </style>
+<div class="i-right">
+    <div class="systemMod">
+        <div class="i-title">
+            <ul class="ulHd">
+                <li class="on">联系信息<span></span></li>
+            </ul>
+        </div>
+        <div class="accountsBd">
+            <div class="basicAccounts">
+                <div class="tip">以下是您的真实联系方式，用于网站管理员跟您联系及收入结算，不会对外公开！</div>
+                    <table>
+                        <tr>
+                            <td class="label">用户ID：</td>
+                            <td>{?$jieqi_userid?}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">真实姓名：</td>
+                            <td>
+                                {?$personsvars['realname']?}
+                                <!--<span class="text">提交之后不可更改。且必须与证件姓名一致，2到5个字</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">性别：</td>
+                            <td>
+                                {?$personsvars['gender']?}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">证件类型：</td>
+                            <td>
+                                {?if $personsvars['idcardtype'] == ''?}身份证{?else?}{?$personsvars['idcardtype']?}{?/if?}
+                                <!--<span class="text">提交之后不可更改</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">证件号码：</td>
+                            <td>
+                                {?$personsvars['idcard']?}
+                                <!--<span class="text">提交之后不可更改，且必须为成年人。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">QQ：</td>
+                            <td>
+                                {?$personsvars['qq']?}
+                                <!--<span class="text">请输入5-11位数字QQ号码。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">手机号码：</td>
+                            <td>
+                                {?$personsvars['mobilephone']?}
+                                <!--<span class="text">请输入11位数字手机号码。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">邮政编码：</td>
+                            <td>
+                                {?$personsvars['zipcode']?}
+                                <!--<span class="text">可改，请及时更新您的邮政编码。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">邮寄地址：</td>
+                            <td>
+                                {?$personsvars['address']?}
+                                <!--<span class="text">可改，请及时更新您的邮寄地址。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">开户银行：</td>
+                            <td>
+                                {?$personsvars['banktype']?}
+                                <!--<span class="text">银行相关信息非常重要，请确保银行账号姓名与您的真实姓名一致。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">持卡人姓名：</td>
+                            <td>
+                                {?$personsvars['bankuser']?}
+                                <!--<span class="text">银行相关信息非常重要，请确保银行账号姓名与您的真实姓名一致。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">银行账号：</td>
+                            <td>
+                                {?$personsvars['bankcard']?}
+                                <!--<span class="text">支付宝的请填写支付宝账号。</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">开户地址：</td>
+                            <td>
+                                {?$personsvars['bankname']?}
+                                <!--<span class="text">请填写准确的开户地址，至少精确到县镇，6~20字以内</span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">补充信息：</td>
+                             <td>
+                                {?$personsvars['mynote']?}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">作者分成：</td>
+                            <td>
+                                {?if $personsvars['divided'] != '0'?}{?$personsvars['divided']?}%{?else?}100%{?/if?}
+                            </td>
+                        </tr>
+                    </table>
+                {?if $personsvars['denyedit'] == 0?}<a href="{?$jieqi_url?}/personedit.php"><input type="submit" style="display: inline;" class="accountsBtn" value="点击修改" /></a>{?else?}<div class="tip">您的信息已被锁定，禁止修改！如果确实需要修改，请联系管理员处理。</div>{?/if?}
+                {?if $jieqi_group == 3 && $jieqi_modules['article']['publish'] > 0?}&nbsp;&nbsp;&nbsp;&nbsp;<a class="btnlink" href="{?$jieqi_modules['article']['url']?}/applywriter.php"><input type="submit" style="display: inline;" class="accountsBtn" value="申请成为作者" /></a>{?/if?}
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!--footer mod -->
+{?include file = "templates/system/footer.html"?}
+<script src="{?$jieqi_url?}/style/js/jquery.jcrop.min.js"></script>
+</body>
+</html>

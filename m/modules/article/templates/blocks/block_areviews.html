@@ -1,0 +1,19 @@
+{?section name=i loop=$reviewrows?}
+
+<li>
+		<h3 class="clearfix"><span class="com_left fl">
+		<a>
+			<img class="bd50" src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}" alt="头像" /></a></span>
+			<span class="com_right fl"><a href="{?function jieqi_geturl:'system':'user':$reviewrows[i].posterid?}" title="">{?$reviewrows[i].poster?}</a><b>{?$reviewrows[i].replytime|date:m-d H:i?}</b>
+	   <!--点评--></span></h3>
+	   <a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}">
+		  <p class="con_content clearfix">{?$reviewrows[i].posttext?}</p></a>
+		  <h4 class="clearfix">
+				{?if $reviewrows[i].istop == 1?}
+			  <a  class="report">[置顶]</a>{?/if?}{?if $reviewrows[i].isgood == 1?}
+			  <a class="fav" >[精华]{?/if?}</a>
+			  <a  href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="comto">{?$reviewrows[i].replies?}</a>
+		  </h4>
+	</li> 
+
+{?/section?}

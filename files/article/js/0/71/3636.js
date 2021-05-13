@@ -1,0 +1,1 @@
+document.write('av4359379<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;太霸气啦，不愧怪兽之王<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/71/3636/77.gif\" border=\"0\" class=\"imagecontent\"></div>');

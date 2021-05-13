@@ -1,0 +1,16 @@
+{?section name=i loop=$articlerows?}
+{?if $i.order == 1?}
+    <a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"></a>
+    <strong><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].articlename?}</a></strong>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;{?$articlerows[i].intro|truncate:90:'..'?}<a class="hot" href="{?$articlerows[i].url_index?}" target="_blank">[阅读]</a></p>
+    <div class="cb"></div>
+{?/if?}
+{?/section?}
+    <ul>
+        {?section name=i loop=$articlerows?}
+        {?if $i.order > 1?}
+        <li><span class="gray">▌</span><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].articlename?}</a></li>
+        {?/if?}
+        {?/section?}
+    </ul>
+

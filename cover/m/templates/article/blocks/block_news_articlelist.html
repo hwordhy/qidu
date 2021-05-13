@@ -1,0 +1,8 @@
+{?section name=i loop=$articlerows?}
+<a href="{?$articlerows[i].url_articleinfo?}" style="margin-bottom: 8px;">
+    <b>【为你推荐】</b>
+    {?if $articlerows[i].backupname != ''?}{?$articlerows[i].backupname?}{?else?}{?$articlerows[i].articlename?}{?/if?}<span>  点击阅读&gt;&gt;</span>
+</a>
+{?/section?}
+
+

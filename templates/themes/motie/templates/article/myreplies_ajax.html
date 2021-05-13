@@ -1,0 +1,1 @@
+{"items":[{?section name=i loop=$postrows?}{"replierid":"{?$postrows[i].replierid?}","replier":"{?$postrows[i].replier?}","posttext":"{?$postrows[i].posttext|str_replace:'"':"'"?}","posttime":"{?$postrows[i].posttime|date:"Y-m-d H:i:s"?}"}{?if $i.order != $i.count?},{?/if?}{?/section?}],{?$url_jumppage?}}

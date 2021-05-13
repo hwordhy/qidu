@@ -1,0 +1,34 @@
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+<div style="width:100%;text-align:center;margin-top:-30px;">
+	<p class="warn" style="height:28px;">充值{?$egold?}{?$egoldname?}，支付金额：{?$money?}元</p>
+	<div class="cl20"></div>
+	<p style="text-align:center">
+		<form name="frmpaypost" id="frmpaypost" method="post" action="{?$url_pay?}">
+			<input type='hidden' name='p0_Cmd'  value='{?$messageType?}'>
+			<input type='hidden' name='p1_MerId'  value='{?$merchant_id?}'>
+			<input type="hidden" name='p2_Order'  value='{?$orderid?}'>
+			<input type='hidden' name='p3_Amt'  value='{?$amount?}'>
+			<input type='hidden' name='p4_Cur'  value='{?$cur?}'>
+			<input type='hidden' name='p5_Pid'    value='{?$productId?}'>
+			<input type='hidden' name='p6_Pcat'   value='{?$productCat?}'>
+			<input type='hidden' name='p7_Pdesc'  value='{?$productDesc?}'>
+			<input type='hidden' name='p8_Url'  value='{?$merchantCallbackURL?}'>
+			<input type='hidden' name='p9_SAF'  value='{?$addressFlag?}'>
+			<input type='hidden' name='pa_MP'  value='{?$sMctProperties?}'>
+			<input type='hidden' name='pd_FrpId'  value='{?$frpId?}'>
+			<input type='hidden' name='pr_NeedResponse'  value='{?$needResponse?}'>
+			<input type='hidden' name='hmac'  value='{?$mac?}'>
+			<input type="submit" value="确认支付" class="button on paySuccess"/>
+		</form>
+		</p>
+</div>
+<script type="text/javascript">
+function autopaypost(){
+	document.getElementById('frmpaypost').submit();
+}
+if (window.attachEvent){
+	window.attachEvent('onload',autopaypost);
+}else{
+	window.addEventListener('load',autopaypost,false);
+} 
+</script>

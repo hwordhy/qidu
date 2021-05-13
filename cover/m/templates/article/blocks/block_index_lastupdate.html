@@ -1,0 +1,13 @@
+{?section name=i loop=$articlerows?}{
+"id": "{?$articlerows[i].articleid?}",
+"name": "{?$articlerows[i].articlename?}",
+"book_url": "{?$articlerows[i].url_articleinfo?}",
+"last_update_chapter_name": "{?if $articlerows[i].vipchapterid > 0?}{?$articlerows[i].vipchapter?}{?else?}{?$articlerows[i].lastchapter?}{?/if?}",
+"pen_name": "{?$articlerows[i].author?}",
+"last_update_chapter_date": "{?$articlerows[i].lastupdate|date:'Y-m-d H:i:s'?}",
+"last_update_chapter_id": "{?$articlerows[i].chapterid?}",
+"url_vipchapter": "{?$articlerows[i].url_vipchapter?}",
+"url_lastchapter": "{?$articlerows[i].url_lastchapter?}",
+"is_vip": "{?if $articlerows[i].vipchapterid > 0?}Y{?else?}N{?/if?}"
+}{?if $i.order != $i.count?},{?/if?}{?/section?}
+

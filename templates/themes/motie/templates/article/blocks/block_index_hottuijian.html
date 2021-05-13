@@ -1,0 +1,10 @@
+{?section name=i loop=$articlerows?}
+<dl class="piclist">
+  <dt><a data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}" /></a></dt>
+  <dd>
+    <a  data-msg='{bookid:"{?$articlerows[i].articleid?}"}' data-control-type="shelf" href="{?$articlerows[i].url_articleinfo?}" class="htit" target="_blank">{?$articlerows[i].articlename?}</a>
+    <span data-msg='{bookid:"{?$articlerows[i].articleid?}"}'  boxid="Yy_2017_index_hot_recommend_push" data-control-type="shelf" class="hname book-info">
+                                            {?$articlerows[i].author?}</span>
+  </dd>
+</dl>
+{?/section?}

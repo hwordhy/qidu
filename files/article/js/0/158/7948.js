@@ -1,0 +1,1 @@
+document.write('一款体积3米高的中型步行无人战车，主要武器为一门声波脉冲炮既可以聚焦声波对beta大型种进行结构破坏，左右附臂上各有两门小型激微波枪，可以形成覆盖面级烧热效应模式大量横扫beta小型种（加热空气形成类似等离子火焰效应）行动灵活有极高的地形通过能力，并可以跳跃式通过障碍地形。属于新型量产单位。作为主要陆军机动单位使用<br /><br /><div class=\"divimage\"><img src=\"http://www.cmqxwx.com/files/article/attachment/0/158/7948/227.gif\" border=\"0\" class=\"imagecontent\"></div>');

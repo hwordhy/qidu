@@ -1,0 +1,292 @@
+
+
+{?set jieqi_blocks_module = "article"?}
+
+<style>
+	.vip_bom{
+		margin: 30px 0;
+	}
+	.vip_bom a{
+				background-color: #ff4c2f;
+				padding: 10px 20px 10px 20px;
+				color: #fff;
+				border-radius: 10px;
+				margin-left: 10px;
+	}
+	
+	.subscribe-box .box-title {
+		text-align: center;
+		font-weight: 400;
+		font-size: 18px;
+		color: #666;
+		margin-bottom: 20px;
+		
+	}
+	
+	.subscribe-box .unLogin-btn {
+		width: 510px;
+		margin: 60px auto 40px
+	}
+	
+	 .subscribe-box .unLogin-btn .item {
+		width: 240px;
+		height: 120px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 1px solid #e5e5e5;
+		cursor: pointer
+	}
+	
+	 .subscribe-box .unLogin-btn .item.active {
+		background: #ff4c2f;
+		border: 1px solid #ff4c2f
+	}
+	
+	 .subscribe-box .unLogin-btn .item.active .btn-text1,.subscribe-box .unLogin-btn .item.active .btn-text2 {
+		color: #fff!important
+	}
+	
+	.subscribe-box .unLogin-btn .item.active:hover {
+		background: #ed4259;
+		border: 1px solid #ed4259
+	}
+	
+	 .subscribe-box .unLogin-btn .item .btn-text1 {
+		display: block;
+		margin-top: 30px;
+		font-size: 24px;
+		text-align: center;
+		color: #333
+	}
+	
+	.subscribe-box .unLogin-btn .item .btn-text2 {
+		display: block;
+		margin-top: 15px;
+		font-size: 14px;
+		text-align: center;
+		color: #666
+	}
+	
+	 .subscribe-box .subscribe-con {
+		width: 500px;
+		margin: auto;
+	}
+	
+	.subscribe-box .subscribe-con .con-item {
+		width: 500px;
+		height: 280px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-left: none
+	}
+	
+	 .subscribe-box .subscribe-con .con-item.active {
+		border-color: #ff4c2f
+	}
+	.subscribe-box .subscribe-con .con-item.active .subscribe-text {
+		background: #ff4c2f!important;
+		color: #fff;
+		border-color: #ff4c2f
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-text {
+		width: 100px;
+		height: 100%;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		background: #f2f2f2;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 80px 36px;
+		text-align: center;
+		font-size: 18px;
+		color: #666;
+		line-height: 28px;
+		cursor: pointer
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info {
+		width: 370px;
+		margin-left: 25px
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-chaptername {
+		font-size: 12px;
+		color: #666;
+		margin-top: 20px;
+		line-height: 1.1;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		white-space: nowrap
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-chapternum {
+		font-size: 12px;
+		color: #666;
+		margin-top: 15px
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-paynum {
+		font-size: 14px;
+		margin-top: 28px;
+		color: #333
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-paynum .red {
+		color: #ff4c2f;
+		font-weight: 700
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-paynum del {
+		color: #666
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-balance {
+		color: #333;
+		margin-top: 13px;
+		font-size: 14px
+	}
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-coupon {
+		color: #666;
+		margin-top: 28px;
+		font-size: 12px
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-coupon .choice {
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		border-radius: 4px;
+		border: 1px solid #999;
+		vertical-align: text-bottom;
+		margin-right: 10px;
+		cursor: pointer
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-coupon .choice.unclick {
+		background: #ccc;
+		cursor: text
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-coupon .choice i {
+		display: none;
+		background-image: url(../../img/sprite/sprite3.png?v=2);
+		background-position: 0 0;
+		width: 13px;
+		height: 7px;
+		margin: 3px 0 0 1px;
+		padding-top: 2px
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-coupon .choice i.show {
+		display: block
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-btn {
+		display: none;
+		width: 140px;
+		height: 36px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		color: #fff;
+		text-align: center;
+		line-height: 36px;
+		font-size: 18px;
+		border-radius: 4px;
+		background: #ff4c2f;
+		cursor: pointer;
+		margin: 30px auto;
+	}
+	
+	.subscribe-box .subscribe-con .con-item .subscribe-info .info-btn.show {
+		display: block
+	}
+	
+	 .subscribe-box .subscribe-con .con-item .subscribe-info .info-btn a {
+		color: #fff;
+		display: block;
+		text-align: center;
+		line-height: 36px;
+		font-size: 18px
+	}
+	
+	.subscribe-box .paybox_auto {
+		font-size: 12px;
+		color: #666;
+		text-align: center
+	}
+	
+	 .subscribe-box .paybox_auto.subscribe_auto {
+		text-align: left
+	}
+	
+	.subscribe-box .paybox_auto p {
+		width: 14px;
+		height: 14px;
+		display: inline-block;
+		border: 1px solid #999;
+		border-radius: 4px;
+		vertical-align: text-bottom;
+		cursor: pointer
+	}
+	
+	 .subscribe-box .paybox_auto p i {
+		display: none;
+		background-image: url(../../img/sprite/sprite3.png?v=2);
+		background-position: 0 0;
+		width: 13px;
+		height: 7px;
+		margin: 3px 0 0 1px;
+		padding-top: 2px
+	}
+	
+	.subscribe-box .paybox_auto p i.show {
+		display: block
+	}
+	
+</style>
+<div class="c-center">
+					<div id="main">
+						<form name="frmbuychapter" method="post" action="{?$url_buychapter?}">
+					<div class="mod mod-page"> 
+						<div class="hd">
+						</div>
+						     <div class="bd" id="chapter_bd_924915"  style="text-align: center;">
+							    
+								       <h1 id="chapter_title_924915">{?$chaptername?}</h1>
+									   
+							<div class="page-body">
+							      <div class="page-content " id="ChapterContent924915">
+								      {?$summary?}
+								 </div>
+								 <div class="subscribe-box">
+									<h4 class="box-title">这是VIP章节 &nbsp;需要订阅后才能阅读</h4>
+											<div class="subscribe-con clearfixer">
+													<div class="con-item j-single fl active">
+															<div class="subscribe-text active fl">
+																	订阅本章
+															</div>
+															<div class="subscribe-info fl">
+																	<p class="info-chaptername">章节：《{?$obookname?} - {?$chaptername?}》</p>
+																	<p class="info-paynum">需支付 ：
+																			<span class="red">{?$saleprice?}</span>{?$egoldname?} </p>
+																	<p class="info-balance">账户余额：<span>{?$useremoney?}</span> {?$egoldname?}</p>
+																	<p class="info-coupon">
+																		<input type="checkbox" name="autobuy" value="1"> <span title="选择自动订阅，则本书所有VIP章节在点击阅读时自动购买，不需要每次购买后再阅读。">自动订阅本书其它VIP章节</span>
+																	</p>
+																	<p class="info-btn j-single-charge show"> <input type="hidden" name="act" value="buy">{?$jieqi_token_input?}
+																		<input type="hidden" name="cid" value="{?$cid?}">
+																	<input type="submit" class="submit button-input button-red" value="确定购买" style="background-color: #ff4c2f;color:#fff;" name="submit"></p>
+															</div>
+													</div>
+
+											</div>
+									</div>
+		<div class="vip_bom">  <a href="{?function jieqi_geturl:'article':'article':$articleid:'index':$articlecode?}">返回目录</a><a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}">返回书页</a><a href="{?$url_obookinfo?}">VIP信息</a><a href="{?$url_buyegold?}">帐户充值</a></div>	   
+							   </div></div><div class="ft"><div class="ft-bd"><div class="control">
+							   </div></div></div></div>
+					
+</div></div>				
+

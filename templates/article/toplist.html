@@ -1,0 +1,285 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "topblocks"?}
+{?set $jieqi_pagetitle = "{$articletitle}-{$jieqi_sitename}"?}
+{?if $order == "toplist"?}
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+    <div class="leftbar fl">
+        <ul data-type="">
+            {?section name=i loop=$toprows?}
+            {?if $toprows[i].publish > 0?}
+            <li class="a{?$i.order?}{?if $order == $i['key']?} on{?/if?}"><a href="{?function jieqi_geturl:'article':'toplist':1:$i['key']:$sortid:$fullflag?}"{?if $i.order == 1?} class="alicon"{?/if?}>{?$toprows[i].caption?}</a></li>
+            {?/if?}
+            {?/section?}
+        </ul>
+    </div>
+
+    <div class="rightcont fr">
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['1']['title']?}</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 点击榜 日 -->
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['1']['content']?}
+                </ul>
+                <!-- 点击榜 周 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['2']['content']?}
+                </ul>
+                <!-- 点击榜 总 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['3']['content']?}
+                </ul>
+            </div>
+        </div>
+
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['4']['title']?}</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>月</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 推荐榜 日 -->
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['4']['content']?}
+                </ul>
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['5']['content']?}
+                </ul>
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['6']['content']?}
+                </ul>
+            </div>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['7']['title']?}</span>
+            <div class="tabs-cont-r">
+                <!-- 推荐榜 日 -->
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['7']['content']?}
+                </ul>
+            </div>
+        </div>
+
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['8']['title']?}</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 销售榜 日 -->
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['8']['content']?}
+                </ul>
+                <!-- 销售榜 周 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['9']['content']?}
+                </ul>
+                <!-- 销售榜 总 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['10']['content']?}
+                </ul>
+            </div>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['11']['title']?}</span>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['11']['content']?}
+                </ul>
+            </div>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['12']['title']?}</span>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['12']['content']?}
+                </ul>
+            </div>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['18']['title']?}</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <!-- 月票 日 -->
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['18']['content']?}
+                </ul>
+                <!-- 月票 周 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['19']['content']?}
+                </ul>
+                <!-- 月票 总 -->
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['20']['content']?}
+                </ul>
+            </div>
+        </div>
+        <div class="rank-list-w">
+            <span class="titmenu">{?$jieqi_pageblocks['14']['title']?}</span>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['14']['content']?}
+                </ul>
+            </div>
+        </div>
+
+        <div class="rank-list-w riches-rank">
+            <span class="titmenu">{?$jieqi_pageblocks['15']['title']?}</span>
+            <ul class="tabs-menu-r">
+                <li class="on">日</li>
+                <li>周</li>
+                <li>总</li>
+            </ul>
+            <div class="tabs-cont-r">
+                <ul class="rank-1">
+                    {?$jieqi_pageblocks['15']['content']?}
+                </ul>
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['16']['content']?}
+                </ul>
+                <ul class="rank-1" style="display: none">
+                    {?$jieqi_pageblocks['17']['content']?}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{?else?}
+<div class="block10"></div>
+<div class="wrap1200 ranklist">
+    <div class="leftbar fl">
+        <ul data-type="dianji">
+            {?section name=i loop=$toprows?}
+            {?if $toprows[i].publish > 0?}
+            <li class="a{?$i.order?}{?if $order == $i['key']?} on{?/if?}"><a href="{?function jieqi_geturl:'article':'toplist':1:$i['key']:$sortid:$fullflag?}"{?if $i.order == 1?} class="alicon"{?/if?}>{?$toprows[i].caption?}</a></li>
+            {?/if?}
+            {?/section?}
+        </ul>
+    </div>
+
+    <div class="right-cont-box fr rankdata">
+        <div class="comment-r-menu">
+            <span class=" fl r-c-t">{?$ordername?}</span>
+        </div>
+        <div class="rankdatacont">
+        <div class="tabsbox1">
+            <div class="rankday">
+                <ul class="clrbtn clrbtna">
+                    <li class="clrbtn1 on"><a href="#"></a></li>
+                    <li class="clrbtn2"><a href="#"></a></li>
+                </ul>
+                <div class="tabsday-cont">
+                    <div class="tabs-cont-1">
+                        {?section name=i loop=$articlerows?}
+                        <!-- 判断是不是点击 -->
+                        <div class="secd-rank-list">
+                            <dl>
+                                <dt><a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}"/></a></dt>
+                                <dd>
+                                    <a href="{?$articlerows[i].url_articleinfo?}" class="bigpic-book-name" target="_blank">
+                                        <span class="num{?if $i.order < 4?} red{?/if?}">{?$i.order?}</span>{?$articlerows[i].articlename?}</a>
+                                    <p>
+                                        <a href="javascript:;" target="_blank">{?$articlerows[i].author?}</a> | <a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" target="_blank">{?$articlerows[i].sort?}</a> | {?$articlerows[i].fullflag?} <span class="clicknum">{?$articlerows[i].allvisit?} 点击</span></p>
+                                    <p class="big-book-info">{?$articlerows[i].intro?}</p>
+                                    <p>{?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}" target="_blank" class="red">最近更新 {?$articlerows[i].vipchapter?}</a>{?else?}<a href="{?$articlerows[i].url_lastchapter?}" target="_blank" class="red">最近更新 {?$articlerows[i].lastchapter?}</a>{?/if?}<span>| {?$articlerows[i].lastupdate|date:'Y-m-d H:i:s'?}</span></p>
+                                </dd>
+                            </dl>
+                            <div class="bigbtn">
+                                <a href="{?$articlerows[i].url_articleinfo?}" class="detailbtn" target="_blank">书籍详情</a>
+                                {?if $articlerows[i].is_collection > 0?}<a data-control="remove" href="javascript:;" data-Id="{?$articlerows[i].articleid?}" class="addbtn addshelf"><em>已在书架</em></a>{?else?}<a data-control="add" href="javascript:;" data-Id="{?$articlerows[i].articleid?}" class="addbtn addshelf">加入书架</a>{?/if?}
+                            </div>
+                        </div>
+                        {?/section?}
+                    </div>
+                    <div class="tablist">
+                        <ul>
+                            <li class="tab-title">
+                                <a href="javascript:;" class="tr0">排名</a>
+                                <a href="javascript:;" class="tr1">分类</a>
+                                <a href="javascript:;" class="tr2">书名</a>
+                                <a href="javascript:;" class="tr3">最新章节</a>
+                                <a href="javascript:;" class="tr4">作者</a>
+                                <a href="javascript:;" class="tr5">点击</a>
+                                <a href="javascript:;" class="tr6">更新时间</a>
+                                <a href="javascript:;" class="tr7">操作</a>
+                            </li>
+                            {?section name=i loop=$articlerows?}
+                            <!-- 判断是不是点击 -->
+                            <li>
+                                <a href="javascript:;" class="tr0"><span class="num{?if $i.order < 4?} red{?/if?}">{?$i.order?}</span></a>
+                                <a href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" target="_blank" class="tr1">{?$articlerows[i].sort?}</a>
+                                <a href="{?$articlerows[i].url_articleinfo?}" target="_blank" class="tr2">{?$articlerows[i].articlename?}</a>
+                                {?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}" target="_blank" class="tr3">{?$articlerows[i].vipchapter?}</a>{?else?}<a href="{?$articlerows[i].url_lastchapter?}" target="_blank" class="tr3">{?$articlerows[i].lastchapter?}</a>{?/if?}
+                                <a href="javascript:;" target="_blank" class="tr4">{?$articlerows[i].author?}</a>
+                                <a href="javascript:;" class="tr5">{?$articlerows[i].allvisit?}</a>
+                                <a href="javascript:;" class="tr6">{?$articlerows[i].lastupdate|date:'Y-m-d H:i:s'?}</a>
+                                {?if $articlerows[i].is_collection > 0?}<a href="javascript:;" target="_blank" data-control="remove" data-Id="{?$articlerows[i].articleid?}" class="tr7 redcolor addshelf"><em>已在书架</em></a>{?else?}{?/if?}<a href="javascript:;" target="_blank" data-control="add" data-Id="{?$articlerows[i].articleid?}" class="tr7 redcolor addshelf">加入书架</a>
+                            </li>
+                            {?/section?}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pages_bottom" style="display: block;">
+                {?$url_jumppage?}
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{?/if?}
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/layer.css" />
+<script>
+    function _addConfig(json) {
+        if(window.page_config){
+            for(var i in json){
+                if(page_config[i] === undefined){
+                    window.page_config[i] = json[i];
+                }
+            }
+        }else{
+            window.page_config = json;
+        }
+    }
+    _addConfig({
+        username: "{?$jieqi_username?}",
+        sitestate:"7",
+        userId:"{?$jieqi_userid?}",
+        coinName:"{?$egoldname?}",
+        siteValue:"yy",
+        toTop_page:true
+    });
+    var isPeople = location.href.indexOf('/people')>-1;
+    if(isPeople){
+        page_config.toTop_page=false;
+    }
+
+</script><script type="text/javascript">
+    var _loginUser = 'basic';
+    var _config = '';
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/handlebars.helper.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/vendor.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/style/css/ui_common.css">
+<script src="{?$jieqi_url?}/style/js/index_header.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/style/js/rank.js"></script>
+<script>
+    $(".nav_rank").addClass("curr");
+</script>
+

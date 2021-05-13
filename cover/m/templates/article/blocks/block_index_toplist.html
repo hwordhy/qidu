@@ -1,0 +1,12 @@
+{?section name=i loop=$articlerows?}{
+"book_id": "{?$articlerows[i].articleid?}",
+"book_name": "{?$articlerows[i].articlename?}",
+"description": "{?$articlerows[i].json_intro?}",
+"book_url": "{?$articlerows[i].url_articleinfo?}",
+"author_name": "{?$articlerows[i].author?}",
+"cover_url": "{?$articlerows[i].url_image?}",
+"channel": "{?if $articlerows[i].rgroup == 2 ?}woman{?else?}man{?/if?}",
+"click": "{?$articlerows[i].allvisit?}",
+"all_collection": "{?$articlerows[i].goodnum?}"
+}{?if $i.order != $i.count?},{?/if?}{?/section?}
+

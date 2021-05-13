@@ -1,0 +1,89 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "申请作者-{$jieqi_sitename}"?}
+{?set jieqi_page_template = "templates/article/applywriter.html"?}
+{?include file="templates/system/author_header.html"?}
+<script>
+    $.ajax({
+
+        url:"/extends/api/applywriter.php",
+        data:{parm:null},
+        type:"get",
+        dataType:"json",
+        success: function(result){
+            var message = result['message'];
+            if(message === 'false'){
+                window.location.href="{?$jieqi_url?}/persondetail.php";
+            }
+        }
+    });
+</script>
+<div class="container-box regcontbox apply_author">
+    <div class="register-title">
+        <a href="JavaScript:;" class="r-cur"><em class="num1"></em><i class="t1">申请作者</i><span class="r-arr"></span></a>
+    </div>
+    <div class="reg-box">
+        <form class="cmxform" id="approveForm" method="post" action="{?$jieqi_modules['article']['url']?}/applywriter.php">
+            <div class="inform" style="padding-left: 22px;">
+                <div class="txtbox" style="width:860px;">
+                    <label class="wtitle necessary" for="username">笔名：</label>
+                    <div class="rbox">
+                        <input id="nickName" maxlength="12" name="penname" type="text" value="" class="textbox">
+                        <em class="ath-tips">2-12个字符，汉字、数字、字母开头，可包含下划线</em>
+                    </div>
+                </div>
+                <div class="txtbox" style="width:860px;">
+                    <label class="wtitle necessary" for="applytext">样章：</label>
+                    <div class="rbox">
+                        <textarea name="applytext" cols="80" rows="15" class="textbox" style="height: 200px;"></textarea>
+                        <em class="ath-tips">请在上面输入小说样章</em>
+                    </div>
+                </div>
+                <p>&nbsp;&nbsp;&nbsp;</p>
+                <div class="r-text" style="height: 300px;">
+                    <div class="agr-box">
+                        <p>
+                            <strong>一、作者申请条例：</strong><br />
+                            &nbsp;&nbsp;&nbsp; 1、发表小说必须为原创作品。<br />
+                            &nbsp;&nbsp;&nbsp; 2、有比较稳定的写作时间和写作速度。<br />
+                            &nbsp;&nbsp;&nbsp; 3、小说内容不得含有色情、政治及其他违规内容。<br />
+                            &nbsp;&nbsp;&nbsp; 4、遇到问题可咨询春墨秋香客服人员，QQ：2213788946 <br />
+                        </p>
+                        <p>
+                            <strong>二、申请要求：</strong><br />
+                            &nbsp;&nbsp;&nbsp; 申请原创作者必须提交不少于2000字的原创小说样章，由编辑审核通过后才能发表小说哦。<br /><br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="dd " style="margin:12px 0 0 325px;height:20px;color:#ff0000;"></p>
+            <input name="act" type="hidden" value="applywriter" />{?$jieqi_token_input?}
+            <input class="agrsubmit" type="submit" value="同意并申请">
+        </form>
+
+    </div>
+</div>
+<script src="{?$jieqi_url?}/style/author/js/messages_zh.js"></script>
+<script type="text/javascript">
+    var createImg = function (objImg,objCode,t) {
+        if (!t) {
+            t = Math.ceil(Math.random() * 1000000000000);
+        }
+        $(objImg).attr("src", "/checkcode.php?rand=" + t);
+        $(objCode).val(t);
+    }
+
+    $(function() {
+
+        createImg("#validateCodeImg","#validateValue");
+
+        $("#validateCodeImg").click(function(){
+            createImg($("#validateCodeImg"),$("#validateValue"));
+            return false;
+        });
+    });
+
+</script>
+
+{?include file="templates/system/author_footer.html"?}
+
+
